@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - https://github.com/argoproj/rollouts-demo//examples/canary
+
+images:
+- name: argoproj/rollouts-demo:blue
+  newTag: red
+
+openapi:
+  path: https://raw.githubusercontent.com/argoproj/argo-schema-generator/main/schema/argo_all_k8s_kustomize_schema.json
+
+configurations:
+  - transform.yaml
+
