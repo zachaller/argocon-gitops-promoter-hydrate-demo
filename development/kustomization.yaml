@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: development
 resources:
   - ../base
+  - namespace.yaml
 
 patches:
   - path: rollout.yaml
