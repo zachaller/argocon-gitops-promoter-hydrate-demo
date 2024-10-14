@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: staging
 resources:
   - ../base
+  - namespace.yaml
 
 patches:
   - path: rollout.yaml
