@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: production-use2
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  sourceHydrator:
+    drySource:
+      path: production/us-east-2
+      repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
+      targetRevision: HEAD
+    hydrateTo:
+      targetBranch: environments/production-next
+    syncSource:
+      path: us-east-2
+      targetBranch: environments/production
+  syncPolicy:
+    automated: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+  name: production-usw1
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  sourceHydrator:
+    drySource:
+      path: production/us-west-1
+      repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
+      targetRevision: HEAD
+    hydrateTo:
+      targetBranch: environments/production-next
+    syncSource:
+      path: us-west-1
+      targetBranch: environments/production
+  syncPolicy:
+    automated: {}

@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: promotion-strategy
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: promotion-app
+    repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo
+    targetRevision: HEAD

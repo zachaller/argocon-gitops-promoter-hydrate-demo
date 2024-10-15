@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: development
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  sourceHydrator:
+    drySource:
+      path: development
+      repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
+      targetRevision: HEAD
+    hydrateTo:
+      targetBranch: environments/development-next
+    syncSource:
+      path: .
+      targetBranch: environments/development
+  syncPolicy:
+    automated: {}
