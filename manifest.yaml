@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/instance: staging
+  name: staging
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/instance: staging
+  name: canary-demo
+  namespace: staging
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: canary-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/instance: staging
+  name: canary-demo-preview
+  namespace: staging
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: canary-demo
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  labels:
+    app.kubernetes.io/instance: staging
+    environment: staging
+  name: canary-demo
+  namespace: staging
+spec:
+  replicas: 2
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: canary-demo
+  strategy:
+    canary:
+      canaryService: canary-demo-preview
+      steps:
+        - setWeight: 20
+        - pause: {}
+        - setWeight: 40
+        - pause:
+            duration: 10
+        - setWeight: 60
+        - pause:
+            duration: 10
+        - setWeight: 80
+        - pause:
+            duration: 10
+  template:
+    metadata:
+      labels:
+        app: canary-demo
+        environment: staging
+    spec:
+      containers:
+        - image: argoproj/rollouts-demo:red
+          imagePullPolicy: Always
+          name: canary-demo
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 5m
+              memory: 32Mi
