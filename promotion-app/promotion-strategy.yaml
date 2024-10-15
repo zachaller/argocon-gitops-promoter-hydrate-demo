@@ -10,6 +10,7 @@ spec:
   dryBranch: main
   environments:
   - branch: environments/development
+    autoMerge: false
   - branch: environments/staging
   - branch: environments/production
   repository:
