@@ -7,6 +7,7 @@ resources:
 patches:
   - path: remove-ingress-demo.yaml
   - path: remove-ingress-demo-preview.yaml
+  - path: rollout-steps.yaml
 
 images:
 - name: argoproj/rollouts-demo:blue
