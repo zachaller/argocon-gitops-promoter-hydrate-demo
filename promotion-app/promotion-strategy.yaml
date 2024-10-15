@@ -1,0 +1,19 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: PromotionStrategy
+metadata:
+  annotations:
+  name: argocon-demo
+  namespace: default
+spec:
+  activeCommitStatuses:
+  - key: healthy
+  dryBranch: main
+  environments:
+  - branch: environments/development
+  - branch: environments/staging
+  - branch: environments/production
+  repository:
+    name: argocon-gitops-promoter-hydrate-demo
+    owner: zachaller
+    scmProviderRef:
+      name: scmprovider-sample
