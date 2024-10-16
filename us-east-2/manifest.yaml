@@ -46,7 +46,7 @@ metadata:
   name: canary-demo
   namespace: production-use2
 spec:
-  replicas: 3
+  replicas: 4
   revisionHistoryLimit: 1
   selector:
     matchLabels:
