@@ -6,5 +6,9 @@ resources:
   - ../../base
   - namespace.yaml
 
+images:
+- name: argoproj/rollouts-demo:red
+  newTag: yellow
+
 patches:
   - path: rollout.yaml
