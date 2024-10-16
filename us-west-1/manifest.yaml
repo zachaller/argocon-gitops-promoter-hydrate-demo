@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/instance: production-usw1
+  name: production-usw1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/instance: production-usw1
+  name: canary-demo
+  namespace: production-usw1
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: canary-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/instance: production-usw1
+  name: canary-demo-preview
+  namespace: production-usw1
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: canary-demo
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  labels:
+    app.kubernetes.io/instance: production-usw1
+    environment: production
+  name: canary-demo
+  namespace: production-usw1
+spec:
+  replicas: 3
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: canary-demo
+  strategy:
+    canary:
+      canaryService: canary-demo-preview
+      steps:
+        - setWeight: 20
+        - pause:
+            duration: 2
+        - setWeight: 80
+        - pause:
+            duration: 2
+  template:
+    metadata:
+      labels:
+        app: canary-demo
+        environment: production
+    spec:
+      containers:
+        - image: argoproj/rollouts-demo:green
+          imagePullPolicy: Always
+          name: canary-demo
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 5m
+              memory: 32Mi
