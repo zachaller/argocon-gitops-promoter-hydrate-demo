@@ -13,6 +13,8 @@ spec:
     autoMerge: false
   - branch: environments/staging
   - branch: environments/production
+    proposedCommitStatuses:
+    - key: hicap
   repository:
     name: argocon-gitops-promoter-hydrate-demo
     owner: zachaller
