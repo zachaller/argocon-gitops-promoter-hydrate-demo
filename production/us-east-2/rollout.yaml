@@ -5,7 +5,7 @@ metadata:
   labels:
     environment: production
 spec:
-  replicas: 3
+  replicas: 4
   template:
     metadata:
       labels:
