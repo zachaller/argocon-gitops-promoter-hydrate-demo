@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  resource.customizations.actions.promoter.argoproj.io_PullRequest: |
+    discovery.lua: |
+      local actions = {}
+      actions["merge"] = {["disabled"] = false}
+      return actions
+    definitions:
+    - name: merge
+      action.lua: |
+        obj.spec.state = "merged"
+        return obj
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
