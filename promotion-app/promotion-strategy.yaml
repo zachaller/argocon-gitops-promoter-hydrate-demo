@@ -14,7 +14,7 @@ spec:
   - branch: environments/staging
   - branch: environments/production
     proposedCommitStatuses:
-    - key: hicap
+    - key: hcap
   repository:
     name: argocon-gitops-promoter-hydrate-demo
     owner: zachaller
