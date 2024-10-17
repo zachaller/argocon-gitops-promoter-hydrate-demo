@@ -1,0 +1,19 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: CommitStatus
+metadata:
+  labels:
+    promoter.argoproj.io/commit-status: hicap
+  name: hicap
+  namespace: argocd
+spec:
+  description: Hicap
+  name: production-use2/hicap
+  phase: success
+  repository:
+    name: argocon-gitops-promoter-hydrate-demo
+    owner: zachaller
+    scmProviderRef:
+      name: scmprovider-sample
+      namespace: default
+  sha: 70122865e715c6c142ba390a0b2fe08564120f76
+  url: https://example.com
