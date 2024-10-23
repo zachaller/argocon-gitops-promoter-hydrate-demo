@@ -5,6 +5,7 @@ metadata:
     app.kubernetes.io/name: promoter
     app.kubernetes.io/managed-by: kustomize
   name: argocon-demo
+  namespace: default
 spec:
   name: argocon-gitops-promoter-hydrate-demo
   owner: zachaller
