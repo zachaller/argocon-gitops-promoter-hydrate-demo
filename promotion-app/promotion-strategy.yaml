@@ -15,8 +15,5 @@ spec:
   - branch: environments/production
     proposedCommitStatuses:
     - key: hcap
-  repository:
-    name: argocon-gitops-promoter-hydrate-demo
-    owner: zachaller
-    scmProviderRef:
-      name: scmprovider-sample
+  gitRepositoryRef:
+    name: argocon-demo

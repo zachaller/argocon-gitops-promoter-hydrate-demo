@@ -1,0 +1,12 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: GitRepository
+metadata:
+  labels:
+    app.kubernetes.io/name: promoter
+    app.kubernetes.io/managed-by: kustomize
+  name: argocon-demo
+spec:
+  name: argocon-gitops-promoter-hydrate-demo
+  owner: zachaller
+  scmProviderRef:
+    name: scmprovider-sample

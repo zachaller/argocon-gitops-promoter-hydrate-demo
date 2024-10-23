@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - promotion-strategy.yaml
+  - gitrepo.yaml
