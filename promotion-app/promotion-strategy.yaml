@@ -7,7 +7,6 @@ metadata:
 spec:
   activeCommitStatuses:
   - key: healthy
-  dryBranch: main
   environments:
   - branch: environments/development
     autoMerge: false
