@@ -1,0 +1,9 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: ScmProvider
+metadata:
+  name: scmprovider-sample
+  namespace: default
+spec:
+  github: {}
+  secretRef:
+    name: my-auth
