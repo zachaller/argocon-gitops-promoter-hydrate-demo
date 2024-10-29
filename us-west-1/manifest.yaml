@@ -69,7 +69,7 @@ spec:
         environment: production
     spec:
       containers:
-        - image: argoproj/rollouts-demo:orange
+        - image: argoproj/rollouts-demo:red
           imagePullPolicy: Always
           name: canary-demo
           ports:
