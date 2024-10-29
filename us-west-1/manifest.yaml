@@ -42,6 +42,7 @@ kind: Rollout
 metadata:
   labels:
     app.kubernetes.io/instance: production-usw1
+    db-schema: v1.2
     environment: production
   name: canary-demo
   namespace: production-usw1
