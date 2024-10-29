@@ -9,7 +9,7 @@ spec:
   project: default
   sourceHydrator:
     drySource:
-      path: development
+      path: user-configuration/development
       repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
       targetRevision: HEAD
     hydrateTo:

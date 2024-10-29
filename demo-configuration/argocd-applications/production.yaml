@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: e2e-staging
+  name: production-use2
   namespace: argocd
 spec:
   destination:
@@ -9,21 +9,21 @@ spec:
   project: default
   sourceHydrator:
     drySource:
-      path: staging/e2e
+      path: user-configuration/production/us-east-2
       repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
       targetRevision: HEAD
     hydrateTo:
-      targetBranch: environments/staging-next
+      targetBranch: environments/production-next
     syncSource:
-      path: e2e
-      targetBranch: environments/staging
+      path: us-east-2
+      targetBranch: environments/production
   syncPolicy:
     automated: {}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: integration-staging
+  name: production-usw1
   namespace: argocd
 spec:
   destination:
@@ -31,13 +31,13 @@ spec:
   project: default
   sourceHydrator:
     drySource:
-      path: staging/integration
+      path: user-configuration/production/us-west-1
       repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
       targetRevision: HEAD
     hydrateTo:
-      targetBranch: environments/staging-next
+      targetBranch: environments/production-next
     syncSource:
-      path: integration
-      targetBranch: environments/staging
+      path: us-west-1
+      targetBranch: environments/production
   syncPolicy:
     automated: {}
