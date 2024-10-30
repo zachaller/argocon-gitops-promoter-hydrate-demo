@@ -5,3 +5,4 @@ resources:
   - promotion-strategy.yaml
   - gitrepo.yaml
   - scmProvider.yaml
+  - hcap-cs.yaml

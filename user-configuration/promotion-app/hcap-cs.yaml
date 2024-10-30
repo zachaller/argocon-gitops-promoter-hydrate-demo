@@ -1,0 +1,16 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: CommitStatus
+metadata:
+  annotations:
+    hcapActive: "false"
+  labels:
+    promoter.argoproj.io/commit-status: hcap
+  name: hcap
+  namespace: argocd
+spec:
+  description: HCAP check for production
+  gitRepositoryRef:
+    name: argocon-demo
+  name: production/hcap
+  sha: ""
+  url: https://example.com
