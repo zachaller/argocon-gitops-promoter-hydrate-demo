@@ -9,6 +9,7 @@ spec:
     kind: CommitStatus
     jsonPointers:
     - /spec/sha
+    - /metadata/annotations/hcapActive
   destination:
     server: https://kubernetes.default.svc
   project: default
