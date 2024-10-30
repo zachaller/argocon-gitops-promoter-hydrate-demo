@@ -10,7 +10,7 @@ kind: Service
 metadata:
   labels:
     app.kubernetes.io/instance: production-usw1
-    version: v1.0
+    version: v1.0.1
   name: canary-demo
   namespace: production-usw1
 spec:
@@ -21,14 +21,14 @@ spec:
       targetPort: http
   selector:
     app: canary-demo
-    version: v1.0
+    version: v1.0.1
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
     app.kubernetes.io/instance: production-usw1
-    version: v1.0
+    version: v1.0.1
   name: canary-demo-preview
   namespace: production-usw1
 spec:
@@ -39,7 +39,7 @@ spec:
       targetPort: http
   selector:
     app: canary-demo
-    version: v1.0
+    version: v1.0.1
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
@@ -48,7 +48,7 @@ metadata:
     app.kubernetes.io/instance: production-usw1
     db-schema: v1.2
     environment: production
-    version: v1.0
+    version: v1.0.1
   name: canary-demo
   namespace: production-usw1
 spec:
@@ -57,7 +57,7 @@ spec:
   selector:
     matchLabels:
       app: canary-demo
-      version: v1.0
+      version: v1.0.1
   strategy:
     canary:
       canaryService: canary-demo-preview
@@ -73,10 +73,10 @@ spec:
       labels:
         app: canary-demo
         environment: production
-        version: v1.0
+        version: v1.0.1
     spec:
       containers:
-        - image: argoproj/rollouts-demo:green
+        - image: argoproj/rollouts-demo:red
           imagePullPolicy: Always
           name: canary-demo
           ports:
