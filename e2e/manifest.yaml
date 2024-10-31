@@ -46,6 +46,7 @@ kind: Rollout
 metadata:
   labels:
     app.kubernetes.io/instance: e2e-staging
+    db-schema: v1.4
     environment: staging
     version: v1.0.2
   name: canary-demo
