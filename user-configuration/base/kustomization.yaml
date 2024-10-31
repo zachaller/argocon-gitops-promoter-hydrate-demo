@@ -11,10 +11,10 @@ patches:
 
 images:
 - name: argoproj/rollouts-demo:blue
-  newTag: red
+  newTag: yellow
 
 commonLabels:
-    version: "v1.0.1"
+    version: "v1.0.2"
 
 openapi:
   path: https://raw.githubusercontent.com/argoproj/argo-schema-generator/main/schema/argo_all_k8s_kustomize_schema.json
