@@ -10,7 +10,7 @@ kind: Service
 metadata:
   labels:
     app.kubernetes.io/instance: e2e-staging
-    version: v1.0.8
+    version: v1.0.9
   name: canary-demo
   namespace: e2e-staging
 spec:
@@ -21,14 +21,14 @@ spec:
       targetPort: http
   selector:
     app: canary-demo
-    version: v1.0.8
+    version: v1.0.9
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
     app.kubernetes.io/instance: e2e-staging
-    version: v1.0.8
+    version: v1.0.9
   name: canary-demo-preview
   namespace: e2e-staging
 spec:
@@ -39,7 +39,7 @@ spec:
       targetPort: http
   selector:
     app: canary-demo
-    version: v1.0.8
+    version: v1.0.9
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
@@ -48,7 +48,7 @@ metadata:
     app.kubernetes.io/instance: e2e-staging
     db-schema: v1.4
     environment: staging
-    version: v1.0.8
+    version: v1.0.9
   name: canary-demo
   namespace: e2e-staging
 spec:
@@ -57,7 +57,7 @@ spec:
   selector:
     matchLabels:
       app: canary-demo
-      version: v1.0.8
+      version: v1.0.9
   strategy:
     canary:
       canaryService: canary-demo-preview
@@ -73,10 +73,10 @@ spec:
       labels:
         app: canary-demo
         environment: staging
-        version: v1.0.8
+        version: v1.0.9
     spec:
       containers:
-        - image: argoproj/rollouts-demo:green
+        - image: argoproj/rollouts-demo:blue
           imagePullPolicy: Always
           name: canary-demo
           ports:
