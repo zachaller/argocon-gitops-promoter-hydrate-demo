@@ -13,7 +13,7 @@ images:
 - name: argoproj/rollouts-demo:red
   newTag: blue
 
-commonLabels:
+commonAnnotations:
     version: "v1.0.10"
 
 openapi:
