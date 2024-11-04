@@ -14,7 +14,7 @@ images:
   newTag: blue
 
 commonAnnotations:
-    version: "v1.0.19"
+    version: "v1.0.20"
 
 openapi:
   path: https://raw.githubusercontent.com/argoproj/argo-schema-generator/main/schema/argo_all_k8s_kustomize_schema.json
