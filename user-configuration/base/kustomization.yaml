@@ -10,7 +10,7 @@ patches:
   - path: rollout-steps.yaml
 
 images:
-- name: argoproj/rollouts-demo:red
+- name: argoproj/rollouts-demo:blue
   newTag: green
 
 commonAnnotations:
