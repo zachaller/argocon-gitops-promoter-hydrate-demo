@@ -10,7 +10,25 @@ data:
       action.lua: |
         obj.spec.state = "merged"
         return obj
+  resource.customizations.actions.promoter.argoproj.io_CommitStatus: |
+    discovery.lua: |
+      local actions = {}
+      actions["hcap on"] = {["disabled"] = false}
+      actions["hcap off"] = {["disabled"] = false}
+      return actions
+    definitions:
+    - name: "hcap on"
+      action.lua: |
+        obj.metadata.annotations.hcapActive = "true"
+        return obj
+    - name: "hcap off"
+      action.lua: |
+        obj.metadata.annotations.hcapActive = "false"
+        return obj
 kind: ConfigMap
 metadata:
   name: argocd-cm
   namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
