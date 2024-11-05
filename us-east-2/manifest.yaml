@@ -48,7 +48,7 @@ metadata:
     version: v1.0.31
   labels:
     app.kubernetes.io/instance: production-use2
-    db-schema: v1.3
+    db-schema: v1.4
     environment: production
   name: canary-demo
   namespace: production-use2
