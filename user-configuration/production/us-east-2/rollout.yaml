@@ -4,7 +4,7 @@ metadata:
   name: canary-demo
   labels:
     environment: production
-    db-schema: v1.6
+    db-schema: v1.7
 spec:
   replicas: 3
   template:
