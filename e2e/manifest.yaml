@@ -77,7 +77,7 @@ spec:
         environment: staging
     spec:
       containers:
-        - image: argoproj/rollouts-demo:red-dna
+        - image: argoproj/rollouts-demo:red
           imagePullPolicy: Always
           name: canary-demo
           ports:
