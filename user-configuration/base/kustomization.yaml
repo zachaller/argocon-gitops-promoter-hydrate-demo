@@ -11,7 +11,7 @@ patches:
 
 images:
 - name: argoproj/rollouts-demo:blue
-  newTag: red
+  newTag: green
 
 commonAnnotations:
     version: "v1.0.58"
