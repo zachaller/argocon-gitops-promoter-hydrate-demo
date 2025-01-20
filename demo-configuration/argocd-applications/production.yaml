@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: production-use2
   namespace: argocd
+  labels:
+    app: demo
 spec:
   destination:
     server: https://kubernetes.default.svc
