@@ -9,7 +9,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    version: v1.0.103
+    version: v1.0.104
   labels:
     app.kubernetes.io/instance: development
   name: canary-demo
@@ -27,7 +27,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    version: v1.0.103
+    version: v1.0.104
   labels:
     app.kubernetes.io/instance: development
   name: canary-demo-preview
@@ -45,7 +45,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   annotations:
-    version: v1.0.103
+    version: v1.0.104
   labels:
     app.kubernetes.io/instance: development
     environment: development
@@ -70,7 +70,7 @@ spec:
   template:
     metadata:
       annotations:
-        version: v1.0.103
+        version: v1.0.104
       labels:
         app: canary-demo
         environment: development
