@@ -27,6 +27,8 @@ kind: Application
 metadata:
   name: production-usw1
   namespace: argocd
+  labels:
+    app: demo
 spec:
   destination:
     server: https://kubernetes.default.svc
