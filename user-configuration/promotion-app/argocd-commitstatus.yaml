@@ -1,0 +1,10 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: ArgoCDCommitStatus
+metadata:
+  name: argocdcommitstatus-sample
+spec:
+  promotionStrategyRef:
+    name: argocon-demo
+  applicationSelector:
+    matchLabels:
+      app: demo

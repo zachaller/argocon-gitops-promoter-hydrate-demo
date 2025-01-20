@@ -6,3 +6,4 @@ resources:
   - gitrepo.yaml
   - scmProvider.yaml
   - hcap-cs.yaml
+  - argocd-commitstatus.yaml
