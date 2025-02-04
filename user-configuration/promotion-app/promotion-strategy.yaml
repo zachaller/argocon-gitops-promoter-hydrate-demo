@@ -6,7 +6,7 @@ metadata:
   namespace: default
 spec:
   activeCommitStatuses:
-  - key: healthy
+  - key: argocd-health
   environments:
   - branch: environments/development
     autoMerge: false
