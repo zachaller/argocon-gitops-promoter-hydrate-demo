@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - yaml-lint.yaml
+  - automated-testing.yaml
