@@ -6,13 +6,17 @@ metadata:
   namespace: default
 spec:
   activeCommitStatuses:
-  - key: argocd-health
+  #- key: argocd-health
+  - key: automated-testing
+  proposedCommitStatuses:
+    - key: yaml-lint
   environments:
   - branch: environments/development
-    autoMerge: false
   - branch: environments/staging
+    activeCommitStatuses:
+      - key: performance-test
   - branch: environments/production
     proposedCommitStatuses:
-    - key: hcap
+    - key: deployment-freeze
   gitRepositoryRef:
     name: argocon-demo
