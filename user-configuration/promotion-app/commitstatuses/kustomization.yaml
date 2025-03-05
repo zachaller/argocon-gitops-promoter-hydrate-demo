@@ -4,3 +4,5 @@ kind: Kustomization
 resources:
   - yaml-lint.yaml
   - automated-testing.yaml
+  - performance-test.yaml
+  - deployment-freeze.yaml

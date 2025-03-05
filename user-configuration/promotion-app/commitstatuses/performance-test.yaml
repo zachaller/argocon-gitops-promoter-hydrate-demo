@@ -1,0 +1,15 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: CommitStatus
+metadata:
+  labels:
+    promoter.argoproj.io/commit-status: performance-test
+  name: performance-test-development
+  namespace: default
+spec:
+  description: Development Performance Test
+  gitRepositoryRef:
+    name: argocon-demo
+  name: environments/development/performance-test
+  phase: pending
+  sha: db79f0abd1156364014217f168fe3586bd217ddd
+  url: https://example.com
