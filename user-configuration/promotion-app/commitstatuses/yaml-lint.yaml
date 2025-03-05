@@ -3,7 +3,7 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: yaml-lint
-  name: lint-development
+  name: development-lint
   namespace: default
 spec:
   description: Development Lint Test
@@ -19,7 +19,7 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: yaml-lint
-  name: lint-integration-staging
+  name: integration-staging-lint
   namespace: default
 spec:
   description: Integration Staging Lint Test
@@ -35,7 +35,7 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: yaml-lint
-  name: lint-production-use2
+  name: production-use2-lint
   namespace: default
 spec:
   description: Production USE2 Lint Test

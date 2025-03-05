@@ -3,7 +3,7 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: automated-testing
-  name: automated-testing-development
+  name: development-automated-testing
   namespace: default
 spec:
   description: Development Automated Testing
@@ -19,7 +19,7 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: automated-testing
-  name: automated-testing-integration-staging
+  name: integration-staging-automated-testing
   namespace: default
 spec:
   description: Integration Staging Automated Testing

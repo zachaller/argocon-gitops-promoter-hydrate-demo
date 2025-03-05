@@ -3,7 +3,7 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: deployment-freeze
-  name: deployment-freeze-production
+  name: production-deployment-freeze
   namespace: default
 spec:
   description: Deployment Freeze Production

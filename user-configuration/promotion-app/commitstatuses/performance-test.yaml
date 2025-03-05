@@ -3,7 +3,7 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: performance-test
-  name: performance-test-development
+  name: development-performance-test
   namespace: default
 spec:
   description: Development Performance Test
