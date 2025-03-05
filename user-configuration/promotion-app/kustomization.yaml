@@ -6,4 +6,4 @@ resources:
   - promotion-strategy.yaml
   - gitrepo.yaml
   - scmProvider.yaml
-  - argocd-commitstatus.yaml
+  #- argocd-commitstatus.yaml
