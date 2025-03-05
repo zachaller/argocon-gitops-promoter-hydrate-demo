@@ -16,4 +16,4 @@ spec:
   source:
     path: user-configuration/promotion-app
     repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo
-    targetRevision: HEAD
+    targetRevision: manual-commit-status-talk

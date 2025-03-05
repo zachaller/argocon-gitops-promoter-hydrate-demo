@@ -13,7 +13,7 @@ spec:
     drySource:
       path: user-configuration/staging/e2e
       repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
-      targetRevision: HEAD
+      targetRevision: manual-commit-status-talk
     hydrateTo:
       targetBranch: environments/staging-next
     syncSource:
@@ -37,7 +37,7 @@ spec:
     drySource:
       path: user-configuration/staging/integration
       repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
-      targetRevision: HEAD
+      targetRevision: manual-commit-status-talk
     hydrateTo:
       targetBranch: environments/staging-next
     syncSource:

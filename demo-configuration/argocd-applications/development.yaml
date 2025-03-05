@@ -13,7 +13,7 @@ spec:
     drySource:
       path: user-configuration/development
       repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
-      targetRevision: HEAD
+      targetRevision: manual-commit-status-talk
     hydrateTo:
       targetBranch: environments/development-next
     syncSource:
