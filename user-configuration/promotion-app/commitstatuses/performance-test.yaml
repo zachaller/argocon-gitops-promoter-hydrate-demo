@@ -3,13 +3,13 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: performance-test
-  name: development-performance-test
+  name: integration-staging-performance-test
   namespace: default
 spec:
-  description: Development Performance Test
+  description: Integration Staging Performance Test
   gitRepositoryRef:
     name: argocon-demo
-  name: environments/development/performance-test
+  name: environments/integration-staging/performance-test
   phase: pending
   sha: db79f0abd1156364014217f168fe3586bd217741
   url: https://example.com
