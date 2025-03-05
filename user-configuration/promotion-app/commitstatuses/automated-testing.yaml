@@ -35,7 +35,7 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: automated-testing
-  name: automated-testing-development
+  name: automated-testing-production-use2
   namespace: default
 spec:
   description: Production USE2 Automated Testing
