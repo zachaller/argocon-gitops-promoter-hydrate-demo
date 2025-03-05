@@ -1,30 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: e2e-staging
-  namespace: argocd
-  labels:
-    app: demo
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-  project: default
-  sourceHydrator:
-    drySource:
-      path: user-configuration/staging/e2e
-      repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
-      targetRevision: manual-commit-status-talk
-    hydrateTo:
-      targetBranch: environments/staging-next
-    syncSource:
-      path: e2e
-      targetBranch: environments/staging
-  syncPolicy:
-    automated: {}
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
   name: integration-staging
   namespace: argocd
   labels:
