@@ -1,0 +1,47 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: CommitStatus
+metadata:
+  labels:
+    promoter.argoproj.io/commit-status: yaml-lint
+  name: lint-development
+  namespace: default
+spec:
+  description: Development Lint Test
+  gitRepositoryRef:
+    name: argocon-demo
+  name: environments/development/health
+  phase: pending
+  sha: db79f0abd1156364014217f168fe3586bd217ddd
+  url: https://example.com
+---
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: CommitStatus
+metadata:
+  labels:
+    promoter.argoproj.io/commit-status: yaml-lint
+  name: lint-integration-staging
+  namespace: default
+spec:
+  description: Integration Staging Lint Test
+  gitRepositoryRef:
+    name: argocon-demo
+  name: environments/development/health
+  phase: pending
+  sha: db79f0abd1156364014217f168fe3586bd217ddd
+  url: https://example.com
+---
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: CommitStatus
+metadata:
+  labels:
+    promoter.argoproj.io/commit-status: yaml-lint
+  name: lint-production-use2
+  namespace: default
+spec:
+  description: Production USE2 Lint Test
+  gitRepositoryRef:
+    name: argocon-demo
+  name: environments/development/health
+  phase: pending
+  sha: db79f0abd1156364014217f168fe3586bd217ddd
+  url: https://example.com
