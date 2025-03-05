@@ -30,18 +30,18 @@ spec:
   sha: db79f0abd1156364014217f168fe3586bd217ddd
   url: https://example.co
 ---
-apiVersion: promoter.argoproj.io/v1alpha1
-kind: CommitStatus
-metadata:
-  labels:
-    promoter.argoproj.io/commit-status: automated-testing
-  name: automated-testing-production-use2
-  namespace: default
-spec:
-  description: Production USE2 Automated Testing
-  gitRepositoryRef:
-    name: argocon-demo
-  name: environments/production-use2/automated-testing
-  phase: pending
-  sha: db79f0abd1156364014217f168fe3586bd217ddd
-  url: https://example.co
+#apiVersion: promoter.argoproj.io/v1alpha1
+#kind: CommitStatus
+#metadata:
+#  labels:
+#    promoter.argoproj.io/commit-status: automated-testing
+#  name: automated-testing-production-use2
+#  namespace: default
+#spec:
+#  description: Production USE2 Automated Testing
+#  gitRepositoryRef:
+#    name: argocon-demo
+#  name: environments/production-use2/automated-testing
+#  phase: pending
+#  sha: db79f0abd1156364014217f168fe3586bd217ddd
+#  url: https://example.co
