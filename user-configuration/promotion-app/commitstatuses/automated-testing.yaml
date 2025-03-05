@@ -11,7 +11,7 @@ spec:
     name: argocon-demo
   name: environments/development/automated-testing
   phase: pending
-  sha: db79f0abd1156364014217f168fe3586bd217ddd
+  sha: db79f0abd1156364014217f168fe3586bd217123
   url: https://example.co
 ---
 apiVersion: promoter.argoproj.io/v1alpha1
@@ -27,7 +27,7 @@ spec:
     name: argocon-demo
   name: environments/integration-staging/automated-testing
   phase: pending
-  sha: db79f0abd1156364014217f168fe3586bd217ddd
+  sha: db79f0abd1156364014217f168fe3586bd217421
   url: https://example.co
 ---
 #apiVersion: promoter.argoproj.io/v1alpha1
@@ -43,5 +43,5 @@ spec:
 #    name: argocon-demo
 #  name: environments/production-use2/automated-testing
 #  phase: pending
-#  sha: db79f0abd1156364014217f168fe3586bd217ddd
+#  sha: db79f0abd1156364014217f168fe3586bd217546
 #  url: https://example.co

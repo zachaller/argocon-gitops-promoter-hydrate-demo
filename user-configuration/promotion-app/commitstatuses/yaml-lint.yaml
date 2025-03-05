@@ -11,7 +11,7 @@ spec:
     name: argocon-demo
   name: environments/development/lint
   phase: pending
-  sha: db79f0abd1156364014217f168fe3586bd217ddd
+  sha: db79f0abd1156364014217f168fe3586bd217974
   url: https://example.com
 ---
 apiVersion: promoter.argoproj.io/v1alpha1
@@ -27,7 +27,7 @@ spec:
     name: argocon-demo
   name: environments/integration-staging/lint
   phase: pending
-  sha: db79f0abd1156364014217f168fe3586bd217ddd
+  sha: db79f0abd1156364014217f168fe3586bd217472
   url: https://example.com
 ---
 apiVersion: promoter.argoproj.io/v1alpha1
@@ -43,5 +43,5 @@ spec:
     name: argocon-demo
   name: environments/production-use2/lint
   phase: pending
-  sha: db79f0abd1156364014217f168fe3586bd217ddd
+  sha: db79f0abd1156364014217f168fe3586bd217173
   url: https://example.com
