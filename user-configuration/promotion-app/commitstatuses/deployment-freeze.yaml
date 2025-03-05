@@ -9,7 +9,7 @@ spec:
   description: Deployment Freeze Production
   gitRepositoryRef:
     name: argocon-demo
-  name: environments/development/deployment-freeze
+  name: environments/production-use2/deployment-freeze
   phase: pending
   sha: db79f0abd1156364014217f168fe3586bd217748
   url: https://example.com
