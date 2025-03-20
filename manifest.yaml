@@ -1,17 +1,16 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  labels:
-    app.kubernetes.io/instance: development
+  annotations:
+    argocd.argoproj.io/tracking-id: development:/Namespace:/development
   name: development
 ---
 apiVersion: v1
 kind: Service
 metadata:
   annotations:
+    argocd.argoproj.io/tracking-id: development:/Service:development/canary-demo
     version: v1.0.122
-  labels:
-    app.kubernetes.io/instance: development
   name: canary-demo
   namespace: development
 spec:
@@ -27,9 +26,8 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
+    argocd.argoproj.io/tracking-id: development:/Service:development/canary-demo-preview
     version: v1.0.122
-  labels:
-    app.kubernetes.io/instance: development
   name: canary-demo-preview
   namespace: development
 spec:
@@ -45,9 +43,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   annotations:
+    argocd.argoproj.io/tracking-id: development:argoproj.io/Rollout:development/canary-demo
     version: v1.0.122
   labels:
-    app.kubernetes.io/instance: development
     environment: development
   name: canary-demo
   namespace: development
