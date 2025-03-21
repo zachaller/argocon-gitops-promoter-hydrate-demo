@@ -2,7 +2,7 @@ apiVersion: promoter.argoproj.io/v1alpha1
 kind: CommitStatus
 metadata:
   labels:
-    promoter.argoproj.io/commit-status: automated-testing
+    promoter.argoproj.io/commit-status: argocd-health
   name: development-automated-testing
   namespace: default
 spec:
@@ -18,7 +18,7 @@ apiVersion: promoter.argoproj.io/v1alpha1
 kind: CommitStatus
 metadata:
   labels:
-    promoter.argoproj.io/commit-status: automated-testing
+    promoter.argoproj.io/commit-status: argocd-health
   name: integration-staging-automated-testing
   namespace: default
 spec:

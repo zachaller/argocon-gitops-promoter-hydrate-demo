@@ -6,8 +6,7 @@ metadata:
   namespace: default
 spec:
   activeCommitStatuses:
-  #- key: argocd-health
-  - key: automated-testing
+  - key: argocd-health
   proposedCommitStatuses:
     - key: yaml-lint
   environments:
