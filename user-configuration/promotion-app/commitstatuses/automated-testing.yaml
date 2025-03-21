@@ -3,7 +3,7 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: argocd-health
-  name: development-automated-testing
+  name: development-argocd-health
   namespace: default
 spec:
   description: Development Automated Testing
@@ -19,7 +19,7 @@ kind: CommitStatus
 metadata:
   labels:
     promoter.argoproj.io/commit-status: argocd-health
-  name: integration-staging-automated-testing
+  name: integration-staging-argocd-health
   namespace: default
 spec:
   description: Integration Staging Automated Testing
