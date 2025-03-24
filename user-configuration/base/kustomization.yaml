@@ -10,11 +10,11 @@ patches:
   - path: rollout-steps.yaml
 
 images:
-- name: argoproj/rollouts-demo:green
+- name: argoproj/rollouts-demo:red
   newTag: red
 
 commonAnnotations:
-    version: "v1.0.124"
+    version: "v1.0.125"
 
 openapi:
   path: https://raw.githubusercontent.com/argoproj/argo-schema-generator/main/schema/argo_all_k8s_kustomize_schema.json
