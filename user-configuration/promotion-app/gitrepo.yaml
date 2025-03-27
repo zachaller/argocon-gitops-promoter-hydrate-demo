@@ -7,7 +7,8 @@ metadata:
   name: argocon-demo
   namespace: default
 spec:
-  name: argocon-gitops-promoter-hydrate-demo
-  owner: zachaller
+  github:
+    owner: zachaller
+    name: argocon-gitops-promoter-hydrate-demo
   scmProviderRef:
     name: scmprovider-sample
