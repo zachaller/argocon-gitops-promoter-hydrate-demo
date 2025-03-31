@@ -6,10 +6,10 @@ metadata:
   name: development-argocd-health
   namespace: default
 spec:
-  description: Development Automated Testing
+  description: Development Argo CD Health
   gitRepositoryRef:
     name: argocon-demo
-  name: environments/development/automated-testing
+  name: environments/development/argocd-health
   phase: pending
   sha: db79f0abd1156364014217f168fe3586bd217123
   url: https://example.co
@@ -22,10 +22,10 @@ metadata:
   name: integration-staging-argocd-health
   namespace: default
 spec:
-  description: Integration Staging Automated Testing
+  description: Integration Staging Argo CD Health
   gitRepositoryRef:
     name: argocon-demo
-  name: environments/integration-staging/automated-testing
+  name: environments/integration-staging/argocd-health
   phase: pending
   sha: db79f0abd1156364014217f168fe3586bd217421
   url: https://example.co
