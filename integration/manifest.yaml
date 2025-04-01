@@ -10,7 +10,7 @@ kind: Service
 metadata:
   annotations:
     argocd.argoproj.io/tracking-id: integration-staging:/Service:intergration-staging/canary-demo
-    version: v1.0.140
+    version: v1.0.143
   name: canary-demo
   namespace: intergration-staging
 spec:
@@ -27,7 +27,7 @@ kind: Service
 metadata:
   annotations:
     argocd.argoproj.io/tracking-id: integration-staging:/Service:intergration-staging/canary-demo-preview
-    version: v1.0.140
+    version: v1.0.143
   name: canary-demo-preview
   namespace: intergration-staging
 spec:
@@ -44,7 +44,7 @@ kind: Rollout
 metadata:
   annotations:
     argocd.argoproj.io/tracking-id: integration-staging:argoproj.io/Rollout:intergration-staging/canary-demo
-    version: v1.0.140
+    version: v1.0.143
   labels:
     environment: staging
   name: canary-demo
@@ -68,13 +68,13 @@ spec:
   template:
     metadata:
       annotations:
-        version: v1.0.140
+        version: v1.0.143
       labels:
         app: canary-demo
         environment: staging
     spec:
       containers:
-        - image: argoproj/rollouts-demo:yellow
+        - image: argoproj/rollouts-demo:green
           imagePullPolicy: Always
           name: canary-demo
           ports:
