@@ -5,17 +5,16 @@ metadata:
   name: argocon-demo
   namespace: default
 spec:
-  activeCommitStatuses:
+  checks:
   - key: argocd-health
-  proposedCommitStatuses:
-    - key: yaml-lint
+  - key: yaml-lint
   environments:
-  - branch: environments/development
-  - branch: environments/staging
-    activeCommitStatuses:
+    - branch: environments/development
+    - branch: environments/staging
+      checks:
       - key: performance-test
-  - branch: environments/production
-    proposedCommitStatuses:
-    - key: deployment-freeze
+    - branch: environments/production
+      checks:
+      - key: deployment-freeze
   gitRepositoryRef:
     name: argocon-demo
