@@ -2,17 +2,17 @@ apiVersion: v1
 kind: Namespace
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: e2e-staging:/Namespace:/e2e-staging
-  name: e2e-staging
+    argocd.argoproj.io/tracking-id: integration-staging:/Namespace:/intergration-staging
+  name: intergration-staging
 ---
 apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: e2e-staging:/Service:e2e-staging/canary-demo
-    version: v1.0.117
+    argocd.argoproj.io/tracking-id: integration-staging:/Service:intergration-staging/canary-demo
+    version: v1.0.146
   name: canary-demo
-  namespace: e2e-staging
+  namespace: intergration-staging
 spec:
   ports:
     - name: http
@@ -26,10 +26,10 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: e2e-staging:/Service:e2e-staging/canary-demo-preview
-    version: v1.0.117
+    argocd.argoproj.io/tracking-id: integration-staging:/Service:intergration-staging/canary-demo-preview
+    version: v1.0.146
   name: canary-demo-preview
-  namespace: e2e-staging
+  namespace: intergration-staging
 spec:
   ports:
     - name: http
@@ -43,15 +43,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: e2e-staging:argoproj.io/Rollout:e2e-staging/canary-demo
-    version: v1.0.117
+    argocd.argoproj.io/tracking-id: integration-staging:argoproj.io/Rollout:intergration-staging/canary-demo
+    version: v1.0.146
   labels:
-    db-schema: v1.4
     environment: staging
   name: canary-demo
-  namespace: e2e-staging
+  namespace: intergration-staging
 spec:
-  replicas: 3
+  replicas: 2
   revisionHistoryLimit: 1
   selector:
     matchLabels:
@@ -69,13 +68,13 @@ spec:
   template:
     metadata:
       annotations:
-        version: v1.0.117
+        version: v1.0.146
       labels:
         app: canary-demo
         environment: staging
     spec:
       containers:
-        - image: argoproj/rollouts-demo:red
+        - image: argoproj/rollouts-demo:green
           imagePullPolicy: Always
           name: canary-demo
           ports:
