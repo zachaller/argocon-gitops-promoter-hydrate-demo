@@ -2,17 +2,17 @@ apiVersion: v1
 kind: Namespace
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: integration-staging:/Namespace:/intergration-staging
-  name: intergration-staging
+    argocd.argoproj.io/tracking-id: e2e-staging:/Namespace:/e2e-staging
+  name: e2e-staging
 ---
 apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: integration-staging:/Service:intergration-staging/canary-demo
+    argocd.argoproj.io/tracking-id: e2e-staging:/Service:e2e-staging/canary-demo
     version: v1.0.117
   name: canary-demo
-  namespace: intergration-staging
+  namespace: e2e-staging
 spec:
   ports:
     - name: http
@@ -26,10 +26,10 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: integration-staging:/Service:intergration-staging/canary-demo-preview
+    argocd.argoproj.io/tracking-id: e2e-staging:/Service:e2e-staging/canary-demo-preview
     version: v1.0.117
   name: canary-demo-preview
-  namespace: intergration-staging
+  namespace: e2e-staging
 spec:
   ports:
     - name: http
@@ -43,14 +43,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: integration-staging:argoproj.io/Rollout:intergration-staging/canary-demo
+    argocd.argoproj.io/tracking-id: e2e-staging:argoproj.io/Rollout:e2e-staging/canary-demo
     version: v1.0.117
   labels:
+    db-schema: v1.4
     environment: staging
   name: canary-demo
-  namespace: intergration-staging
+  namespace: e2e-staging
 spec:
-  replicas: 2
+  replicas: 3
   revisionHistoryLimit: 1
   selector:
     matchLabels:
