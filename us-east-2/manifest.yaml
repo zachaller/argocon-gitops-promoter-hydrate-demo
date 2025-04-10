@@ -2,17 +2,17 @@ apiVersion: v1
 kind: Namespace
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: production-usw1:/Namespace:/production-usw1
-  name: production-usw1
+    argocd.argoproj.io/tracking-id: production-use2:/Namespace:/production-use2
+  name: production-use2
 ---
 apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: production-usw1:/Service:production-usw1/canary-demo
-    version: v1.0.117
+    argocd.argoproj.io/tracking-id: production-use2:/Service:production-use2/canary-demo
+    version: v1.0.146
   name: canary-demo
-  namespace: production-usw1
+  namespace: production-use2
 spec:
   ports:
     - name: http
@@ -26,10 +26,10 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: production-usw1:/Service:production-usw1/canary-demo-preview
-    version: v1.0.117
+    argocd.argoproj.io/tracking-id: production-use2:/Service:production-use2/canary-demo-preview
+    version: v1.0.146
   name: canary-demo-preview
-  namespace: production-usw1
+  namespace: production-use2
 spec:
   ports:
     - name: http
@@ -43,13 +43,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   annotations:
-    argocd.argoproj.io/tracking-id: production-usw1:argoproj.io/Rollout:production-usw1/canary-demo
-    version: v1.0.117
+    argocd.argoproj.io/tracking-id: production-use2:argoproj.io/Rollout:production-use2/canary-demo
+    version: v1.0.146
   labels:
-    db-schema: v1.2
+    db-schema: v1.11
     environment: production
   name: canary-demo
-  namespace: production-usw1
+  namespace: production-use2
 spec:
   replicas: 3
   revisionHistoryLimit: 1
@@ -69,13 +69,13 @@ spec:
   template:
     metadata:
       annotations:
-        version: v1.0.117
+        version: v1.0.146
       labels:
         app: canary-demo
         environment: production
     spec:
       containers:
-        - image: argoproj/rollouts-demo:red
+        - image: argoproj/rollouts-demo:green
           imagePullPolicy: Always
           name: canary-demo
           ports:
