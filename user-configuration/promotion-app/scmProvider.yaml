@@ -6,6 +6,6 @@ metadata:
 spec:
   github:
     appID: 865488
-    installationID: 
+    installationID: 49029877
   secretRef:
     name: my-auth
