@@ -10,7 +10,7 @@ kind: Service
 metadata:
   annotations:
     argocd.argoproj.io/tracking-id: development:/Service:development/canary-demo
-    version: v1.0.134
+    version: v1.0.135
   name: canary-demo
   namespace: development
 spec:
@@ -27,7 +27,7 @@ kind: Service
 metadata:
   annotations:
     argocd.argoproj.io/tracking-id: development:/Service:development/canary-demo-preview
-    version: v1.0.134
+    version: v1.0.135
   name: canary-demo-preview
   namespace: development
 spec:
@@ -44,7 +44,7 @@ kind: Rollout
 metadata:
   annotations:
     argocd.argoproj.io/tracking-id: development:argoproj.io/Rollout:development/canary-demo
-    version: v1.0.134
+    version: v1.0.135
   labels:
     environment: development
   name: canary-demo
@@ -68,7 +68,7 @@ spec:
   template:
     metadata:
       annotations:
-        version: v1.0.134
+        version: v1.0.135
       labels:
         app: canary-demo
         environment: development
