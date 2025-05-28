@@ -10,7 +10,7 @@ kind: Service
 metadata:
   annotations:
     argocd.argoproj.io/tracking-id: development:/Service:development/canary-demo
-    version: v1.0.144
+    version: v1.0.1235234234
   name: canary-demo
   namespace: development
 spec:
