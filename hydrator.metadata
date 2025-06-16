@@ -1,7 +1,7 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b550a283544e46bcf0fd2edf024a30128a4e3aca",
-  "author": "Zach Aller <zachaller@users.noreply.github.com>",
-  "date": "2025-06-04T12:07:01-05:00",
-  "message": "Update kustomization.yaml"
+  "drySha": "d3219dbf5793917f45cb899382f2b88ac6acba21",
+  "author": "Zach Aller <zach_aller@intuit.com>",
+  "date": "2025-06-16T11:33:09-05:00",
+  "message": "Merge branch 'main' of github.com:zachaller/argocon-gitops-promoter-hydrate-demo"
 }
