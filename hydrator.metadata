@@ -1,16 +1,17 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ef470cadeb86b4e7efc88dfd53d4f9c92b1dc1f0",
+  "drySha": "5de7a803f657b786a17fe410911d7f1a40ea71f7",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-06-17T09:52:02-05:00",
-  "subject": "bump10",
-  "body": "This is a simple change body for testing\nwe can even have some multiple lines.\n\nSigned-off-by: Zach Aller <zach_aller@intuit.com>\nArgocd-reference-commit-author-name: Author Name\nArgocd-reference-commit-author-email: author@example.com\nArgocd-reference-commit-sha: af3432\nArgocd-reference-commit-subject: Commit message of the code commit\nArgocd-reference-commit-body: Commit message of the code commit\\n\\nSigned-off-by: Author Name <author@example.com>",
+  "date": "2025-06-17T09:59:25-05:00",
+  "subject": "This is the a subject line",
+  "body": "This is a message describing the change for the deployment repo\nit can be multiple lines as well\n\nSigned-off-by: Zach Aller <zach_aller@intuit.com>\nArgocd-reference-commit-author-name: John Doe\nArgocd-reference-commit-author-email: John Doe <jd@intuit.com>\nArgocd-reference-commit-sha: 3fa3\nArgocd-reference-commit-subject: This is a code subject\nArgocd-reference-commit-body: this is a code body description\nArgocd-reference-commit-repourl: https://github.com/example/example\nArgocd-reference-commit-date: 2025-06-09T13:50:18-04:00",
   "references": [
     {
       "commit": {
         "author": "<@>",
-        "subject": "Commit message of the code commit",
-        "sha": "af3432"
+        "date": "2025-06-09T13:50:18-04:00",
+        "subject": "This is a code subject",
+        "repoUrl": "https://github.com/example/example"
       }
     }
   ]
