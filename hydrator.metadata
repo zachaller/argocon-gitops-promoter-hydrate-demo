@@ -1,8 +1,17 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7e3e00465b7216f93900fee1469acc4a43d9c808",
+  "drySha": "ef470cadeb86b4e7efc88dfd53d4f9c92b1dc1f0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-06-16T17:25:56-05:00",
-  "subject": "bump9",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>"
+  "date": "2025-06-17T09:52:02-05:00",
+  "subject": "bump10",
+  "body": "This is a simple change body for testing\nwe can even have some multiple lines.\n\nSigned-off-by: Zach Aller <zach_aller@intuit.com>\nArgocd-reference-commit-author-name: Author Name\nArgocd-reference-commit-author-email: author@example.com\nArgocd-reference-commit-sha: af3432\nArgocd-reference-commit-subject: Commit message of the code commit\nArgocd-reference-commit-body: Commit message of the code commit\\n\\nSigned-off-by: Author Name <author@example.com>",
+  "references": [
+    {
+      "commit": {
+        "author": "<@>",
+        "subject": "Commit message of the code commit",
+        "sha": "af3432"
+      }
+    }
+  ]
 }
