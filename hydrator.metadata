@@ -1,8 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "2c93f0250b2b9a98e2ae7f772426757ec7acc309",
+  "drySha": "9dd9f4754eeb6be20a16d8a0d620ed46d7f6be0d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-06-20T14:08:53-05:00",
-  "subject": "bump174",
+  "date": "2025-06-20T15:09:20-05:00",
+  "subject": "bump176",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>"
 }
