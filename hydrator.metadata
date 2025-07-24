@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f080e8900ef099b7c722b83cd167c710c57c87b0",
+  "drySha": "1af1952bf40262aed1e824f458d8d56390673b32",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-07-24T12:27:05-05:00",
-  "subject": "This is a test subject",
-  "body": "This is a code message that test how code commit messges look.\nWe do support newlines now.\n\nSigned-off-by: Zach Aller <zach_aller@intuit.com>\n",
+  "date": "2025-07-24T12:34:31-05:00",
+  "subject": "This code change bumps an lable to 191",
+  "body": "This is a code message that test how code commit messges look.\nWe do support newlines now.\n\nWe make this change here to bumpe to label 191\n\nSigned-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
-        "author": "\"Code Author\" <author@example.com>",
-        "date": "2025-06-09T13:50:18-04:00",
-        "subject": "Commit message of the code commit",
+        "author": "\"Zach Aller\" <code@example.com>",
+        "date": "2025-07-09T13:50:18-04:00",
+        "subject": "This change fixes a bug in the code",
         "body": "Commit message of the code commit\n\nSigned-off-by: Author Name <author@example.com>",
-        "sha": "afd3a",
+        "sha": "afd3b",
         "repoUrl": "https://git.example.com/owner/repo"
       }
     }
