@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
   labels:
     app: demo
+    environment: staging
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -29,6 +30,7 @@ metadata:
   namespace: argocd
   labels:
     app: demo
+    environment: staging
 spec:
   destination:
     server: https://kubernetes.default.svc

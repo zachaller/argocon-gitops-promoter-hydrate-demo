@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
   labels:
     app: demo
+    environment: development
 spec:
   destination:
     server: https://kubernetes.default.svc
