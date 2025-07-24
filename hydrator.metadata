@@ -1,20 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "abce73afede677886c2ecf761d0be001b92137f1",
+  "drySha": "7ae2b6df53ccd96c0e26a6f8dc8f61abb553e303",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-07-24T14:37:59-05:00",
-  "subject": "This code change bumps an lable to 192",
-  "body": "This is a code message that test how code commit messges look.\nWe do support newlines now.\n\nWe make this change here to bumpe to label 192\n\nSigned-off-by: Zach Aller <zach_aller@intuit.com>\n",
-  "references": [
-    {
-      "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-07-10T13:50:18-04:00",
-        "subject": "This change fixes a bug in the code",
-        "body": "Commit message of the code commit\n\nSigned-off-by: Author Name <author@example.com>",
-        "sha": "afd3c",
-        "repoUrl": "https://git.example.com/owner/repo"
-      }
-    }
-  ]
+  "date": "2025-07-24T17:15:53-05:00",
+  "subject": "add app lables",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
 }
