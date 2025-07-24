@@ -1,14 +1,14 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f30a4f864960a3442d6266dbe7965c2419db07eb",
+  "drySha": "f080e8900ef099b7c722b83cd167c710c57c87b0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-07-24T12:07:54-05:00",
-  "subject": "This is a subject",
-  "body": "This is a message of the deployment repo code changes.\nWe should make sure it displays well.\n\nArgocd-reference-commit-author-email: author@example.com\nSigned-off-by: Zach Aller <zach_aller@intuit.com>\n",
+  "date": "2025-07-24T12:27:05-05:00",
+  "subject": "This is a test subject",
+  "body": "This is a code message that test how code commit messges look.\nWe do support newlines now.\n\nSigned-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
-        "author": "<@>",
+        "author": "\"Code Author\" <author@example.com>",
         "date": "2025-06-09T13:50:18-04:00",
         "subject": "Commit message of the code commit",
         "body": "Commit message of the code commit\n\nSigned-off-by: Author Name <author@example.com>",
