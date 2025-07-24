@@ -9,3 +9,14 @@ spec:
   applicationSelector:
     matchLabels:
       app: demo
+  url:
+    template: >
+      {{- $label := "" -}}
+      {{- if eq .Environment "environments/development" -}}
+      {{- $label = "development" -}}
+      {{- else if eq .Environment "environments/staging" -}}
+      {{- $label = "staging" -}}
+      {{- else if eq .Environment "environments/production" -}}
+      {{- $label = "production" -}}
+      {{- end -}}
+      {{- printf "%s/applications?labels=environment=%s" "http://localhost:4000" (urlQueryEscape $label) -}}
