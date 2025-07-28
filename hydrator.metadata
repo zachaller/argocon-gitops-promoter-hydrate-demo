@@ -1,4 +1,7 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "79f79bf2b8b6f42e2ec411c21ef7ee2260e2fee1"
+  "drySha": "79f79bf2b8b6f42e2ec411c21ef7ee2260e2fee1",
+  "author": "Zach Aller <zach_aller@intuit.com>",
+  "date": "2025-07-28T10:11:16-05:00",
+  "subject": "Merge branch 'main' of github.com:zachaller/argocon-gitops-promoter-hydrate-demo"
 }
