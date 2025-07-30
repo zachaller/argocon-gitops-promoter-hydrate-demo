@@ -1,20 +1,7 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c8770c89923a496fe21f06710da166996dd3cfce",
-  "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-07-30T18:33:08-05:00",
-  "subject": "This code change bumps an lable to 199",
-  "body": "This is a code message that test how code commit messges look.\nWe do support newlines now.\n\nWe make this change here to bumpe to label 199\n\nSigned-off-by: Zach Aller <zach_aller@intuit.com>\n",
-  "references": [
-    {
-      "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-07-10T13:50:18-04:00",
-        "subject": "This change fixes a bug in the code 199",
-        "body": "Commit message of the code commit\n\nSigned-off-by: Author Name <author@example.com>",
-        "sha": "bfd3c",
-        "repoUrl": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo"
-      }
-    }
-  ]
+  "drySha": "2163500eef363120a309b4f9d7bcb1d2457347b2",
+  "author": "Zach Aller <zachaller@users.noreply.github.com>",
+  "date": "2025-07-30T18:38:22-05:00",
+  "subject": "Update no-op-file"
 }
