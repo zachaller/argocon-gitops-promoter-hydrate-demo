@@ -6,6 +6,7 @@ metadata:
   labels:
     promoter.argoproj.io/commit-status: hcap
   name: hcap
+  namespace: default
 spec:
   description: HCAP check for production
   gitRepositoryRef:
