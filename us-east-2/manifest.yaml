@@ -46,7 +46,7 @@ metadata:
     argocd.argoproj.io/tracking-id: production-use2:argoproj.io/Rollout:production-use2/canary-demo
     version: v1.0.202
   labels:
-    db-schema: v1.12
+    db-schema: v1.13
     environment: production
   name: canary-demo
   namespace: production-use2
