@@ -1,7 +1,7 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "2163500eef363120a309b4f9d7bcb1d2457347b2",
-  "author": "Zach Aller <zachaller@users.noreply.github.com>",
-  "date": "2025-07-30T18:38:22-05:00",
-  "subject": "Update no-op-file"
+  "drySha": "90ec1289a19ead41d5c7639de8405a645de4397b",
+  "author": "Zach Aller <zach_aller@intuit.com>",
+  "date": "2025-07-31T00:40:03-05:00",
+  "subject": "Merge branch 'main' of github.com:zachaller/argocon-gitops-promoter-hydrate-demo"
 }
