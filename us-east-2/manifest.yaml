@@ -1,0 +1,88 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: production-use2:/Namespace:/production-use2
+  name: production-use2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: production-use2:/Service:production-use2/canary-demo
+    version: v1.0.202
+  name: canary-demo
+  namespace: production-use2
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: canary-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: production-use2:/Service:production-use2/canary-demo-preview
+    version: v1.0.202
+  name: canary-demo-preview
+  namespace: production-use2
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: canary-demo
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: production-use2:argoproj.io/Rollout:production-use2/canary-demo
+    version: v1.0.202
+  labels:
+    db-schema: v1.13
+    environment: production
+  name: canary-demo
+  namespace: production-use2
+spec:
+  replicas: 3
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: canary-demo
+  strategy:
+    canary:
+      canaryService: canary-demo-preview
+      steps:
+        - setWeight: 20
+        - pause:
+            duration: 5
+        - setWeight: 80
+        - pause:
+            duration: 5
+  template:
+    metadata:
+      annotations:
+        version: v1.0.202
+      labels:
+        app: canary-demo
+        environment: production
+    spec:
+      containers:
+        - image: argoproj/rollouts-demo:red
+          imagePullPolicy: Always
+          name: canary-demo
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 5m
+              memory: 32Mi
