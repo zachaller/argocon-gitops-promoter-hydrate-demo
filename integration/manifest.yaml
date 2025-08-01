@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: integration-staging:/Namespace:/intergration-staging
+  name: intergration-staging
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: integration-staging:/Service:intergration-staging/canary-demo
+    version: v1.0.202
+  name: canary-demo
+  namespace: intergration-staging
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: canary-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: integration-staging:/Service:intergration-staging/canary-demo-preview
+    version: v1.0.202
+  name: canary-demo-preview
+  namespace: intergration-staging
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+  selector:
+    app: canary-demo
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: integration-staging:argoproj.io/Rollout:intergration-staging/canary-demo
+    version: v1.0.202
+  labels:
+    environment: staging
+  name: canary-demo
+  namespace: intergration-staging
+spec:
+  replicas: 2
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: canary-demo
+  strategy:
+    canary:
+      canaryService: canary-demo-preview
+      steps:
+        - setWeight: 20
+        - pause:
+            duration: 5
+        - setWeight: 80
+        - pause:
+            duration: 5
+  template:
+    metadata:
+      annotations:
+        version: v1.0.202
+      labels:
+        app: canary-demo
+        environment: staging
+    spec:
+      containers:
+        - image: argoproj/rollouts-demo:red
+          imagePullPolicy: Always
+          name: canary-demo
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 5m
+              memory: 32Mi
