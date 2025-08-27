@@ -1,8 +1,20 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b02637528de11eb538a7bd36af8a8ad9541f7d8e",
+  "drySha": "d90b4a1beb9b5de033bb777d3dcce1e48213a2f1",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-08-27T17:21:17-05:00",
-  "subject": "no-op-8",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
+  "date": "2025-08-27T18:16:06-05:00",
+  "subject": "This code change bumps an lable to 213",
+  "body": "This is a code message that test how code commit messges look.\nWe do support newlines now.\n\nWe make this change here to bumpe to label 213\n\nSigned-off-by: Zach Aller <zach_aller@intuit.com>\n",
+  "references": [
+    {
+      "commit": {
+        "author": "\"Zach Aller\" <code@example.com>",
+        "date": "2025-07-19T13:50:18-04:00",
+        "subject": "This change fixes a bug in the code 213",
+        "body": "Commit message of the code commit\n\nSigned-off-by: Author Name <author@example.com>",
+        "sha": "9d5ccef278218dea4caa903bb6abb9ed974a1d90",
+        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
+      }
+    }
+  ]
 }
