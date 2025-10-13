@@ -1,0 +1,18 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: TimedCommitStatus
+metadata:
+  labels:
+    app.kubernetes.io/name: promoter
+    app.kubernetes.io/managed-by: kustomize
+  name: timedcommitstatus-sample
+  namespace: default
+spec:
+  promotionStrategyRef:
+    name: argocon-demo
+  environments:
+    - duration: 3m
+      branch: environments/development
+    - duration: 3m
+      branch: environments/staging
+    - duration: 3m
+      branch: environments/production
