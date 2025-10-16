@@ -1,16 +1,16 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "21e98d18128990d3d733e1339db52e2fdad9fa65",
+  "drySha": "9a2b10c99a3cd1598d680cff52142e3da8168417",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-16T15:39:20-05:00",
-  "subject": "chore: bump version to v1.0.307",
+  "date": "2025-10-16T15:47:08-05:00",
+  "subject": "chore: bump version to v1.0.308",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-29T21:44:52-05:00",
-        "subject": "This change fixes a bug in the code v1.0.307",
+        "date": "2025-09-25T18:39:36-05:00",
+        "subject": "This change fixes a bug in the code v1.0.308",
         "body": "Commit message of the code commit\n\nSigned-off-by: Author Name <author@example.com>",
         "sha": "9d5ccef278218dea4caa903bb6abb9ed974a1d90",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
