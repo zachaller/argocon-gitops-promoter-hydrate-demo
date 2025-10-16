@@ -54,12 +54,16 @@ spec:
     canary:
       canaryService: canary-demo-preview
       steps:
-        - setWeight: 20
+        - setCanaryScale:
+            weight: 40
+        - setWeight: 25
         - pause:
-            duration: 5
-        - setWeight: 80
+            duration: 5m
+        - setCanaryScale:
+            weight: 65
+        - setWeight: 50
         - pause:
-            duration: 5
+            duration: 5m
   template:
     metadata:
       annotations:
