@@ -10,3 +10,7 @@ spec:
     metadata:
       labels:
         environment: development
+  strategy:
+    canary:
+      steps:
+        - setWeight: 100
