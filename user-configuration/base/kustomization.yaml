@@ -1,24 +1,17 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 resources:
-  - https://github.com/argoproj/rollouts-demo//examples/canary
-
+    - https://github.com/argoproj/rollouts-demo//examples/canary
 patches:
-  - path: remove-ingress-demo.yaml
-  - path: remove-ingress-demo-preview.yaml
-  - path: rollout-steps.yaml
-
+    - path: remove-ingress-demo.yaml
+    - path: remove-ingress-demo-preview.yaml
+    - path: rollout-steps.yaml
 images:
-- name: argoproj/rollouts-demo:blue
-  newTag: red
-
+    - name: argoproj/rollouts-demo:blue
+      newTag: red
 commonAnnotations:
-    version: "v1.0.231"
-
+    version: v1.0.248
 openapi:
-  path: https://raw.githubusercontent.com/argoproj/argo-schema-generator/main/schema/argo_all_k8s_kustomize_schema.json
-
+    path: https://raw.githubusercontent.com/argoproj/argo-schema-generator/main/schema/argo_all_k8s_kustomize_schema.json
 configurations:
-  - transform.yaml
-
+    - transform.yaml
