@@ -1,6 +1,6 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "aa13a0690be57e1dc253d2d6bc82ee9d9d262386",
+  "drySha": "5677278fbcfd765d6c1780b3e1215ef6c4178566",
   "commands": [
     "kustomize build ./user-configuration/staging/integration"
   ]
