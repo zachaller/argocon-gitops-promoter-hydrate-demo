@@ -7,7 +7,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    version: v1.0.361
+    version: v1.0.362
   name: canary-demo
   namespace: production-usw1
 spec:
@@ -23,7 +23,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    version: v1.0.361
+    version: v1.0.362
   name: canary-demo-preview
   namespace: production-usw1
 spec:
@@ -39,7 +39,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   annotations:
-    version: v1.0.361
+    version: v1.0.362
   labels:
     db-schema: v1.3
     environment: production
@@ -64,7 +64,7 @@ spec:
   template:
     metadata:
       annotations:
-        version: v1.0.361
+        version: v1.0.362
       labels:
         app: canary-demo
         environment: production
