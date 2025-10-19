@@ -10,7 +10,7 @@ images:
     - name: argoproj/rollouts-demo:blue
       newTag: red
 commonAnnotations:
-    version: v1.0.631
+    version: v1.0.632
 openapi:
     path: https://raw.githubusercontent.com/argoproj/argo-schema-generator/main/schema/argo_all_k8s_kustomize_schema.json
 configurations:
