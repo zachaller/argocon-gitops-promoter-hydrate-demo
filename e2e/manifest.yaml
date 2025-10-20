@@ -7,7 +7,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    version: v1.0.944
+    version: v1.0.945
   name: canary-demo
   namespace: e2e-staging
 spec:
@@ -23,7 +23,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    version: v1.0.944
+    version: v1.0.945
   name: canary-demo-preview
   namespace: e2e-staging
 spec:
@@ -39,7 +39,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   annotations:
-    version: v1.0.944
+    version: v1.0.945
   labels:
     db-schema: v1.4
     environment: staging
@@ -64,7 +64,7 @@ spec:
   template:
     metadata:
       annotations:
-        version: v1.0.944
+        version: v1.0.945
       labels:
         app: canary-demo
         environment: staging
