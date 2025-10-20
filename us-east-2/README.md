@@ -5,6 +5,6 @@ To hydrate the manifests in this repository, run the following commands:
 ```shell
 git clone https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo
 # cd into the cloned directory
-git checkout 8167475ac3ff64d1c9b1872fbe8aae65fc4e6fd2
+git checkout 2f390411016a58735302b773b3691d6125ba4da2
 kustomize build ./user-configuration/production/us-east-2
 ```
