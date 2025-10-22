@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "4873c1b609e6cafea56560867c70f1d6bef1224f",
+  "drySha": "dc69441c1b00ead51de2f6917c1a86cd480c5438",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-22T12:25:56-05:00",
-  "subject": "chore: bump version to v1.0.1301",
+  "date": "2025-10-22T12:26:28-05:00",
+  "subject": "chore: bump version to v1.0.1302",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-22T13:18:18-05:00",
-        "subject": "docs: Argo CD integrations (#537)",
-        "body": "* docs: Argo CD integrations\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* update version bump script\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "67695fa31ad7dd8055da9a6cf70f0ffd49da6566",
+        "date": "2025-10-04T13:49:12-05:00",
+        "subject": "chore: improve git error messages (#534)",
+        "body": "simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "eb7b757f22aaf72ddaf28c5f6fa00aa154b1c1b9",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
