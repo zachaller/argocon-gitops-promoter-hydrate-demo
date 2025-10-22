@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "9934ca0fb3c7cf664bcabe8c7f78ebc1b66a1dd1",
+  "drySha": "6e67e92f500ba63a6c2c0d65e8e9c033537974b7",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-22T15:38:16-05:00",
-  "subject": "chore: bump version to v1.0.1307",
+  "date": "2025-10-22T16:50:55-05:00",
+  "subject": "chore: bump version to v1.0.1308",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-16T04:22:21-05:00",
-        "subject": "fix: ui extension card responsiveness issue [ARGO-2535] (#538)",
-        "body": "fix responsiveness issue\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nCo-authored-by: Jonathan Winters <jonathan_winters@intuit.com>",
-        "sha": "3fec197d13462c933dd8f63b084b3d1db38f8e5e",
+        "date": "2025-09-30T16:50:25-05:00",
+        "subject": "docs: Argo CD resource labels (#591)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "60bbfb2b5c5c95d76656d1b52a8a34d2ed99994f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
