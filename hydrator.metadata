@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ba7a6eaa8d95496febf03cf09eaf471a3e9afd37",
+  "drySha": "4873c1b609e6cafea56560867c70f1d6bef1224f",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-22T12:25:22-05:00",
-  "subject": "chore: bump version to v1.0.1299",
+  "date": "2025-10-22T12:25:56-05:00",
+  "subject": "chore: bump version to v1.0.1301",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-04T09:28:50-05:00",
-        "subject": "docs: bump manifest versions to v0.12.0 (#523)",
-        "body": "Co-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
-        "sha": "58ba067640a457c387558cdcea1fb26b358b6b96",
+        "date": "2025-09-22T13:18:18-05:00",
+        "subject": "docs: Argo CD integrations (#537)",
+        "body": "* docs: Argo CD integrations\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* update version bump script\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "67695fa31ad7dd8055da9a6cf70f0ffd49da6566",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
