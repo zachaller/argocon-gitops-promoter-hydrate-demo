@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c80544d7dfa067896a5541ba2439b8f647c3704c",
+  "drySha": "c3445257430319a62c2b9a7181e9dc0af16c9c40",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-22T12:03:12-05:00",
-  "subject": "chore: bump version to v1.0.1297",
+  "date": "2025-10-22T12:23:13-05:00",
+  "subject": "chore: bump version to v1.0.1298",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-23T20:04:50-05:00",
-        "subject": "This change fixes a bug in the code v1.0.1297",
-        "body": "Commit message of the code commit\n\nSigned-off-by: Author Name <author@example.com>",
-        "sha": "eff4643e9b53740d84c16b979fde698fc3aac37c",
+        "date": "2025-09-23T21:48:57-05:00",
+        "subject": "chore(deps): bump github.com/relvacode/iso8601 from 1.6.0 to 1.7.0 (#518)",
+        "body": "Bumps [github.com/relvacode/iso8601](https://github.com/relvacode/iso8601) from 1.6.0 to 1.7.0.\n- [Release notes](https://github.com/relvacode/iso8601/releases)\n- [Commits](https://github.com/relvacode/iso8601/compare/v1.6.0...v1.7.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/relvacode/iso8601\n  dependency-version: 1.7.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "3fa7ebfdeeb8c4e26c294fcb10ea63f16c2744a5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
