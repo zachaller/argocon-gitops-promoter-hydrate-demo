@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "28caff62f66c749c9cb85062b3a28aae9f173180",
+  "drySha": "9934ca0fb3c7cf664bcabe8c7f78ebc1b66a1dd1",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-22T15:38:14-05:00",
-  "subject": "chore: bump version to v1.0.1306",
+  "date": "2025-10-22T15:38:16-05:00",
+  "subject": "chore: bump version to v1.0.1307",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-30T01:29:31-05:00",
-        "subject": "chore(deps): bump golang.org/x/time from 0.12.0 to 0.14.0 (#559)",
-        "body": "Bumps [golang.org/x/time](https://github.com/golang/time) from 0.12.0 to 0.14.0.\n- [Commits](https://github.com/golang/time/compare/v0.12.0...v0.14.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/time\n  dependency-version: 0.14.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "126bf0939c2b5ff47af783fed02cedd88fba4e12",
+        "date": "2025-10-16T04:22:21-05:00",
+        "subject": "fix: ui extension card responsiveness issue [ARGO-2535] (#538)",
+        "body": "fix responsiveness issue\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nCo-authored-by: Jonathan Winters <jonathan_winters@intuit.com>",
+        "sha": "3fec197d13462c933dd8f63b084b3d1db38f8e5e",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
