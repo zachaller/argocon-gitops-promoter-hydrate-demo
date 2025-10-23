@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "463e57bcd334ce87c0148df8280fcf7048ef5e56",
+  "drySha": "8dc386e4803dac890a9a622c5176bfef3f245434",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-23T11:10:48-05:00",
-  "subject": "chore: bump version to v1.0.1317",
+  "date": "2025-10-23T11:11:49-05:00",
+  "subject": "chore: bump version to v1.0.1318",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-05T11:27:05-05:00",
-        "subject": "docs: bump manifest versions to v0.11.2 (#497)",
-        "body": "Co-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
-        "sha": "9558585d6bf542d4cbef148a5f48d56c9881cf28",
+        "date": "2025-09-24T21:49:29-05:00",
+        "subject": "chore: fix flaky tests (#595)",
+        "body": "chore: fix flaky test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "f544ef4db7fb6caeba59227bee22814e389c2237",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
