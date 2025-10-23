@@ -1,20 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6e67e92f500ba63a6c2c0d65e8e9c033537974b7",
+  "drySha": "988943f250aadb4f2d54d0360af255e9bb0e00ab",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-22T16:50:55-05:00",
-  "subject": "chore: bump version to v1.0.1308",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
-  "references": [
-    {
-      "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-30T16:50:25-05:00",
-        "subject": "docs: Argo CD resource labels (#591)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "60bbfb2b5c5c95d76656d1b52a8a34d2ed99994f",
-        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
-      }
-    }
-  ]
+  "date": "2025-10-23T09:22:01-05:00",
+  "subject": "lower time",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
 }
