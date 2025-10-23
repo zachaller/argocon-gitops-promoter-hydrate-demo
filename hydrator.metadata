@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6e67e92f500ba63a6c2c0d65e8e9c033537974b7",
+  "drySha": "9dd086f0c797a99efa4c0d1125561cd16f0fce51",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-22T16:50:55-05:00",
-  "subject": "chore: bump version to v1.0.1308",
+  "date": "2025-10-23T09:12:26-05:00",
+  "subject": "chore: bump version to v1.0.1311",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-30T16:50:25-05:00",
-        "subject": "docs: Argo CD resource labels (#591)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "60bbfb2b5c5c95d76656d1b52a8a34d2ed99994f",
+        "date": "2025-10-02T19:07:33-05:00",
+        "subject": "fix: add missing version replacement for checksums filename in bump script (#612)",
+        "body": "* Initial plan\n\n* fix: add missing version replacement in bump-docs-manifests script\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "2fc07351033c43f46341d1eb406f12480e2d00c1",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
