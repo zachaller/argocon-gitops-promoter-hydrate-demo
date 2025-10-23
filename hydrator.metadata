@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "1dacfb017f38b00d27bda51b7b97033c90d9cb19",
+  "drySha": "944d7278a28113ca56220f2b62a10fc10ddb2adc",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-23T11:04:34-05:00",
-  "subject": "chore: bump version to v1.0.1315",
+  "date": "2025-10-23T11:12:51-05:00",
+  "subject": "chore: bump version to v1.0.1319",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-16T21:02:09-05:00",
-        "subject": "chore(deps): bump github.com/prometheus/client_golang from 1.23.1 to 1.23.2 (#508)",
-        "body": "chore(deps): bump github.com/prometheus/client_golang\n\nBumps [github.com/prometheus/client_golang](https://github.com/prometheus/client_golang) from 1.23.1 to 1.23.2.\n- [Release notes](https://github.com/prometheus/client_golang/releases)\n- [Changelog](https://github.com/prometheus/client_golang/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/prometheus/client_golang/compare/v1.23.1...v1.23.2)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/client_golang\n  dependency-version: 1.23.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "eff4643e9b53740d84c16b979fde698fc3aac37c",
+        "date": "2025-10-03T22:21:08-05:00",
+        "subject": "✨ Add Copilot instructions for repository (#579)",
+        "body": "* Initial plan\n\n* Add comprehensive Copilot instructions for the repository\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Address review feedback: update CRD list, remove file headers, fix naming conventions\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "d8d5c340d8c2b1514451bf1777a94e8737c52379",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
