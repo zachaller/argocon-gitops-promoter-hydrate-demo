@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "4d751ac844055f9d3f109f94576a3cc0485bea7c",
+  "drySha": "2b3493db7baa476e5f476f4b3e5d5fa7c3569092",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T17:30:48-05:00",
-  "subject": "chore: bump version to v1.0.1368",
+  "date": "2025-10-24T17:31:50-05:00",
+  "subject": "chore: bump version to v1.0.1369",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-07T10:21:51-05:00",
-        "subject": "chore(deps): bump github.com/onsi/ginkgo/v2 from 2.25.2 to 2.25.3 (#506)",
-        "body": "Bumps [github.com/onsi/ginkgo/v2](https://github.com/onsi/ginkgo) from 2.25.2 to 2.25.3.\n- [Release notes](https://github.com/onsi/ginkgo/releases)\n- [Changelog](https://github.com/onsi/ginkgo/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/onsi/ginkgo/compare/v2.25.2...v2.25.3)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/onsi/ginkgo/v2\n  dependency-version: 2.25.3\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "c43c9bc7778c072cc15daacc92aa542147fe83ba",
+        "date": "2025-10-11T10:55:19-05:00",
+        "subject": "chore: Add panic recovery to all controllers' Reconcile functions (#581)",
+        "body": "* Add panic recovery to HandleReconciliationResult\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Fix linter false positive for recover() in deferred function\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Apply suggestions from code review\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "25b7387799eea67ad459a746a12cc3e148844f98",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
