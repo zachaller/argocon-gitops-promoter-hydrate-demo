@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bfc73fe8e2037f2d1d53a13b18e2a53f4b41c211",
+  "drySha": "df0870fea0e413de84ec8f4a88d436d9dd1325b7",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T13:50:22-05:00",
-  "subject": "chore: bump version to v1.0.1340",
+  "date": "2025-10-24T13:54:11-05:00",
+  "subject": "chore: bump version to v1.0.1343",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-26T06:24:03-05:00",
-        "subject": "docs: bump manifest versions to v0.11.2 (#497)",
-        "body": "Co-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
-        "sha": "9558585d6bf542d4cbef148a5f48d56c9881cf28",
+        "date": "2025-10-07T00:37:42-05:00",
+        "subject": "feat: add PR merge time tracking (#572)",
+        "body": "* add prmerge time\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* move to util func\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add comments\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add comments\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "8d21e22bd1c09c571eb8f453b8857a336c6e5f31",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
