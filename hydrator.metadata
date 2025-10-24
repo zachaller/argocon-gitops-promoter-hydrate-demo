@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d2bcb9bae36f855e39f6cfef6932dea43a6f5f69",
+  "drySha": "c523198ab50579df80d534af32d4590b0cafdf9d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T15:15:37-05:00",
-  "subject": "chore: bump version to v1.0.1352",
+  "date": "2025-10-24T15:16:39-05:00",
+  "subject": "chore: bump version to v1.0.1353",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-03T18:16:56-05:00",
-        "subject": "chore(ui): Remove panel extension (#599)",
-        "body": "* fix responsiveness issue\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\n\n* remove status panel extension\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\n\n* remove unused import\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\n\n* remove extension completely\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\n\n* remove extension completely\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\nCo-authored-by: Jonathan Winters <jonathan_winters@intuit.com>",
-        "sha": "128a3f6cba9b291ec7da50f76c75aaf5baa95f25",
+        "date": "2025-09-23T20:02:38-05:00",
+        "subject": "docs: bump manifest versions to v0.15.0 (#610)",
+        "body": "Co-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
+        "sha": "0e833d620525088a2200eea1fbb13f6b12c083b8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
