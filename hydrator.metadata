@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "58732a266ad23839169f1bb5e0b2a90cdbea1329",
+  "drySha": "d2bcb9bae36f855e39f6cfef6932dea43a6f5f69",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T15:13:56-05:00",
-  "subject": "chore: bump version to v1.0.1351",
+  "date": "2025-10-24T15:15:37-05:00",
+  "subject": "chore: bump version to v1.0.1352",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-06T14:36:42-05:00",
-        "subject": "chore(deps): bump actions/setup-python from 5 to 6 (#594)",
-        "body": "* chore(deps): bump actions/setup-python from 5 to 6\n\nBumps [actions/setup-python](https://github.com/actions/setup-python) from 5 to 6.\n- [Release notes](https://github.com/actions/setup-python/releases)\n- [Commits](https://github.com/actions/setup-python/compare/v5...v6)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-python\n  dependency-version: '6'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\n\n* pin\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: dependabot[bot] <support@github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "f5816c05e0a984a3e940cc525f24e86fe6d5a5e4",
+        "date": "2025-10-03T18:16:56-05:00",
+        "subject": "chore(ui): Remove panel extension (#599)",
+        "body": "* fix responsiveness issue\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\n\n* remove status panel extension\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\n\n* remove unused import\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\n\n* remove extension completely\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\n\n* remove extension completely\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <jonathan_winters@intuit.com>\nCo-authored-by: Jonathan Winters <jonathan_winters@intuit.com>",
+        "sha": "128a3f6cba9b291ec7da50f76c75aaf5baa95f25",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
