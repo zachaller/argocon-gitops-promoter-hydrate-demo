@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a67bdd99d58c8425b9e7ed5b5d6c3d9a903e1ea5",
+  "drySha": "621e49b980e61785f495975826ac10640ebd9e85",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T13:08:16-05:00",
-  "subject": "chore: bump version to v1.0.1329",
+  "date": "2025-10-24T13:09:18-05:00",
+  "subject": "chore: bump version to v1.0.1330",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-12T07:31:44-05:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.152.0 to 0.154.0 (#558)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 0.152.0 to 0.154.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v0.152.0...v0.154.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 0.154.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "effe56bef7c7cbd2543078b9510019ff22f20899",
+        "date": "2025-09-28T15:03:34-05:00",
+        "subject": "chore(deps): bump actions/create-github-app-token from 1 to 2 (#625)",
+        "body": "Bumps [actions/create-github-app-token](https://github.com/actions/create-github-app-token) from 1 to 2.\n- [Release notes](https://github.com/actions/create-github-app-token/releases)\n- [Commits](https://github.com/actions/create-github-app-token/compare/v1...v2)\n\n---\nupdated-dependencies:\n- dependency-name: actions/create-github-app-token\n  dependency-version: '2'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "d5e0d9386f4d88d05dc4bb08ca73633d03b6c3f5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
