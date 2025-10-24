@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a10aacea09774620fd430cb69e065517f027d36d",
+  "drySha": "49c58a2d59b6cb76fbfc4abd8131e426b805f755",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T12:51:14-05:00",
-  "subject": "chore: bump version to v1.0.1325",
+  "date": "2025-10-24T12:52:01-05:00",
+  "subject": "chore: bump version to v1.0.1326",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-01T16:18:51-05:00",
-        "subject": "feat: do not require installation id for github (#532)",
-        "body": "* feat: do not require installation id for github\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: working\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: sync map\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: use installation id if it exists\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: some cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: typo\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: docs strings\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: don't forget to unlock\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: add spec docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: move lock to prevent rush\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: time list installations\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: add note on why log metrics\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: more logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: reduce acdcs logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: better logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "04d242e510a57bf7c141dec0dfef21a385c4a736",
+        "date": "2025-09-22T06:17:56-05:00",
+        "subject": "chore(deps): bump github.com/onsi/ginkgo/v2 from 2.25.2 to 2.25.3 (#506)",
+        "body": "Bumps [github.com/onsi/ginkgo/v2](https://github.com/onsi/ginkgo) from 2.25.2 to 2.25.3.\n- [Release notes](https://github.com/onsi/ginkgo/releases)\n- [Changelog](https://github.com/onsi/ginkgo/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/onsi/ginkgo/compare/v2.25.2...v2.25.3)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/onsi/ginkgo/v2\n  dependency-version: 2.25.3\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "c43c9bc7778c072cc15daacc92aa542147fe83ba",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
