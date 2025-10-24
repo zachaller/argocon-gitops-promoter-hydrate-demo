@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "302eebd95eb5b96bb672dc8d54bfa5f074eb9da0",
+  "drySha": "059051b8f23d484534af8ab821cfafe5b1ad9d74",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T15:10:51-05:00",
-  "subject": "chore: bump version to v1.0.1348",
+  "date": "2025-10-24T15:11:53-05:00",
+  "subject": "chore: bump version to v1.0.1349",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-01T07:50:38-05:00",
-        "subject": "chore: Add panic recovery to all controllers' Reconcile functions (#581)",
-        "body": "* Add panic recovery to HandleReconciliationResult\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Fix linter false positive for recover() in deferred function\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Apply suggestions from code review\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "25b7387799eea67ad459a746a12cc3e148844f98",
+        "date": "2025-09-28T05:26:25-05:00",
+        "subject": "chore(deps): bump actions/checkout from 4 to 5 (#627)",
+        "body": "Bumps [actions/checkout](https://github.com/actions/checkout) from 4 to 5.\n- [Release notes](https://github.com/actions/checkout/releases)\n- [Commits](https://github.com/actions/checkout/compare/v4...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/checkout\n  dependency-version: '5'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "cd2e81eee0b730d4ab579da4fa580284babd9ec1",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
