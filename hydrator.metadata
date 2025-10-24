@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "9af33f4ac834ad74bb4f642ea9b98761709896c0",
+  "drySha": "c40fb0345015dc81c45a7293d0d2f877e2f8c13b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T16:00:35-05:00",
-  "subject": "chore: bump version to v1.0.1355",
+  "date": "2025-10-24T16:03:29-05:00",
+  "subject": "chore: bump version to v1.0.1357",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-15T07:24:38-05:00",
-        "subject": "chore: do not log as Error for history (#524)",
-        "body": "* chore: do not log as Error for history\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test code\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test code\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "e189ddb2e5790e15770822f7a5e4b169d0be192b",
+        "date": "2025-09-27T23:27:34-05:00",
+        "subject": "chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1 (#499)",
+        "body": "Bumps [github.com/spf13/cobra](https://github.com/spf13/cobra) from 1.9.1 to 1.10.1.\n- [Release notes](https://github.com/spf13/cobra/releases)\n- [Commits](https://github.com/spf13/cobra/compare/v1.9.1...v1.10.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/spf13/cobra\n  dependency-version: 1.10.1\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "ba2a05267e8e7e1663d6134df3d1727db73003d5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
