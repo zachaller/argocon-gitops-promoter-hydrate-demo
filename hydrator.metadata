@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "944d7278a28113ca56220f2b62a10fc10ddb2adc",
+  "drySha": "067b8b5210991e63c68f6d9384b283c04b6ee501",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-23T11:12:51-05:00",
-  "subject": "chore: bump version to v1.0.1319",
+  "date": "2025-10-23T20:33:31-05:00",
+  "subject": "chore: bump version to v1.0.1321",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-03T22:21:08-05:00",
-        "subject": "✨ Add Copilot instructions for repository (#579)",
-        "body": "* Initial plan\n\n* Add comprehensive Copilot instructions for the repository\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Address review feedback: update CRD list, remove file headers, fix naming conventions\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "d8d5c340d8c2b1514451bf1777a94e8737c52379",
+        "date": "2025-10-12T17:12:11-05:00",
+        "subject": "chore: improve git error messages (#534)",
+        "body": "simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "eb7b757f22aaf72ddaf28c5f6fa00aa154b1c1b9",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
