@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "9af33f4ac834ad74bb4f642ea9b98761709896c0",
+  "drySha": "e3be3a1a381b8b05d73669cc95e67496f613a92b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T16:00:35-05:00",
-  "subject": "chore: bump version to v1.0.1355",
+  "date": "2025-10-24T16:02:27-05:00",
+  "subject": "chore: bump version to v1.0.1356",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-15T07:24:38-05:00",
-        "subject": "chore: do not log as Error for history (#524)",
-        "body": "* chore: do not log as Error for history\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test code\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test code\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "e189ddb2e5790e15770822f7a5e4b169d0be192b",
+        "date": "2025-09-28T21:03:45-05:00",
+        "subject": "feat: do not require installation id for github (#532)",
+        "body": "* feat: do not require installation id for github\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: working\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: sync map\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: use installation id if it exists\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: some cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: typo\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: docs strings\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: don't forget to unlock\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: add spec docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: move lock to prevent rush\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: time list installations\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: add note on why log metrics\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: more logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: reduce acdcs logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: better logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "04d242e510a57bf7c141dec0dfef21a385c4a736",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
