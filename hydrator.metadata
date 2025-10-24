@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8d25eb1a73d88a168fcb12435b7f065c6afe6a89",
+  "drySha": "1df6bb185170c2283b876d1ba61bdf61871c12a2",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-23T20:37:55-05:00",
-  "subject": "chore: bump version to v1.0.1322",
+  "date": "2025-10-24T12:54:13-05:00",
+  "subject": "chore: bump version to v1.0.1327",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-15T15:10:41-05:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.142.2 to 0.142.4 (#488)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 0.142.2 to 0.142.4.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v0.142.2...v0.142.4)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 0.142.4\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "b4dabf5c41e8d3edca9a824f69a18a9474d9f001",
+        "date": "2025-10-12T08:10:40-05:00",
+        "subject": "feat: inherit Ready conditions from child resources (#516)",
+        "body": "* feat: inherit Ready conditions from child resources\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* all controllers\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* update package to get past CI failure\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* don't check nil commit statuses\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix nil ref due to not every ctp being associated w/ prev env commit status\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* documenteamwork makes the documendreamwork\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify, test\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* tests, fixed bug of having stale conditions, more docs and standardization\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "710a3d455f9113fc1e833773f5c570b88a2ce0f7",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
