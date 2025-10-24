@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ad8342e595381ac8f10330f1c155778a732deabd",
+  "drySha": "8274ef2c95cbecf82c191f767df1a8634ad0fe4f",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T18:35:38-05:00",
-  "subject": "chore: bump version to v1.0.1376",
+  "date": "2025-10-24T18:39:04-05:00",
+  "subject": "chore: bump version to v1.0.1379",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-18T16:26:51-05:00",
-        "subject": "chore: improve git to not use filesystem and fix races (#593)",
-        "body": "* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "94971bc43828f74ae2c5b692147e2c1050b67bb8",
+        "date": "2025-10-19T05:07:10-05:00",
+        "subject": "feat: Add flag for ArgoCDCommitStatus manager to enable/disable local cluster (#560)",
+        "body": "* save point\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* ginkgo tests\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* clean up crd check\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* clean up\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* save point\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* rename\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* required\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add config\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* formate\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "94641b11d30b25ac22f69872a4bfca230e44ee1b",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
