@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6530386a77e0628175da70fd82c161373c96736a",
+  "drySha": "7b2d8adf96f6fc75ed5e83f53768f935484fe8d6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T16:57:34-05:00",
-  "subject": "chore: bump version to v1.0.1366",
+  "date": "2025-10-24T16:58:48-05:00",
+  "subject": "chore: bump version to v1.0.1367",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-18T18:10:32-05:00",
-        "subject": "fix(ci): move global Renovate config to env vars (#632)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "229a5092166bf750c0b5d48a8cd4b9a002c0ce2e",
+        "date": "2025-10-09T16:46:36-05:00",
+        "subject": "chore(deps): bump github.com/onsi/ginkgo/v2 from 2.25.3 to 2.26.0 (#542)",
+        "body": "Bumps [github.com/onsi/ginkgo/v2](https://github.com/onsi/ginkgo) from 2.25.3 to 2.26.0.\n- [Release notes](https://github.com/onsi/ginkgo/releases)\n- [Changelog](https://github.com/onsi/ginkgo/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/onsi/ginkgo/compare/v2.25.3...v2.26.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/onsi/ginkgo/v2\n  dependency-version: 2.26.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "3b3c468ed604b237262b5d84adde062ff5c47a06",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
