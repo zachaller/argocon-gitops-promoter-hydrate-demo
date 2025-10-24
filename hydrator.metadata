@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c40fb0345015dc81c45a7293d0d2f877e2f8c13b",
+  "drySha": "6d5054812904353693ba52a21d90febb485830ed",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T16:03:29-05:00",
-  "subject": "chore: bump version to v1.0.1357",
+  "date": "2025-10-24T16:05:56-05:00",
+  "subject": "chore: bump version to v1.0.1359",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-27T23:27:34-05:00",
-        "subject": "chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1 (#499)",
-        "body": "Bumps [github.com/spf13/cobra](https://github.com/spf13/cobra) from 1.9.1 to 1.10.1.\n- [Release notes](https://github.com/spf13/cobra/releases)\n- [Commits](https://github.com/spf13/cobra/compare/v1.9.1...v1.10.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/spf13/cobra\n  dependency-version: 1.10.1\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "ba2a05267e8e7e1663d6134df3d1727db73003d5",
+        "date": "2025-09-20T05:53:00-05:00",
+        "subject": "chore(ci)!: wrap extension tar for extension-installer compatibility (#522)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "474ed93f5d46bcb1252232bee6022e2bd3004b42",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
