@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a3b5ca7394ef51a31d911307b92f7d0d4e798a8d",
+  "drySha": "211a7f85531b5990dec5c1652379cfd54321dc2b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T17:34:32-05:00",
-  "subject": "chore: bump version to v1.0.1371",
+  "date": "2025-10-24T17:36:18-05:00",
+  "subject": "chore: bump version to v1.0.1372",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-22T02:53:21-05:00",
-        "subject": "chore: automate Go and golangci-lint version upgrades with self-hosted Renovate (#621)",
-        "body": "* Initial plan\n\n* feat: add Renovate configuration for automated Go and golangci-lint upgrades\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* feat: configure self-hosted Renovate via GitHub Workflows\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update RENOVATE_SETUP.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "90ed5a4a7ae24802157cce315b7a52b4208c199a",
+        "date": "2025-09-24T12:30:27-05:00",
+        "subject": "fix(ui): hide unpopulated commit info (#545)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "c95f385c256af9bd4e7bea79d2373aaf1b2ca7ef",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
