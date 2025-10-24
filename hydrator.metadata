@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8d25eb1a73d88a168fcb12435b7f065c6afe6a89",
+  "drySha": "c5f91d66b8a39e32337760d33c920efa6e189fe3",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-23T20:37:55-05:00",
-  "subject": "chore: bump version to v1.0.1322",
+  "date": "2025-10-24T12:51:12-05:00",
+  "subject": "chore: bump version to v1.0.1324",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-15T15:10:41-05:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.142.2 to 0.142.4 (#488)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 0.142.2 to 0.142.4.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v0.142.2...v0.142.4)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 0.142.4\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "b4dabf5c41e8d3edca9a824f69a18a9474d9f001",
+        "date": "2025-10-11T08:01:04-05:00",
+        "subject": "chore(deps): bump github.com/gin-contrib/gzip from 1.2.3 to 1.2.4 (#567)",
+        "body": "Bumps [github.com/gin-contrib/gzip](https://github.com/gin-contrib/gzip) from 1.2.3 to 1.2.4.\n- [Release notes](https://github.com/gin-contrib/gzip/releases)\n- [Changelog](https://github.com/gin-contrib/gzip/blob/master/.goreleaser.yaml)\n- [Commits](https://github.com/gin-contrib/gzip/compare/v1.2.3...v1.2.4)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-contrib/gzip\n  dependency-version: 1.2.4\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "91b90bd2f9d82c1c80a83262efe53eb1c58aec88",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
