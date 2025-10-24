@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "df0870fea0e413de84ec8f4a88d436d9dd1325b7",
+  "drySha": "7f5b0d604eb4d8e19d215283606558cdf194b439",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T13:54:11-05:00",
-  "subject": "chore: bump version to v1.0.1343",
+  "date": "2025-10-24T14:26:32-05:00",
+  "subject": "chore: bump version to v1.0.1344",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-07T00:37:42-05:00",
-        "subject": "feat: add PR merge time tracking (#572)",
-        "body": "* add prmerge time\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* move to util func\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add comments\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add comments\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "8d21e22bd1c09c571eb8f453b8857a336c6e5f31",
+        "date": "2025-10-01T10:22:51-05:00",
+        "subject": "docs: add conventional PR title guidelines to copilot-instructions.md (#606)",
+        "body": "* Initial plan\n\n* docs: add conventional PR title guidelines to copilot-instructions.md\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "b6d191c4956157e36f843447a03bf2142c5e5d0b",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
