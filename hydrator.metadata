@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "fa73d3ff1e0eeef13b9965d442535e4916c2f73d",
+  "drySha": "8274ef2c95cbecf82c191f767df1a8634ad0fe4f",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T18:37:50-05:00",
-  "subject": "chore: bump version to v1.0.1378",
+  "date": "2025-10-24T18:39:04-05:00",
+  "subject": "chore: bump version to v1.0.1379",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-02T23:09:41-05:00",
-        "subject": "docs: nil check in deep links condition (#604)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "a4df63ea5c2e1d78314188e989723d25ab55f887",
+        "date": "2025-10-19T05:07:10-05:00",
+        "subject": "feat: Add flag for ArgoCDCommitStatus manager to enable/disable local cluster (#560)",
+        "body": "* save point\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* ginkgo tests\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* clean up crd check\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* clean up\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* save point\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* rename\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* required\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add config\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* formate\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "94641b11d30b25ac22f69872a4bfca230e44ee1b",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
