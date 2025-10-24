@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c5f91d66b8a39e32337760d33c920efa6e189fe3",
+  "drySha": "49c58a2d59b6cb76fbfc4abd8131e426b805f755",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T12:51:12-05:00",
-  "subject": "chore: bump version to v1.0.1324",
+  "date": "2025-10-24T12:52:01-05:00",
+  "subject": "chore: bump version to v1.0.1326",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-11T08:01:04-05:00",
-        "subject": "chore(deps): bump github.com/gin-contrib/gzip from 1.2.3 to 1.2.4 (#567)",
-        "body": "Bumps [github.com/gin-contrib/gzip](https://github.com/gin-contrib/gzip) from 1.2.3 to 1.2.4.\n- [Release notes](https://github.com/gin-contrib/gzip/releases)\n- [Changelog](https://github.com/gin-contrib/gzip/blob/master/.goreleaser.yaml)\n- [Commits](https://github.com/gin-contrib/gzip/compare/v1.2.3...v1.2.4)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-contrib/gzip\n  dependency-version: 1.2.4\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "91b90bd2f9d82c1c80a83262efe53eb1c58aec88",
+        "date": "2025-09-22T06:17:56-05:00",
+        "subject": "chore(deps): bump github.com/onsi/ginkgo/v2 from 2.25.2 to 2.25.3 (#506)",
+        "body": "Bumps [github.com/onsi/ginkgo/v2](https://github.com/onsi/ginkgo) from 2.25.2 to 2.25.3.\n- [Release notes](https://github.com/onsi/ginkgo/releases)\n- [Changelog](https://github.com/onsi/ginkgo/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/onsi/ginkgo/compare/v2.25.2...v2.25.3)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/onsi/ginkgo/v2\n  dependency-version: 2.25.3\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "c43c9bc7778c072cc15daacc92aa542147fe83ba",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
