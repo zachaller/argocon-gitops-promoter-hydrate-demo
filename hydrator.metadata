@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6bb817f93d1bfbe4b82fcccdee0b569cbad14023",
+  "drySha": "a1e109369f1e42f8084060a749f656beb897d7e2",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T16:53:59-05:00",
-  "subject": "chore: bump version to v1.0.1363",
+  "date": "2025-10-24T16:55:31-05:00",
+  "subject": "chore: bump version to v1.0.1364",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-10T21:51:42-05:00",
-        "subject": "chore: improve git to not use filesystem and fix races (#593)",
-        "body": "* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "94971bc43828f74ae2c5b692147e2c1050b67bb8",
+        "date": "2025-10-08T09:45:16-05:00",
+        "subject": "chore: bump to go 1.25 (#609)",
+        "body": "* chore: upgrade to Go 1.25 and golangci-lint v2.5.0\n\n- Update Dockerfiles to use golang:1.25\n- Update GitHub Actions workflows to use Go 1.25\n- Update golangci-lint to v2.5.0 for Go 1.25 compatibility\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: address golangci-lint v2.5.0 errors\n\n- Replace exec.Command with exec.CommandContext for noctx compliance\n- Add context import to test/utils package\n- Add default cases to switch statements for revive compliance\n- Consolidate identical GitHub/Forgejo webhook handling branches\n- Fix package name mismatch: ginlogr -> logr to match directory\n- Replace fmt.Fprintf with fmt.Fprint where formatting is unnecessary\n- Refactor if-else chain to switch statement to avoid identical branches\n- Replace fmt.Errorf with errors.New for static error messages\n\nNote: contextcheck errors remain (12 issues) as they require\narchitectural changes to pass context through helper functions.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass context\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass context\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "cb4e9d37e82a560329925c3b8e68481d86fee519",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
