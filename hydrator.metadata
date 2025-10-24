@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ad8342e595381ac8f10330f1c155778a732deabd",
+  "drySha": "63b7a4d32d823084c24ceeb4bb0f63b03d7ed2ab",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T18:35:38-05:00",
-  "subject": "chore: bump version to v1.0.1376",
+  "date": "2025-10-24T18:36:48-05:00",
+  "subject": "chore: bump version to v1.0.1377",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-18T16:26:51-05:00",
-        "subject": "chore: improve git to not use filesystem and fix races (#593)",
-        "body": "* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "94971bc43828f74ae2c5b692147e2c1050b67bb8",
+        "date": "2025-09-28T11:07:00-05:00",
+        "subject": "fix(pullrequest): avoid url construction failure on FindOpen (#601)",
+        "body": "* fix(pullrequest): avoid url construction failure on FindOpen\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "22e005ad37fb550072d4ca90f10aa9fd9c81381d",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
