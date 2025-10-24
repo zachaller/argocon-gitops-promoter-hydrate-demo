@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7f5b0d604eb4d8e19d215283606558cdf194b439",
+  "drySha": "cf8d632d7d6abf84dba00eb2e88d310db5f25b3e",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T14:26:32-05:00",
-  "subject": "chore: bump version to v1.0.1344",
+  "date": "2025-10-24T14:28:06-05:00",
+  "subject": "chore: bump version to v1.0.1345",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-01T10:22:51-05:00",
-        "subject": "docs: add conventional PR title guidelines to copilot-instructions.md (#606)",
-        "body": "* Initial plan\n\n* docs: add conventional PR title guidelines to copilot-instructions.md\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "b6d191c4956157e36f843447a03bf2142c5e5d0b",
+        "date": "2025-09-22T09:30:38-05:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.142.4 to 0.142.6 (#501)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 0.142.4 to 0.142.6.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v0.142.4...v0.142.6)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 0.142.6\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "20ea5ea702dff98902d09d7e2db72db2f1aeb382",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
