@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e5fcfb704eaca32ed50fd0a9f9b43b08436843a7",
+  "drySha": "6ceeb33200d1dcbb2d2a1cc50b33e7fc42b5460c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T13:11:45-05:00",
-  "subject": "chore: bump version to v1.0.1332",
+  "date": "2025-10-24T13:13:07-05:00",
+  "subject": "chore: bump version to v1.0.1333",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-05T01:49:56-05:00",
-        "subject": "docs: bump manifest versions to v0.14.0 (#562)",
-        "body": "Co-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
-        "sha": "093346a411c41a57b400a0962055f4c5286732b6",
+        "date": "2025-10-03T15:25:01-05:00",
+        "subject": "fix: printer column updates (#647)",
+        "body": "* fix: printer colulmn updates\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't show 0 indexes\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "834a4b382463b274e9567ad44d2f759cdbaf4830",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
