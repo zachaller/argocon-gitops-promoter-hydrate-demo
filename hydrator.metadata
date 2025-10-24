@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c03034facaf2f3d53d6ff9600e64c7f03257dc5e",
+  "drySha": "067b8b5210991e63c68f6d9384b283c04b6ee501",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-23T19:28:29-05:00",
-  "subject": "chore: bump version to v1.0.1320",
+  "date": "2025-10-23T20:33:31-05:00",
+  "subject": "chore: bump version to v1.0.1321",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-17T14:57:42-05:00",
-        "subject": "chore: improve token error message (#533)",
-        "body": "* chore: improve token error message\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update internal/scms/github/git_operations.go\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "4350fbafcc73318b398e39b022477f5c98482dec",
+        "date": "2025-10-12T17:12:11-05:00",
+        "subject": "chore: improve git error messages (#534)",
+        "body": "simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "eb7b757f22aaf72ddaf28c5f6fa00aa154b1c1b9",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
