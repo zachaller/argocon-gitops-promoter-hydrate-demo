@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "059051b8f23d484534af8ab821cfafe5b1ad9d74",
+  "drySha": "e208b6bf591cf1f4960c258a0b4e07f8244e030e",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T15:11:53-05:00",
-  "subject": "chore: bump version to v1.0.1349",
+  "date": "2025-10-24T15:12:54-05:00",
+  "subject": "chore: bump version to v1.0.1350",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-28T05:26:25-05:00",
-        "subject": "chore(deps): bump actions/checkout from 4 to 5 (#627)",
-        "body": "Bumps [actions/checkout](https://github.com/actions/checkout) from 4 to 5.\n- [Release notes](https://github.com/actions/checkout/releases)\n- [Commits](https://github.com/actions/checkout/compare/v4...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/checkout\n  dependency-version: '5'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "cd2e81eee0b730d4ab579da4fa580284babd9ec1",
+        "date": "2025-10-12T20:53:15-05:00",
+        "subject": "fix(ps): don't update CS when there is no pending change (#597)",
+        "body": "* fix: don't update CS when there is no pending change\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* typo\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: don't update CS when there is no pending change\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't block prod or higher envs from updating\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* change text\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove line ref\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "007c6f05a8ceeb6dfb98afd4ae488e2551c06a47",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
