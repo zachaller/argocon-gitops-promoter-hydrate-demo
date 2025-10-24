@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "1a30c33cd6f326a3045b954ba68144cd6cb04fc0",
+  "drySha": "19f67a4389e02f2d3dcecfed191f7d17dbfc0c3d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T13:19:47-05:00",
-  "subject": "chore: bump version to v1.0.1336",
+  "date": "2025-10-24T13:20:48-05:00",
+  "subject": "chore: bump version to v1.0.1337",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-20T17:40:09-05:00",
-        "subject": "chore: fix flaky tests (#595)",
-        "body": "chore: fix flaky test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "f544ef4db7fb6caeba59227bee22814e389c2237",
+        "date": "2025-10-08T00:46:06-05:00",
+        "subject": "chore: improve 'too many matching shas' error (#535)",
+        "body": "* chore: improve 'too many matching shas' error\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* we actually only care about the namespace/name\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "6b8a07ed8f5b5811bdb917748a63bdb27dcc0741",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
