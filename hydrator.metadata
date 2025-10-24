@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b4f81d1621b4927392f6aa240a674de8dd23f71c",
+  "drySha": "9af33f4ac834ad74bb4f642ea9b98761709896c0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T15:17:40-05:00",
-  "subject": "chore: bump version to v1.0.1354",
+  "date": "2025-10-24T16:00:35-05:00",
+  "subject": "chore: bump version to v1.0.1355",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-10T11:34:14-05:00",
-        "subject": "docs: bump manifest versions to v0.15.0 (#610)",
-        "body": "Co-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
-        "sha": "0e833d620525088a2200eea1fbb13f6b12c083b8",
+        "date": "2025-10-15T07:24:38-05:00",
+        "subject": "chore: do not log as Error for history (#524)",
+        "body": "* chore: do not log as Error for history\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test code\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test code\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "e189ddb2e5790e15770822f7a5e4b169d0be192b",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
