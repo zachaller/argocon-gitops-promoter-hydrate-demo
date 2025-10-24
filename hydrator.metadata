@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c2e351aba967f8b2411d6a7b69520f973911e9bf",
+  "drySha": "bfc73fe8e2037f2d1d53a13b18e2a53f4b41c211",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T13:48:41-05:00",
-  "subject": "chore: bump version to v1.0.1339",
+  "date": "2025-10-24T13:50:22-05:00",
+  "subject": "chore: bump version to v1.0.1340",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-12T04:50:25-05:00",
-        "subject": "chore(config): migrate renovate config (#634)",
-        "body": "chore(config): migrate config renovate.json5\n\nCo-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "11562fb01aff4b3f5c449c15e10d933eb3735cd6",
+        "date": "2025-09-26T06:24:03-05:00",
+        "subject": "docs: bump manifest versions to v0.11.2 (#497)",
+        "body": "Co-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
+        "sha": "9558585d6bf542d4cbef148a5f48d56c9881cf28",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
