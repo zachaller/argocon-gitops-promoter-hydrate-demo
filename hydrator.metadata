@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6ceeb33200d1dcbb2d2a1cc50b33e7fc42b5460c",
+  "drySha": "709fa648334cbf2faa942a8fa86fc919b2bf0b80",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T13:13:07-05:00",
-  "subject": "chore: bump version to v1.0.1333",
+  "date": "2025-10-24T13:17:44-05:00",
+  "subject": "chore: bump version to v1.0.1334",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-03T15:25:01-05:00",
-        "subject": "fix: printer column updates (#647)",
-        "body": "* fix: printer colulmn updates\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't show 0 indexes\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "834a4b382463b274e9567ad44d2f759cdbaf4830",
+        "date": "2025-10-19T04:55:32-05:00",
+        "subject": "chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1 (#499)",
+        "body": "Bumps [github.com/spf13/cobra](https://github.com/spf13/cobra) from 1.9.1 to 1.10.1.\n- [Release notes](https://github.com/spf13/cobra/releases)\n- [Commits](https://github.com/spf13/cobra/compare/v1.9.1...v1.10.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/spf13/cobra\n  dependency-version: 1.10.1\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "ba2a05267e8e7e1663d6134df3d1727db73003d5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
