@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7a829e66c3818bee3378781adc655dab4c31a7aa",
+  "drySha": "8981c84877b2c25ba32d1e512eea40ac185a1d39",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T03:34:26-05:00",
-  "subject": "chore: bump version to v1.0.1450",
+  "date": "2025-10-25T03:35:27-05:00",
+  "subject": "chore: bump version to v1.0.1451",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-29T23:17:12-05:00",
-        "subject": "docs: bump manifest versions to v0.15.0 (#607)",
-        "body": "Co-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
-        "sha": "a29b11a0286efed1b2c4eb4bac279983fac65981",
+        "date": "2025-10-08T15:55:15-05:00",
+        "subject": "chore(ci)!: wrap extension tar for extension-installer compatibility (#522)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "474ed93f5d46bcb1252232bee6022e2bd3004b42",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
