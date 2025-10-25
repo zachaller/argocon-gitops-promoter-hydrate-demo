@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5c92fc88c9a1a9ae3b6549835fefc00f182d173d",
+  "drySha": "13dffb115f7f8af91ca0f2f313f48d9836ada76f",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T23:17:26-05:00",
-  "subject": "chore: bump version to v1.0.1419",
+  "date": "2025-10-24T23:18:27-05:00",
+  "subject": "chore: bump version to v1.0.1420",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-04T09:21:34-05:00",
-        "subject": "chore(deps): bump the k8s-deps group with 3 updates (#513)",
-        "body": "Bumps the k8s-deps group with 3 updates: [k8s.io/api](https://github.com/kubernetes/api), [k8s.io/apimachinery](https://github.com/kubernetes/apimachinery) and [k8s.io/client-go](https://github.com/kubernetes/client-go).\n\n\nUpdates `k8s.io/api` from 0.34.0 to 0.34.1\n- [Commits](https://github.com/kubernetes/api/compare/v0.34.0...v0.34.1)\n\nUpdates `k8s.io/apimachinery` from 0.34.0 to 0.34.1\n- [Commits](https://github.com/kubernetes/apimachinery/compare/v0.34.0...v0.34.1)\n\nUpdates `k8s.io/client-go` from 0.34.0 to 0.34.1\n- [Changelog](https://github.com/kubernetes/client-go/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/kubernetes/client-go/compare/v0.34.0...v0.34.1)\n\n---\nupdated-dependencies:\n- dependency-name: k8s.io/api\n  dependency-version: 0.34.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n- dependency-name: k8s.io/apimachinery\n  dependency-version: 0.34.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n- dependency-name: k8s.io/client-go\n  dependency-version: 0.34.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "a72ad0e62f80d9099d82d525118d33d1a662ff91",
+        "date": "2025-10-16T11:46:55-05:00",
+        "subject": "feat: do not require installation id for github (#532)",
+        "body": "* feat: do not require installation id for github\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: working\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: sync map\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: use installation id if it exists\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: some cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: typo\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: docs strings\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: don't forget to unlock\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: add spec docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: move lock to prevent rush\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: time list installations\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: add note on why log metrics\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: more logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: reduce acdcs logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: better logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "04d242e510a57bf7c141dec0dfef21a385c4a736",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
