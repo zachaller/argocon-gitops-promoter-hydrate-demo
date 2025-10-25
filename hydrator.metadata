@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b3fd5b7fd63be6258ff39511756ff5ff0e48aa96",
+  "drySha": "93694fd4ce69942a0fb1dd2668cc4a27a5daa7a1",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T01:18:56-05:00",
-  "subject": "chore: bump version to v1.0.1432",
+  "date": "2025-10-25T01:20:31-05:00",
+  "subject": "chore: bump version to v1.0.1433",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-14T12:54:18-05:00",
-        "subject": "chore(deps): bump github.com/gin-gonic/gin from 1.10.1 to 1.11.0 (#526)",
-        "body": "Bumps [github.com/gin-gonic/gin](https://github.com/gin-gonic/gin) from 1.10.1 to 1.11.0.\n- [Release notes](https://github.com/gin-gonic/gin/releases)\n- [Changelog](https://github.com/gin-gonic/gin/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/gin-gonic/gin/compare/v1.10.1...v1.11.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-gonic/gin\n  dependency-version: 1.11.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "71cad49f75fa6aeb6629cec6a306bf220a44033e",
+        "date": "2025-09-24T06:28:53-05:00",
+        "subject": "fix: return error instead of panicking (#546)",
+        "body": "* fix: return error instead of panicing\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "15087d1a2e3f655592954259149462f719f5b437",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
