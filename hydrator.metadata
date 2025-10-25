@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "549af954fb39b8fb0d6500bedff025a2729f264f",
+  "drySha": "08d65bedb4c2165d807663244481ae462ce95ba5",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T21:13:34-05:00",
-  "subject": "chore: bump version to v1.0.1401",
+  "date": "2025-10-24T21:14:35-05:00",
+  "subject": "chore: bump version to v1.0.1402",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-19T14:18:16-05:00",
-        "subject": "chore: bump to go 1.25 (#609)",
-        "body": "* chore: upgrade to Go 1.25 and golangci-lint v2.5.0\n\n- Update Dockerfiles to use golang:1.25\n- Update GitHub Actions workflows to use Go 1.25\n- Update golangci-lint to v2.5.0 for Go 1.25 compatibility\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: address golangci-lint v2.5.0 errors\n\n- Replace exec.Command with exec.CommandContext for noctx compliance\n- Add context import to test/utils package\n- Add default cases to switch statements for revive compliance\n- Consolidate identical GitHub/Forgejo webhook handling branches\n- Fix package name mismatch: ginlogr -> logr to match directory\n- Replace fmt.Fprintf with fmt.Fprint where formatting is unnecessary\n- Refactor if-else chain to switch statement to avoid identical branches\n- Replace fmt.Errorf with errors.New for static error messages\n\nNote: contextcheck errors remain (12 issues) as they require\narchitectural changes to pass context through helper functions.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass context\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass context\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "cb4e9d37e82a560329925c3b8e68481d86fee519",
+        "date": "2025-09-26T12:04:43-05:00",
+        "subject": "chore: do not log as Error for history (#524)",
+        "body": "* chore: do not log as Error for history\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test code\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test code\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "e189ddb2e5790e15770822f7a5e4b169d0be192b",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
