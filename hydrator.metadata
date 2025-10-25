@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d23491b52ebbd7badfff22f695fefb1470840a75",
+  "drySha": "f27e487ddabcea3f420e88c9228acbbcb7100e30",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T00:30:22-05:00",
-  "subject": "chore: bump version to v1.0.1425",
+  "date": "2025-10-25T00:32:24-05:00",
+  "subject": "chore: bump version to v1.0.1427",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-24T17:24:30-05:00",
-        "subject": "chore(deps): bump golang.org/x/time from 0.12.0 to 0.14.0 (#559)",
-        "body": "Bumps [golang.org/x/time](https://github.com/golang/time) from 0.12.0 to 0.14.0.\n- [Commits](https://github.com/golang/time/compare/v0.12.0...v0.14.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/time\n  dependency-version: 0.14.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "126bf0939c2b5ff47af783fed02cedd88fba4e12",
+        "date": "2025-10-08T14:44:44-05:00",
+        "subject": "feat!: add performance tuning configurations and restructure ControllerConfiguration API (#549)",
+        "body": "* Add dynamic controller configuration with WorkQueue settings\n\n- Implement dual-client approach for reading configuration during setup\n- Add Direct methods to read from API server bypassing cache\n- Support generic rate limiter types for different request types\n- Update all controllers to use configurable WorkQueue settings\n- Add comprehensive ControllerConfiguration.yaml documentation\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix default config\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix validation\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* use correct configuration\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* switch\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* test depend on 7\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* if required remove omitempty\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* set reconcile routines to 1\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* set reconcile routines to 1 for CTP\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove lock logger\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "3c5ce77b29b10f77193b982baec5617ea19549a9",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
