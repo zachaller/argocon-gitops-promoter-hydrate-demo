@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c9f161c7fe1915519abedcec4ce8198c14211907",
+  "drySha": "b1e5d78d80c28ccb7f76fd3bd6764bccf2b963b7",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T03:06:23-05:00",
-  "subject": "chore: bump version to v1.0.1447",
+  "date": "2025-10-25T03:32:23-05:00",
+  "subject": "chore: bump version to v1.0.1448",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-07T07:58:24-05:00",
-        "subject": "chore: improve git error messages (#534)",
-        "body": "simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "eb7b757f22aaf72ddaf28c5f6fa00aa154b1c1b9",
+        "date": "2025-09-23T03:06:00-05:00",
+        "subject": "chore: improve missing branch error (#587) (#588)",
+        "body": "* chore: improve missing branch error (#587)\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* make test actually test things\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "5381de412f20346e677b53ddae3576f50938ba34",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
