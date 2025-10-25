@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a665695c47aa60e9b89821a0f30bbdde5bc0fe15",
+  "drySha": "141e7f524e8c1bc0f31e445ffd4f9d1561cc8f51",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T02:34:16-05:00",
-  "subject": "chore: bump version to v1.0.1440",
+  "date": "2025-10-25T02:35:41-05:00",
+  "subject": "chore: bump version to v1.0.1441",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-02T03:17:52-05:00",
-        "subject": "feat: do not require installation id for github (#532)",
-        "body": "* feat: do not require installation id for github\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: working\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: sync map\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: use installation id if it exists\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: some cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: typo\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: docs strings\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: don't forget to unlock\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: add spec docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: move lock to prevent rush\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: time list installations\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: add note on why log metrics\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: more logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: reduce acdcs logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: better logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "04d242e510a57bf7c141dec0dfef21a385c4a736",
+        "date": "2025-10-12T02:44:07-05:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.151.0 to 0.152.0 (#553)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 0.151.0 to 0.152.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v0.151.0...v0.152.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 0.152.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "6936e027e5b8ec7a0840ee7c891005d4a8065f15",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
