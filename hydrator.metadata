@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "95b1596ef065618c669a9a54a13d6434b4c46878",
+  "drySha": "4d62fdf2edf89ba50281cb36e784fe0b9a796bb0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T03:04:05-05:00",
-  "subject": "chore: bump version to v1.0.1445",
+  "date": "2025-10-25T03:05:06-05:00",
+  "subject": "chore: bump version to v1.0.1446",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-19T08:35:39-05:00",
-        "subject": "Add mergeSha field to PullRequest spec to prevent race condition during merge (#573)",
-        "body": "* Initial plan\n\n* Add mergeSha field to PullRequest spec and update SCM providers\n\n- Add required mergeSha field to PullRequestSpec\n- Update CTP controller to populate mergeSha with proposed hydrated SHA\n- Update GitHub provider to use SHA in PullRequestOptions\n- Update GitLab provider to use SHA in AcceptMergeRequestOptions\n- Update Forgejo provider to use HeadCommitId in MergePullRequestOption\n- Update Fake provider to validate SHA before merge\n- Regenerate CRDs with new field\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Add test to verify mergeSha field is set correctly\n\n- Add test that verifies mergeSha is populated with proposed hydrated SHA\n- Test confirms mergeSha matches the branch HEAD at PR creation time\n- This ensures the race condition is prevented by SCM providers\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Address PR feedback: Add validation, update example, and backwards compatibility\n\n- Add regex, minLength, and maxLength validation to mergeSha field (^[a-fA-F0-9]+$, 1-64)\n- Update example PullRequest.yaml in docs with mergeSha field\n- Add backwards compatibility check in mergePullRequests to populate mergeSha for existing PRs\n- Update test fixtures to include mergeSha field\n- All tests passing (35/35 specs)\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Run make build-installer to update installation manifests\n\n- Update dist/install.yaml with mergeSha field and validation\n- Add mergeSha to required fields in PullRequest CRD\n- Include minLength=1, maxLength=64, and pattern validation\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Refactor: simplify fake provider by removing duplicate function\n\n- Update runGitCmd to return output instead of just error\n- Remove runGitCmdOutput function as it's now redundant\n- Update all call sites to handle the returned output (discarding where not needed)\n- All tests passing (35/35 specs)\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "f4e403132cedadb9dd7a3dab7eef47487ed6474f",
+        "date": "2025-10-04T18:20:45-05:00",
+        "subject": "chore: improve token error message (#533)",
+        "body": "* chore: improve token error message\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update internal/scms/github/git_operations.go\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "4350fbafcc73318b398e39b022477f5c98482dec",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
