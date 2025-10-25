@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "37d567c0ed9b46fce118d772638075ecd2c724b2",
+  "drySha": "32bef0f0c31c9c09520484da8f239adc0247a3c7",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T20:05:30-05:00",
-  "subject": "chore: bump version to v1.0.1392",
+  "date": "2025-10-24T20:06:32-05:00",
+  "subject": "chore: bump version to v1.0.1393",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-30T15:08:46-05:00",
-        "subject": "chore: automate Go and golangci-lint version upgrades with self-hosted Renovate (#621)",
-        "body": "* Initial plan\n\n* feat: add Renovate configuration for automated Go and golangci-lint upgrades\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* feat: configure self-hosted Renovate via GitHub Workflows\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update RENOVATE_SETUP.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "90ed5a4a7ae24802157cce315b7a52b4208c199a",
+        "date": "2025-10-19T19:51:16-05:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.148.1 to 0.149.0 (#541)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 0.148.1 to 0.149.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v0.148.1...v0.149.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 0.149.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "16c89b687f567ce0771236594dbc32103d6239db",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
