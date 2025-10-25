@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "04f5490857d9bed4c3eef5c8368f389362cb6116",
+  "drySha": "964a6ed073478fe1c804c5ee8d941bcab74e02d4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T23:14:08-05:00",
-  "subject": "chore: bump version to v1.0.1417",
+  "date": "2025-10-24T23:15:56-05:00",
+  "subject": "chore: bump version to v1.0.1418",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-14T16:55:10-05:00",
-        "subject": "chore(deps): bump golang.org/x/sync from 0.16.0 to 0.17.0 (#507)",
-        "body": "Bumps [golang.org/x/sync](https://github.com/golang/sync) from 0.16.0 to 0.17.0.\n- [Commits](https://github.com/golang/sync/compare/v0.16.0...v0.17.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sync\n  dependency-version: 0.17.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "db92eb1de905bbae9c9e1a28f2ea4dccb0753bff",
+        "date": "2025-10-15T17:40:31-05:00",
+        "subject": "chore(deps): bump actions/setup-go from 5.5.0 to 6.0.0 (#503)",
+        "body": "Bumps [actions/setup-go](https://github.com/actions/setup-go) from 5.5.0 to 6.0.0.\n- [Release notes](https://github.com/actions/setup-go/releases)\n- [Commits](https://github.com/actions/setup-go/compare/d35c59abb061a4a6fb18e82ac0862c26744d6ab5...44694675825211faa026b3c33043df3e48a5fa00)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-go\n  dependency-version: 6.0.0\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "b5605078b8b02868e6cc790ebb80d67257d38fb8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
