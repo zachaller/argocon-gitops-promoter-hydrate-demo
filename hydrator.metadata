@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8981c84877b2c25ba32d1e512eea40ac185a1d39",
+  "drySha": "a9ab9ec5a823d31e66e1e4926dbd0b0ff2757758",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T03:35:27-05:00",
-  "subject": "chore: bump version to v1.0.1451",
+  "date": "2025-10-25T04:16:17-05:00",
+  "subject": "chore: bump version to v1.0.1452",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-08T15:55:15-05:00",
-        "subject": "chore(ci)!: wrap extension tar for extension-installer compatibility (#522)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "474ed93f5d46bcb1252232bee6022e2bd3004b42",
+        "date": "2025-10-07T22:39:34-05:00",
+        "subject": "chore(deps): bump renovatebot/github-action from 41.7.2 to 43.0.18 (#626)",
+        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 41.7.2 to 43.0.18.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/v41.7.2...v43.0.18)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 43.0.18\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "2b9e93704f03cbcef315121f21d27c864e3c3367",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
