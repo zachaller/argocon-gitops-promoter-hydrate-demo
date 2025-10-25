@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "684045b23c2ebc8b5d6d1aa9fb8e6d7f551422f1",
+  "drySha": "24cec7c4f1b5c0db8d185f7ab217777aee093ec6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T01:50:15-05:00",
-  "subject": "chore: bump version to v1.0.1436",
+  "date": "2025-10-25T01:51:16-05:00",
+  "subject": "chore: bump version to v1.0.1437",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-09T19:29:27-05:00",
-        "subject": "docs: installationID for Github is optional (#540)",
-        "body": "docs: installationID for github is optional\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "4210ee66d65b05019319fef9c321ff5caf5ccde2",
+        "date": "2025-09-26T15:03:17-05:00",
+        "subject": "fix(ci): set repo name for Renovate (#629)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "110cfef3bae0b1ee162c4b637ef4eafc095700eb",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
