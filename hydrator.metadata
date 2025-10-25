@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e1983112e602b6098c372eb466a808a066c279d2",
+  "drySha": "e5ec84a481aa3cea78bdcd3cb51ad34099431156",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T23:57:43-05:00",
-  "subject": "chore: bump version to v1.0.1422",
+  "date": "2025-10-24T23:58:46-05:00",
+  "subject": "chore: bump version to v1.0.1423",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-02T13:43:59-05:00",
-        "subject": "feat: add PR merge time tracking (#572)",
-        "body": "* add prmerge time\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* move to util func\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add comments\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add comments\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "8d21e22bd1c09c571eb8f453b8857a336c6e5f31",
+        "date": "2025-09-22T04:50:52-05:00",
+        "subject": "chore: automate Go and golangci-lint version upgrades with self-hosted Renovate (#621)",
+        "body": "* Initial plan\n\n* feat: add Renovate configuration for automated Go and golangci-lint upgrades\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* feat: configure self-hosted Renovate via GitHub Workflows\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update RENOVATE_SETUP.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "90ed5a4a7ae24802157cce315b7a52b4208c199a",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
