@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "de955e8fa9369c7728cddbd8d9d4e90aad7ff046",
+  "drySha": "018352995670740fd41bd7c684c24a995bbeb0d9",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T19:34:27-05:00",
-  "subject": "chore: bump version to v1.0.1386",
+  "date": "2025-10-24T19:36:21-05:00",
+  "subject": "chore: bump version to v1.0.1387",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-01T07:56:40-05:00",
-        "subject": "chore(deps): bump renovatebot/github-action from 41.7.2 to 43.0.18 (#626)",
-        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 41.7.2 to 43.0.18.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/v41.7.2...v43.0.18)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 43.0.18\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "2b9e93704f03cbcef315121f21d27c864e3c3367",
+        "date": "2025-10-16T11:35:12-05:00",
+        "subject": "chore: improve git to not use filesystem and fix races (#593)",
+        "body": "* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "94971bc43828f74ae2c5b692147e2c1050b67bb8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
