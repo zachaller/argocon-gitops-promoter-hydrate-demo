@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "018352995670740fd41bd7c684c24a995bbeb0d9",
+  "drySha": "a2ab0527825b4ccc70e26b43942e6495314a37a4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T19:36:21-05:00",
-  "subject": "chore: bump version to v1.0.1387",
+  "date": "2025-10-24T19:37:33-05:00",
+  "subject": "chore: bump version to v1.0.1388",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-16T11:35:12-05:00",
-        "subject": "chore: improve git to not use filesystem and fix races (#593)",
-        "body": "* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "94971bc43828f74ae2c5b692147e2c1050b67bb8",
+        "date": "2025-09-26T13:23:30-05:00",
+        "subject": "chore: fix flaky tests (#595)",
+        "body": "chore: fix flaky test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "f544ef4db7fb6caeba59227bee22814e389c2237",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
