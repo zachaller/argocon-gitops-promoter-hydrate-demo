@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "71a1b9652646498e5fdc6baad7d428873e79ac94",
+  "drySha": "da186ecbd7f75119f47c152bfd477c797e8406ba",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T21:12:14-05:00",
-  "subject": "chore: bump version to v1.0.1400",
+  "date": "2025-10-24T21:16:38-05:00",
+  "subject": "chore: bump version to v1.0.1404",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-08T10:31:15-05:00",
-        "subject": "chore(deps): bump github.com/quic-go/quic-go from 0.54.0 to 0.54.1 (#564)",
-        "body": "Bumps [github.com/quic-go/quic-go](https://github.com/quic-go/quic-go) from 0.54.0 to 0.54.1.\n- [Release notes](https://github.com/quic-go/quic-go/releases)\n- [Commits](https://github.com/quic-go/quic-go/compare/v0.54.0...v0.54.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/quic-go/quic-go\n  dependency-version: 0.54.1\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "cd3b7eacc9df93d9e78e6a2993c92103543d4af3",
+        "date": "2025-10-03T09:29:44-05:00",
+        "subject": "chore: fix flaky tests (#595)",
+        "body": "chore: fix flaky test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "f544ef4db7fb6caeba59227bee22814e389c2237",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
