@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "19cc71816f9a77d55464f31dac70419a7e1bb1fd",
+  "drySha": "ffbd16eaee663389460cfd4e57949237a464d9bb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T03:00:56-05:00",
-  "subject": "chore: bump version to v1.0.1443",
+  "date": "2025-10-25T03:02:15-05:00",
+  "subject": "chore: bump version to v1.0.1444",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-04T02:44:21-05:00",
-        "subject": "chore(deps): bump renovatebot/github-action from 41.7.2 to 43.0.18 (#626)",
-        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 41.7.2 to 43.0.18.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/v41.7.2...v43.0.18)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 43.0.18\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "2b9e93704f03cbcef315121f21d27c864e3c3367",
+        "date": "2025-10-10T11:00:05-05:00",
+        "subject": "chore(deps): bump github.com/quic-go/quic-go from 0.54.0 to 0.54.1 (#564)",
+        "body": "Bumps [github.com/quic-go/quic-go](https://github.com/quic-go/quic-go) from 0.54.0 to 0.54.1.\n- [Release notes](https://github.com/quic-go/quic-go/releases)\n- [Commits](https://github.com/quic-go/quic-go/compare/v0.54.0...v0.54.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/quic-go/quic-go\n  dependency-version: 0.54.1\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "cd3b7eacc9df93d9e78e6a2993c92103543d4af3",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
