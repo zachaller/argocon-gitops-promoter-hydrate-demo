@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "990b9675b8e9487b5af718c13c914f5d86d9c902",
+  "drySha": "bf1a36f23eb02280944a4011c1067ea3980feb65",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T01:13:28-05:00",
-  "subject": "chore: bump version to v1.0.1428",
+  "date": "2025-10-25T01:14:29-05:00",
+  "subject": "chore: bump version to v1.0.1429",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-21T16:38:24-05:00",
-        "subject": "chore(deps): bump github.com/prometheus/client_golang from 1.23.0 to 1.23.1 (#505)",
-        "body": "chore(deps): bump github.com/prometheus/client_golang\n\nBumps [github.com/prometheus/client_golang](https://github.com/prometheus/client_golang) from 1.23.0 to 1.23.1.\n- [Release notes](https://github.com/prometheus/client_golang/releases)\n- [Changelog](https://github.com/prometheus/client_golang/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/prometheus/client_golang/compare/v1.23.0...v1.23.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/client_golang\n  dependency-version: 1.23.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "88a4f5b43e830c920be313c71437829c5302559f",
+        "date": "2025-09-23T23:52:05-05:00",
+        "subject": "fix: printer column updates (#647)",
+        "body": "* fix: printer colulmn updates\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't show 0 indexes\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "834a4b382463b274e9567ad44d2f759cdbaf4830",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
