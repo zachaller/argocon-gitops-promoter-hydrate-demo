@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "141e7f524e8c1bc0f31e445ffd4f9d1561cc8f51",
+  "drySha": "a10bd5ef874f380398d73ed005d00d5d4cec74af",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T02:35:41-05:00",
-  "subject": "chore: bump version to v1.0.1441",
+  "date": "2025-10-25T02:36:56-05:00",
+  "subject": "chore: bump version to v1.0.1442",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-12T02:44:07-05:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.151.0 to 0.152.0 (#553)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 0.151.0 to 0.152.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v0.151.0...v0.152.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 0.152.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "6936e027e5b8ec7a0840ee7c891005d4a8065f15",
+        "date": "2025-10-01T03:08:25-05:00",
+        "subject": "chore(deps): bump docker/login-action from 3.5.0 to 3.6.0 (#530)",
+        "body": "Bumps [docker/login-action](https://github.com/docker/login-action) from 3.5.0 to 3.6.0.\n- [Release notes](https://github.com/docker/login-action/releases)\n- [Commits](https://github.com/docker/login-action/compare/184bdaa0721073962dff0199f1fb9940f07167d1...5e57cd118135c172c3672efd75eb46360885c0ef)\n\n---\nupdated-dependencies:\n- dependency-name: docker/login-action\n  dependency-version: 3.6.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "78b1eeaaad6818879c4bbcdc02f88eef047b5db5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
