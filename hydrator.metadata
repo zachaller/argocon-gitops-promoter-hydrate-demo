@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "4702bad519f9beea6d7c0b8bd46990041029662e",
+  "drySha": "b3fd5b7fd63be6258ff39511756ff5ff0e48aa96",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T01:15:51-05:00",
-  "subject": "chore: bump version to v1.0.1430",
+  "date": "2025-10-25T01:18:56-05:00",
+  "subject": "chore: bump version to v1.0.1432",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-03T20:12:02-05:00",
-        "subject": "chore(deps): bump docker/login-action from 3.5.0 to 3.6.0 (#530)",
-        "body": "Bumps [docker/login-action](https://github.com/docker/login-action) from 3.5.0 to 3.6.0.\n- [Release notes](https://github.com/docker/login-action/releases)\n- [Commits](https://github.com/docker/login-action/compare/184bdaa0721073962dff0199f1fb9940f07167d1...5e57cd118135c172c3672efd75eb46360885c0ef)\n\n---\nupdated-dependencies:\n- dependency-name: docker/login-action\n  dependency-version: 3.6.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "78b1eeaaad6818879c4bbcdc02f88eef047b5db5",
+        "date": "2025-10-14T12:54:18-05:00",
+        "subject": "chore(deps): bump github.com/gin-gonic/gin from 1.10.1 to 1.11.0 (#526)",
+        "body": "Bumps [github.com/gin-gonic/gin](https://github.com/gin-gonic/gin) from 1.10.1 to 1.11.0.\n- [Release notes](https://github.com/gin-gonic/gin/releases)\n- [Changelog](https://github.com/gin-gonic/gin/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/gin-gonic/gin/compare/v1.10.1...v1.11.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-gonic/gin\n  dependency-version: 1.11.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "71cad49f75fa6aeb6629cec6a306bf220a44033e",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
