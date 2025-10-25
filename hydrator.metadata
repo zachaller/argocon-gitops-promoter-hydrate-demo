@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "964a6ed073478fe1c804c5ee8d941bcab74e02d4",
+  "drySha": "5c92fc88c9a1a9ae3b6549835fefc00f182d173d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T23:15:56-05:00",
-  "subject": "chore: bump version to v1.0.1418",
+  "date": "2025-10-24T23:17:26-05:00",
+  "subject": "chore: bump version to v1.0.1419",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-15T17:40:31-05:00",
-        "subject": "chore(deps): bump actions/setup-go from 5.5.0 to 6.0.0 (#503)",
-        "body": "Bumps [actions/setup-go](https://github.com/actions/setup-go) from 5.5.0 to 6.0.0.\n- [Release notes](https://github.com/actions/setup-go/releases)\n- [Commits](https://github.com/actions/setup-go/compare/d35c59abb061a4a6fb18e82ac0862c26744d6ab5...44694675825211faa026b3c33043df3e48a5fa00)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-go\n  dependency-version: 6.0.0\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "b5605078b8b02868e6cc790ebb80d67257d38fb8",
+        "date": "2025-10-04T09:21:34-05:00",
+        "subject": "chore(deps): bump the k8s-deps group with 3 updates (#513)",
+        "body": "Bumps the k8s-deps group with 3 updates: [k8s.io/api](https://github.com/kubernetes/api), [k8s.io/apimachinery](https://github.com/kubernetes/apimachinery) and [k8s.io/client-go](https://github.com/kubernetes/client-go).\n\n\nUpdates `k8s.io/api` from 0.34.0 to 0.34.1\n- [Commits](https://github.com/kubernetes/api/compare/v0.34.0...v0.34.1)\n\nUpdates `k8s.io/apimachinery` from 0.34.0 to 0.34.1\n- [Commits](https://github.com/kubernetes/apimachinery/compare/v0.34.0...v0.34.1)\n\nUpdates `k8s.io/client-go` from 0.34.0 to 0.34.1\n- [Changelog](https://github.com/kubernetes/client-go/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/kubernetes/client-go/compare/v0.34.0...v0.34.1)\n\n---\nupdated-dependencies:\n- dependency-name: k8s.io/api\n  dependency-version: 0.34.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n- dependency-name: k8s.io/apimachinery\n  dependency-version: 0.34.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n- dependency-name: k8s.io/client-go\n  dependency-version: 0.34.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "a72ad0e62f80d9099d82d525118d33d1a662ff91",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
