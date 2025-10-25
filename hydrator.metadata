@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a73424b186e7c18a721a01a7668da8a7edcaed83",
+  "drySha": "291d93ffadde2771c6e51a290c2f7d83f8861d3d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T19:09:04-05:00",
-  "subject": "chore: bump version to v1.0.1380",
+  "date": "2025-10-24T19:10:56-05:00",
+  "subject": "chore: bump version to v1.0.1381",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-07T09:33:55-05:00",
-        "subject": "chore: update webhook provider detection (#565)",
-        "body": "* chore: update webhook provider detection\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "c68164458da692ae71f0421a0a32f1f881ff3621",
+        "date": "2025-10-14T01:50:20-05:00",
+        "subject": "chore(deps): bump actions/setup-node from 4 to 5 (#502)",
+        "body": "Bumps [actions/setup-node](https://github.com/actions/setup-node) from 4 to 5.\n- [Release notes](https://github.com/actions/setup-node/releases)\n- [Commits](https://github.com/actions/setup-node/compare/v4...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-node\n  dependency-version: '5'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "1ad8c4ab07d62eafa37fb02cd351e3b5320004d5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
