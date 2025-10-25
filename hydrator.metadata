@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8274ef2c95cbecf82c191f767df1a8634ad0fe4f",
+  "drySha": "a73424b186e7c18a721a01a7668da8a7edcaed83",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T18:39:04-05:00",
-  "subject": "chore: bump version to v1.0.1379",
+  "date": "2025-10-24T19:09:04-05:00",
+  "subject": "chore: bump version to v1.0.1380",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-19T05:07:10-05:00",
-        "subject": "feat: Add flag for ArgoCDCommitStatus manager to enable/disable local cluster (#560)",
-        "body": "* save point\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* ginkgo tests\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* clean up crd check\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* clean up\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* save point\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* rename\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* required\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add config\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* formate\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "94641b11d30b25ac22f69872a4bfca230e44ee1b",
+        "date": "2025-10-07T09:33:55-05:00",
+        "subject": "chore: update webhook provider detection (#565)",
+        "body": "* chore: update webhook provider detection\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "c68164458da692ae71f0421a0a32f1f881ff3621",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
