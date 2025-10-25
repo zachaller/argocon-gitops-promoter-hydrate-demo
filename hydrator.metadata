@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a034d2dea3f24a32831fe0dfeb06ca4feca18a38",
+  "drySha": "5d02875e44b63c0d10f67f905a5d43e1d3dc1f35",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T19:13:46-05:00",
-  "subject": "chore: bump version to v1.0.1383",
+  "date": "2025-10-24T19:14:47-05:00",
+  "subject": "chore: bump version to v1.0.1384",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-10T06:58:29-05:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.145.0 to 0.148.1 (#529)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 0.145.0 to 0.148.1.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v0.145.0...v0.148.1)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 0.148.1\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "35d9622e6a520ab5a23c2663294d05814df44503",
+        "date": "2025-09-24T02:17:50-05:00",
+        "subject": "chore: bump to go 1.25 (#609)",
+        "body": "* chore: upgrade to Go 1.25 and golangci-lint v2.5.0\n\n- Update Dockerfiles to use golang:1.25\n- Update GitHub Actions workflows to use Go 1.25\n- Update golangci-lint to v2.5.0 for Go 1.25 compatibility\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: address golangci-lint v2.5.0 errors\n\n- Replace exec.Command with exec.CommandContext for noctx compliance\n- Add context import to test/utils package\n- Add default cases to switch statements for revive compliance\n- Consolidate identical GitHub/Forgejo webhook handling branches\n- Fix package name mismatch: ginlogr -> logr to match directory\n- Replace fmt.Fprintf with fmt.Fprint where formatting is unnecessary\n- Refactor if-else chain to switch statement to avoid identical branches\n- Replace fmt.Errorf with errors.New for static error messages\n\nNote: contextcheck errors remain (12 issues) as they require\narchitectural changes to pass context through helper functions.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass context\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass context\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "cb4e9d37e82a560329925c3b8e68481d86fee519",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
