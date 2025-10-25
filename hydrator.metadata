@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "38a0b318e4aac4e7b08f54c233bf4b9da5a9816c",
+  "drySha": "f27e487ddabcea3f420e88c9228acbbcb7100e30",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T00:31:23-05:00",
-  "subject": "chore: bump version to v1.0.1426",
+  "date": "2025-10-25T00:32:24-05:00",
+  "subject": "chore: bump version to v1.0.1427",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-16T14:04:49-05:00",
-        "subject": "✨ Add Copilot instructions for repository (#579)",
-        "body": "* Initial plan\n\n* Add comprehensive Copilot instructions for the repository\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Address review feedback: update CRD list, remove file headers, fix naming conventions\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "d8d5c340d8c2b1514451bf1777a94e8737c52379",
+        "date": "2025-10-08T14:44:44-05:00",
+        "subject": "feat!: add performance tuning configurations and restructure ControllerConfiguration API (#549)",
+        "body": "* Add dynamic controller configuration with WorkQueue settings\n\n- Implement dual-client approach for reading configuration during setup\n- Add Direct methods to read from API server bypassing cache\n- Support generic rate limiter types for different request types\n- Update all controllers to use configurable WorkQueue settings\n- Add comprehensive ControllerConfiguration.yaml documentation\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix default config\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix validation\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* use correct configuration\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* switch\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* test depend on 7\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* if required remove omitempty\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* set reconcile routines to 1\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* set reconcile routines to 1 for CTP\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove lock logger\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "3c5ce77b29b10f77193b982baec5617ea19549a9",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
