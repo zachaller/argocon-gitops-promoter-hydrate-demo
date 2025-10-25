@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "da5078048a99b0663fc1f785ea4fd802686115e1",
+  "drySha": "48f95367849b1c9649d9b1e3373c10b0ad5f64e9",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T22:25:29-05:00",
-  "subject": "chore: bump version to v1.0.1411",
+  "date": "2025-10-24T22:26:30-05:00",
+  "subject": "chore: bump version to v1.0.1412",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-25T14:24:38-05:00",
-        "subject": "docs: add conventional PR title guidelines to copilot-instructions.md (#606)",
-        "body": "* Initial plan\n\n* docs: add conventional PR title guidelines to copilot-instructions.md\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "b6d191c4956157e36f843447a03bf2142c5e5d0b",
+        "date": "2025-10-12T03:19:57-05:00",
+        "subject": "fix: avoid unnecessary Update after Create (#583) (#585)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "f1ca27fec62825f7f6eb3fa49fca786a6c8d3223",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
