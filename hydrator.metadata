@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "01872420cf48cd85a14450dfdf9b742f14b79d66",
+  "drySha": "62c04b572abb87f0fb79e137fb2faaea9129f769",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T04:20:03-05:00",
-  "subject": "chore: bump version to v1.0.1455",
+  "date": "2025-10-25T04:21:09-05:00",
+  "subject": "chore: bump version to v1.0.1456",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-08T00:51:28-05:00",
-        "subject": "✨ Add Copilot instructions for repository (#579)",
-        "body": "* Initial plan\n\n* Add comprehensive Copilot instructions for the repository\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Address review feedback: update CRD list, remove file headers, fix naming conventions\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "d8d5c340d8c2b1514451bf1777a94e8737c52379",
+        "date": "2025-09-26T11:51:17-05:00",
+        "subject": "chore(deps): bump docker/login-action from 3.5.0 to 3.6.0 (#530)",
+        "body": "Bumps [docker/login-action](https://github.com/docker/login-action) from 3.5.0 to 3.6.0.\n- [Release notes](https://github.com/docker/login-action/releases)\n- [Commits](https://github.com/docker/login-action/compare/184bdaa0721073962dff0199f1fb9940f07167d1...5e57cd118135c172c3672efd75eb46360885c0ef)\n\n---\nupdated-dependencies:\n- dependency-name: docker/login-action\n  dependency-version: 3.6.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "78b1eeaaad6818879c4bbcdc02f88eef047b5db5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
