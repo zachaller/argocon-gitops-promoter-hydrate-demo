@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5933514c44c592af500f96b5d5cd76491b44c46f",
+  "drySha": "19a18f3a66e4bb0105134b2fb92e9caca18d2ffd",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T20:26:32-05:00",
-  "subject": "chore: bump version to v1.0.1394",
+  "date": "2025-10-24T20:27:33-05:00",
+  "subject": "chore: bump version to v1.0.1395",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-23T15:57:55-05:00",
-        "subject": "chore: do not log as Error for history (#524)",
-        "body": "* chore: do not log as Error for history\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test code\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove test code\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "e189ddb2e5790e15770822f7a5e4b169d0be192b",
+        "date": "2025-09-22T20:57:27-05:00",
+        "subject": "chore(deps): bump github.com/gin-contrib/gzip from 1.2.3 to 1.2.4 (#567)",
+        "body": "Bumps [github.com/gin-contrib/gzip](https://github.com/gin-contrib/gzip) from 1.2.3 to 1.2.4.\n- [Release notes](https://github.com/gin-contrib/gzip/releases)\n- [Changelog](https://github.com/gin-contrib/gzip/blob/master/.goreleaser.yaml)\n- [Commits](https://github.com/gin-contrib/gzip/compare/v1.2.3...v1.2.4)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-contrib/gzip\n  dependency-version: 1.2.4\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "91b90bd2f9d82c1c80a83262efe53eb1c58aec88",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
