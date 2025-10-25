@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "93694fd4ce69942a0fb1dd2668cc4a27a5daa7a1",
+  "drySha": "71375f495e10c9bea8b3b12c714fe68500c98d7c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T01:20:31-05:00",
-  "subject": "chore: bump version to v1.0.1433",
+  "date": "2025-10-25T01:21:32-05:00",
+  "subject": "chore: bump version to v1.0.1434",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-24T06:28:53-05:00",
-        "subject": "fix: return error instead of panicking (#546)",
-        "body": "* fix: return error instead of panicing\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "15087d1a2e3f655592954259149462f719f5b437",
+        "date": "2025-10-07T13:46:43-05:00",
+        "subject": "feat(ps): improve previous env commit status description (#514)",
+        "body": "* feat(ps): improve previous env commit status description\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* update on description change\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* clarify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* bug fixes\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update internal/controller/promotionstrategy_controller.go\n\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>",
+        "sha": "0eb95624fdac5ffbbbbeaaf1f7da98dbe0db77ec",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
