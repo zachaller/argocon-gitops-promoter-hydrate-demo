@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "778779e85aed1d7f94e1832de581b79c1f8c1c68",
+  "drySha": "8d7e46666c0a6641af45c87b421cb8f3ddfdeae5",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T22:47:31-05:00",
-  "subject": "chore: bump version to v1.0.1415",
+  "date": "2025-10-24T22:48:32-05:00",
+  "subject": "chore: bump version to v1.0.1416",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-09-30T04:22:12-05:00",
-        "subject": "fix(pullrequest): avoid url construction failure on FindOpen (#601)",
-        "body": "* fix(pullrequest): avoid url construction failure on FindOpen\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "22e005ad37fb550072d4ca90f10aa9fd9c81381d",
+        "date": "2025-10-15T13:47:22-05:00",
+        "subject": "fix(ps): don't update CS when there is no pending change (#597)",
+        "body": "* fix: don't update CS when there is no pending change\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* typo\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: don't update CS when there is no pending change\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't block prod or higher envs from updating\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* change text\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove line ref\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "007c6f05a8ceeb6dfb98afd4ae488e2551c06a47",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
