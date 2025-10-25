@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d712d9e2db8790a3a1753c2301475b9061345489",
+  "drySha": "71a1b9652646498e5fdc6baad7d428873e79ac94",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-24T20:32:14-05:00",
-  "subject": "chore: bump version to v1.0.1399",
+  "date": "2025-10-24T21:12:14-05:00",
+  "subject": "chore: bump version to v1.0.1400",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-15T16:59:13-05:00",
-        "subject": "feat(ps): improve previous env commit status description (#514)",
-        "body": "* feat(ps): improve previous env commit status description\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* update on description change\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* clarify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* bug fixes\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update internal/controller/promotionstrategy_controller.go\n\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>",
-        "sha": "0eb95624fdac5ffbbbbeaaf1f7da98dbe0db77ec",
+        "date": "2025-10-08T10:31:15-05:00",
+        "subject": "chore(deps): bump github.com/quic-go/quic-go from 0.54.0 to 0.54.1 (#564)",
+        "body": "Bumps [github.com/quic-go/quic-go](https://github.com/quic-go/quic-go) from 0.54.0 to 0.54.1.\n- [Release notes](https://github.com/quic-go/quic-go/releases)\n- [Commits](https://github.com/quic-go/quic-go/compare/v0.54.0...v0.54.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/quic-go/quic-go\n  dependency-version: 0.54.1\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "cd3b7eacc9df93d9e78e6a2993c92103543d4af3",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
