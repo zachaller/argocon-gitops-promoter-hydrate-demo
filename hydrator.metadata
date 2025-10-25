@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "71375f495e10c9bea8b3b12c714fe68500c98d7c",
+  "drySha": "62f7f8a52b9a97b937f296e230f7b6f577ce8104",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-25T01:21:32-05:00",
-  "subject": "chore: bump version to v1.0.1434",
+  "date": "2025-10-25T01:48:26-05:00",
+  "subject": "chore: bump version to v1.0.1435",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-07T13:46:43-05:00",
-        "subject": "feat(ps): improve previous env commit status description (#514)",
-        "body": "* feat(ps): improve previous env commit status description\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* update on description change\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* clarify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* bug fixes\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update internal/controller/promotionstrategy_controller.go\n\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>",
-        "sha": "0eb95624fdac5ffbbbbeaaf1f7da98dbe0db77ec",
+        "date": "2025-09-29T13:22:48-05:00",
+        "subject": "chore(deps): bump github.com/prometheus/client_golang from 1.23.1 to 1.23.2 (#508)",
+        "body": "chore(deps): bump github.com/prometheus/client_golang\n\nBumps [github.com/prometheus/client_golang](https://github.com/prometheus/client_golang) from 1.23.1 to 1.23.2.\n- [Release notes](https://github.com/prometheus/client_golang/releases)\n- [Changelog](https://github.com/prometheus/client_golang/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/prometheus/client_golang/compare/v1.23.1...v1.23.2)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/client_golang\n  dependency-version: 1.23.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "eff4643e9b53740d84c16b979fde698fc3aac37c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
