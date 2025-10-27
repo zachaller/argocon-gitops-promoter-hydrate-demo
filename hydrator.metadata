@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "148a697bbda568a5a07eb44eeaa54002a641f14c",
+  "drySha": "2fad7fa0ec1ed58db5858be42a6e87b071614ff2",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-10-27T10:56:51-05:00",
-  "subject": "chore: bump version to v1.0.1574",
+  "date": "2025-10-27T11:05:05-05:00",
+  "subject": "chore: bump version to v1.0.1576",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-20T18:10:16-05:00",
-        "subject": "✨ Add Copilot instructions for repository (#579)",
-        "body": "* Initial plan\n\n* Add comprehensive Copilot instructions for the repository\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Address review feedback: update CRD list, remove file headers, fix naming conventions\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "d8d5c340d8c2b1514451bf1777a94e8737c52379",
+        "date": "2025-09-23T20:05:22-05:00",
+        "subject": "chore: improve git to not use filesystem and fix races (#593)",
+        "body": "* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "94971bc43828f74ae2c5b692147e2c1050b67bb8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
