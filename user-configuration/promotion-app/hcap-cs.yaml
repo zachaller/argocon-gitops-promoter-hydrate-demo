@@ -12,5 +12,5 @@ spec:
   gitRepositoryRef:
     name: argocon-demo
   name: production/hcap
-  sha: ""
+  sha: "15ad"
   url: https://example.com
