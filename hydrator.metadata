@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8898e0740794f3cd9a4488a205559b5affa4e22a",
+  "drySha": "3004b5ff49665b435af5924e09417a763321a552",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T10:50:00-05:00",
-  "subject": "chore: bump version to v1.0.1593",
+  "date": "2025-11-13T11:00:16-05:00",
+  "subject": "chore: bump version to v1.0.1594",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-28T00:20:38-04:00",
-        "subject": "chore(deps): update actions/checkout digest to 08c6903 (#650)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "92d8361c2ebc391b1453c9b15a233fcf6418a614",
+        "date": "2025-10-16T11:57:45-04:00",
+        "subject": "docs: Add Intuit to USERS.md (#669)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "f4832574f85e6a9b17e0950c80cbc43e01a187d8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
