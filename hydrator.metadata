@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c2dd99040573008058498852700a8f79e801c082",
+  "drySha": "06f6d033601a16ac8973940bd9b69bca3fc4df60",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T13:09:26-05:00",
-  "subject": "chore: bump version to v1.0.1601",
+  "date": "2025-11-13T13:19:02-05:00",
+  "subject": "chore: bump version to v1.0.1602",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-27T15:07:17-04:00",
-        "subject": "chore: bump to go 1.25 (#609)",
-        "body": "* chore: upgrade to Go 1.25 and golangci-lint v2.5.0\n\n- Update Dockerfiles to use golang:1.25\n- Update GitHub Actions workflows to use Go 1.25\n- Update golangci-lint to v2.5.0 for Go 1.25 compatibility\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: address golangci-lint v2.5.0 errors\n\n- Replace exec.Command with exec.CommandContext for noctx compliance\n- Add context import to test/utils package\n- Add default cases to switch statements for revive compliance\n- Consolidate identical GitHub/Forgejo webhook handling branches\n- Fix package name mismatch: ginlogr -> logr to match directory\n- Replace fmt.Fprintf with fmt.Fprint where formatting is unnecessary\n- Refactor if-else chain to switch statement to avoid identical branches\n- Replace fmt.Errorf with errors.New for static error messages\n\nNote: contextcheck errors remain (12 issues) as they require\narchitectural changes to pass context through helper functions.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass context\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass context\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "cb4e9d37e82a560329925c3b8e68481d86fee519",
+        "date": "2025-10-28T03:21:39-04:00",
+        "subject": "Add mergeSha field to PullRequest spec to prevent race condition during merge (#573)",
+        "body": "* Initial plan\n\n* Add mergeSha field to PullRequest spec and update SCM providers\n\n- Add required mergeSha field to PullRequestSpec\n- Update CTP controller to populate mergeSha with proposed hydrated SHA\n- Update GitHub provider to use SHA in PullRequestOptions\n- Update GitLab provider to use SHA in AcceptMergeRequestOptions\n- Update Forgejo provider to use HeadCommitId in MergePullRequestOption\n- Update Fake provider to validate SHA before merge\n- Regenerate CRDs with new field\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Add test to verify mergeSha field is set correctly\n\n- Add test that verifies mergeSha is populated with proposed hydrated SHA\n- Test confirms mergeSha matches the branch HEAD at PR creation time\n- This ensures the race condition is prevented by SCM providers\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Address PR feedback: Add validation, update example, and backwards compatibility\n\n- Add regex, minLength, and maxLength validation to mergeSha field (^[a-fA-F0-9]+$, 1-64)\n- Update example PullRequest.yaml in docs with mergeSha field\n- Add backwards compatibility check in mergePullRequests to populate mergeSha for existing PRs\n- Update test fixtures to include mergeSha field\n- All tests passing (35/35 specs)\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Run make build-installer to update installation manifests\n\n- Update dist/install.yaml with mergeSha field and validation\n- Add mergeSha to required fields in PullRequest CRD\n- Include minLength=1, maxLength=64, and pattern validation\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Refactor: simplify fake provider by removing duplicate function\n\n- Update runGitCmd to return output instead of just error\n- Remove runGitCmdOutput function as it's now redundant\n- Update all call sites to handle the returned output (discarding where not needed)\n- All tests passing (35/35 specs)\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "f4e403132cedadb9dd7a3dab7eef47487ed6474f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
