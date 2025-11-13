@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8afa7603a507626ed6122b4adff33f1a09df65fd",
+  "drySha": "5747b574ce1f1d1898b578396c5459c58e1c69ff",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T10:37:21-05:00",
-  "subject": "chore: bump version to v1.0.1590",
+  "date": "2025-11-13T10:37:23-05:00",
+  "subject": "chore: bump version to v1.0.1591",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-23T06:57:32-04:00",
-        "subject": "chore(deps): bump actions/checkout from 4 to 5 (#627)",
-        "body": "Bumps [actions/checkout](https://github.com/actions/checkout) from 4 to 5.\n- [Release notes](https://github.com/actions/checkout/releases)\n- [Commits](https://github.com/actions/checkout/compare/v4...v5)\n\n---\nupdated-dependencies:\n- dependency-name: actions/checkout\n  dependency-version: '5'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "cd2e81eee0b730d4ab579da4fa580284babd9ec1",
+        "date": "2025-11-04T15:27:22-05:00",
+        "subject": "fix: printer column updates (#647)",
+        "body": "* fix: printer colulmn updates\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't show 0 indexes\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "834a4b382463b274e9567ad44d2f759cdbaf4830",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
