@@ -1,17 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "98ca32785aa4a3bc8322e6f3b4f7bdcd934065bb",
+  "drySha": "5747b574ce1f1d1898b578396c5459c58e1c69ff",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T09:40:14-05:00",
-  "subject": "chore: bump version to v1.0.1589",
+  "date": "2025-11-13T10:37:23-05:00",
+  "subject": "chore: bump version to v1.0.1591",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-16T07:18:32-04:00",
-        "subject": "chore: update configuration",
-        "sha": "9d5ccef278218dea4caa903bb6abb9ed974a1d90",
+        "date": "2025-11-04T15:27:22-05:00",
+        "subject": "fix: printer column updates (#647)",
+        "body": "* fix: printer colulmn updates\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't show 0 indexes\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "834a4b382463b274e9567ad44d2f759cdbaf4830",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
