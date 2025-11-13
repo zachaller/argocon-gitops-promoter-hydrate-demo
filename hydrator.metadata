@@ -1,8 +1,20 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3ea7aad1f4855f8a461c70d52d4f5b5cb10a689b",
+  "drySha": "8bf301771accf3ff781a6969b087ea20e81ce0c1",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T14:12:01-05:00",
-  "subject": "move to default",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
+  "date": "2025-11-13T14:14:43-05:00",
+  "subject": "chore: bump version to v1.0.1603",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
+  "references": [
+    {
+      "commit": {
+        "author": "\"Zach Aller\" <code@example.com>",
+        "date": "2025-10-18T10:40:15-04:00",
+        "subject": "chore(deps): bump github.com/onsi/ginkgo/v2 from 2.26.0 to 2.27.1 (#638)",
+        "body": "Bumps [github.com/onsi/ginkgo/v2](https://github.com/onsi/ginkgo) from 2.26.0 to 2.27.1.\n- [Release notes](https://github.com/onsi/ginkgo/releases)\n- [Changelog](https://github.com/onsi/ginkgo/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/onsi/ginkgo/compare/v2.26.0...v2.27.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/onsi/ginkgo/v2\n  dependency-version: 2.27.1\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "d1502fbb8fa4cb6542b2c55abec5affb0ef346c2",
+        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
+      }
+    }
+  ]
 }
