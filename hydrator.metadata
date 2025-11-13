@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5747b574ce1f1d1898b578396c5459c58e1c69ff",
+  "drySha": "1ef1a5f6a5f8bb72302a69d3dc424c6b950b3df6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T10:37:23-05:00",
-  "subject": "chore: bump version to v1.0.1591",
+  "date": "2025-11-13T10:40:18-05:00",
+  "subject": "chore: bump version to v1.0.1592",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-11-04T15:27:22-05:00",
-        "subject": "fix: printer column updates (#647)",
-        "body": "* fix: printer colulmn updates\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't show 0 indexes\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "834a4b382463b274e9567ad44d2f759cdbaf4830",
+        "date": "2025-10-15T23:28:00-04:00",
+        "subject": "chore(deps): update actions/setup-go digest to c0137ca (#651)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "e94500be8f90456543c821def20108a82fdc6814",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
