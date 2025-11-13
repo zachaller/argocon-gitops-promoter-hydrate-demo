@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3aefc9e1b2627790bb4ee5b6d100187144914e57",
+  "drySha": "d26793db3bf195a1f1e12aca8a984446dd5f913d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T12:44:39-05:00",
-  "subject": "chore: bump version to v1.0.1597",
+  "date": "2025-11-13T12:52:42-05:00",
+  "subject": "chore: bump version to v1.0.1598",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-19T22:37:02-04:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.148.1 to 0.149.0 (#541)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 0.148.1 to 0.149.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v0.148.1...v0.149.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 0.149.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "16c89b687f567ce0771236594dbc32103d6239db",
+        "date": "2025-10-10T02:57:48-04:00",
+        "subject": "fix: make sure test controllers are synced (#670)",
+        "body": "* fix: make sure test controllers are synced\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: improve test setup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: bump time\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't set etcd config\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add more sync gurads\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: wait for engage\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "b812b42a535ccd3cf0a2678b344e446f35438e06",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
