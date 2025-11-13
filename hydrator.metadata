@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "67466e34b52d57173f450a0f3b9a8c8a3aa1c458",
+  "drySha": "06f6d033601a16ac8973940bd9b69bca3fc4df60",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T13:09:20-05:00",
-  "subject": "chore: bump version to v1.0.1600",
+  "date": "2025-11-13T13:19:02-05:00",
+  "subject": "chore: bump version to v1.0.1602",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-15T02:58:08-04:00",
-        "subject": "chore(deps): bump actions/setup-python from 5 to 6 (#594)",
-        "body": "* chore(deps): bump actions/setup-python from 5 to 6\n\nBumps [actions/setup-python](https://github.com/actions/setup-python) from 5 to 6.\n- [Release notes](https://github.com/actions/setup-python/releases)\n- [Commits](https://github.com/actions/setup-python/compare/v5...v6)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-python\n  dependency-version: '6'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\n\n* pin\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: dependabot[bot] <support@github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "f5816c05e0a984a3e940cc525f24e86fe6d5a5e4",
+        "date": "2025-10-28T03:21:39-04:00",
+        "subject": "Add mergeSha field to PullRequest spec to prevent race condition during merge (#573)",
+        "body": "* Initial plan\n\n* Add mergeSha field to PullRequest spec and update SCM providers\n\n- Add required mergeSha field to PullRequestSpec\n- Update CTP controller to populate mergeSha with proposed hydrated SHA\n- Update GitHub provider to use SHA in PullRequestOptions\n- Update GitLab provider to use SHA in AcceptMergeRequestOptions\n- Update Forgejo provider to use HeadCommitId in MergePullRequestOption\n- Update Fake provider to validate SHA before merge\n- Regenerate CRDs with new field\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Add test to verify mergeSha field is set correctly\n\n- Add test that verifies mergeSha is populated with proposed hydrated SHA\n- Test confirms mergeSha matches the branch HEAD at PR creation time\n- This ensures the race condition is prevented by SCM providers\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Address PR feedback: Add validation, update example, and backwards compatibility\n\n- Add regex, minLength, and maxLength validation to mergeSha field (^[a-fA-F0-9]+$, 1-64)\n- Update example PullRequest.yaml in docs with mergeSha field\n- Add backwards compatibility check in mergePullRequests to populate mergeSha for existing PRs\n- Update test fixtures to include mergeSha field\n- All tests passing (35/35 specs)\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Run make build-installer to update installation manifests\n\n- Update dist/install.yaml with mergeSha field and validation\n- Add mergeSha to required fields in PullRequest CRD\n- Include minLength=1, maxLength=64, and pattern validation\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* Refactor: simplify fake provider by removing duplicate function\n\n- Update runGitCmd to return output instead of just error\n- Remove runGitCmdOutput function as it's now redundant\n- Update all call sites to handle the returned output (discarding where not needed)\n- All tests passing (35/35 specs)\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "f4e403132cedadb9dd7a3dab7eef47487ed6474f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
