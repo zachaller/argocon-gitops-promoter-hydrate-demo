@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "16203005dec280fa1e6347444160b123f0f40e65",
+  "drySha": "c2dd99040573008058498852700a8f79e801c082",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T12:57:52-05:00",
-  "subject": "chore: bump version to v1.0.1599",
+  "date": "2025-11-13T13:09:26-05:00",
+  "subject": "chore: bump version to v1.0.1601",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-28T20:54:15-04:00",
-        "subject": "chore: use watch predicate for watching argocd apps (#658)",
-        "body": "chore: use watach predicate for watching argocd apps\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "48648139bfc7b5487262bcd3b7462b12427d57f5",
+        "date": "2025-10-27T15:07:17-04:00",
+        "subject": "chore: bump to go 1.25 (#609)",
+        "body": "* chore: upgrade to Go 1.25 and golangci-lint v2.5.0\n\n- Update Dockerfiles to use golang:1.25\n- Update GitHub Actions workflows to use Go 1.25\n- Update golangci-lint to v2.5.0 for Go 1.25 compatibility\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: address golangci-lint v2.5.0 errors\n\n- Replace exec.Command with exec.CommandContext for noctx compliance\n- Add context import to test/utils package\n- Add default cases to switch statements for revive compliance\n- Consolidate identical GitHub/Forgejo webhook handling branches\n- Fix package name mismatch: ginlogr -> logr to match directory\n- Replace fmt.Fprintf with fmt.Fprint where formatting is unnecessary\n- Refactor if-else chain to switch statement to avoid identical branches\n- Replace fmt.Errorf with errors.New for static error messages\n\nNote: contextcheck errors remain (12 issues) as they require\narchitectural changes to pass context through helper functions.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass context\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass context\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "cb4e9d37e82a560329925c3b8e68481d86fee519",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
