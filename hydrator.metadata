@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3004b5ff49665b435af5924e09417a763321a552",
+  "drySha": "3faf187533b0261f355573121027289ddc151a47",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T11:00:16-05:00",
-  "subject": "chore: bump version to v1.0.1594",
+  "date": "2025-11-13T11:02:54-05:00",
+  "subject": "chore: bump version to v1.0.1595",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-16T11:57:45-04:00",
-        "subject": "docs: Add Intuit to USERS.md (#669)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "f4832574f85e6a9b17e0950c80cbc43e01a187d8",
+        "date": "2025-10-12T23:26:17-04:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.154.0 to 0.156.0 (#566)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 0.154.0 to 0.156.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v0.154.0...v0.156.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 0.156.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "0883d7de783fea316818c009cab795fb41cd2ea8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
