@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d26793db3bf195a1f1e12aca8a984446dd5f913d",
+  "drySha": "16203005dec280fa1e6347444160b123f0f40e65",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T12:52:42-05:00",
-  "subject": "chore: bump version to v1.0.1598",
+  "date": "2025-11-13T12:57:52-05:00",
+  "subject": "chore: bump version to v1.0.1599",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-10T02:57:48-04:00",
-        "subject": "fix: make sure test controllers are synced (#670)",
-        "body": "* fix: make sure test controllers are synced\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: improve test setup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: bump time\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't set etcd config\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add more sync gurads\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: wait for engage\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "b812b42a535ccd3cf0a2678b344e446f35438e06",
+        "date": "2025-10-28T20:54:15-04:00",
+        "subject": "chore: use watch predicate for watching argocd apps (#658)",
+        "body": "chore: use watach predicate for watching argocd apps\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "48648139bfc7b5487262bcd3b7462b12427d57f5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
