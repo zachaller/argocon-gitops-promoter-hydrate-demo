@@ -1,8 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5b76ceb75ea8eded866ea8bca0a70f3b6f594db8",
+  "drySha": "aec996a3b4d427f75889f4fc1e05de69a97b1f06",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-18T14:36:06-08:00",
+  "date": "2025-11-18T15:11:13-08:00",
   "subject": "add git cs yaml",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
 }
