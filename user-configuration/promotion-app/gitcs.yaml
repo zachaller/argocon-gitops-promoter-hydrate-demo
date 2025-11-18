@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   promotionStrategyRef:
-    name: promotion-strategy-sample
+    name: argocon-demo
   name: revert-check
   # This expression returns false if EITHER condition is true:
   # 1. Commit message starts with "Revert" → fail
