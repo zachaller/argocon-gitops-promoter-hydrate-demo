@@ -7,7 +7,7 @@ spec:
   promotionStrategyRef:
     name: argocon-demo
   name: revert-check
-  description: "Unknown change on hydrated branch"
+  description: "Non-promoter changes on running environment"
   # This expression returns false if EITHER condition is true:
   # 1. Commit message starts with "Revert" → fail
   # 2. Commit has a "Git-commit-status: pending" trailer → fail
