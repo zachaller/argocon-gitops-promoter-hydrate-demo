@@ -1,20 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "90b9ac5c3f02e2a62cca31aa790fdaadd6eb3613",
+  "drySha": "ee32a28c87de34022e3d45a885212d192a183790",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-11-13T14:45:15-05:00",
-  "subject": "chore: bump version to v1.0.1605",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
-  "references": [
-    {
-      "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-31T01:09:16-04:00",
-        "subject": "chore: update webhook provider detection (#565)",
-        "body": "* chore: update webhook provider detection\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "c68164458da692ae71f0421a0a32f1f881ff3621",
-        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
-      }
-    }
-  ]
+  "date": "2025-11-18T09:40:58-08:00",
+  "subject": "add git cs yaml",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
 }
