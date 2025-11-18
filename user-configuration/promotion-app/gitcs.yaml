@@ -12,5 +12,5 @@ spec:
   # 1. Commit message starts with "Revert" → fail
   # 2. Commit has a "Git-commit-status: pending" trailer → fail
   # The validation passes only if NEITHER condition is true
-  expression: '!(startsWith(Commit.Message, "Revert") || (has(Commit.Trailers["Git-commit-status"]) && Commit.Trailers["Git-commit-status"][0] == "pending"))'
+  expression: '!(matches(Commit.Message, "^Revert") || (has(Commit.Trailers["Git-commit-status"]) && Commit.Trailers["Git-commit-status"][0] == "pending"))'
 
