@@ -13,6 +13,5 @@ spec:
   # 2. Commit body starts with "Revert" → fail
   # 3. Commit has a "Git-commit-status: pending" trailer → fail
   # The validation passes only if NONE of these conditions are true
-  # Note: 'in' is used to check map key existence
-  expression: '!(startsWith(Commit.Subject, "Revert") || startsWith(Commit.Body, "Revert") || ("Git-commit-status" in Commit.Trailers && Commit.Trailers["Git-commit-status"][0] == "pending"))'
+  expression: '!(Commit.Subject startsWith "Revert" || Commit.Body startsWith "Revert" || ("Git-commit-status" in Commit.Trailers && Commit.Trailers["Git-commit-status"][0] == "pending"))'
 
