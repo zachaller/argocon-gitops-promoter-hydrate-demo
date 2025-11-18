@@ -8,3 +8,4 @@ resources:
   - scmProvider.yaml
   - hcap-cs.yaml
   - argocd-commitstatus.yaml
+  - gitcs.yaml
