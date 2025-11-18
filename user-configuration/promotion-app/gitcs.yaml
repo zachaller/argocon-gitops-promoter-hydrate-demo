@@ -2,6 +2,7 @@ apiVersion: promoter.argoproj.io/v1alpha1
 kind: GitCommitStatus
 metadata:
   name: gitcommitstatus
+  namespace: default
 spec:
   promotionStrategyRef:
     name: promotion-strategy-sample
