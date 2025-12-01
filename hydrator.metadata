@@ -10,7 +10,7 @@
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
         "date": "2025-11-10T00:33:37-06:00",
-        "subject": "chore: improve git to not use filesystem and fix races (#593)",
+        "subject": "chore: improve git to notd use filesystem and fix races (#593)",
         "body": "* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
         "sha": "94971bc43828f74ae2c5b692147e2c1050b67bb8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
