@@ -1,7 +1,7 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8bd76dbba9676c16dfadeca5ac49e902675fca30",
+  "drySha": "143f9223196a517dda0943b59ebae1dc7a8bdcdb",
   "author": "Zach Aller <zachaller@users.noreply.github.com>",
-  "date": "2025-12-02T10:11:35-06:00",
-  "subject": "Update kustomization.yaml"
+  "date": "2025-12-02T10:12:39-06:00",
+  "subject": "Uncomment gitcs.yaml in kustomization.yaml"
 }
