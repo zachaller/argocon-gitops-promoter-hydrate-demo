@@ -41,7 +41,7 @@ metadata:
   annotations:
     version: v1.0.1611
   labels:
-    db-schema: v1.4.2
+    db-schema: v1.4.3
     environment: staging
   name: canary-demo
   namespace: e2e-staging
