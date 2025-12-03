@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "98e7f428d9672f593f6b90226ef2af480b7094f4",
+  "drySha": "fec1bb446dbb077b605e02a524b44be6be50f6d1",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-12-01T13:34:13-06:00",
-  "subject": "chore: bump version to v1.0.1609",
+  "date": "2025-12-03T13:46:11-06:00",
+  "subject": "chore: bump version to v1.0.1611",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-11-10T00:33:37-06:00",
-        "subject": "chore: improve git to notd use filesystem and fix races (#593)",
-        "body": "* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: improve git to not use filesystem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: remove race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "94971bc43828f74ae2c5b692147e2c1050b67bb8",
+        "date": "2025-11-11T06:25:17-06:00",
+        "subject": "fix: fallback to create when GitHub check run update returns 404 (#710)",
+        "body": "* Initial plan\n\n* Initial exploration: Understand the issue with GitHub Checks API 404 handling\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* feat: add 404 fallback for GitHub Checks API update operations\n\nWhen a CommitStatus was created using the legacy Commit Status API instead\nof the Checks API, it may have an invalid check run ID. When attempting to\nupdate such a check run, GitHub returns a 404 error. This change detects\n404 errors and falls back to creating a new check run instead, allowing\nthe transition from Commit Status API to Checks API to work seamlessly.\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* chore: revert unrelated package-lock.json changes\n\nRestored package-lock.json files to their original state before the PR.\nThese changes were not related to the GitHub Checks API fix.\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "c9e6dc0d60251857164ba67cf668569c8c3dc7bc",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
