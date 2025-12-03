@@ -1,7 +1,7 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "71c31d336bc46c72c5a6234fcd672a3aeb2f6c91",
+  "drySha": "36c3121e4635bd1f5f9440a99a5b6d07567cf459",
   "author": "Zach Aller <zachaller@users.noreply.github.com>",
-  "date": "2025-12-03T14:52:25-06:00",
-  "subject": "Update db-schema version to v1.4.4"
+  "date": "2025-12-03T14:56:25-06:00",
+  "subject": "Update rollout.yaml"
 }
