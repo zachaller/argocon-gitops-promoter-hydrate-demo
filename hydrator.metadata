@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "434992584f4f86fce139b9bb395d957a56100fbb",
+  "drySha": "9a4a5d8d6ea4203534e17dd38ab45aa84780a8d3",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-12-04T10:03:32-06:00",
-  "subject": "chore: bump version to v1.0.1628",
+  "date": "2025-12-04T10:05:53-06:00",
+  "subject": "chore: bump version to v1.0.1630",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-31T12:59:43-05:00",
-        "subject": "chore(deps): bump renovatebot/github-action from 44.0.3 to 44.0.4 (#734)",
-        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 44.0.3 to 44.0.4.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/v44.0.3...v44.0.4)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 44.0.4\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "34ffab8432a8de4eef9ef2ad165e0b87ea070bac",
+        "date": "2025-11-27T06:25:49-06:00",
+        "subject": "fix(ctp): list PRs in ns (#708)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "30ef17f01f03f603cc3f9556c5a1867f8e7c7ce8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
