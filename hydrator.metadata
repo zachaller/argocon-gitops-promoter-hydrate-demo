@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "39a1f3ac2e0663b8f153aa1950423dd0f511d3d7",
+  "drySha": "4f73b120e7dc6270015ca88fcf76e51b0dad317c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-12-03T16:16:49-06:00",
-  "subject": "chore: bump version to v1.0.1614",
+  "date": "2025-12-04T09:09:28-06:00",
+  "subject": "chore: bump version to v1.0.1616",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-10-31T03:48:01-05:00",
-        "subject": "fix: change text creation order to avoid race (#681)",
-        "body": "fix: change order to avoid race\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "c6b1003621b66969736e900fbaceebbb51be253d",
+        "date": "2025-11-02T11:42:04-06:00",
+        "subject": "chore(deps): bump sigs.k8s.io/multicluster-runtime from 0.20.4-alpha.7.0.20250715171424-5a71e2a8172e to 0.22.0-beta.0 (#646)",
+        "body": "* chore(deps): bump sigs.k8s.io/multicluster-runtime\n\nBumps [sigs.k8s.io/multicluster-runtime](https://github.com/kubernetes-sigs/multicluster-runtime) from 0.20.4-alpha.7.0.20250715171424-5a71e2a8172e to 0.22.0-beta.0.\n- [Release notes](https://github.com/kubernetes-sigs/multicluster-runtime/releases)\n- [Changelog](https://github.com/kubernetes-sigs/multicluster-runtime/blob/main/RELEASE.md)\n- [Commits](https://github.com/kubernetes-sigs/multicluster-runtime/commits/v0.22.0-beta.0)\n\n---\nupdated-dependencies:\n- dependency-name: sigs.k8s.io/multicluster-runtime\n  dependency-version: 0.22.0-beta.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\n\n* update schema option structure\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: dependabot[bot] <support@github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "d23153e3eb9fa48cd2e91f4ebf11e1ef37e4e71b",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
