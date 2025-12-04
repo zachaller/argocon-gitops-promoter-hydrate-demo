@@ -1,7 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6d2fd36233e503b9f525ce3b90fbfe3c2cbe372c",
+  "drySha": "281fd27e21eb3b6ec17dde5bb0d196d9cbe4e96a",
   "author": "Zach Aller <zachaller@users.noreply.github.com>",
-  "date": "2025-12-04T16:22:22-06:00",
-  "subject": "Update rollout.yaml"
+  "date": "2025-12-04T16:34:40-06:00",
+  "subject": "Update rollout.yaml",
+  "body": "bump changes again to see if we can un-delete the rollout\n"
 }
