@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "dc62ce380289ddfc65b18dd77c0f56bd3b726ced",
+  "drySha": "8357e23ffba11270c64f05aaa296154b22a17547",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-12-04T16:20:22-06:00",
-  "subject": "chore: bump version to v1.0.1640",
+  "date": "2025-12-04T17:02:19-06:00",
+  "subject": "chore: bump version to v1.0.1642",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-11-19T09:40:18-06:00",
-        "subject": "chore(deps): update actions/checkout digest to 08c6903 (#650)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "92d8361c2ebc391b1453c9b15a233fcf6418a614",
+        "date": "2025-11-12T07:44:48-06:00",
+        "subject": "chore(deps): bump renovatebot/github-action from 43.0.18 to 43.0.19 (#654)",
+        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 43.0.18 to 43.0.19.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/v43.0.18...v43.0.19)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 43.0.19\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "85cbce899c560fc128ea1489ec8b745f348c2379",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
