@@ -1,18 +1,17 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f85a10eef2b2ab2c9a0a5e078f0a10c70dbf70f4",
+  "drySha": "5cd0845c5216d8f1e6897d1889829db519066252",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-12-04T09:52:02-06:00",
-  "subject": "chore: bump version to v1.0.1620",
+  "date": "2025-12-04T09:54:00-06:00",
+  "subject": "chore: bump version to v1.0.1623",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-11-07T09:52:58-06:00",
-        "subject": "fix(ci): move global Renovate config to env vars (#632)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "229a5092166bf750c0b5d48a8cd4b9a002c0ce2e",
+        "date": "2025-11-07T08:12:15-06:00",
+        "subject": "chore: update configuration",
+        "sha": "9d5ccef278218dea4caa903bb6abb9ed974a1d90",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
