@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "be963dac67ab46d23a3c8053cbf4eabba4bcfbb6",
+  "drySha": "87823a38f4097bdd2121b34e25844a7d53f82e61",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-12-04T09:11:12-06:00",
-  "subject": "chore: bump version to v1.0.1617",
+  "date": "2025-12-04T09:12:26-06:00",
+  "subject": "chore: bump version to v1.0.1618",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-11-19T12:55:53-06:00",
-        "subject": "fix: remove redundant error wrapping in pull request operations (#704)",
-        "body": "* Initial plan\n\n* fix: remove redundant error message wrapping in pull request operations\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* test: add test for merge error message format and fix lint issues\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "0b129efc7acbe7a19f7dcab42eee79d8ed421f72",
+        "date": "2025-11-03T05:28:06-06:00",
+        "subject": "chore(deps): update actions/setup-go digest to 4dc6199 (#725)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "e5ebdbe9c7faadec2ba31506b2874f28a93aa79c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
