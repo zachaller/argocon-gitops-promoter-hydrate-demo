@@ -1,17 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5cd0845c5216d8f1e6897d1889829db519066252",
+  "drySha": "9a4a5d8d6ea4203534e17dd38ab45aa84780a8d3",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-12-04T09:54:00-06:00",
-  "subject": "chore: bump version to v1.0.1623",
+  "date": "2025-12-04T10:05:53-06:00",
+  "subject": "chore: bump version to v1.0.1630",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-11-07T08:12:15-06:00",
-        "subject": "chore: update configuration",
-        "sha": "9d5ccef278218dea4caa903bb6abb9ed974a1d90",
+        "date": "2025-11-27T06:25:49-06:00",
+        "subject": "fix(ctp): list PRs in ns (#708)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "30ef17f01f03f603cc3f9556c5a1867f8e7c7ce8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
