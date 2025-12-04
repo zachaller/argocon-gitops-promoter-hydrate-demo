@@ -1,7 +1,20 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3283024da621f04c6890a4ea3c48a5ead4ae5db7",
-  "author": "Zach Aller <zachaller@users.noreply.github.com>",
-  "date": "2025-12-04T10:07:11-06:00",
-  "subject": "Update rollout.yaml"
+  "drySha": "dc62ce380289ddfc65b18dd77c0f56bd3b726ced",
+  "author": "Zach Aller <zach_aller@intuit.com>",
+  "date": "2025-12-04T16:20:22-06:00",
+  "subject": "chore: bump version to v1.0.1640",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
+  "references": [
+    {
+      "commit": {
+        "author": "\"Zach Aller\" <code@example.com>",
+        "date": "2025-11-19T09:40:18-06:00",
+        "subject": "chore(deps): update actions/checkout digest to 08c6903 (#650)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "92d8361c2ebc391b1453c9b15a233fcf6418a614",
+        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
+      }
+    }
+  ]
 }
