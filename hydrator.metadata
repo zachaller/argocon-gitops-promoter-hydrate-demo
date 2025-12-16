@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d08fd14d9289b3bf285598693a2b940f40f03c4e",
+  "drySha": "c1d1628b4b9d2a8dfb9ec19755be78ee15287600",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-12-04T21:46:32-06:00",
-  "subject": "chore: bump version to v1.0.1643",
+  "date": "2025-12-15T22:04:04-06:00",
+  "subject": "chore: bump version to v1.0.1644",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-11-08T01:17:40-06:00",
-        "subject": "docs: warn about branch auto-deletion (#667)",
-        "body": "* docs: warn about branch auto-deletion\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix typos\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* note in both places\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "2406e00848f0d8ab3fa3cb25acc5ecfc22b6265a",
+        "date": "2025-11-29T13:22:27-06:00",
+        "subject": "fix: remove redundant error wrapping in pull request operations (#704)",
+        "body": "* Initial plan\n\n* fix: remove redundant error message wrapping in pull request operations\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* test: add test for merge error message format and fix lint issues\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "0b129efc7acbe7a19f7dcab42eee79d8ed421f72",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
