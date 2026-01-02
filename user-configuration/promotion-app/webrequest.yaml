@@ -21,6 +21,6 @@ spec:
     Response.StatusCode == 200 &&
     len(Response.Body.change_records) > 0 &&
     any(Response.Body.change_records, {
-      parseTime(#.change_request.start_time) <= now() &&
-      parseTime(#.change_request.end_time) >= now()
+      date(#.change_request.start_time) <= now() &&
+      date(#.change_request.end_time) >= now()
     })
