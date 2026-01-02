@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bccd863b0e837a69eee5f3c95bce64baeb4cbfbe",
+  "drySha": "2af0fa451ccd3ae29019a97ee9a3ed00d9454a5b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2025-12-23T13:23:51-06:00",
-  "subject": "chore: bump version to v1.0.1645",
+  "date": "2026-01-02T11:40:38-06:00",
+  "subject": "chore: bump version to v1.0.1646",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-12-07T22:01:34-06:00",
-        "subject": "chore(deps): bump peter-evans/create-pull-request from 7 to 8 (#775)",
-        "body": "Bumps [peter-evans/create-pull-request](https://github.com/peter-evans/create-pull-request) from 7 to 8.\n- [Release notes](https://github.com/peter-evans/create-pull-request/releases)\n- [Commits](https://github.com/peter-evans/create-pull-request/compare/v7...v8)\n\n---\nupdated-dependencies:\n- dependency-name: peter-evans/create-pull-request\n  dependency-version: '8'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "84fcc28d75f4d60159eb53b08fada35a64d2c4db",
+        "date": "2025-12-24T00:38:20-06:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.7.0 to 1.8.0 (#770)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.7.0 to 1.8.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.7.0...v1.8.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.8.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "e8f47170a30866e4425b5288de62baaf1adcde1f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
