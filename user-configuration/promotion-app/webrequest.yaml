@@ -2,6 +2,7 @@ apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
 metadata:
   name: change-management-approval
+  namespace: default
 spec:
   promotionStrategyRef:
     name: argocon-demo
