@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d6a09f757ae5b1aac06da07b80cde8f0da6d79bd",
+  "drySha": "988cdd87081bd49be560045c3e3bcc0100b1e355",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-02T11:56:47-06:00",
-  "subject": "chore: bump version to v1.0.1647",
+  "date": "2026-01-08T11:11:20-06:00",
+  "subject": "chore: bump version to v1.0.1649",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-12-05T01:09:27-06:00",
-        "subject": "fix: pass description on Github's checks api output (#745)",
-        "body": "* fix: pass description on githubs checks api\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: pass description on githubs checks api\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: pass description on githubs checks api\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "06c55bdc936302a84d5db455c578a095f3d685ca",
+        "date": "2025-12-18T21:07:33-06:00",
+        "subject": "chore: refactor timedcommitstatus tests for performance (#749)",
+        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "c1a24b8ba5f7e35ad4963ea7886d51540a4c2c0d",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
