@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f986d6c53661f11ebac39406f0fa4d67071aa284",
+  "drySha": "f9d5371bde2a7703b202334cd60b4a54d459c574",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-09T10:23:54-06:00",
-  "subject": "chore: bump version to v1.0.1652",
+  "date": "2026-01-09T15:25:32-06:00",
+  "subject": "chore: bump version to v1.0.1653",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-12-23T10:15:32-06:00",
-        "subject": "chore: update python version (#768)",
-        "body": "chore update python version\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "d760490c3d8d8bab3ece228d3c743497e6bfc044",
+        "date": "2025-12-13T15:06:48-06:00",
+        "subject": "chore: add nilaways (#820)",
+        "body": "* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore: add nilaways\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore: add nilaways\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(nilaways) to another job\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "6b6f76dc3d47b140b881a8864febcc75413e2c67",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
