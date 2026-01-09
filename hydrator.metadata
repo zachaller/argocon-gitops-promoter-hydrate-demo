@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "936dbb7366d8cf07df7c8708f758e94a326fde5b",
+  "drySha": "f986d6c53661f11ebac39406f0fa4d67071aa284",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-08T13:35:58-06:00",
-  "subject": "chore: bump version to v1.0.1651",
+  "date": "2026-01-09T10:23:54-06:00",
+  "subject": "chore: bump version to v1.0.1652",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-12-16T22:19:47-06:00",
-        "subject": "chore(deps): bump github.com/expr-lang/expr from 1.17.6 to 1.17.7 (#794)",
-        "body": "Bumps [github.com/expr-lang/expr](https://github.com/expr-lang/expr) from 1.17.6 to 1.17.7.\n- [Release notes](https://github.com/expr-lang/expr/releases)\n- [Commits](https://github.com/expr-lang/expr/compare/v1.17.6...v1.17.7)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/expr-lang/expr\n  dependency-version: 1.17.7\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "51c27737038b9a79bd0d4955865b625501da346d",
+        "date": "2025-12-23T10:15:32-06:00",
+        "subject": "chore: update python version (#768)",
+        "body": "chore update python version\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "d760490c3d8d8bab3ece228d3c743497e6bfc044",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
