@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f9d5371bde2a7703b202334cd60b4a54d459c574",
+  "drySha": "67c2f1feae19ef741e4a2e291fe09a0746145fcb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-09T15:25:32-06:00",
-  "subject": "chore: bump version to v1.0.1653",
+  "date": "2026-01-09T16:56:33-06:00",
+  "subject": "chore: bump version to v1.0.1654",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-12-13T15:06:48-06:00",
-        "subject": "chore: add nilaways (#820)",
-        "body": "* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore: add nilaways\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore: add nilaways\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(nilaways) to another job\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "6b6f76dc3d47b140b881a8864febcc75413e2c67",
+        "date": "2025-12-20T10:47:37-06:00",
+        "subject": "docs: add demo gif to repo to avoid CORS errors (#796)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "715ce3d0e87e087b020864a48038c2f00d05ea05",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
