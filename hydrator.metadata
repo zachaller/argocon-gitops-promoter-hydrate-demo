@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "67c2f1feae19ef741e4a2e291fe09a0746145fcb",
+  "drySha": "7d348a5bde9f7471b8ce1eb194573d2f8c9b8563",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-09T16:56:33-06:00",
-  "subject": "chore: bump version to v1.0.1654",
+  "date": "2026-01-12T09:28:32-06:00",
+  "subject": "chore: bump version to v1.0.1655",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-12-20T10:47:37-06:00",
-        "subject": "docs: add demo gif to repo to avoid CORS errors (#796)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "715ce3d0e87e087b020864a48038c2f00d05ea05",
+        "date": "2025-12-16T12:00:42-06:00",
+        "subject": "feat: Gitea provider (#838)",
+        "body": "* Add Gitea provider\n\nSigned-off-by: techknowlogick <git@tklk.dev>\n\n* feat(gitea): add gitea\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat(gitea): add gitea\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: techknowlogick <git@tklk.dev>\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\nSigned-off-by: emirot <emirot.nolan@gmail.com>\nCo-authored-by: techknowlogick <git@tklk.dev>\nCo-authored-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "73f5dd1b73775516107f1beb077f123f4f8d6682",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
