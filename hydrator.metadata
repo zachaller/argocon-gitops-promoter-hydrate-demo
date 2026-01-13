@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f9d5371bde2a7703b202334cd60b4a54d459c574",
+  "drySha": "7d348a5bde9f7471b8ce1eb194573d2f8c9b8563",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-09T15:25:32-06:00",
-  "subject": "chore: bump version to v1.0.1653",
+  "date": "2026-01-12T09:28:32-06:00",
+  "subject": "chore: bump version to v1.0.1655",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-12-13T15:06:48-06:00",
-        "subject": "chore: add nilaways (#820)",
-        "body": "* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore enable nilaway\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore: add nilaways\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore: add nilaways\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(nilaways) to another job\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "6b6f76dc3d47b140b881a8864febcc75413e2c67",
+        "date": "2025-12-16T12:00:42-06:00",
+        "subject": "feat: Gitea provider (#838)",
+        "body": "* Add Gitea provider\n\nSigned-off-by: techknowlogick <git@tklk.dev>\n\n* feat(gitea): add gitea\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat(gitea): add gitea\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: techknowlogick <git@tklk.dev>\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\nSigned-off-by: emirot <emirot.nolan@gmail.com>\nCo-authored-by: techknowlogick <git@tklk.dev>\nCo-authored-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "73f5dd1b73775516107f1beb077f123f4f8d6682",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
