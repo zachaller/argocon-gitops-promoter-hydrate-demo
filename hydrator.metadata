@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7d348a5bde9f7471b8ce1eb194573d2f8c9b8563",
+  "drySha": "c1acd0961499a9e593a64137473d521df600c01d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-12T09:28:32-06:00",
-  "subject": "chore: bump version to v1.0.1655",
+  "date": "2026-01-21T08:48:29-06:00",
+  "subject": "chore: bump version to v1.0.1656",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2025-12-16T12:00:42-06:00",
-        "subject": "feat: Gitea provider (#838)",
-        "body": "* Add Gitea provider\n\nSigned-off-by: techknowlogick <git@tklk.dev>\n\n* feat(gitea): add gitea\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat(gitea): add gitea\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: techknowlogick <git@tklk.dev>\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\nSigned-off-by: emirot <emirot.nolan@gmail.com>\nCo-authored-by: techknowlogick <git@tklk.dev>\nCo-authored-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "73f5dd1b73775516107f1beb077f123f4f8d6682",
+        "date": "2025-12-29T03:27:58-06:00",
+        "subject": "chore(deps): bump the k8s-deps group with 3 updates (#812)",
+        "body": "Bumps the k8s-deps group with 3 updates: [k8s.io/api](https://github.com/kubernetes/api), [k8s.io/apimachinery](https://github.com/kubernetes/apimachinery) and [k8s.io/client-go](https://github.com/kubernetes/client-go).\n\n\nUpdates `k8s.io/api` from 0.34.3 to 0.35.0\n- [Commits](https://github.com/kubernetes/api/compare/v0.34.3...v0.35.0)\n\nUpdates `k8s.io/apimachinery` from 0.34.3 to 0.35.0\n- [Commits](https://github.com/kubernetes/apimachinery/compare/v0.34.3...v0.35.0)\n\nUpdates `k8s.io/client-go` from 0.34.3 to 0.35.0\n- [Changelog](https://github.com/kubernetes/client-go/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/kubernetes/client-go/compare/v0.34.3...v0.35.0)\n\n---\nupdated-dependencies:\n- dependency-name: k8s.io/api\n  dependency-version: 0.35.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: k8s-deps\n- dependency-name: k8s.io/apimachinery\n  dependency-version: 0.35.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: k8s-deps\n- dependency-name: k8s.io/client-go\n  dependency-version: 0.35.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n  dependency-group: k8s-deps\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "b9e2e4bdc5a122d9f7df38dc921094ccfc47fb94",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
