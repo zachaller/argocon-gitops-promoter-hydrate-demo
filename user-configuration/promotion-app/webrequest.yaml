@@ -12,7 +12,7 @@ spec:
   polling:
     interval: 1m
   httpRequest:
-    url: "http://localhost:8987/v1/change-management-service/changes/search?asset_id=6272405973343114011&status=APPROVED&limit=25"
+    url: "http://localhost:8987/v1/change-management-service/changes/search?asset_id=6772992770778240&status=APPROVED&limit=25"
     method: GET
     timeout: 30s
     headers:
