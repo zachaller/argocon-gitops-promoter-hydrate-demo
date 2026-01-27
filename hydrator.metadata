@@ -1,20 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "9e2a2ff0f8e588af0b588280c7710b1ceb30e815",
+  "drySha": "d53005e23bfbab5a61f7da6e1cb454feba1ac533",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-21T09:39:04-06:00",
-  "subject": "chore: bump version to v1.0.1657",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
-  "references": [
-    {
-      "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-07T06:45:25-06:00",
-        "subject": "chore: update golangci-lint (#839)",
-        "body": "* chore: update golangci-lint version\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore: update golangci-lint version\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore: update golangci-lint version\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "5cd0aeb473550074da40266f11b27ec6d82cbbb5",
-        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
-      }
-    }
-  ]
+  "date": "2026-01-27T10:20:23-06:00",
+  "subject": "chore: pods dev prod",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
 }
