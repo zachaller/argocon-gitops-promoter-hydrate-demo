@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "064faa491203954ba18f56b84f374f5beaf6160c",
+  "drySha": "d64b696a0379b9adac6ba1f7947c0b8dcd5ee3ec",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-29T10:21:25-06:00",
-  "subject": "chore: bump version to v1.0.1659",
+  "date": "2026-01-29T10:44:23-06:00",
+  "subject": "chore: bump version to v1.0.1660",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-19T11:19:23-06:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.14.0 to 1.16.0 (#921)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.14.0 to 1.16.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.14.0...v1.16.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.16.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "401b5522ae66376c3051b0add5c6356a77c9b9db",
+        "date": "2026-01-21T01:02:01-06:00",
+        "subject": "docs: specify argo-cd version 3.3 (#862)",
+        "body": "* Specify Argocd version 3.3\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* Update ui/extension/README.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "f03e32d774ae9f003b4451a482901d164b0a5112",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
