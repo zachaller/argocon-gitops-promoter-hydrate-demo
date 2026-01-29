@@ -7,7 +7,7 @@ spec:
   promotionStrategyRef:
     name: argocon-demo
   key: change-management-approval
-  description: "Check for approved change records in current time window"
+  descriptionTemplate: "Check for approved change records in current time window"
   reportOn: proposed
   httpRequest:
     urlTemplate: "http://localhost:8987/v1/change-management-service/changes/search?asset_id=6772992770778240&status=APPROVED&limit=25"
