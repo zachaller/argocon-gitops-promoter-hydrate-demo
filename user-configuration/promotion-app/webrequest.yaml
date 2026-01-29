@@ -26,16 +26,21 @@ spec:
     trigger:
       requeueDuration: 5m
       expression: |
+        // Environment refers to the CURRENT environment being processed (e.g., prod1 or prod2)
+        // Each environment is processed independently by the controller
+        
         // Check if there's an open PR for THIS environment
+        // Note: string() conversion needed because PullRequestState is a Go type alias
         let hasOpenPR = Environment.PullRequest != nil && 
-                        Environment.PullRequest.State == "open";
+                        string(Environment.PullRequest.State) == "open";
         
         // Check if THIS environment's commit status (key: "change-management") already shows success
         // Environment.Proposed.CommitStatuses contains commit statuses for THIS environment only
         // This is populated from CommitStatus resources by the ChangeTransferPolicy controller
         // When the dry SHA changes, new CommitStatus starts as pending, so we'll poll again
+        // Note: string() conversion needed because CommitStatusPhase is a Go type alias
         let alreadySucceeded = any(Environment.Proposed.CommitStatuses ?? [], 
-                                   {.Key == "change-management" && .Phase == "success"});
+                                   {.Key == "change-management" && string(#.Phase) == "success"});
         
         // Poll if:
         // 1. THIS environment has an open PR
