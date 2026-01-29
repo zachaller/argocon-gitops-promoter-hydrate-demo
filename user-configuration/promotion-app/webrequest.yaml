@@ -40,7 +40,7 @@ spec:
         // When the dry SHA changes, new CommitStatus starts as pending, so we'll poll again
         // Note: string() conversion needed because CommitStatusPhase is a Go type alias
         let alreadySucceeded = any(Environment.Proposed.CommitStatuses ?? [], 
-                                   {.Key == "change-management" && string(#.Phase) == "success"});
+                                   {.Key == "change-management-approval" && string(#.Phase) == "success"});
         
         // Poll if:
         // 1. THIS environment has an open PR
