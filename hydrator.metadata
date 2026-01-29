@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "cc46099fa46f4534879e46f62603ba62ce79e4c6",
+  "drySha": "152b3c9aa718193a9b9f7aa05415d9428b260ffc",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-29T12:52:45-06:00",
-  "subject": "chore: bump version to v1.0.1662",
+  "date": "2026-01-29T14:05:39-06:00",
+  "subject": "chore: bump version to v1.0.1663",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-09T19:57:52-06:00",
-        "subject": "feat: add docker image latest on every push to main branch (#851)",
-        "body": "* feat: add latest docker image\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "25cce863404c2439d7b9beebf5f4c95aabaaf36c",
+        "date": "2026-01-22T17:39:36-06:00",
+        "subject": "fix: deletion of ps loop (#934)",
+        "body": "* fix: deletion of ps loop\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: deletion of ps loop\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: bad test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: bad test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: bad test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "a70c79f19165d8d8fc002378f0aa23e66aab30b1",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
