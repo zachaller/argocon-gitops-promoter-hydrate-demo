@@ -24,7 +24,7 @@ spec:
     })
   mode:
     trigger:
-      requeueDuration: 5m
+      requeueDuration: 30s
       expression: |
         // Environment refers to the CURRENT environment being processed (e.g., prod1 or prod2)
         // Each environment is processed independently by the controller
