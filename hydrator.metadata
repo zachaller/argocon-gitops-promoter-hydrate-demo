@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bb446977b1ebe728076fde2a1c407fda0b5698db",
+  "drySha": "cc46099fa46f4534879e46f62603ba62ce79e4c6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-29T11:39:18-06:00",
-  "subject": "chore: bump version to v1.0.1661",
+  "date": "2026-01-29T12:52:45-06:00",
+  "subject": "chore: bump version to v1.0.1662",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-10T20:38:06-06:00",
-        "subject": "docs: bump manifest versions to v0.20.1 (#855)",
-        "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "4ed9711e4f79dced999ace59828421698b2f884e",
+        "date": "2026-01-09T19:57:52-06:00",
+        "subject": "feat: add docker image latest on every push to main branch (#851)",
+        "body": "* feat: add latest docker image\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "25cce863404c2439d7b9beebf5f4c95aabaaf36c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
