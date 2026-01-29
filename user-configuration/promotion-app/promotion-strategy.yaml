@@ -13,6 +13,6 @@ spec:
   - branch: environments/staging
   - branch: environments/production
     proposedCommitStatuses:
-    - key: hcap
+    - key: change-management
   gitRepositoryRef:
     name: argocon-demo

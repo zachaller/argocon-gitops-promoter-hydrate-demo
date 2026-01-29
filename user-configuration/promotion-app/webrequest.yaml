@@ -24,3 +24,22 @@ spec:
       date(#.change_request.start_time) <= now() &&
       date(#.change_request.end_time) >= now()
     })
+  mode:
+    trigger:
+      requeueDuration: 5m
+      expression: |
+        // Check if there's an open PR for THIS environment
+        let hasOpenPR = Environment.PullRequest != nil && 
+                        Environment.PullRequest.State == "open";
+        
+        // Check if THIS environment's commit status (key: "change-management") already shows success
+        // Environment.Proposed.CommitStatuses contains commit statuses for THIS environment only
+        // This is populated from CommitStatus resources by the ChangeTransferPolicy controller
+        // When the dry SHA changes, new CommitStatus starts as pending, so we'll poll again
+        let alreadySucceeded = any(Environment.Proposed.CommitStatuses ?? [], 
+                                   {.Key == "change-management" && .Phase == "success"});
+        
+        // Poll if:
+        // 1. THIS environment has an open PR
+        // 2. AND THIS environment hasn't succeeded yet for this SHA
+        hasOpenPR && !alreadySucceeded
