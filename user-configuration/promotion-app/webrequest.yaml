@@ -26,23 +26,32 @@ spec:
     trigger:
       requeueDuration: 30s
       expression: |
-        // Environment refers to the CURRENT environment being processed (e.g., prod1 or prod2)
-        // Each environment is processed independently by the controller
-        
-        // Check if there's an open PR for THIS environment
-        // Note: string() conversion needed because PullRequestState is a Go type alias
-        let hasOpenPR = Environment.PullRequest != nil && 
+        // Track dry SHA state to handle no-op hydrations
+        let currentDrySha = Environment.Proposed.Dry.Sha;
+        let storedSuccessfulDrySha = ExpressionData.lastSuccessfulDrySha ?? "";
+        let storedAttemptedDrySha = ExpressionData.lastAttemptedDrySha ?? "";
+
+        let hasOpenPR = Environment.PullRequest != nil &&
                         string(Environment.PullRequest.State) == "open";
-        
-        // Check if THIS environment's commit status (key: "change-management") already shows success
-        // Environment.Proposed.CommitStatuses contains commit statuses for THIS environment only
-        // This is populated from CommitStatus resources by the ChangeTransferPolicy controller
-        // When the dry SHA changes, new CommitStatus starts as pending, so we'll poll again
-        // Note: string() conversion needed because CommitStatusPhase is a Go type alias
-        let alreadySucceeded = any(Environment.Proposed.CommitStatuses ?? [], 
-                                   {.Key == "change-management-approval" && string(#.Phase) == "success"});
-        
-        // Poll if:
-        // 1. THIS environment has an open PR
-        // 2. AND THIS environment hasn't succeeded yet for this SHA
-        hasOpenPR && !alreadySucceeded
+
+        // Check if CommitStatuses show success (may be stale from previous dry SHA)
+        let currentPhaseIsSuccess = any(Environment.Proposed.CommitStatuses ?? [],
+                                        {.Key == "change-management-approval" && string(#.Phase) == "success"});
+
+        // Only mark as successful if we attempted THIS dry SHA and now see success
+        let newSuccessfulSha = (currentPhaseIsSuccess && storedAttemptedDrySha == currentDrySha) 
+                               ? currentDrySha 
+                               : storedSuccessfulDrySha;
+
+        // Have we succeeded for THIS specific dry SHA?
+        let alreadySucceededForThisSha = newSuccessfulSha == currentDrySha;
+
+        // Trigger if PR is open AND we haven't succeeded for this dry SHA
+        let shouldTrigger = hasOpenPR && !alreadySucceededForThisSha;
+
+        // Return object with trigger decision and state to persist
+        {
+          trigger: shouldTrigger,
+          lastSuccessfulDrySha: newSuccessfulSha,
+          lastAttemptedDrySha: shouldTrigger ? currentDrySha : storedAttemptedDrySha
+        }
