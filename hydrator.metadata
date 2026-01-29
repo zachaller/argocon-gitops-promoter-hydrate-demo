@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d64b696a0379b9adac6ba1f7947c0b8dcd5ee3ec",
+  "drySha": "cc46099fa46f4534879e46f62603ba62ce79e4c6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-29T10:44:23-06:00",
-  "subject": "chore: bump version to v1.0.1660",
+  "date": "2026-01-29T12:52:45-06:00",
+  "subject": "chore: bump version to v1.0.1662",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-21T01:02:01-06:00",
-        "subject": "docs: specify argo-cd version 3.3 (#862)",
-        "body": "* Specify Argocd version 3.3\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* Update ui/extension/README.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "f03e32d774ae9f003b4451a482901d164b0a5112",
+        "date": "2026-01-09T19:57:52-06:00",
+        "subject": "feat: add docker image latest on every push to main branch (#851)",
+        "body": "* feat: add latest docker image\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* feat: add docker latest\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "25cce863404c2439d7b9beebf5f4c95aabaaf36c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
