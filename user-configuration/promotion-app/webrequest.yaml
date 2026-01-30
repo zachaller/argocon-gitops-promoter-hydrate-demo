@@ -3,6 +3,8 @@ kind: WebRequestCommitStatus
 metadata:
   name: change-management-approval
   namespace: default
+  labels:
+    test: test1
 spec:
   promotionStrategyRef:
     name: argocon-demo
@@ -26,32 +28,26 @@ spec:
     trigger:
       requeueDuration: 30s
       expression: |
-        // Track dry SHA state to handle no-op hydrations
-        let currentDrySha = Environment.Proposed.Dry.Sha;
-        let storedSuccessfulDrySha = ExpressionData.lastSuccessfulDrySha ?? "";
-        let storedAttemptedDrySha = ExpressionData.lastAttemptedDrySha ?? "";
+          // Use Note.DrySha from git note - this is authoritative and updates even for no-op hydrations
+          let currentDrySha = Environment.Proposed.Note.DrySha;
+          let storedSuccessfulDrySha = ExpressionData.lastSuccessfulDrySha ?? "";
 
-        let hasOpenPR = Environment.PullRequest != nil &&
-                        string(Environment.PullRequest.State) == "open";
+          let hasOpenPR = Environment.PullRequest != nil &&
+                          string(Environment.PullRequest.State) == "open";
 
-        // Check if CommitStatuses show success (may be stale from previous dry SHA)
-        let currentPhaseIsSuccess = any(Environment.Proposed.CommitStatuses ?? [],
-                                        {.Key == "change-management-approval" && string(#.Phase) == "success"});
+          // Check CommitStatuses for success
+          let currentPhaseIsSuccess = any(Environment.Proposed.CommitStatuses ?? [],
+                                          {.Key == "change-management-approval" && string(#.Phase) == "success"});
 
-        // Only mark as successful if we attempted THIS dry SHA and now see success
-        let newSuccessfulSha = (currentPhaseIsSuccess && storedAttemptedDrySha == currentDrySha) 
-                               ? currentDrySha 
-                               : storedSuccessfulDrySha;
+          // If we see success and current dry SHA matches what we're tracking, record it
+          let newSuccessfulSha = currentPhaseIsSuccess ? currentDrySha : storedSuccessfulDrySha;
 
-        // Have we succeeded for THIS specific dry SHA?
-        let alreadySucceededForThisSha = newSuccessfulSha == currentDrySha;
+          // Have we succeeded for THIS specific dry SHA (from git note)?
+          let alreadySucceededForThisSha = newSuccessfulSha == currentDrySha && currentDrySha != "";
 
-        // Trigger if PR is open AND we haven't succeeded for this dry SHA
-        let shouldTrigger = hasOpenPR && !alreadySucceededForThisSha;
+          let shouldTrigger = hasOpenPR && !alreadySucceededForThisSha;
 
-        // Return object with trigger decision and state to persist
-        {
-          trigger: shouldTrigger,
-          lastSuccessfulDrySha: newSuccessfulSha,
-          lastAttemptedDrySha: shouldTrigger ? currentDrySha : storedAttemptedDrySha
-        }
+          {
+            trigger: shouldTrigger,
+            lastSuccessfulDrySha: newSuccessfulSha
+          }
