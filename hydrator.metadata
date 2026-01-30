@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bcbdb26905cf946d97dee3584daec94e8cf47a3d",
+  "drySha": "8e2dcdb5160e542ca22e9f1866e838d1f8a30b97",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-30T12:15:53-06:00",
-  "subject": "chore: bump version to v1.0.1664",
+  "date": "2026-01-30T14:03:28-06:00",
+  "subject": "chore: bump version to v1.0.1665",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-01T04:13:52-06:00",
-        "subject": "fix(api): missing omitempty on optional fields for serialization (#888)",
-        "body": "Signed-off-by: Alexandre Gaudreault <alexandre_gaudreault@intuit.com>",
-        "sha": "77690e8e66817675b274edc7221f9fc4fe59d402",
+        "date": "2025-12-31T04:32:45-06:00",
+        "subject": "dosc(faqs): add webhooks (#885)",
+        "body": "* dosc(faqs): add webhooks\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* dosc(faqs): add webhooks\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "d9cc3e5ef120f3340dabb8048bafa872d05e8846",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
