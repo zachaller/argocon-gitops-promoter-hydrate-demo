@@ -4,7 +4,7 @@ metadata:
   name: change-management-approval
   namespace: default
   labels:
-    test: test1
+    test: test2
 spec:
   promotionStrategyRef:
     name: argocon-demo
