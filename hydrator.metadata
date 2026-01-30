@@ -1,20 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bcbdb26905cf946d97dee3584daec94e8cf47a3d",
+  "drySha": "7306e6059e98130270b4b9684c0188d107a83828",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-30T12:15:53-06:00",
-  "subject": "chore: bump version to v1.0.1664",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
-  "references": [
-    {
-      "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-01T04:13:52-06:00",
-        "subject": "fix(api): missing omitempty on optional fields for serialization (#888)",
-        "body": "Signed-off-by: Alexandre Gaudreault <alexandre_gaudreault@intuit.com>",
-        "sha": "77690e8e66817675b274edc7221f9fc4fe59d402",
-        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
-      }
-    }
-  ]
+  "date": "2026-01-30T14:07:21-06:00",
+  "subject": "chore: no-op",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
 }
