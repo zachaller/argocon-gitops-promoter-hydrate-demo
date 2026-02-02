@@ -1,8 +1,20 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7306e6059e98130270b4b9684c0188d107a83828",
+  "drySha": "8762ee0099c84c8a4fdeb12ec07832e299f43757",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-30T14:07:21-06:00",
-  "subject": "chore: no-op",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
+  "date": "2026-02-02T15:48:00-06:00",
+  "subject": "chore: bump version to v1.0.1667",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
+  "references": [
+    {
+      "commit": {
+        "author": "\"Zach Aller\" <code@example.com>",
+        "date": "2025-12-31T17:05:29-06:00",
+        "subject": "chore(version): update promoter version (#894)",
+        "body": "* chore(version): update promoter version\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* Remove image newName and newTag from kustomization\n\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "ba820d21743607ea28eed18d4684ec0f4545ecd1",
+        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
+      }
+    }
+  ]
 }
