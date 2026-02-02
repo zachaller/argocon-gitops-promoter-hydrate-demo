@@ -61,18 +61,11 @@ metadata:
   namespace: default
 spec:
   descriptionTemplate: Open change request for dry SHA
-  key: change-management-open
-  reportOn: proposed
-  promotionStrategyRef:
-    name: argocon-demo
-  
+  expression: |
+    Response.StatusCode == 200 &&
+    has(Response.Body.id) &&
+    Response.Body.id != ""
   httpRequest:
-    method: POST
-    timeout: 30s
-    urlTemplate: http://localhost:8987/v1/change-management-service/change
-    headerTemplates:
-      Content-Type: application/json
-      Accept: application/json
     bodyTemplate: |
       {
         "asset_id": "1372489579564901493",
@@ -91,34 +84,41 @@ spec:
         "risk": "low",
         "repo_url": "https://github.intuit.com/your-org/your-repo"
       }
-  
-  expression: |
-    Response.StatusCode == 200 &&
-    has(Response.Body.id) &&
-    Response.Body.id != ""
-  
+    headerTemplates:
+      Accept: application/json
+      Content-Type: application/json
+    method: POST
+    timeout: 30s
+    urlTemplate: http://localhost:8987/v1/change-management-service/change
+  key: change-management-open
   mode:
     trigger:
-      requeueDuration: 30s
       expression: |
         // Get current dry SHA
         let currentDrySha = Environment.Proposed.Dry.Sha;
-        
-        // Get the last SHA we opened a change for
+
+        // Get the last SHA we successfully opened a change for
         let lastOpenedSha = ExpressionData.lastOpenedSha ?? "";
-        
-        // Check if we've already opened a change for this SHA
-        let alreadyOpened = lastOpenedSha == currentDrySha;
-        
+
         // Check if there's an open PR
         let hasOpenPR = Environment.PullRequest != nil &&
                         string(Environment.PullRequest.State) == "open";
-        
-        // Trigger only if PR is open and we haven't opened for this SHA
+
+        // Only consider it "already opened" if lastOpenedSha matches current SHA
+        // This means we successfully opened a change for this SHA before
+        let alreadyOpened = lastOpenedSha == currentDrySha;
+
+        // Trigger if PR is open and we haven't successfully opened for this SHA
         let shouldTrigger = hasOpenPR && !alreadyOpened;
-        
-        // Return trigger decision and persist the SHA
+
+        // Only persist the SHA when we're triggering a new request
+        // If validation fails (400 error), lastOpenedSha won't be updated,
+        // allowing retry on next reconciliation
         {
           trigger: shouldTrigger,
           lastOpenedSha: shouldTrigger ? currentDrySha : lastOpenedSha
         }
+      requeueDuration: 30s
+  promotionStrategyRef:
+    name: argocon-demo
+  reportOn: proposed
