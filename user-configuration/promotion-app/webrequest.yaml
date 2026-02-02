@@ -104,6 +104,10 @@ spec:
         let hasOpenPR = Environment.PullRequest != nil &&
                         string(Environment.PullRequest.State) == "open";
 
+        // Check if current phase is success for this SHA
+        let currentPhaseIsSuccess = any(Environment.Proposed.CommitStatuses ?? [],
+                                        {.Key == "change-management-open" && string(#.Phase) == "success"});
+
         // Only consider it "already opened" if lastOpenedSha matches current SHA
         // This means we successfully opened a change for this SHA before
         let alreadyOpened = lastOpenedSha == currentDrySha;
@@ -111,12 +115,13 @@ spec:
         // Trigger if PR is open and we haven't successfully opened for this SHA
         let shouldTrigger = hasOpenPR && !alreadyOpened;
 
-        // Only persist the SHA when we're triggering a new request
-        // If validation fails (400 error), lastOpenedSha won't be updated,
-        // allowing retry on next reconciliation
+        // Update lastOpenedSha when:
+        // 1. We're triggering a new request (shouldTrigger is true), OR
+        // 2. Validation succeeded for this SHA (currentPhaseIsSuccess is true)
+        // This ensures we don't retry successful requests, but do retry failed ones
         {
           trigger: shouldTrigger,
-          lastOpenedSha: shouldTrigger ? currentDrySha : lastOpenedSha
+          lastOpenedSha: (shouldTrigger || currentPhaseIsSuccess) ? currentDrySha : lastOpenedSha
         }
       requeueDuration: 30s
   promotionStrategyRef:
