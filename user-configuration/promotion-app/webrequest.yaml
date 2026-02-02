@@ -18,7 +18,7 @@ spec:
     headerTemplates:
       Accept: application/json
   expression: |
-    (Response.StatusCode == 200 || Response.StatusCode == 202) &&
+    Response.StatusCode == 200 &&
     len(Response.Body.change_records) > 0 &&
     any(Response.Body.change_records, {
       date(#.change_request.start_time) <= now() &&
@@ -62,14 +62,14 @@ metadata:
 spec:
   descriptionTemplate: Open change request for dry SHA
   expression: |
-    Response.StatusCode == 200 &&
+    (Response.StatusCode == 200 || Response.StatusCode == 202) &&
     has(Response.Body.id) &&
     Response.Body.id != ""
   httpRequest:
     bodyTemplate: |
       {
         "asset_id": "1372489579564901493",
-        "on_behalf_of": "gitops-promoter",
+        "on_behalf_of": "zaller",
         "short_description": "Deploy commit {{ .Environment.Proposed.Dry.Sha }} to {{ .Environment.Branch }} via automated pipeline",
         "description": "Automated deployment of commit {{ .Environment.Proposed.Dry.Sha }} to {{ .Environment.Branch }} for asset 1372489579564901493. Standard deployment following approved change management procedures and best practices for proper change tracking.",
         "environment": "staging",
