@@ -97,38 +97,40 @@ spec:
       expression: |
         // Get current dry SHA
         let currentDrySha = Environment.Proposed.Dry.Sha;
-
-        // Get the last SHA we successfully opened a change for (used for triggering)
-        let lastSuccessfulSha = ExpressionData.lastSuccessfulSha ?? "";
         
-        // Get the last SHA we attempted (used for tracking request attempts)
-        let lastAttemptedSha = ExpressionData.lastAttemptedSha ?? "";
-
+        // Get the SHA we made the last request for
+        let lastRequestSha = ExpressionData.lastRequestSha ?? "";
+        
+        // Get the status code from the last response
+        let lastStatusCode = ResponseData != nil ? ResponseData.statusCode : 0;
+        
         // Check if there's an open PR
         let hasOpenPR = Environment.PullRequest != nil &&
                         string(Environment.PullRequest.State) == "open";
-
-        // Trigger if PR is open AND we haven't successfully processed this SHA yet
-        let shouldTrigger = hasOpenPR && lastSuccessfulSha != currentDrySha;
-
-        // Update lastAttemptedSha when we trigger a new request
-        let newLastAttemptedSha = shouldTrigger ? currentDrySha : lastAttemptedSha;
-
-        // Update lastSuccessfulSha ONLY when:
-        // 1. We previously attempted this SHA (lastAttemptedSha == currentDrySha)
-        // 2. AND the validation succeeded (Phase == "success")
-        // This ensures retries happen until success
-        let newLastSuccessfulSha = (Phase == "success" && lastAttemptedSha == currentDrySha) 
-                                    ? currentDrySha 
-                                    : lastSuccessfulSha;
-
+        
+        // Only trigger if:
+        // 1. PR is open, AND
+        // 2. Either we've never made a request for this SHA, OR
+        //    the last request for this SHA didn't get a 202 response
+        let alreadySucceeded = (lastRequestSha == currentDrySha && lastStatusCode == 202);
+        let shouldTrigger = hasOpenPR && !alreadySucceeded;
+        
+        // Store the SHA when we make a request
+        let newLastRequestSha = shouldTrigger ? currentDrySha : lastRequestSha;
+        
         {
           trigger: shouldTrigger,
-          lastSuccessfulSha: newLastSuccessfulSha,
-          lastAttemptedSha: newLastAttemptedSha
+          lastRequestSha: newLastRequestSha
         }
+      
       requeueDuration: 30s
+      
+      # Extract the change ID and status code from the response
+      responseExpression: |
+        {
+          changeId: Response.Body.id ?? "",
+          statusCode: Response.StatusCode
+        }
   promotionStrategyRef:
     name: argocon-demo
   reportOn: proposed
-
