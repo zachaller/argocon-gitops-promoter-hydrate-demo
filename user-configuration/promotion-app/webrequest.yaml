@@ -97,31 +97,24 @@ spec:
         // Get current dry SHA
         let currentDrySha = Environment.Proposed.Dry.Sha;
 
-        // Get the last SHA we successfully opened a change for
+        // Get the last SHA we successfully opened a change for from OUR state
         let lastOpenedSha = ExpressionData.lastOpenedSha ?? "";
 
         // Check if there's an open PR
         let hasOpenPR = Environment.PullRequest != nil &&
                         string(Environment.PullRequest.State) == "open";
 
-        // Check if current phase is success for this SHA
-        let currentPhaseIsSuccess = any(Environment.Proposed.CommitStatuses ?? [],
-                                        {.Key == "change-management-open" && string(#.Phase) == "success"});
-
-        // Only consider it "already opened" if lastOpenedSha matches current SHA
-        // This means we successfully opened a change for this SHA before
-        let alreadyOpened = lastOpenedSha == currentDrySha;
-
-        // Trigger if PR is open and we haven't successfully opened for this SHA
-        let shouldTrigger = hasOpenPR && !alreadyOpened;
+        // Trigger if PR is open and we haven't successfully opened for this SHA yet
+        // (based on our own ExpressionData, not external CommitStatus)
+        let shouldTrigger = hasOpenPR && lastOpenedSha != currentDrySha;
 
         // Update lastOpenedSha when:
         // 1. We're triggering a new request (shouldTrigger is true), OR
-        // 2. Validation succeeded for this SHA (currentPhaseIsSuccess is true)
-        // This ensures we don't retry successful requests, but do retry failed ones
+        // 2. OUR validation succeeded for this SHA (Phase is "success")
+        // This uses our own phase tracking, not external CommitStatuses
         {
           trigger: shouldTrigger,
-          lastOpenedSha: (shouldTrigger || currentPhaseIsSuccess) ? currentDrySha : lastOpenedSha
+          lastOpenedSha: (shouldTrigger || Phase == "success") ? currentDrySha : lastOpenedSha
         }
       requeueDuration: 30s
   promotionStrategyRef:
