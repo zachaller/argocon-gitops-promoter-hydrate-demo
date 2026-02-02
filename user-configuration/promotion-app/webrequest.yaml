@@ -62,8 +62,9 @@ metadata:
 spec:
   descriptionTemplate: Open change request for dry SHA
   expression: |
-    (Response.StatusCode == 200 || Response.StatusCode == 202) &&
-    has(Response.Body.id) &&
+    Response.StatusCode == 202 &&
+    Response.Body != nil &&
+    Response.Body.id != nil &&
     Response.Body.id != ""
   httpRequest:
     bodyTemplate: |
