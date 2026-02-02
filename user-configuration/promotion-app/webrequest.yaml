@@ -18,7 +18,7 @@ spec:
     headerTemplates:
       Accept: application/json
   expression: |
-    Response.StatusCode == 200 &&
+    (Response.StatusCode == 200 || Response.StatusCode == 202) &&
     len(Response.Body.change_records) > 0 &&
     any(Response.Body.change_records, {
       date(#.change_request.start_time) <= now() &&
