@@ -41,7 +41,7 @@ metadata:
   annotations:
     version: v1.0.1666
   labels:
-    db-schema: v1.14
+    db-schema: v1.15
     environment: production
   name: canary-demo
   namespace: production-use2
