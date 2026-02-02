@@ -51,3 +51,79 @@ spec:
             trigger: shouldTrigger,
             lastSuccessfulDrySha: newSuccessfulSha
           }
+
+---
+
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: WebRequestCommitStatus
+metadata:
+  name: change-management-open
+  namespace: default
+spec:
+  descriptionTemplate: Open change request for dry SHA {{ .Environment.Proposed.Dry.Sha }}
+  key: change-management-open
+  reportOn: proposed
+  promotionStrategyRef:
+    name: argocon-demo
+  
+  # HTTP Request to open a change
+  httpRequest:
+    method: POST
+    timeout: 30s
+    urlTemplate: http://localhost:8987/v1/change-management-service/change
+    headerTemplates:
+      Content-Type: application/json
+      Accept: application/json
+    bodyTemplate: |
+      {
+        "asset_id": "1372489579564901493",
+        "on_behalf_of": "gitops-promoter",
+        "short_description": "Deploy commit {{ .Environment.Proposed.Dry.Sha | substr 0 8 }} to {{ .Environment.Branch }} via automated pipeline",
+        "description": "Automated deployment of commit {{ .Environment.Proposed.Dry.Sha }} to {{ .Environment.Branch }} for asset 1372489579564901493. Standard deployment following approved change management procedures and best practices.",
+        "environment": "{{ if contains .Environment.Branch \"production\" }}production{{ else }}staging{{ end }}",
+        "backout_plan": "Rollback to previous version by redeploying previous commit using automated rollback procedure",
+        "change_plan": "Standard change roll out using automated deployment pipeline and infrastructure as code",
+        "test_plan": "Pre-deployment testing completed in lower environments with automated test suite validation",
+        "category": "Application",
+        "sub_category": "Release",
+        "commit_id": "{{ .Environment.Proposed.Dry.Sha }}",
+        "start_time": "{{ now | date \"2006-01-02T15:04:05Z07:00\" }}",
+        "end_time": "{{ now | dateModify \"10m\" | date \"2006-01-02T15:04:05Z07:00\" }}",
+        "risk": "low",
+        "repo_url": "https://github.intuit.com/your-org/your-repo"
+      }
+  
+  # Expression to validate response (change was created)
+  expression: |
+    Response.StatusCode == 200 &&
+    has(Response.Body.id) &&
+    Response.Body.id != ""
+  
+  # Trigger mode - only once per dry SHA across all environments
+  mode:
+    trigger:
+      requeueDuration: 30s
+      expression: |
+        // Get current dry SHA
+        let currentDrySha = Environment.Proposed.Dry.Sha;
+        
+        // Get the last SHA we opened a change for (stored globally across environments)
+        let lastOpenedSha = ExpressionData.lastOpenedSha ?? "";
+        
+        // Check if we've already opened a change for this SHA
+        let alreadyOpened = lastOpenedSha == currentDrySha;
+        
+        // Check if there's an open PR (only trigger when PR exists)
+        let hasOpenPR = Environment.PullRequest != nil &&
+                        string(Environment.PullRequest.State) == "open";
+        
+        // Trigger only if:
+        // 1. There's an open PR
+        // 2. We haven't already opened a change for this dry SHA
+        let shouldTrigger = hasOpenPR && !alreadyOpened;
+        
+        // Return trigger decision and persist the SHA if we're triggering
+        {
+          trigger: shouldTrigger,
+          lastOpenedSha: shouldTrigger ? currentDrySha : lastOpenedSha
+        }
