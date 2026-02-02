@@ -97,23 +97,37 @@ spec:
         // Get current dry SHA
         let currentDrySha = Environment.Proposed.Dry.Sha;
 
-        // Get the last SHA we successfully opened a change for
-        let lastOpenedSha = ExpressionData.lastOpenedSha ?? "";
+        // Get the last SHA we successfully opened a change for (used for triggering)
+        let lastSuccessfulSha = ExpressionData.lastSuccessfulSha ?? "";
+        
+        // Get the last SHA we attempted (used for tracking request attempts)
+        let lastAttemptedSha = ExpressionData.lastAttemptedSha ?? "";
 
         // Check if there's an open PR
         let hasOpenPR = Environment.PullRequest != nil &&
                         string(Environment.PullRequest.State) == "open";
 
-        // Trigger if PR is open and we haven't successfully opened for this SHA yet
-        let shouldTrigger = hasOpenPR && lastOpenedSha != currentDrySha;
+        // Trigger if PR is open AND we haven't successfully processed this SHA yet
+        let shouldTrigger = hasOpenPR && lastSuccessfulSha != currentDrySha;
 
-        // Only update lastOpenedSha when validation succeeds (Phase == "success")
-        // This ensures we retry on HTTP errors (400, etc.) until we succeed
+        // Update lastAttemptedSha when we trigger a new request
+        let newLastAttemptedSha = shouldTrigger ? currentDrySha : lastAttemptedSha;
+
+        // Update lastSuccessfulSha ONLY when:
+        // 1. We previously attempted this SHA (lastAttemptedSha == currentDrySha)
+        // 2. AND the validation succeeded (Phase == "success")
+        // This ensures retries happen until success
+        let newLastSuccessfulSha = (Phase == "success" && lastAttemptedSha == currentDrySha) 
+                                    ? currentDrySha 
+                                    : lastSuccessfulSha;
+
         {
           trigger: shouldTrigger,
-          lastOpenedSha: Phase == "success" ? currentDrySha : lastOpenedSha
+          lastSuccessfulSha: newLastSuccessfulSha,
+          lastAttemptedSha: newLastAttemptedSha
         }
       requeueDuration: 30s
   promotionStrategyRef:
     name: argocon-demo
   reportOn: proposed
+
