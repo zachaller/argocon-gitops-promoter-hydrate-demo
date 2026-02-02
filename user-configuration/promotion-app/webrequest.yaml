@@ -79,8 +79,8 @@ spec:
         "category": "Application",
         "sub_category": "Release",
         "commit_id": "{{ .Environment.Proposed.Dry.Sha }}",
-        "start_time": "{{ now }}",
-        "end_time": "{{ now }}",
+        "start_time": "{{ now | date \"2006-01-02T15:04:05Z07:00\" }}",
+        "end_time": "{{ now | date \"2006-01-02T15:04:05Z07:00\" }}",
         "risk": "low",
         "repo_url": "https://github.intuit.com/your-org/your-repo"
       }
@@ -97,7 +97,7 @@ spec:
         // Get current dry SHA
         let currentDrySha = Environment.Proposed.Dry.Sha;
 
-        // Get the last SHA we successfully opened a change for from OUR state
+        // Get the last SHA we successfully opened a change for
         let lastOpenedSha = ExpressionData.lastOpenedSha ?? "";
 
         // Check if there's an open PR
@@ -105,16 +105,13 @@ spec:
                         string(Environment.PullRequest.State) == "open";
 
         // Trigger if PR is open and we haven't successfully opened for this SHA yet
-        // (based on our own ExpressionData, not external CommitStatus)
         let shouldTrigger = hasOpenPR && lastOpenedSha != currentDrySha;
 
-        // Update lastOpenedSha when:
-        // 1. We're triggering a new request (shouldTrigger is true), OR
-        // 2. OUR validation succeeded for this SHA (Phase is "success")
-        // This uses our own phase tracking, not external CommitStatuses
+        // Only update lastOpenedSha when validation succeeds (Phase == "success")
+        // This ensures we retry on HTTP errors (400, etc.) until we succeed
         {
           trigger: shouldTrigger,
-          lastOpenedSha: (shouldTrigger || Phase == "success") ? currentDrySha : lastOpenedSha
+          lastOpenedSha: Phase == "success" ? currentDrySha : lastOpenedSha
         }
       requeueDuration: 30s
   promotionStrategyRef:
