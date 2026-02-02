@@ -130,3 +130,4 @@ spec:
   promotionStrategyRef:
     name: argocon-demo
   reportOn: proposed
+
