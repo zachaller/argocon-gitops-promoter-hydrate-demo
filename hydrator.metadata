@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7dcb698e640675432d1e5d53e7fd0c66cd294c5e",
+  "drySha": "c916d5b6df2ae2413acaada9535c93bf64029d9d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T14:02:26-06:00",
-  "subject": "chore: bump version to v1.0.1684",
+  "date": "2026-02-03T14:49:10-06:00",
+  "subject": "chore: bump version to v1.0.1685",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-04T10:36:31-06:00",
-        "subject": "chore: server side apply (#898)",
-        "body": "* chore: server side apply\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: more controllers\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass required\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: fix tests\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: replace\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: move up a directory\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: add new location\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: add new location\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: use patch to avoid Get\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't copy finalizers and ownerrefs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "6ace964869cce87f4756419bd6a73eb5e758873f",
+        "date": "2026-01-25T23:04:24-06:00",
+        "subject": "chore: move back to upstream for mcr (#951)",
+        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "e783f3e7c7bebf393659d5cd7b5f568d96d32efc",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
