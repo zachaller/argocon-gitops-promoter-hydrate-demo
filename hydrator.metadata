@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c916d5b6df2ae2413acaada9535c93bf64029d9d",
+  "drySha": "d4e175a3489f8461ba1a7f434c475ce539cf11eb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T14:49:10-06:00",
-  "subject": "chore: bump version to v1.0.1685",
+  "date": "2026-02-03T14:54:27-06:00",
+  "subject": "chore: bump version to v1.0.1686",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-25T23:04:24-06:00",
-        "subject": "chore: move back to upstream for mcr (#951)",
-        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "e783f3e7c7bebf393659d5cd7b5f568d96d32efc",
+        "date": "2026-01-27T06:58:42-06:00",
+        "subject": "chore(deps): update actions/setup-go action to v6.2.0 (#904)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "8b99d183426d537405d631c44fc2a350ed3694e6",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
