@@ -25,7 +25,7 @@ spec:
   key: change-management-approval
   mode:
     trigger:
-      expression: >
+      triggerExpression: >
         // Track dry SHA state to handle no-op hydrations
 
         let currentDrySha = Environment.Proposed.Dry.Sha;
