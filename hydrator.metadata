@@ -1,8 +1,20 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "2b5892e11c165c2cfec1b4e4cce4ff7b8a101cc7",
+  "drySha": "69fadfd3d78d0c854958d75893922c1839fa5ad5",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T08:55:47-06:00",
-  "subject": "new spec",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
+  "date": "2026-02-03T09:29:04-06:00",
+  "subject": "chore: bump version to v1.0.1672",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
+  "references": [
+    {
+      "commit": {
+        "author": "\"Zach Aller\" <code@example.com>",
+        "date": "2026-01-20T20:19:35-06:00",
+        "subject": "chore: more validation (#823)",
+        "body": "* chore: more validation\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* namespace is max 63\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* consistency for shas\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* sha-256\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* don't implement complicated tests\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* genai yolo fixes\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix test\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint i guess\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* revert lint change\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "816e78a4cc98a8ea8d500a1b5b3224d85394c2b9",
+        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
+      }
+    }
+  ]
 }
