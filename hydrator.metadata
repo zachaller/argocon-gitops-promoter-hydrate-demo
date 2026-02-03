@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bd62aa1e6a0aababe392cdc1a2feb1518466db87",
+  "drySha": "2912294d99fa6b10aa2e77dd5159214f13f4e0d4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T13:27:26-06:00",
-  "subject": "chore: bump version to v1.0.1682",
+  "date": "2026-02-03T13:37:11-06:00",
+  "subject": "chore: bump version to v1.0.1683",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-07T15:19:09-06:00",
-        "subject": "feat: add tiltfile  (#883)",
-        "body": "* feat(tilt): add file\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(tilt): add arm support, update restart configs, move k8s object tracking\n\nSigned-off-by: Codey Jenkins <FourFifthsCode@users.noreply.github.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\nSigned-off-by: Codey Jenkins <FourFifthsCode@users.noreply.github.com>\nCo-authored-by: Codey Jenkins <FourFifthsCode@users.noreply.github.com>",
-        "sha": "4434a2293ff47e3e0c90027e43628c88212244d3",
+        "date": "2026-01-22T09:46:55-06:00",
+        "subject": "fix(cve): undici (#876)",
+        "body": "* fix(cve): undici\n\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>\n\n* fix(cve): undici\n\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "684df5996a5c2919181390a03316aea4305a90a8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
