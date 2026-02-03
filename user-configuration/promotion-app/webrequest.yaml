@@ -19,7 +19,7 @@ spec:
       Accept: application/json
     method: GET
     timeout: 30s
-    urlTemplate: http://localhost:8987/v1/change-management-service/changes/search?asset_id=1372489579564901493&commit_id={{.Environment.Proposed.Dry.Sha }}&status=CLOSED_SUCCESS
+    urlTemplate: http://localhost:8987/v1/change-management-service/changes/search?asset_id=1372489579564901493&commit_id={{.Environment.Proposed.Dry.Sha }}&status=CLOSED_SUCCESS&limit=25
   key: change-management-approval
   mode:
     trigger:
