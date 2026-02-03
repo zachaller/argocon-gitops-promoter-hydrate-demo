@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "cd2ef889cbfbcd92d7faaee497ede92cdd9a06d0",
+  "drySha": "5b8181396ad891f3ee11c8c3b7f0e4c8bc7c1645",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T10:31:36-06:00",
-  "subject": "chore: bump version to v1.0.1674",
+  "date": "2026-02-03T11:45:48-06:00",
+  "subject": "chore: bump version to v1.0.1675",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-22T22:25:32-06:00",
-        "subject": "fix: ui issues (#860)",
-        "body": "* fix: ui issues\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "2537315b1e5985397910e7edd3a8ff768e4acdca",
+        "date": "2026-01-03T11:49:30-06:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.13.0 to 1.14.0 (#873)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.13.0 to 1.14.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.13.0...v1.14.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.14.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "bef64ffd32b80d58b27caacdc075349de5732150",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
