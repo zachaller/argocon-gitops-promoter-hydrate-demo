@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a3661441dc904d8143c0e4cc1be4966f37fcd8cf",
+  "drySha": "3fee353c15d35053c95a469c12e5ea644b640791",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T12:29:55-06:00",
-  "subject": "chore: bump version to v1.0.1679",
+  "date": "2026-02-03T12:41:52-06:00",
+  "subject": "chore: bump version to v1.0.1680",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-27T17:38:33-06:00",
-        "subject": "chore(version): update promoter version (#894)",
-        "body": "* chore(version): update promoter version\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* Remove image newName and newTag from kustomization\n\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>",
-        "sha": "ba820d21743607ea28eed18d4684ec0f4545ecd1",
+        "date": "2026-01-04T16:57:06-06:00",
+        "subject": "chore(deps): update react monorepo (#910)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "2b8970c8f91b663dc6e6b1269f4f64bd62aad69c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
