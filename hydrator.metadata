@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bcbdb26905cf946d97dee3584daec94e8cf47a3d",
+  "drySha": "cd2ef889cbfbcd92d7faaee497ede92cdd9a06d0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-01-30T12:15:53-06:00",
-  "subject": "chore: bump version to v1.0.1664",
+  "date": "2026-02-03T10:31:36-06:00",
+  "subject": "chore: bump version to v1.0.1674",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-01T04:13:52-06:00",
-        "subject": "fix(api): missing omitempty on optional fields for serialization (#888)",
-        "body": "Signed-off-by: Alexandre Gaudreault <alexandre_gaudreault@intuit.com>",
-        "sha": "77690e8e66817675b274edc7221f9fc4fe59d402",
+        "date": "2026-01-22T22:25:32-06:00",
+        "subject": "fix: ui issues (#860)",
+        "body": "* fix: ui issues\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "2537315b1e5985397910e7edd3a8ff768e4acdca",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
