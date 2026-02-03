@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "2912294d99fa6b10aa2e77dd5159214f13f4e0d4",
+  "drySha": "7dcb698e640675432d1e5d53e7fd0c66cd294c5e",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T13:37:11-06:00",
-  "subject": "chore: bump version to v1.0.1683",
+  "date": "2026-02-03T14:02:26-06:00",
+  "subject": "chore: bump version to v1.0.1684",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-22T09:46:55-06:00",
-        "subject": "fix(cve): undici (#876)",
-        "body": "* fix(cve): undici\n\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>\n\n* fix(cve): undici\n\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>",
-        "sha": "684df5996a5c2919181390a03316aea4305a90a8",
+        "date": "2026-01-04T10:36:31-06:00",
+        "subject": "chore: server side apply (#898)",
+        "body": "* chore: server side apply\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: more controllers\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: pass required\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: fix tests\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: replace\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: move up a directory\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: add new location\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: add new location\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: use patch to avoid Get\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* chore: lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* don't copy finalizers and ownerrefs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "6ace964869cce87f4756419bd6a73eb5e758873f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
