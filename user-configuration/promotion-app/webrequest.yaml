@@ -30,7 +30,7 @@ spec:
       triggerExpression: |
           // Use Note.DrySha from git note - this is authoritative and updates even for no-op hydrations
           let currentDrySha = Environment.Proposed.Note.DrySha;
-          let storedSuccessfulDrySha = ExpressionData.lastSuccessfulDrySha ?? "";
+          let storedSuccessfulDrySha = TriggerData.lastSuccessfulDrySha ?? "";
 
           let hasOpenPR = Environment.PullRequest != nil &&
                           string(Environment.PullRequest.State) == "open";
@@ -99,7 +99,7 @@ spec:
         let currentDrySha = Environment.Proposed.Dry.Sha;
         
         // Get the SHA we made the last request for
-        let lastRequestSha = ExpressionData.lastRequestSha ?? "";
+        let lastRequestSha = TriggerData.lastRequestSha ?? "";
         
         // Get the status code from the last response
         let lastStatusCode = ResponseData != nil ? ResponseData.statusCode : 0;
