@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3fee353c15d35053c95a469c12e5ea644b640791",
+  "drySha": "13526f21e8b2da5965ba84577cfbb2357ed2bbef",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T12:41:52-06:00",
-  "subject": "chore: bump version to v1.0.1680",
+  "date": "2026-02-03T13:24:16-06:00",
+  "subject": "chore: bump version to v1.0.1681",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-04T16:57:06-06:00",
-        "subject": "chore(deps): update react monorepo (#910)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "2b8970c8f91b663dc6e6b1269f4f64bd62aad69c",
+        "date": "2025-12-31T15:57:48-06:00",
+        "subject": "chore(deps): bump crate-ci/typos from 1.42.1 to 1.42.2 (#949)",
+        "body": "Bumps [crate-ci/typos](https://github.com/crate-ci/typos) from 1.42.1 to 1.42.2.\n- [Release notes](https://github.com/crate-ci/typos/releases)\n- [Changelog](https://github.com/crate-ci/typos/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/crate-ci/typos/compare/65120634e79d8374d1aa2f27e54baa0c364fff5a...a1d64977b4aa1709d6328d518aa753f4899352d8)\n\n---\nupdated-dependencies:\n- dependency-name: crate-ci/typos\n  dependency-version: 1.42.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "8b4da9d7c2f667795859a8a0528540a5697ff817",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
