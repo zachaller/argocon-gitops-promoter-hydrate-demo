@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5741de8ecdf8cba958c3a8bf7739c56433c2fac1",
+  "drySha": "e8662cf4b70d0d16c2ca87a3e03855c5767fa5d0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T12:07:11-06:00",
-  "subject": "chore: bump version to v1.0.1676",
+  "date": "2026-02-03T12:20:40-06:00",
+  "subject": "chore: bump version to v1.0.1678",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-13T02:18:46-06:00",
-        "subject": "fix: deletion of ps loop (#934)",
-        "body": "* fix: deletion of ps loop\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: deletion of ps loop\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: bad test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: bad test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: bad test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "a70c79f19165d8d8fc002378f0aa23e66aab30b1",
+        "date": "2026-01-08T20:29:51-06:00",
+        "subject": "doc(requeue): fix kubectl cmd (#884)",
+        "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "f75579341db5f319fe97b96722c1202fd23b3fa4",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
