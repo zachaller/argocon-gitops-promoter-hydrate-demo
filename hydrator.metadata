@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "fc235a40be8a55ff504fa2388a3f386bd2fbdeff",
+  "drySha": "24fc4426c8e0f5819cecab4f944a107df0047036",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-02T16:15:27-06:00",
-  "subject": "chore: bump version to v1.0.1668",
+  "date": "2026-02-02T22:04:46-06:00",
+  "subject": "chore: bump version to v1.0.1669",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-11T09:16:52-06:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.14.0 to 1.16.0 (#921)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.14.0 to 1.16.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.14.0...v1.16.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.16.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "401b5522ae66376c3051b0add5c6356a77c9b9db",
+        "date": "2026-01-12T21:58:31-06:00",
+        "subject": "docs: add infos around extension in argocd (#871)",
+        "body": "* docs(argocdextension): improve documentation\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* docs(argocdextension): improve documentation\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* docs(argocd-extension): add install details\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "a21b770c574da71c583f70c745b9cf00aef6285a",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
