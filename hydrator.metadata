@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5b8181396ad891f3ee11c8c3b7f0e4c8bc7c1645",
+  "drySha": "5741de8ecdf8cba958c3a8bf7739c56433c2fac1",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T11:45:48-06:00",
-  "subject": "chore: bump version to v1.0.1675",
+  "date": "2026-02-03T12:07:11-06:00",
+  "subject": "chore: bump version to v1.0.1676",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-03T11:49:30-06:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.13.0 to 1.14.0 (#873)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.13.0 to 1.14.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.13.0...v1.14.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.14.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
-        "sha": "bef64ffd32b80d58b27caacdc075349de5732150",
+        "date": "2026-01-13T02:18:46-06:00",
+        "subject": "fix: deletion of ps loop (#934)",
+        "body": "* fix: deletion of ps loop\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: deletion of ps loop\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: bad test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: bad test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: bad test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "a70c79f19165d8d8fc002378f0aa23e66aab30b1",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
