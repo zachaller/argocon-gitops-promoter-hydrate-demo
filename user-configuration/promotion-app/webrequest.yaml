@@ -30,9 +30,9 @@ spec:
 
         let currentDrySha = Environment.Proposed.Dry.Sha;
 
-        let storedSuccessfulDrySha = ExpressionData.lastSuccessfulDrySha ?? "";
+        let storedSuccessfulDrySha = TriggerData.lastSuccessfulDrySha ?? "";
 
-        let storedAttemptedDrySha = ExpressionData.lastAttemptedDrySha ?? "";
+        let storedAttemptedDrySha = TriggerData.lastAttemptedDrySha ?? "";
 
 
         let hasOpenPR = Environment.PullRequest != nil &&
