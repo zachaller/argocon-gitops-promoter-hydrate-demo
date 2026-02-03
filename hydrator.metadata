@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5db38e6e440023ecc0de6a6e1d788339573c4080",
+  "drySha": "c06a4ad3352d13749a1a2c43b4c76326335dbab6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T16:23:34-06:00",
-  "subject": "chore: bump version to v1.0.1688",
+  "date": "2026-02-03T16:23:40-06:00",
+  "subject": "chore: bump version to v1.0.1689",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-19T21:23:11-06:00",
-        "subject": "docs: add infos around extension in argocd (#871)",
-        "body": "* docs(argocdextension): improve documentation\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* docs(argocdextension): improve documentation\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* docs(argocd-extension): add install details\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "a21b770c574da71c583f70c745b9cf00aef6285a",
+        "date": "2026-01-04T03:03:27-06:00",
+        "subject": "chore(deps): update react monorepo (#910)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "2b8970c8f91b663dc6e6b1269f4f64bd62aad69c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
