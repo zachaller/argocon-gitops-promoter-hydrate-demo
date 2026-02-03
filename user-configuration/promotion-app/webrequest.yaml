@@ -27,7 +27,7 @@ spec:
   mode:
     trigger:
       requeueDuration: 30s
-      expression: |
+      triggerExpression: |
           // Use Note.DrySha from git note - this is authoritative and updates even for no-op hydrations
           let currentDrySha = Environment.Proposed.Note.DrySha;
           let storedSuccessfulDrySha = ExpressionData.lastSuccessfulDrySha ?? "";
@@ -94,7 +94,7 @@ spec:
   key: change-management-open
   mode:
     trigger:
-      expression: |
+      triggerExpression: |
         // Get current dry SHA
         let currentDrySha = Environment.Proposed.Dry.Sha;
         
