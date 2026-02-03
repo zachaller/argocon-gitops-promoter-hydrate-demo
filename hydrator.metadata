@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e8662cf4b70d0d16c2ca87a3e03855c5767fa5d0",
+  "drySha": "a3661441dc904d8143c0e4cc1be4966f37fcd8cf",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T12:20:40-06:00",
-  "subject": "chore: bump version to v1.0.1678",
+  "date": "2026-02-03T12:29:55-06:00",
+  "subject": "chore: bump version to v1.0.1679",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-08T20:29:51-06:00",
-        "subject": "doc(requeue): fix kubectl cmd (#884)",
-        "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "f75579341db5f319fe97b96722c1202fd23b3fa4",
+        "date": "2026-01-27T17:38:33-06:00",
+        "subject": "chore(version): update promoter version (#894)",
+        "body": "* chore(version): update promoter version\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* Remove image newName and newTag from kustomization\n\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "ba820d21743607ea28eed18d4684ec0f4545ecd1",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
