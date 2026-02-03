@@ -1,20 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "24fc4426c8e0f5819cecab4f944a107df0047036",
+  "drySha": "2b5892e11c165c2cfec1b4e4cce4ff7b8a101cc7",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-02T22:04:46-06:00",
-  "subject": "chore: bump version to v1.0.1669",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
-  "references": [
-    {
-      "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-12T21:58:31-06:00",
-        "subject": "docs: add infos around extension in argocd (#871)",
-        "body": "* docs(argocdextension): improve documentation\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* docs(argocdextension): improve documentation\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* docs(argocd-extension): add install details\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "a21b770c574da71c583f70c745b9cf00aef6285a",
-        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
-      }
-    }
-  ]
+  "date": "2026-02-03T08:55:47-06:00",
+  "subject": "new spec",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
 }
