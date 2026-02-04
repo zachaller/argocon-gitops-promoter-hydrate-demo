@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "102e1e1c951fd522182f0a5952c9c87be9a7c211",
+  "drySha": "330ae025fe8897123e29d425e5b3b5443f646299",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T09:33:58-06:00",
-  "subject": "chore: bump version to v1.0.1692",
+  "date": "2026-02-04T10:27:42-06:00",
+  "subject": "chore: bump version to v1.0.1693",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-29T17:39:23-06:00",
-        "subject": "chore(deps): update actions/checkout action to v6.0.2 (#953)",
+        "date": "2026-01-08T11:43:47-06:00",
+        "subject": "chore(deps): update dependency style-loader to v4 (#915)",
         "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "cab85b80bb95b15032ff5b07d9cb2b02376fc5be",
+        "sha": "fd6a7225089c0812a1a8300384efc095ace24759",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
