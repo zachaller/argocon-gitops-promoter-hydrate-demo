@@ -1,3 +1,4 @@
+---
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
 metadata:
@@ -24,45 +25,31 @@ spec:
   mode:
     trigger:
       triggerExpression: |
-          // Track dry SHA state to handle no-op hydrations
-          let currentDrySha = Environment.Proposed.Dry.Sha;
-          let storedSuccessfulDrySha = TriggerData.lastSuccessfulDrySha ?? "";
-          let storedAttemptedDrySha = TriggerData.lastAttemptedDrySha ?? "";
-  
-          let hasOpenPR = Environment.PullRequest != nil && string(Environment.PullRequest.State) == "open";
-  
-          // Check current phase for this specific commit status
-          let currentStatus = filter(Environment.Proposed.CommitStatuses ?? [], {.Key == "change-management-approval"});
-          let currentPhase = len(currentStatus) > 0 ? string(currentStatus[0].Phase) : "unknown";
-          let currentPhaseIsSuccess = currentPhase == "success";
-  
-          // Only mark as successful if we attempted THIS dry SHA and now see success
-          let newSuccessfulSha = (currentPhaseIsSuccess && storedAttemptedDrySha == currentDrySha) ? currentDrySha : storedSuccessfulDrySha;
-  
-          // Have we succeeded for THIS specific dry SHA?
-          let alreadySucceededForThisSha = newSuccessfulSha == currentDrySha;
-  
-          // IMPORTANT: If current phase is pending/error, we need to retry even if we think we succeeded
-          let needsRetryDueToPhase = (currentPhase == "pending" || currentPhase == "error") && currentDrySha == storedSuccessfulDrySha;
-  
-          // Trigger if:
-          // 1. PR is open AND we haven't succeeded for this dry SHA, OR
-          // 2. Current phase indicates we need to retry (handles reset/failure cases)
-          let shouldTrigger = hasOpenPR && (!alreadySucceededForThisSha || needsRetryDueToPhase);
-  
-          // Return object with trigger decision and state to persist
-          {
-            trigger: shouldTrigger,
-            lastSuccessfulDrySha: needsRetryDueToPhase ? "" : newSuccessfulSha,
-            lastAttemptedDrySha: shouldTrigger ? currentDrySha : storedAttemptedDrySha
-          }
+        // Current state
+        let currentDrySha = Environment.Proposed.Dry.Sha;
+        let lastCheckedDrySha = TriggerData.lastCheckedDrySha ?? "";
+        let hasOpenPR = Environment.PullRequest != nil && 
+                        string(Environment.PullRequest.State) == "open";
+        
+        // New dry SHA we haven't checked yet?
+        let isNewDrySha = currentDrySha != lastCheckedDrySha;
+        
+        // Already checked this SHA but haven't succeeded yet? Need to keep polling
+        let needsRetry = currentDrySha == lastCheckedDrySha && Phase != "success";
+        
+        // Trigger on new SHA OR if we need to retry (keep polling until success)
+        let shouldTrigger = hasOpenPR && (isNewDrySha || needsRetry);
+        
+        {
+          trigger: shouldTrigger,
+          lastCheckedDrySha: currentDrySha
+        }
       requeueDuration: 30s
   promotionStrategyRef:
     name: argocon-demo
   reportOn: proposed
 
 ---
-
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
 metadata:
@@ -104,40 +91,34 @@ spec:
   mode:
     trigger:
       triggerExpression: |
-        // Get current dry SHA
+        // Current state
         let currentDrySha = Environment.Proposed.Dry.Sha;
-        
-        // Get the SHA we made the last request for
-        let lastRequestSha = TriggerData.lastRequestSha ?? "";
-        
-        // Get the status code from the last response
-        let lastStatusCode = ResponseData != nil ? ResponseData.statusCode : 0;
-        
-        // Check if there's an open PR
-        let hasOpenPR = Environment.PullRequest != nil &&
+        let lastRequestedDrySha = TriggerData.lastRequestedDrySha ?? "";
+        let hasOpenPR = Environment.PullRequest != nil && 
                         string(Environment.PullRequest.State) == "open";
         
-        // Only trigger if:
-        // 1. PR is open, AND
-        // 2. Either we've never made a request for this SHA, OR
-        //    the last request for this SHA didn't get a 202 response
-        let alreadySucceeded = (lastRequestSha == currentDrySha && lastStatusCode == 202);
-        let shouldTrigger = hasOpenPR && !alreadySucceeded;
+        // New dry SHA we haven't tried yet?
+        let isNewDrySha = currentDrySha != lastRequestedDrySha;
         
-        // Store the SHA when we make a request
-        let newLastRequestSha = shouldTrigger ? currentDrySha : lastRequestSha;
+        // Should we retry? Only for transient errors
+        let lastStatusCode = ResponseData != nil ? ResponseData.statusCode : 0;
+        let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
+        let needsRetry = currentDrySha == lastRequestedDrySha && 
+                         Phase != "success" && 
+                         isRetryable;
+        
+        // Trigger on new SHA OR retryable failure
+        let shouldTrigger = hasOpenPR && (isNewDrySha || needsRetry);
         
         {
           trigger: shouldTrigger,
-          lastRequestSha: newLastRequestSha
+          lastRequestedDrySha: shouldTrigger ? currentDrySha : lastRequestedDrySha
         }
-      
       requeueDuration: 30s
       
-      # Extract the change ID and status code from the response
+      # Extract status code for retry logic
       responseExpression: |
         {
-          changeId: Response.Body.id ?? "",
           statusCode: Response.StatusCode
         }
   promotionStrategyRef:
