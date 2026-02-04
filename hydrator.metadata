@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "66ebf87956f7462a6437740b1fe695195c939bea",
+  "drySha": "5af8b0515a0103bb526edf327285cae15fd67564",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T14:19:58-06:00",
-  "subject": "chore: bump version to v1.0.1703",
+  "date": "2026-02-04T14:32:08-06:00",
+  "subject": "chore: bump version to v1.0.1704",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-09T19:20:35-06:00",
-        "subject": "chore(deps): update dependency eslint-config-prettier to v10 (#914)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "b6f85bcec34991ca26fbd730005f7a6c09d350bd",
+        "date": "2026-01-30T11:09:54-06:00",
+        "subject": "feat: add missing version (#993)",
+        "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "b3786739d6f34c890e4f838e183cf697af545579",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
