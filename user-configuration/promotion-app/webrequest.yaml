@@ -136,7 +136,7 @@ spec:
           statusCode: Response.StatusCode,
           changeId: Response.Body.id ?? "",
           message: Response.Body.message ?? "",
-          commitId: "{{ .Environment.Proposed.Dry.Sha }}",
+          commitId: Response.Body.change_request?.commit_id ?? "",,
           lastRequestedAt: string(now())
         }
   promotionStrategyRef:
