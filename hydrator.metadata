@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "13d70b70b21f0c5a4368a7837e3b81896e4ce5ec",
+  "drySha": "85b7d0b22f0fac9c72806c4fbc19c8c4a3bfda0b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T12:03:33-06:00",
-  "subject": "chore: bump version to v1.0.1699",
+  "date": "2026-02-04T12:04:54-06:00",
+  "subject": "chore: bump version to v1.0.1700",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-25T00:15:14-06:00",
-        "subject": "docs: clarify points on custom hydrators (#929)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "12cd2a288f04b69c291ebb16287b1a9c74558167",
+        "date": "2026-01-16T18:00:53-06:00",
+        "subject": "chore(deps): update dependency @vitejs/plugin-react to v5 (#911)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "7e0c79bb8246fa148d11d2878fec875d0e2bcb71",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
