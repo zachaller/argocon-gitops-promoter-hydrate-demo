@@ -1,4 +1,3 @@
----
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
 metadata:
@@ -28,23 +27,38 @@ spec:
         // Current state
         let currentDrySha = Environment.Proposed.Dry.Sha;
         let lastCheckedDrySha = TriggerData.lastCheckedDrySha ?? "";
-        let hasOpenPR = Environment.PullRequest != nil && 
+        let hasOpenPR = Environment.PullRequest != nil &&
                         string(Environment.PullRequest.State) == "open";
-        
+
         // New dry SHA we haven't checked yet?
         let isNewDrySha = currentDrySha != lastCheckedDrySha;
-        
+
         // Already checked this SHA but haven't succeeded yet? Need to keep polling
         let needsRetry = currentDrySha == lastCheckedDrySha && Phase != "success";
-        
+
         // Trigger on new SHA OR if we need to retry (keep polling until success)
         let shouldTrigger = hasOpenPR && (isNewDrySha || needsRetry);
-        
+
         {
           trigger: shouldTrigger,
           lastCheckedDrySha: currentDrySha
         }
       requeueDuration: 30s
+      
+      # Extract useful debugging information from search response
+      responseExpression: |
+        {
+          statusCode: Response.StatusCode,
+          recordCount: len(Response.Body.change_records ?? []),
+          records: map(Response.Body.change_records ?? [], {
+            commitId: #.change_request.commit_id ?? "",
+            startTime: #.change_request.start_time ?? "",
+            endTime: #.change_request.end_time ?? "",
+            status: #.change_request.status ?? "",
+            environment: #.change_request.environment ?? ""
+          }),
+          lastCheckedAt: string(now())
+        }
   promotionStrategyRef:
     name: argocon-demo
   reportOn: proposed
@@ -94,32 +108,36 @@ spec:
         // Current state
         let currentDrySha = Environment.Proposed.Dry.Sha;
         let lastRequestedDrySha = TriggerData.lastRequestedDrySha ?? "";
-        let hasOpenPR = Environment.PullRequest != nil && 
+        let hasOpenPR = Environment.PullRequest != nil &&
                         string(Environment.PullRequest.State) == "open";
-        
+
         // New dry SHA we haven't tried yet?
         let isNewDrySha = currentDrySha != lastRequestedDrySha;
-        
+
         // Should we retry? Only for transient errors
         let lastStatusCode = ResponseData != nil ? ResponseData.statusCode : 0;
         let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
-        let needsRetry = currentDrySha == lastRequestedDrySha && 
-                         Phase != "success" && 
+        let needsRetry = currentDrySha == lastRequestedDrySha &&
+                         Phase != "success" &&
                          isRetryable;
-        
+
         // Trigger on new SHA OR retryable failure
         let shouldTrigger = hasOpenPR && (isNewDrySha || needsRetry);
-        
+
         {
           trigger: shouldTrigger,
           lastRequestedDrySha: shouldTrigger ? currentDrySha : lastRequestedDrySha
         }
       requeueDuration: 30s
-      
-      # Extract status code for retry logic
+
+      # Extract useful debugging information from create response
       responseExpression: |
         {
-          statusCode: Response.StatusCode
+          statusCode: Response.StatusCode,
+          changeId: Response.Body.id ?? "",
+          message: Response.Body.message ?? "",
+          commitId: "{{ .Environment.Proposed.Dry.Sha }}",
+          lastRequestedAt: string(now())
         }
   promotionStrategyRef:
     name: argocon-demo
