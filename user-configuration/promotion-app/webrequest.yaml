@@ -154,11 +154,11 @@ spec:
           statusCode: Response.StatusCode,
           changeId: Response.Body.id ?? "",
           message: Response.Body.message ?? "",
-          commitId: Response.Body.change_request?.commit_id ?? "",
-          startTime: Response.Body.change_request?.start_time ?? "",
-          endTime: Response.Body.change_request?.end_time ?? "",
-          environment: Response.Body.change_request?.environment ?? "",
-          assetId: Response.Body.change_request?.asset_id ?? "",
+          commitId: Response.Body.change_request.commit_id ?? "",
+          startTime: Response.Body.change_request.start_time ?? "",
+          endTime: Response.Body.change_request.end_time ?? "",
+          environment: Response.Body.change_request.environment ?? "",
+          assetId: Response.Body.change_request.asset_id ?? "",
           lastRequestedAt: string(now())
         }
   promotionStrategyRef:
