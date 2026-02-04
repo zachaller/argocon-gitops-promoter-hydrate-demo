@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "85b7d0b22f0fac9c72806c4fbc19c8c4a3bfda0b",
+  "drySha": "cff6088f7d84455092ac66ff84c2cd739d8f0845",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T12:04:54-06:00",
-  "subject": "chore: bump version to v1.0.1700",
+  "date": "2026-02-04T12:34:33-06:00",
+  "subject": "chore: bump version to v1.0.1701",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-16T18:00:53-06:00",
-        "subject": "chore(deps): update dependency @vitejs/plugin-react to v5 (#911)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "7e0c79bb8246fa148d11d2878fec875d0e2bcb71",
+        "date": "2026-01-11T07:00:49-06:00",
+        "subject": "fix(deps): update dependency zustand to v5 (#919)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "9e066a16c14651f06e9846cfa021eb9d58ead8da",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
