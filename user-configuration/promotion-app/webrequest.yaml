@@ -49,14 +49,32 @@ spec:
       responseExpression: |
         {
           statusCode: Response.StatusCode,
-          recordCount: len(Response.Body.change_records ?? []),
-          records: map(Response.Body.change_records ?? [], {
+          currentTime: string(now()),
+          totalRecordCount: len(Response.Body.change_records ?? []),
+          allRecords: map(Response.Body.change_records ?? [], {
             commitId: #.change_request.commit_id ?? "",
             startTime: #.change_request.start_time ?? "",
             endTime: #.change_request.end_time ?? "",
             status: #.change_request.status ?? "",
-            environment: #.change_request.environment ?? ""
+            environment: #.change_request.environment ?? "",
+            withinTimeWindow: (date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now())
           }),
+          matchingRecords: filter(
+            map(Response.Body.change_records ?? [], {
+              commitId: #.change_request.commit_id ?? "",
+              startTime: #.change_request.start_time ?? "",
+              endTime: #.change_request.end_time ?? "",
+              status: #.change_request.status ?? "",
+              environment: #.change_request.environment ?? "",
+              assetId: #.change_request.asset_id ?? ""
+            }),
+            {
+              date(#.startTime) <= now() && date(#.endTime) >= now()
+            }
+          ),
+          matchingCount: len(filter(Response.Body.change_records ?? [], {
+            date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now()
+          })),
           lastCheckedAt: string(now())
         }
   promotionStrategyRef:
@@ -136,7 +154,11 @@ spec:
           statusCode: Response.StatusCode,
           changeId: Response.Body.id ?? "",
           message: Response.Body.message ?? "",
-          commitId: Response.Body.change_request?.commit_id ?? "",,
+          commitId: Response.Body.change_request?.commit_id ?? "",
+          startTime: Response.Body.change_request?.start_time ?? "",
+          endTime: Response.Body.change_request?.end_time ?? "",
+          environment: Response.Body.change_request?.environment ?? "",
+          assetId: Response.Body.change_request?.asset_id ?? "",
           lastRequestedAt: string(now())
         }
   promotionStrategyRef:
