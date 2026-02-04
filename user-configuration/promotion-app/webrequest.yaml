@@ -45,14 +45,16 @@ spec:
         }
       requeueDuration: 30s
       
-      # Store response data for debugging
+      # Store only records that meet the approval criteria
       responseExpression: |
         {
           statusCode: Response.StatusCode,
           currentTime: string(now()),
           totalRecordCount: len(Response.Body.change_records ?? []),
-          changeRecords: Response.Body.change_records ?? [],
-          matchingCount: len(filter(Response.Body.change_records ?? [], {
+          approvedRecords: filter(Response.Body.change_records ?? [], {
+            date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now()
+          }),
+          approvedCount: len(filter(Response.Body.change_records ?? [], {
             date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now()
           })),
           lastCheckedAt: string(now())
