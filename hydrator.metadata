@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "cff6088f7d84455092ac66ff84c2cd739d8f0845",
+  "drySha": "2c86bea5dfb62c1d218c6ef3209d93c33d5e934a",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T12:34:33-06:00",
-  "subject": "chore: bump version to v1.0.1701",
+  "date": "2026-02-04T13:02:59-06:00",
+  "subject": "chore: bump version to v1.0.1702",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-11T07:00:49-06:00",
-        "subject": "fix(deps): update dependency zustand to v5 (#919)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
-        "sha": "9e066a16c14651f06e9846cfa021eb9d58ead8da",
+        "date": "2026-01-02T06:53:42-06:00",
+        "subject": "chore: fix test flake (#890)",
+        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "7a6d9d700ec19f0af057e465fbba48d4d68af407",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
