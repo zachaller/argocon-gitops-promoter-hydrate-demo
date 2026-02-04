@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c7a71deff9e5832858e772f98f6896e7f47383fe",
+  "drySha": "5cbe6cd1a5f13dc23305176df7901d3823b124b0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T11:18:15-06:00",
-  "subject": "chore: bump version to v1.0.1695",
+  "date": "2026-02-04T11:40:41-06:00",
+  "subject": "chore: bump version to v1.0.1696",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-16T19:47:09-06:00",
-        "subject": "docs: specify argo-cd version 3.3 (#862)",
-        "body": "* Specify Argocd version 3.3\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* Update ui/extension/README.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "f03e32d774ae9f003b4451a482901d164b0a5112",
+        "date": "2026-01-28T18:08:06-06:00",
+        "subject": "docs: clarify points on custom hydrators (#929)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "12cd2a288f04b69c291ebb16287b1a9c74558167",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
