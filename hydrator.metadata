@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f9d232ffa00c08eb17acf932408981b3767424a6",
+  "drySha": "102e1e1c951fd522182f0a5952c9c87be9a7c211",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-03T17:17:59-06:00",
-  "subject": "chore: bump version to v1.0.1691",
+  "date": "2026-02-04T09:33:58-06:00",
+  "subject": "chore: bump version to v1.0.1692",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-02T02:07:58-06:00",
-        "subject": "fix: let argocd commit status work with custom hydrators (#927)",
-        "body": "* fix: let argocd commit status work with custom hydrators\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "9c3dd77c8aa62837facf84e943d44d4a0d0c34e0",
+        "date": "2026-01-29T17:39:23-06:00",
+        "subject": "chore(deps): update actions/checkout action to v6.0.2 (#953)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "cab85b80bb95b15032ff5b07d9cb2b02376fc5be",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
