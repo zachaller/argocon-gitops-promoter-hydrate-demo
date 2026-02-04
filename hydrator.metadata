@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5af8b0515a0103bb526edf327285cae15fd67564",
+  "drySha": "ba53cbc752502b2272016718f8ec33fa857d65f8",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T14:32:08-06:00",
-  "subject": "chore: bump version to v1.0.1704",
+  "date": "2026-02-04T15:36:28-06:00",
+  "subject": "chore: bump version to v1.0.1705",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-30T11:09:54-06:00",
-        "subject": "feat: add missing version (#993)",
-        "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "b3786739d6f34c890e4f838e183cf697af545579",
+        "date": "2026-01-06T03:33:27-06:00",
+        "subject": "docs: specify argo-cd version 3.3 (#862)",
+        "body": "* Specify Argocd version 3.3\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* Update ui/extension/README.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "f03e32d774ae9f003b4451a482901d164b0a5112",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
