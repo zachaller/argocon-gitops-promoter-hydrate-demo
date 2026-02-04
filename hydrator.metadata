@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "330ae025fe8897123e29d425e5b3b5443f646299",
+  "drySha": "0c66ca18231e881ea30ed63e0ae61bf8f68781d0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T10:27:42-06:00",
-  "subject": "chore: bump version to v1.0.1693",
+  "date": "2026-02-04T10:36:49-06:00",
+  "subject": "chore: bump version to v1.0.1694",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-08T11:43:47-06:00",
-        "subject": "chore(deps): update dependency style-loader to v4 (#915)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "fd6a7225089c0812a1a8300384efc095ace24759",
+        "date": "2026-01-10T07:45:39-06:00",
+        "subject": "feat: add proposed git note dry sha to  printer column (#974)",
+        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "e0a42212806e59955f23925575ced4d34b16b4ec",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
