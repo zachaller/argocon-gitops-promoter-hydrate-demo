@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "715a4de7751f8487e7dee3d0b3154beaed23b4d2",
+  "drySha": "d8e0b3ca2f6ab2f7225f2c5783edbfbd94b22b9b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T11:51:43-06:00",
-  "subject": "chore: bump version to v1.0.1697",
+  "date": "2026-02-04T12:03:27-06:00",
+  "subject": "chore: bump version to v1.0.1698",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-08T22:11:59-06:00",
-        "subject": "chore(version): update promoter version (#894)",
-        "body": "* chore(version): update promoter version\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* Remove image newName and newTag from kustomization\n\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\nSigned-off-by: Nolan Emirot <emirot.nolan@gmail.com>",
-        "sha": "ba820d21743607ea28eed18d4684ec0f4545ecd1",
+        "date": "2026-01-04T02:25:02-06:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.13.0 to 1.14.0 (#873)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.13.0 to 1.14.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.13.0...v1.14.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.14.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "bef64ffd32b80d58b27caacdc075349de5732150",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
