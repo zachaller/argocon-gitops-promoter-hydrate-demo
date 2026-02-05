@@ -23,8 +23,8 @@ spec:
   key: change-management-approval
   mode:
     trigger:
-      # Check frequently, but trigger expression controls actual request timing
-      requeueDuration: 10s
+      # Reconciliation interval
+      requeueDuration: 15s
       
       triggerExpression: |
         // Current state
@@ -37,22 +37,28 @@ spec:
         let isNewDrySha = currentDrySha != lastCheckedDrySha;
 
         // Time-based triggering: configurable polling interval (30 minutes)
-        let pollingIntervalMinutes = 30;
-        let lastRequestTime = TriggerData.lastRequestTime != nil ? 
-                              date(TriggerData.lastRequestTime) : 
-                              now() - duration("100h"); // Force trigger on first run
-        let timeSinceLastRequest = now() - lastRequestTime;
-        let shouldTriggerByTime = timeSinceLastRequest >= duration(string(pollingIntervalMinutes) + "m");
+        let pollingIntervalMinutes = 1;
+        let isFirstRun = TriggerData.lastRequestTime == nil;
+        
+        let shouldTriggerByTime = false;
+        if (!isFirstRun) {
+          let currentTime = now();
+          let lastRequestTime = date(TriggerData.lastRequestTime);
+          let timeSinceLastRequest = currentTime - lastRequestTime;
+          let pollingInterval = duration(string(pollingIntervalMinutes) + "m");
+          shouldTriggerByTime = timeSinceLastRequest >= pollingInterval;
+        }
 
         // Trigger if:
-        // 1. New SHA (immediate check)
-        // 2. OR enough time has passed since last request (continuous polling)
-        let shouldTrigger = hasOpenPR && (isNewDrySha || shouldTriggerByTime);
+        // 1. First run (no previous request time)
+        // 2. New SHA (immediate check)
+        // 3. OR enough time has passed since last request (continuous polling)
+        let shouldTrigger = hasOpenPR && (isFirstRun || isNewDrySha || shouldTriggerByTime);
 
         {
           trigger: shouldTrigger,
           lastCheckedDrySha: currentDrySha,
-          lastRequestTime: shouldTrigger ? format(now(), "2006-01-02T15:04:05Z07:00") : TriggerData.lastRequestTime
+          lastRequestTime: shouldTrigger ? now() : TriggerData.lastRequestTime
         }
 
       # Store only records that meet the approval criteria
@@ -68,6 +74,7 @@ spec:
           approvedCount: len(approvedRecords),
           lastCheckedAt: string(now())
         }
+
 
   promotionStrategyRef:
     name: argocon-demo
