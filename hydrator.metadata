@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f4501fe7cff4a9025dfee8d5ceb8121f5c7bf8a5",
+  "drySha": "a51ec8defab03d312a8aaa9b01b74dc5028d2753",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T21:00:02-06:00",
-  "subject": "chore: bump version to v1.0.1706",
+  "date": "2026-02-04T21:00:10-06:00",
+  "subject": "chore: bump version to v1.0.1707",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-17T17:10:15-06:00",
-        "subject": "chore(deps): update dependency @vitejs/plugin-react to v5 (#911)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "7e0c79bb8246fa148d11d2878fec875d0e2bcb71",
+        "date": "2026-01-09T20:52:19-06:00",
+        "subject": "chore(deps): bump github.com/onsi/gomega from 1.39.0 to 1.39.1 (#968)",
+        "body": "Bumps [github.com/onsi/gomega](https://github.com/onsi/gomega) from 1.39.0 to 1.39.1.\n- [Release notes](https://github.com/onsi/gomega/releases)\n- [Changelog](https://github.com/onsi/gomega/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/onsi/gomega/compare/v1.39.0...v1.39.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/onsi/gomega\n  dependency-version: 1.39.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "30058b40cdca30d3fb0d6d87eb38bcad65fe7fcf",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
