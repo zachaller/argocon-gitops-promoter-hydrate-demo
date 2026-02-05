@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a043fcc8f69a3a85fb48984b5de014c59012275d",
+  "drySha": "a16f58628ac7f7e4eaa51ba646c79801ca990b6b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-05T16:54:02-06:00",
-  "subject": "chore: bump version to v1.0.1711",
+  "date": "2026-02-05T17:54:44-06:00",
+  "subject": "chore: bump version to v1.0.1712",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-18T10:01:48-06:00",
-        "subject": "chore(deps): bump actions/checkout from 6.0.1 to 6.0.2 (#933)",
-        "body": "Bumps [actions/checkout](https://github.com/actions/checkout) from 6.0.1 to 6.0.2.\n- [Release notes](https://github.com/actions/checkout/releases)\n- [Commits](https://github.com/actions/checkout/compare/v6.0.1...v6.0.2)\n\n---\nupdated-dependencies:\n- dependency-name: actions/checkout\n  dependency-version: 6.0.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "a2ee0330e5c8ffc7b3343d9bcefc923abdd0259d",
+        "date": "2026-01-17T23:15:54-06:00",
+        "subject": "docs: clarify points on custom hydrators (#929)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "12cd2a288f04b69c291ebb16287b1a9c74558167",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
