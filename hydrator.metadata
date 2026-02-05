@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6a54daf5f1f92ace08198f3170407158631dbd7f",
+  "drySha": "2aa35bdb2a4262f50dfa94ce79154b75c5e26aa4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-05T09:57:23-06:00",
-  "subject": "chore: bump version to v1.0.1709",
+  "date": "2026-02-05T13:34:50-06:00",
+  "subject": "chore: bump version to v1.0.1710",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-24T16:29:50-06:00",
-        "subject": "fix(api): missing omitempty on optional fields for serialization (#888)",
-        "body": "Signed-off-by: Alexandre Gaudreault <alexandre_gaudreault@intuit.com>",
-        "sha": "77690e8e66817675b274edc7221f9fc4fe59d402",
+        "date": "2026-01-26T07:41:51-06:00",
+        "subject": "chore(deps): bump actions/setup-python from 6.1.0 to 6.2.0 (#925)",
+        "body": "Bumps [actions/setup-python](https://github.com/actions/setup-python) from 6.1.0 to 6.2.0.\n- [Release notes](https://github.com/actions/setup-python/releases)\n- [Commits](https://github.com/actions/setup-python/compare/83679a892e2d95755f2dac6acb0bfd1e9ac5d548...a309ff8b426b58ec0e2a45f0f869d46889d02405)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-python\n  dependency-version: 6.2.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "cf9f77eac5445a4d4bd4771a54be6700472362dd",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
