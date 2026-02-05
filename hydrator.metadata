@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ba53cbc752502b2272016718f8ec33fa857d65f8",
+  "drySha": "522bfd41b6f3630a6b119519b4153cd77db419de",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-04T15:36:28-06:00",
-  "subject": "chore: bump version to v1.0.1705",
+  "date": "2026-02-05T09:34:18-06:00",
+  "subject": "chore: bump version to v1.0.1708",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-06T03:33:27-06:00",
-        "subject": "docs: specify argo-cd version 3.3 (#862)",
-        "body": "* Specify Argocd version 3.3\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* Update ui/extension/README.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "f03e32d774ae9f003b4451a482901d164b0a5112",
+        "date": "2026-01-24T16:10:37-06:00",
+        "subject": "Revert \"chore(deps): update dependency @vitejs/plugin-react to v5\" (#923)",
+        "body": "Revert \"chore(deps): update dependency @vitejs/plugin-react to v5 (#911)\"\n\nThis reverts commit 7e0c79bb8246fa148d11d2878fec875d0e2bcb71.\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "72e0734bbbe7d5b690c9c795fb50f5a7bb0bc326",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
