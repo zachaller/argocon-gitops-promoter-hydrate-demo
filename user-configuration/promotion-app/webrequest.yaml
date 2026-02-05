@@ -24,7 +24,7 @@ spec:
   mode:
     trigger:
       # Reconciliation interval
-      requeueDuration: 15s
+      requeueDuration: 1m
       
       triggerExpression: |
         // Current state
@@ -37,17 +37,13 @@ spec:
         let isNewDrySha = currentDrySha != lastCheckedDrySha;
 
         // Time-based triggering: configurable polling interval (30 minutes)
-        let pollingIntervalMinutes = 1;
+        let pollingIntervalMinutes = 30;
         let isFirstRun = TriggerData.lastRequestTime == nil;
         
-        let shouldTriggerByTime = false;
-        if (!isFirstRun) {
-          let currentTime = now();
-          let lastRequestTime = date(TriggerData.lastRequestTime);
-          let timeSinceLastRequest = currentTime - lastRequestTime;
-          let pollingInterval = duration(string(pollingIntervalMinutes) + "m");
-          shouldTriggerByTime = timeSinceLastRequest >= pollingInterval;
-        }
+        // Calculate if enough time has passed (only if not first run)
+        let shouldTriggerByTime = !isFirstRun && (
+          (now() - date(TriggerData.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
+        );
 
         // Trigger if:
         // 1. First run (no previous request time)
@@ -74,7 +70,6 @@ spec:
           approvedCount: len(approvedRecords),
           lastCheckedAt: string(now())
         }
-
 
   promotionStrategyRef:
     name: argocon-demo
