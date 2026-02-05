@@ -24,7 +24,7 @@ spec:
   mode:
     trigger:
       # Reconciliation interval
-      requeueDuration: 1m
+      requeueDuration: 15s
       
       triggerExpression: |
         // Current state
@@ -37,7 +37,7 @@ spec:
         let isNewDrySha = currentDrySha != lastCheckedDrySha;
 
         // Time-based triggering: configurable polling interval (30 minutes)
-        let pollingIntervalMinutes = 30;
+        let pollingIntervalMinutes = 1;
         let isFirstRun = TriggerData.lastRequestTime == nil;
         
         // Calculate if enough time has passed (only if not first run)
