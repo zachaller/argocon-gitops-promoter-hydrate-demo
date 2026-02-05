@@ -23,6 +23,9 @@ spec:
   key: change-management-approval
   mode:
     trigger:
+      # Check frequently, but trigger expression controls actual request timing
+      requeueDuration: 10s
+      
       triggerExpression: |
         // Current state
         let currentDrySha = Environment.Proposed.Dry.Sha;
@@ -33,17 +36,38 @@ spec:
         // New dry SHA we haven't checked yet?
         let isNewDrySha = currentDrySha != lastCheckedDrySha;
 
-        // Already checked this SHA but haven't succeeded yet? Need to keep polling
-        let needsRetry = currentDrySha == lastCheckedDrySha && Phase != "success";
+        // Time-based triggering: configurable polling interval (30 minutes)
+        let pollingIntervalMinutes = 30;
+        let lastRequestTime = TriggerData.lastRequestTime != nil ? 
+                              date(TriggerData.lastRequestTime) : 
+                              now() - duration("100h"); // Force trigger on first run
+        let timeSinceLastRequest = now() - lastRequestTime;
+        let shouldTriggerByTime = timeSinceLastRequest >= duration(string(pollingIntervalMinutes) + "m");
 
-        // Trigger on new SHA OR if we need to retry (keep polling until success)
-        let shouldTrigger = hasOpenPR && (isNewDrySha || needsRetry);
+        // Trigger if:
+        // 1. New SHA (immediate check)
+        // 2. OR enough time has passed since last request (continuous polling)
+        let shouldTrigger = hasOpenPR && (isNewDrySha || shouldTriggerByTime);
 
         {
           trigger: shouldTrigger,
-          lastCheckedDrySha: currentDrySha
+          lastCheckedDrySha: currentDrySha,
+          lastRequestTime: shouldTrigger ? format(now(), "2006-01-02T15:04:05Z07:00") : TriggerData.lastRequestTime
         }
-      requeueDuration: 30s
+
+      # Store only records that meet the approval criteria
+      responseExpression: |
+        let approvedRecords = filter(Response.Body.change_records ?? [], {
+          date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now()
+        });
+
+        {
+          statusCode: Response.StatusCode,
+          totalRecordCount: len(Response.Body.change_records ?? []),
+          approvedRecords: approvedRecords,
+          approvedCount: len(approvedRecords),
+          lastCheckedAt: string(now())
+        }
       
       # Store only records that meet the approval criteria
       responseExpression: |
