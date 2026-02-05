@@ -68,20 +68,7 @@ spec:
           approvedCount: len(approvedRecords),
           lastCheckedAt: string(now())
         }
-      
-      # Store only records that meet the approval criteria
-      responseExpression: |
-        let approvedRecords = filter(Response.Body.change_records ?? [], {
-          date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now()
-        });
-        
-        {
-          statusCode: Response.StatusCode,
-          totalRecordCount: len(Response.Body.change_records ?? []),
-          approvedRecords: approvedRecords,
-          approvedCount: len(approvedRecords),
-          lastCheckedAt: string(now())
-        }
+
   promotionStrategyRef:
     name: argocon-demo
   reportOn: proposed
