@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "522bfd41b6f3630a6b119519b4153cd77db419de",
+  "drySha": "b1a3327a489a550f1b861714110bb7e0b31c9e77",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-05T09:34:18-06:00",
-  "subject": "chore: bump version to v1.0.1708",
+  "date": "2026-02-05T20:10:45-06:00",
+  "subject": "chore: bump version to v1.0.1713",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-24T16:10:37-06:00",
-        "subject": "Revert \"chore(deps): update dependency @vitejs/plugin-react to v5\" (#923)",
-        "body": "Revert \"chore(deps): update dependency @vitejs/plugin-react to v5 (#911)\"\n\nThis reverts commit 7e0c79bb8246fa148d11d2878fec875d0e2bcb71.\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "72e0734bbbe7d5b690c9c795fb50f5a7bb0bc326",
+        "date": "2026-01-09T01:56:22-06:00",
+        "subject": "docs: add compatibility matrix for argocd ui extension (#875)",
+        "body": "* docs(argocd-extension): add compatiblity matrix\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "1114adcc3ce31f40382afe6177cbaef8fa659a82",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
