@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a16f58628ac7f7e4eaa51ba646c79801ca990b6b",
+  "drySha": "b1a3327a489a550f1b861714110bb7e0b31c9e77",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-05T17:54:44-06:00",
-  "subject": "chore: bump version to v1.0.1712",
+  "date": "2026-02-05T20:10:45-06:00",
+  "subject": "chore: bump version to v1.0.1713",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-17T23:15:54-06:00",
-        "subject": "docs: clarify points on custom hydrators (#929)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "12cd2a288f04b69c291ebb16287b1a9c74558167",
+        "date": "2026-01-09T01:56:22-06:00",
+        "subject": "docs: add compatibility matrix for argocd ui extension (#875)",
+        "body": "* docs(argocd-extension): add compatiblity matrix\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "1114adcc3ce31f40382afe6177cbaef8fa659a82",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
