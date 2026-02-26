@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c629ebc47ec558b6660f18df07836b419ff1e818",
+  "drySha": "26cd343660e7afab796ac1631d61fe914a4ad465",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-26T14:32:15-06:00",
-  "subject": "chore: bump version to v1.0.1714",
+  "date": "2026-02-26T14:53:40-06:00",
+  "subject": "chore: bump version to v1.0.1715",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-02T12:17:41-06:00",
-        "subject": "chore(deps): bump sigs.k8s.io/structured-merge-diff/v6 from 6.3.2-0.20260122202528-d9cc6641c482 to 6.3.2 (#1017)",
-        "body": "chore(deps): bump sigs.k8s.io/structured-merge-diff/v6\n\nBumps [sigs.k8s.io/structured-merge-diff/v6](https://github.com/kubernetes-sigs/structured-merge-diff) from 6.3.2-0.20260122202528-d9cc6641c482 to 6.3.2.\n- [Release notes](https://github.com/kubernetes-sigs/structured-merge-diff/releases)\n- [Changelog](https://github.com/kubernetes-sigs/structured-merge-diff/blob/master/RELEASE.md)\n- [Commits](https://github.com/kubernetes-sigs/structured-merge-diff/commits/v6.3.2)\n\n---\nupdated-dependencies:\n- dependency-name: sigs.k8s.io/structured-merge-diff/v6\n  dependency-version: 6.3.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
-        "sha": "9626b0be5f3d69b4979fccf7d5a26c537051884e",
+        "date": "2026-02-09T23:55:21-06:00",
+        "subject": "fix(acdcs): sha validation failure (#963) (#964)",
+        "body": "* fix(acdcs): sha validaiton failure (#963)\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* more realistic test\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify validation\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "5afbeb24b91b35297913d6f017eea4b88f4e2eac",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
