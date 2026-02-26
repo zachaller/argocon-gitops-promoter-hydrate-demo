@@ -40,14 +40,13 @@ jobs:
               status: 'in_progress',
               output: {
                 title: 'Deployment is ready — approval required',
-                summary: |
-                  This deployment will run against the **production** environment.
+                summary: `This deployment will run against the **production** environment.
 
-                  Please review the changes and choose an action below:
-                  - **Approve** — proceed with deployment to production.
-                  - **Reject** — cancel this deployment (no changes will be applied).
+Please review the changes and choose an action below:
+- **Approve** — proceed with deployment to production.
+- **Reject** — cancel this deployment (no changes will be applied).
 
-                  Click one of the buttons below to continue.
+Click one of the buttons below to continue.`
               },
               actions: [
                 { label: 'Approve', identifier: 'approve', description: 'Deploy to production' },
