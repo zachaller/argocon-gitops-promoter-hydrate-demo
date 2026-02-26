@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b1a3327a489a550f1b861714110bb7e0b31c9e77",
+  "drySha": "c629ebc47ec558b6660f18df07836b419ff1e818",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-02-05T20:10:45-06:00",
-  "subject": "chore: bump version to v1.0.1713",
+  "date": "2026-02-26T14:32:15-06:00",
+  "subject": "chore: bump version to v1.0.1714",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-09T01:56:22-06:00",
-        "subject": "docs: add compatibility matrix for argocd ui extension (#875)",
-        "body": "* docs(argocd-extension): add compatiblity matrix\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "1114adcc3ce31f40382afe6177cbaef8fa659a82",
+        "date": "2026-02-02T12:17:41-06:00",
+        "subject": "chore(deps): bump sigs.k8s.io/structured-merge-diff/v6 from 6.3.2-0.20260122202528-d9cc6641c482 to 6.3.2 (#1017)",
+        "body": "chore(deps): bump sigs.k8s.io/structured-merge-diff/v6\n\nBumps [sigs.k8s.io/structured-merge-diff/v6](https://github.com/kubernetes-sigs/structured-merge-diff) from 6.3.2-0.20260122202528-d9cc6641c482 to 6.3.2.\n- [Release notes](https://github.com/kubernetes-sigs/structured-merge-diff/releases)\n- [Changelog](https://github.com/kubernetes-sigs/structured-merge-diff/blob/master/RELEASE.md)\n- [Commits](https://github.com/kubernetes-sigs/structured-merge-diff/commits/v6.3.2)\n\n---\nupdated-dependencies:\n- dependency-name: sigs.k8s.io/structured-merge-diff/v6\n  dependency-version: 6.3.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "9626b0be5f3d69b4979fccf7d5a26c537051884e",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
