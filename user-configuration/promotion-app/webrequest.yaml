@@ -6,7 +6,10 @@ metadata:
   labels:
     test: test2
 spec:
-  descriptionTemplate: Check for approved change records in current time window
+  descriptionTemplate: '{{ .Phase }}: {{ if .ResponseData }}{{ .ResponseData.approvedCount
+    | default 0 }}/{{ .ResponseData.totalRecordCount | default 0 }} approved in window
+    (last check: {{ .ResponseData.lastCheckedAt | default "—" }}){{ else }}checking
+    for approved change records in current time window{{ end }}'
   expression: |
     Response.StatusCode == 200 &&
     len(Response.Body.change_records) > 0 &&
@@ -82,7 +85,11 @@ metadata:
   name: change-management-open
   namespace: default
 spec:
-  descriptionTemplate: Open change request for dry SHA
+  descriptionTemplate: '{{ .Phase }}: {{ if .ResponseData }}{{ .ResponseData.changeId
+    | default "—" }} (HTTP {{ .ResponseData.statusCode }}) · {{ index .ResponseData.changeRequest
+    "start_time" | default "—" }} → {{ index .ResponseData.changeRequest "end_time"
+    | default "—" }} · {{ index .ResponseData.changeRequest "short_description" |
+    default "—"  }}{{ else }}open change request for dry SHA{{ end }}'
   expression: |
     Response.StatusCode == 202 &&
     Response.Body != nil &&
