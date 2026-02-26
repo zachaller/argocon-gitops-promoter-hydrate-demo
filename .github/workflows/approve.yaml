@@ -1,0 +1,51 @@
+# Example: Manual approval via Checks API (real buttons in the UI)
+# Copy to your repo as .github/workflows/checks-approval-example.yml
+#
+# You need BOTH this workflow AND the "Handle approval" workflow
+# (checks-approval-handler.example.yaml) in .github/workflows/.
+#
+# Flow:
+# 1. This workflow runs (on push or manual). It creates a check run
+#    with "Approve" and "Reject" buttons. Those appear as buttons in the
+#    PR/commit Checks UI (e.g. on the commit or in the PR "Checks" tab).
+# 2. When someone clicks a button, GitHub sends check_run with action: requested_action.
+# 3. The "Handle approval" workflow runs and either deploys (Approve) or marks rejected.
+#
+# Requires: default GITHUB_TOKEN has checks: write (grant in workflow permissions).
+
+name: Request deployment approval (Checks API)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  request-approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create check run with Approve / Reject buttons
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: run } = await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: 'Deployment approval',
+              head_sha: context.sha,
+              status: 'in_progress',
+              output: {
+                title: 'Awaiting approval',
+                summary: 'Click **Approve** to deploy or **Reject** to cancel.'
+              },
+              actions: [
+                { label: 'Approve', identifier: 'approve', description: 'Deploy to production' },
+                { label: 'Reject',  identifier: 'reject',  description: 'Cancel deployment' }
+              ]
+            });
+            core.info(`Check run created: ${run.id}. Buttons visible in Checks UI.`);
+
