@@ -39,8 +39,15 @@ jobs:
               head_sha: context.sha,
               status: 'in_progress',
               output: {
-                title: 'Awaiting approval',
-                summary: 'Click **Approve** to deploy or **Reject** to cancel.'
+                title: 'Deployment is ready — approval required',
+                summary: |
+                  This deployment will run against the **production** environment.
+
+                  Please review the changes and choose an action below:
+                  - **Approve** — proceed with deployment to production.
+                  - **Reject** — cancel this deployment (no changes will be applied).
+
+                  Click one of the buttons below to continue.
               },
               actions: [
                 { label: 'Approve', identifier: 'approve', description: 'Deploy to production' },
