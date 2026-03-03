@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3d328aca05fb0061c7d9e68b7c58165bc080310e",
+  "drySha": "8e1f0fb8d024ecc2034c3e7a40d79d4716131c76",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-03T14:13:59-06:00",
-  "subject": "chore: bump version to v1.0.1723",
+  "date": "2026-03-03T14:15:23-06:00",
+  "subject": "chore: bump version to v1.0.1724",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-30T13:15:23-06:00",
-        "subject": "Refactor tests to improve context initialization (#1075)",
-        "body": "* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "3ba6ecf24f4417466116abf2dfafc91aa6877eb5",
+        "date": "2026-02-18T18:36:05-06:00",
+        "subject": "docs: add ArtifactHub link to install instructions (#1123)",
+        "body": "* Initial plan\n\n* docs: add ArtifactHub link to install instructions\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* docs: link directly to artifacthub package page\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "7c800eafc6354857fd8a31f40117ea1277c5c7cf",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
