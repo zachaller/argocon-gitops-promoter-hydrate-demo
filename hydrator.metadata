@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "58e4bd764e1825d3bad90071ba421ef789c4f80d",
+  "drySha": "5ffc135c5c6d919bf708329c88c1dceaf36203e0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-03T12:25:21-06:00",
-  "subject": "chore: bump version to v1.0.1716",
+  "date": "2026-03-03T14:16:31-06:00",
+  "subject": "chore: bump version to v1.0.1725",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-30T04:02:49-06:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.43.0 to 1.44.0 (#1112)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.43.0 to 1.44.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.43.0...v1.44.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.44.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "3e450c76a24b7b5c06f9db17c9a4243f5d36fa95",
+        "date": "2026-02-05T16:30:25-06:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.42.0 to 1.43.0 (#1108)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.42.0 to 1.43.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.42.0...v1.43.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.43.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "92728b34a1a2b3e7be06a826051f9481feb82880",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
