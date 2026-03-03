@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "75de5d10f2af5afc1340452ea6adf96832062c1a",
+  "drySha": "42f80af23a952783bed34bc20fd0f4eecb7bc17b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-03T13:13:59-06:00",
-  "subject": "chore: bump version to v1.0.1718",
+  "date": "2026-03-03T13:26:42-06:00",
+  "subject": "chore: bump version to v1.0.1720",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-21T02:44:00-06:00",
-        "subject": "fix(ci): golint cache (#1074)",
-        "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "8edab942e1e02e0ff62196074223d4fcc85396ca",
+        "date": "2026-02-03T05:57:42-06:00",
+        "subject": "chore(deps): bump crate-ci/typos from 1.43.1 to 1.43.2 (#1006)",
+        "body": "Bumps [crate-ci/typos](https://github.com/crate-ci/typos) from 1.43.1 to 1.43.2.\n- [Release notes](https://github.com/crate-ci/typos/releases)\n- [Changelog](https://github.com/crate-ci/typos/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/crate-ci/typos/compare/3a4d65230db538caabac6e156599c8ba8380ff07...ad3053d3adbcce7f2e3c60fd4ddfc239787d1eff)\n\n---\nupdated-dependencies:\n- dependency-name: crate-ci/typos\n  dependency-version: 1.43.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "562bef35db51df7500ce1ee5dc21430f7c0bc4ae",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
