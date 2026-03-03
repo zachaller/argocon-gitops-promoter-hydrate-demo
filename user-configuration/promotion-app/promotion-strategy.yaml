@@ -11,6 +11,8 @@ spec:
   - branch: environments/development
     autoMerge: false
   - branch: environments/staging
+    proposedCommitStatuses:
+    - key: integration-tests
   - branch: environments/production
     proposedCommitStatuses:
     - key: change-management-approval
