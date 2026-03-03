@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "58e4bd764e1825d3bad90071ba421ef789c4f80d",
+  "drySha": "6b44ac0b9c9c1408f5189387975c2a6c7021b2a9",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-03T12:25:21-06:00",
-  "subject": "chore: bump version to v1.0.1716",
+  "date": "2026-03-03T13:14:05-06:00",
+  "subject": "chore: bump version to v1.0.1719",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-30T04:02:49-06:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.43.0 to 1.44.0 (#1112)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.43.0 to 1.44.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.43.0...v1.44.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.44.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "3e450c76a24b7b5c06f9db17c9a4243f5d36fa95",
+        "date": "2026-01-31T18:45:37-06:00",
+        "subject": "chore(deps): bump docker/setup-docker-action from 206b75dbd282c4008313f59196a28caf84eb4198 to 2d1c60152387c7158db7c27ab8ef0fc4412e5b0b (#1133)",
+        "body": "chore(deps): bump docker/setup-docker-action\n\nBumps [docker/setup-docker-action](https://github.com/docker/setup-docker-action) from 206b75dbd282c4008313f59196a28caf84eb4198 to 2d1c60152387c7158db7c27ab8ef0fc4412e5b0b.\n- [Release notes](https://github.com/docker/setup-docker-action/releases)\n- [Commits](https://github.com/docker/setup-docker-action/compare/206b75dbd282c4008313f59196a28caf84eb4198...2d1c60152387c7158db7c27ab8ef0fc4412e5b0b)\n\n---\nupdated-dependencies:\n- dependency-name: docker/setup-docker-action\n  dependency-version: 2d1c60152387c7158db7c27ab8ef0fc4412e5b0b\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "b2ea9c06abf046f3ecf27f2c5b3c5cb22c579738",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
