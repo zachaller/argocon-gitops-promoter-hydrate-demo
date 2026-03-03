@@ -1,0 +1,14 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: CommitStatus
+metadata:
+  labels:
+    promoter.argoproj.io/commit-status: integration-tests
+  name: integration-tests
+  namespace: default
+spec:
+  description: Staging integration tests
+  gitRepositoryRef:
+    name: argocon-demo
+  name: integration/test
+  sha: "8cdb04d1853d4e812259d59753f30d4aff6421d6"
+  url: https://example.com
