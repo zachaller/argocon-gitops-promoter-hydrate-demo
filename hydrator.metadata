@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "76bfd261db2ca62e86ec2c6bb5476e1d0d971d7c",
+  "drySha": "990ba4fa4d5618ee6bb6d41b239c1565b6ceb01e",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-03T13:33:47-06:00",
-  "subject": "chore: bump version to v1.0.1721",
+  "date": "2026-03-03T14:13:53-06:00",
+  "subject": "chore: bump version to v1.0.1722",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-28T01:29:26-06:00",
-        "subject": "chore(deps): update dependency @types/react to v19.2.10 (#975)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "c8445fadc18049634a1c337792af2b48d2d2bcfb",
+        "date": "2026-02-23T23:11:56-06:00",
+        "subject": "docs: bump manifest versions to v0.22.5 (#1076)",
+        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: emirot <2378256+emirot@users.noreply.github.com>",
+        "sha": "241924f5e166551446f007b0c074bb43beb58448",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
