@@ -14,5 +14,7 @@ spec:
   - branch: environments/production
     proposedCommitStatuses:
     - key: change-management-approval
+    - key: change-management-open
+    - key: hcap
   gitRepositoryRef:
     name: argocon-demo
