@@ -172,13 +172,15 @@ spec:
             lastRequestedDrySha: shouldTrigger ? currentDrySha : lastRequestedDrySha
           }
 
-      # Store response data for debugging
+      # Store response data (id/message are strings per API; type check avoids int(string) if API varies)
       response:
         dataExpression: |
+          let id = Response.Body.id;
+          let msg = Response.Body.message;
           {
             statusCode: Response.StatusCode,
-            changeId: string(Response.Body.id ?? ""),
-            message: Response.Body.message ?? "",
+            changeId: id == nil ? "" : (type(id) == "string" ? id : string(id)),
+            message: msg == nil ? "" : (type(msg) == "string" ? msg : string(msg)),
             changeRequest: Response.Body.change_request ?? {},
             lastRequestedAt: string(now())
           }
