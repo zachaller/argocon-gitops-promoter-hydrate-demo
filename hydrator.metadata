@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "76bfd261db2ca62e86ec2c6bb5476e1d0d971d7c",
+  "drySha": "3d328aca05fb0061c7d9e68b7c58165bc080310e",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-03T13:33:47-06:00",
-  "subject": "chore: bump version to v1.0.1721",
+  "date": "2026-03-03T14:13:59-06:00",
+  "subject": "chore: bump version to v1.0.1723",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-01-28T01:29:26-06:00",
-        "subject": "chore(deps): update dependency @types/react to v19.2.10 (#975)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "c8445fadc18049634a1c337792af2b48d2d2bcfb",
+        "date": "2026-01-30T13:15:23-06:00",
+        "subject": "Refactor tests to improve context initialization (#1075)",
+        "body": "* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "3ba6ecf24f4417466116abf2dfafc91aa6877eb5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
