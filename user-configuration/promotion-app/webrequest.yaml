@@ -177,7 +177,7 @@ spec:
         dataExpression: |
           {
             statusCode: Response.StatusCode,
-            changeId: Response.Body.id ?? "",
+            changeId: string(Response.Body.id ?? ""),
             message: Response.Body.message ?? "",
             changeRequest: Response.Body.change_request ?? {},
             lastRequestedAt: string(now())
