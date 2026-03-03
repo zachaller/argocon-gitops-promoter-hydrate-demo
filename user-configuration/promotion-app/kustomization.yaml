@@ -10,3 +10,4 @@ resources:
   - argocd-commitstatus.yaml
   - gitcs.yaml
   - webrequest.yaml
+  - test-cs.yaml
