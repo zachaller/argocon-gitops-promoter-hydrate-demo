@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8e1f0fb8d024ecc2034c3e7a40d79d4716131c76",
+  "drySha": "5ffc135c5c6d919bf708329c88c1dceaf36203e0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-03T14:15:23-06:00",
-  "subject": "chore: bump version to v1.0.1724",
+  "date": "2026-03-03T14:16:31-06:00",
+  "subject": "chore: bump version to v1.0.1725",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-18T18:36:05-06:00",
-        "subject": "docs: add ArtifactHub link to install instructions (#1123)",
-        "body": "* Initial plan\n\n* docs: add ArtifactHub link to install instructions\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* docs: link directly to artifacthub package page\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "7c800eafc6354857fd8a31f40117ea1277c5c7cf",
+        "date": "2026-02-05T16:30:25-06:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.42.0 to 1.43.0 (#1108)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.42.0 to 1.43.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.42.0...v1.43.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.43.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "92728b34a1a2b3e7be06a826051f9481feb82880",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
