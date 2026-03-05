@@ -11,3 +11,4 @@ resources:
   - gitcs.yaml
   - webrequest.yaml
 #  - test-cs.yaml
+  - gh-web.yaml
