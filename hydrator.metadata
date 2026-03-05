@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "19f72d1540bed5913b6c8b721ada16df380e4ff0",
+  "drySha": "0b7bc1f929e1975bcc1060759cc1fcdfffde17fd",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T14:51:13-06:00",
-  "subject": "chore: bump version to v1.0.1736",
+  "date": "2026-03-05T15:28:11-06:00",
+  "subject": "chore: bump version to v1.0.1737",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-07T01:30:28-06:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.39.0 to 1.41.0 (#1090)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.39.0 to 1.41.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.39.0...v1.41.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.41.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "341e7f68af9be6ad6d358952b61a73ea8df51519",
+        "date": "2026-02-27T06:03:34-06:00",
+        "subject": "chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.93 to 0.9.94 (#1114)",
+        "body": "Bumps [github.com/ktrysmt/go-bitbucket](https://github.com/ktrysmt/go-bitbucket) from 0.9.93 to 0.9.94.\n- [Release notes](https://github.com/ktrysmt/go-bitbucket/releases)\n- [Commits](https://github.com/ktrysmt/go-bitbucket/compare/v0.9.93...v0.9.94)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/ktrysmt/go-bitbucket\n  dependency-version: 0.9.94\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "3cf7316e6844091649d43b63520e62236d0826d5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
