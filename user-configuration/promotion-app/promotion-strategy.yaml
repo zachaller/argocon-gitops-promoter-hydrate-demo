@@ -11,12 +11,9 @@ spec:
   - branch: environments/development
     autoMerge: false
   - branch: environments/staging
-    proposedCommitStatuses:
-    - key: integration-tests
   - branch: environments/production
     proposedCommitStatuses:
     - key: change-management-approval
     - key: change-management-open
-    - key: hcap
   gitRepositoryRef:
     name: argocon-demo

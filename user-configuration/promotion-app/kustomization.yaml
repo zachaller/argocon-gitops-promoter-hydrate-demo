@@ -6,8 +6,8 @@ resources:
   - promotion-strategy.yaml
   - gitrepo.yaml
   - scmProvider.yaml
-  - hcap-cs.yaml
+#  - hcap-cs.yaml
   - argocd-commitstatus.yaml
   - gitcs.yaml
   - webrequest.yaml
-  - test-cs.yaml
+#  - test-cs.yaml
