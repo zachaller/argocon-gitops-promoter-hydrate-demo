@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "635af1e5fded49bbdd511895d8513378de0a5da2",
+  "drySha": "a5e9d98770ca9a22d2c314cb9f8bf154d5c430ab",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T09:54:53-06:00",
-  "subject": "chore: bump version to v1.0.1726",
+  "date": "2026-03-05T11:08:52-06:00",
+  "subject": "chore: bump version to v1.0.1728",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-23T10:33:59-06:00",
-        "subject": "Revert \"chore: add cli version information in project\" (#1093)",
-        "body": "Revert \"chore: add cli version information in project (#1014)\"\n\nThis reverts commit ecf0e5df14ede81201cf44e51522e424463ec6be.\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "e2ab7785d47c968ae4931d45d279c374eb763d30",
+        "date": "2026-02-23T04:23:10-06:00",
+        "subject": "chore: turn off provence in images (#1077)",
+        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "6cffff25489ffd86f6a97397437f28436bf27338",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
