@@ -5,17 +5,18 @@ metadata:
   namespace: default
 spec:
   promotionStrategyRef:
-    name: argocon-demo
+    name: my-app
 
   key: github-pr-approval
 
-  # User-friendly description shown on the commit status in GitHub.
   descriptionTemplate: |
     {{- if .ResponseOutput }}
     {{- if eq (.ResponseOutput.mergeable_state | default "") "clean" }}
-    Ready to merge — required reviews and status checks passed
+    Ready to merge — all required checks passed
+    {{- else if eq (.ResponseOutput.mergeable_state | default "") "unstable" }}
+    Required checks passed (some non-required checks are pending/failing)
     {{- else if eq (.ResponseOutput.mergeable_state | default "") "blocked" }}
-    Blocked — need required reviews and passing checks before merge
+    Blocked — required reviews or checks have not passed
     {{- else }}
     Checking merge requirements… (state: {{ .ResponseOutput.mergeable_state | default "unknown" }})
     {{- end }}
@@ -23,26 +24,29 @@ spec:
     Checking merge requirements…
     {{- end }}
 
-  # Link to the PR so users can see what's blocking.
   urlTemplate: "{{ .Environment.PullRequest.Url }}"
 
   reportOn: proposed
 
   httpRequest:
-    urlTemplate: "https://api.github.com/repos/{{ index (splitList \"/\" (trimPrefix \"https://github.com\" .Environment.PullRequest.Url)) 1 }}/{{ index (splitList \"/\" (trimPrefix \"https://github.com\" .Environment.PullRequest.Url)) 2 }}/pulls/{{ .Environment.PullRequest.ID }}"
+    urlTemplate: >-
+      https://api.github.com/repos/{{ index (splitList "/" (trimPrefix "https://github.com" .Environment.PullRequest.Url)) 1 }}/{{ index (splitList "/" (trimPrefix "https://github.com" .Environment.PullRequest.Url)) 2 }}/pulls/{{ .Environment.PullRequest.ID }}
     method: GET
     headerTemplates:
       Accept: "application/vnd.github+json"
       X-GitHub-Api-Version: "2022-11-28"
     timeout: 30s
     authentication:
-      scmAuth: {}
+      bearer:
+        secretRef:
+          name: github-token
 
   success:
     when:
       expression: |
         Response.StatusCode == 200 &&
-        Response.Body.mergeable_state == "clean"
+        (Response.Body.mergeable_state == "clean" ||
+         Response.Body.mergeable_state == "unstable")
 
   mode:
     trigger:
