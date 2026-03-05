@@ -6,17 +6,19 @@ metadata:
   labels:
     test: test2
 spec:
-  descriptionTemplate: '{{ .Phase }}: {{ if .ResponseData }}{{ .ResponseData.approvedCount
-    | default 0 }}/{{ .ResponseData.totalRecordCount | default 0 }} approved in window
-    (last check: {{ .ResponseData.lastCheckedAt | default "—" }}){{ else }}checking
+  descriptionTemplate: '{{ .Phase }}: {{ if .ResponseOutput }}{{ .ResponseOutput.approvedCount
+    | default 0 }}/{{ .ResponseOutput.totalRecordCount | default 0 }} approved in window
+    (last check: {{ .ResponseOutput.lastCheckedAt | default "—" }}){{ else }}checking
     for approved change records in current time window{{ end }}'
-  expression: |
-    Response.StatusCode == 200 &&
-    len(Response.Body.change_records) > 0 &&
-    any(Response.Body.change_records, {
-      date(#.change_request.start_time) <= now() &&
-      date(#.change_request.end_time) >= now()
-    })
+  success:
+    when:
+      expression: |
+        Response.StatusCode == 200 &&
+        len(Response.Body.change_records) > 0 &&
+        any(Response.Body.change_records, {
+          date(#.change_request.start_time) <= now() &&
+          date(#.change_request.end_time) >= now()
+        })
   httpRequest:
     headerTemplates:
       Accept: application/json
@@ -27,11 +29,11 @@ spec:
   mode:
     trigger:
       requeueDuration: 15s
-      trigger:
+      when:
         expression: |
           // Current state
           let currentDrySha = Environment.Proposed.Dry.Sha;
-          let lastCheckedDrySha = TriggerData.lastCheckedDrySha ?? "";
+          let lastCheckedDrySha = TriggerOutput.lastCheckedDrySha ?? "";
           let hasOpenPR = Environment.PullRequest != nil &&
                           string(Environment.PullRequest.State) == "open";
 
@@ -40,11 +42,11 @@ spec:
 
           // Time-based triggering: configurable polling interval (1 minute)
           let pollingIntervalMinutes = 1;
-          let isFirstRun = TriggerData.lastRequestTime == nil;
+          let isFirstRun = TriggerOutput.lastRequestTime == nil;
 
           // Calculate if enough time has passed (only if not first run)
           let shouldTriggerByTime = !isFirstRun && (
-            (now() - date(TriggerData.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
+            (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
           );
 
           // Trigger if:
@@ -52,38 +54,40 @@ spec:
           // 2. New SHA (immediate check)
           // 3. OR enough time has passed since last request (continuous polling)
           hasOpenPR && (isFirstRun || isNewDrySha || shouldTriggerByTime)
-        dataExpression: |
-          let currentDrySha = Environment.Proposed.Dry.Sha;
-          let lastCheckedDrySha = TriggerData.lastCheckedDrySha ?? "";
-          let hasOpenPR = Environment.PullRequest != nil &&
-                          string(Environment.PullRequest.State) == "open";
-          let isNewDrySha = currentDrySha != lastCheckedDrySha;
-          let pollingIntervalMinutes = 1;
-          let isFirstRun = TriggerData.lastRequestTime == nil;
-          let shouldTriggerByTime = !isFirstRun && (
-            (now() - date(TriggerData.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
-          );
-          let shouldTrigger = hasOpenPR && (isFirstRun || isNewDrySha || shouldTriggerByTime);
+        output:
+          expression: |
+            let currentDrySha = Environment.Proposed.Dry.Sha;
+            let lastCheckedDrySha = TriggerOutput.lastCheckedDrySha ?? "";
+            let hasOpenPR = Environment.PullRequest != nil &&
+                            string(Environment.PullRequest.State) == "open";
+            let isNewDrySha = currentDrySha != lastCheckedDrySha;
+            let pollingIntervalMinutes = 1;
+            let isFirstRun = TriggerOutput.lastRequestTime == nil;
+            let shouldTriggerByTime = !isFirstRun && (
+              (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
+            );
+            let shouldTrigger = hasOpenPR && (isFirstRun || isNewDrySha || shouldTriggerByTime);
 
-          {
-            lastCheckedDrySha: currentDrySha,
-            lastRequestTime: shouldTrigger ? now() : TriggerData.lastRequestTime
-          }
+            {
+              lastCheckedDrySha: currentDrySha,
+              lastRequestTime: shouldTrigger ? now() : TriggerOutput.lastRequestTime
+            }
 
       # Store only records that meet the approval criteria
       response:
-        dataExpression: |
-          let approvedRecords = filter(Response.Body.change_records ?? [], {
-            date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now()
-          });
+        output:
+          expression: |
+            let approvedRecords = filter(Response.Body.change_records ?? [], {
+              date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now()
+            });
 
-          {
-            statusCode: Response.StatusCode,
-            totalRecordCount: len(Response.Body.change_records ?? []),
-            approvedRecords: approvedRecords,
-            approvedCount: len(approvedRecords),
-            lastCheckedAt: string(now())
-          }
+            {
+              statusCode: Response.StatusCode,
+              totalRecordCount: len(Response.Body.change_records ?? []),
+              approvedRecords: approvedRecords,
+              approvedCount: len(approvedRecords),
+              lastCheckedAt: string(now())
+            }
   promotionStrategyRef:
     name: argocon-demo
   reportOn: proposed
@@ -96,16 +100,18 @@ metadata:
   name: change-management-open
   namespace: default
 spec:
-  descriptionTemplate: '{{ .Phase }}: {{ if .ResponseData }}{{ .ResponseData.changeId
-    | default "—" }} (HTTP {{ .ResponseData.statusCode }}) · {{ index .ResponseData.changeRequest
-    "start_time" | default "—" }} → {{ index .ResponseData.changeRequest "end_time"
-    | default "—" }} · {{ index .ResponseData.changeRequest "short_description" |
+  descriptionTemplate: '{{ .Phase }}: {{ if .ResponseOutput }}{{ .ResponseOutput.changeId
+    | default "—" }} (HTTP {{ .ResponseOutput.statusCode }}) · {{ index .ResponseOutput.changeRequest
+    "start_time" | default "—" }} → {{ index .ResponseOutput.changeRequest "end_time"
+    | default "—" }} · {{ index .ResponseOutput.changeRequest "short_description" |
     default "—"  }}{{ else }}open change request for dry SHA{{ end }}'
-  expression: |
-    Response.StatusCode == 202 &&
-    Response.Body != nil &&
-    Response.Body.id != nil &&
-    Response.Body.id != ""
+  success:
+    when:
+      expression: |
+        Response.StatusCode == 202 &&
+        Response.Body != nil &&
+        Response.Body.id != nil &&
+        Response.Body.id != ""
   httpRequest:
     bodyTemplate: |
       {
@@ -121,7 +127,7 @@ spec:
         "sub_category": "Release",
         "commit_id": "{{ .Environment.Proposed.Dry.Sha }}",
         "start_time": "{{ now | date "2006-01-02T15:04:05Z07:00" }}",
-        "end_time": "{{ now | dateModify "+30m" | date "2006-01-02T15:04:05Z07:00" }}",
+        "end_time": "{{ now | dateModify "+5m" | date "2006-01-02T15:04:05Z07:00" }}",
         "risk": "low",
         "repo_url": "https://github.intuit.com/your-org/your-repo"
       }
@@ -135,11 +141,11 @@ spec:
   mode:
     trigger:
       requeueDuration: 30s
-      trigger:
+      when:
         expression: |
           // Current state
           let currentDrySha = Environment.Proposed.Dry.Sha;
-          let lastRequestedDrySha = TriggerData.lastRequestedDrySha ?? "";
+          let lastRequestedDrySha = TriggerOutput.lastRequestedDrySha ?? "";
           let hasOpenPR = Environment.PullRequest != nil &&
                           string(Environment.PullRequest.State) == "open";
 
@@ -147,7 +153,7 @@ spec:
           let isNewDrySha = currentDrySha != lastRequestedDrySha;
 
           // Should we retry? Only for transient errors
-          let lastStatusCode = ResponseData != nil ? ResponseData.statusCode : 0;
+          let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
           let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
           let needsRetry = currentDrySha == lastRequestedDrySha &&
                            Phase != "success" &&
@@ -155,35 +161,37 @@ spec:
 
           // Trigger on new SHA OR retryable failure
           hasOpenPR && (isNewDrySha || needsRetry)
-        dataExpression: |
-          let currentDrySha = Environment.Proposed.Dry.Sha;
-          let lastRequestedDrySha = TriggerData.lastRequestedDrySha ?? "";
-          let hasOpenPR = Environment.PullRequest != nil &&
-                          string(Environment.PullRequest.State) == "open";
-          let isNewDrySha = currentDrySha != lastRequestedDrySha;
-          let lastStatusCode = ResponseData != nil ? ResponseData.statusCode : 0;
-          let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
-          let needsRetry = currentDrySha == lastRequestedDrySha &&
-                           Phase != "success" &&
-                           isRetryable;
-          let shouldTrigger = hasOpenPR && (isNewDrySha || needsRetry);
+        output:
+          expression: |
+            let currentDrySha = Environment.Proposed.Dry.Sha;
+            let lastRequestedDrySha = TriggerOutput.lastRequestedDrySha ?? "";
+            let hasOpenPR = Environment.PullRequest != nil &&
+                            string(Environment.PullRequest.State) == "open";
+            let isNewDrySha = currentDrySha != lastRequestedDrySha;
+            let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
+            let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
+            let needsRetry = currentDrySha == lastRequestedDrySha &&
+                             Phase != "success" &&
+                             isRetryable;
+            let shouldTrigger = hasOpenPR && (isNewDrySha || needsRetry);
 
-          {
-            lastRequestedDrySha: shouldTrigger ? currentDrySha : lastRequestedDrySha
-          }
+            {
+              lastRequestedDrySha: shouldTrigger ? currentDrySha : lastRequestedDrySha
+            }
 
       # Store response data (id/message are strings per API; type check avoids int(string) if API varies)
       response:
-        dataExpression: |
-          let id = Response.Body.id;
-          let msg = Response.Body.message;
-          {
-            statusCode: Response.StatusCode,
-            changeId: id == nil ? "" : (type(id) == "string" ? id : string(id)),
-            message: msg == nil ? "" : (type(msg) == "string" ? msg : string(msg)),
-            changeRequest: Response.Body.change_request ?? {},
-            lastRequestedAt: string(now())
-          }
+        output:
+          expression: |
+            let id = Response.Body.id;
+            let msg = Response.Body.message;
+            {
+              statusCode: Response.StatusCode,
+              changeId: id == nil ? "" : (type(id) == "string" ? id : string(id)),
+              message: msg == nil ? "" : (type(msg) == "string" ? msg : string(msg)),
+              changeRequest: Response.Body.change_request ?? {},
+              lastRequestedAt: string(now())
+            }
   promotionStrategyRef:
     name: argocon-demo
   reportOn: proposed
