@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "0f49ad33b439bd17e566f3bfae8ff33d72fad4f6",
+  "drySha": "5b59b3f87f5ec48e2f35313592056abdf9d6f69a",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T13:03:15-06:00",
-  "subject": "chore: bump version to v1.0.1730",
+  "date": "2026-03-05T13:15:25-06:00",
+  "subject": "chore: bump version to v1.0.1731",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-13T17:24:02-06:00",
-        "subject": "chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.93 to 0.9.94 (#1114)",
-        "body": "Bumps [github.com/ktrysmt/go-bitbucket](https://github.com/ktrysmt/go-bitbucket) from 0.9.93 to 0.9.94.\n- [Release notes](https://github.com/ktrysmt/go-bitbucket/releases)\n- [Commits](https://github.com/ktrysmt/go-bitbucket/compare/v0.9.93...v0.9.94)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/ktrysmt/go-bitbucket\n  dependency-version: 0.9.94\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "3cf7316e6844091649d43b63520e62236d0826d5",
+        "date": "2026-02-12T14:44:38-06:00",
+        "subject": "chore(deps): bump renovatebot/github-action from 46.1.0 to 46.1.1 (#1053)",
+        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 46.1.0 to 46.1.1.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/44f24283a60f64273f1294932f16ba61193cccca...d65ef9e20512193cc070238b49c3873a361cd50c)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 46.1.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "8c79830e95a016a88d972ac71c2fef868fcfa497",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
