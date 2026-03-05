@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7929316a3045014b45ae797b31712792403f34da",
+  "drySha": "6f6780f89f770ed9ba1125866d83ae7ce22371ba",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T15:33:21-06:00",
-  "subject": "chore: bump version to v1.0.1742",
+  "date": "2026-03-05T15:34:47-06:00",
+  "subject": "chore: bump version to v1.0.1743",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-19T14:01:19-06:00",
-        "subject": "fix(pr): make sure we don't get stuck looping pr merges on status update failures (#1106)",
-        "body": "* fix: make sure we don't get stuck looping pr status update failures\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: make sure we don't get stuck looping pr status update failures\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* log cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "cd76fc0b9c1c30358a87e1989a2d39cbb42b16d7",
+        "date": "2026-02-14T06:59:16-06:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.29.0 to 1.30.0 (#1043)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.29.0 to 1.30.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.29.0...v1.30.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.30.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "694dce894b6b5ed8aa82d78565b3c3a045011585",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
