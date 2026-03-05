@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e9d3a4759a480d7fa23403389e1904cde3247e57",
+  "drySha": "0f49ad33b439bd17e566f3bfae8ff33d72fad4f6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T12:58:07-06:00",
-  "subject": "chore: bump version to v1.0.1729",
+  "date": "2026-03-05T13:03:15-06:00",
+  "subject": "chore: bump version to v1.0.1730",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-17T22:10:20-06:00",
-        "subject": "test(ui-dashboard): add ui test (#1136)",
-        "body": "* test(ui-dashboard): add ui test\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* test(ui-dashboard): add ui test\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* test(ui-dashboard): add ui test\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "a27f86a10aee001637b2bc265fd2b505b67c99a4",
+        "date": "2026-02-13T17:24:02-06:00",
+        "subject": "chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.93 to 0.9.94 (#1114)",
+        "body": "Bumps [github.com/ktrysmt/go-bitbucket](https://github.com/ktrysmt/go-bitbucket) from 0.9.93 to 0.9.94.\n- [Release notes](https://github.com/ktrysmt/go-bitbucket/releases)\n- [Commits](https://github.com/ktrysmt/go-bitbucket/compare/v0.9.93...v0.9.94)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/ktrysmt/go-bitbucket\n  dependency-version: 0.9.94\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "3cf7316e6844091649d43b63520e62236d0826d5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
