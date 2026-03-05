@@ -29,7 +29,7 @@ spec:
   reportOn: proposed
 
   httpRequest:
-    urlTemplate: "https://api.github.com/repos/{{ index (splitList "/" (trimPrefix "https://github.com" .Environment.PullRequest.Url)) 1 }}/{{ index (splitList "/" (trimPrefix "https://github.com" .Environment.PullRequest.Url)) 2 }}/pulls/{{ .Environment.PullRequest.ID }}"
+    urlTemplate: "https://api.github.com/repos/{{ index (splitList \"/\" (trimPrefix \"https://github.com\" .Environment.PullRequest.Url)) 1 }}/{{ index (splitList \"/\" (trimPrefix \"https://github.com\" .Environment.PullRequest.Url)) 2 }}/pulls/{{ .Environment.PullRequest.ID }}"
     method: GET
     headerTemplates:
       Accept: "application/vnd.github+json"
