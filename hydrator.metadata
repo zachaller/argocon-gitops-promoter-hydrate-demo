@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a5e9d98770ca9a22d2c314cb9f8bf154d5c430ab",
+  "drySha": "e9d3a4759a480d7fa23403389e1904cde3247e57",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T11:08:52-06:00",
-  "subject": "chore: bump version to v1.0.1728",
+  "date": "2026-03-05T12:58:07-06:00",
+  "subject": "chore: bump version to v1.0.1729",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-23T04:23:10-06:00",
-        "subject": "chore: turn off provence in images (#1077)",
-        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "6cffff25489ffd86f6a97397437f28436bf27338",
+        "date": "2026-02-17T22:10:20-06:00",
+        "subject": "test(ui-dashboard): add ui test (#1136)",
+        "body": "* test(ui-dashboard): add ui test\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* test(ui-dashboard): add ui test\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* test(ui-dashboard): add ui test\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "a27f86a10aee001637b2bc265fd2b505b67c99a4",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
