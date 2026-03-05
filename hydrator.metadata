@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "85ddf4387f3f0fdaaf0b28b2bec967cdf68fd210",
+  "drySha": "19f72d1540bed5913b6c8b721ada16df380e4ff0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T14:43:34-06:00",
-  "subject": "chore: bump version to v1.0.1735",
+  "date": "2026-03-05T14:51:13-06:00",
+  "subject": "chore: bump version to v1.0.1736",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-18T00:27:25-06:00",
-        "subject": "fix(ci): docker latest (#1067)",
-        "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "c34ff26a78732779ff607754dd424bedc72f0c3f",
+        "date": "2026-02-07T01:30:28-06:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.39.0 to 1.41.0 (#1090)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.39.0 to 1.41.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.39.0...v1.41.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.41.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "341e7f68af9be6ad6d358952b61a73ea8df51519",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
