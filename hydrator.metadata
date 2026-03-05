@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3bfea885636a8a6f8173e49d09ace8f58e560d82",
+  "drySha": "f70f887d2bc16e359c174e819d1257e788a3af7f",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T15:31:03-06:00",
-  "subject": "chore: bump version to v1.0.1740",
+  "date": "2026-03-05T15:32:41-06:00",
+  "subject": "chore: bump version to v1.0.1741",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-26T08:54:26-06:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.28.1 to 1.29.0 (#1034)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.28.1 to 1.29.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.28.1...v1.29.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.29.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "741367fb7a661d369f8f6a4d1e90edc08998cfc7",
+        "date": "2026-02-05T21:32:03-06:00",
+        "subject": "chore: turn off provence in images (#1077)",
+        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "6cffff25489ffd86f6a97397437f28436bf27338",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
