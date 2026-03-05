@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f9e5b9d385928ccfb2d65458b4320613f5c74968",
+  "drySha": "a5e9d98770ca9a22d2c314cb9f8bf154d5c430ab",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T10:33:28-06:00",
-  "subject": "chore: bump version to v1.0.1727",
+  "date": "2026-03-05T11:08:52-06:00",
+  "subject": "chore: bump version to v1.0.1728",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-25T20:54:24-06:00",
-        "subject": "chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.91 to 0.9.93 (#1089)",
-        "body": "Bumps [github.com/ktrysmt/go-bitbucket](https://github.com/ktrysmt/go-bitbucket) from 0.9.91 to 0.9.93.\n- [Release notes](https://github.com/ktrysmt/go-bitbucket/releases)\n- [Commits](https://github.com/ktrysmt/go-bitbucket/compare/v0.9.91...v0.9.93)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/ktrysmt/go-bitbucket\n  dependency-version: 0.9.93\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "07a9321abd782bf50b014efc6f3c1e1b428f05b2",
+        "date": "2026-02-23T04:23:10-06:00",
+        "subject": "chore: turn off provence in images (#1077)",
+        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "6cffff25489ffd86f6a97397437f28436bf27338",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
