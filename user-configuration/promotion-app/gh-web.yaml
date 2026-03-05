@@ -53,9 +53,10 @@ spec:
         expression: |
           Environment.PullRequest != nil &&
           string(Environment.PullRequest.State) == "open" &&
-          PromotionStrategy.Status.Environments[
-            :findIndex(PromotionStrategy.Status.Environments, .Branch == Environment.Branch)
-          ].all(.PullRequest == nil || .PullRequest?.State != "open")
+          all(
+            PromotionStrategy.Status.Environments[:findIndex(PromotionStrategy.Status.Environments, #.Branch == Environment.Branch)],
+            #.PullRequest == nil || #.PullRequest.State != "open"
+          )
       response:
         output:
           expression: |
