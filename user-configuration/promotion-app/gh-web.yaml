@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   promotionStrategyRef:
-    name: my-app   # change to your PromotionStrategy name
+    name: argocon-demo
 
   key: github-pr-approval
 
