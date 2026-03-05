@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f70f887d2bc16e359c174e819d1257e788a3af7f",
+  "drySha": "7929316a3045014b45ae797b31712792403f34da",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T15:32:41-06:00",
-  "subject": "chore: bump version to v1.0.1741",
+  "date": "2026-03-05T15:33:21-06:00",
+  "subject": "chore: bump version to v1.0.1742",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-05T21:32:03-06:00",
-        "subject": "chore: turn off provence in images (#1077)",
-        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "6cffff25489ffd86f6a97397437f28436bf27338",
+        "date": "2026-02-19T14:01:19-06:00",
+        "subject": "fix(pr): make sure we don't get stuck looping pr merges on status update failures (#1106)",
+        "body": "* fix: make sure we don't get stuck looping pr status update failures\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: make sure we don't get stuck looping pr status update failures\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* log cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "cd76fc0b9c1c30358a87e1989a2d39cbb42b16d7",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
