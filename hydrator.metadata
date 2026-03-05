@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "cc23808e07c54269c8431feb0a99484eadd57b4b",
+  "drySha": "85ddf4387f3f0fdaaf0b28b2bec967cdf68fd210",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T14:11:04-06:00",
-  "subject": "chore: bump version to v1.0.1734",
+  "date": "2026-03-05T14:43:34-06:00",
+  "subject": "chore: bump version to v1.0.1735",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-22T10:55:04-06:00",
-        "subject": "chore(deps): update dependency @types/react to v19.2.10 (#975)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "c8445fadc18049634a1c337792af2b48d2d2bcfb",
+        "date": "2026-02-18T00:27:25-06:00",
+        "subject": "fix(ci): docker latest (#1067)",
+        "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "c34ff26a78732779ff607754dd424bedc72f0c3f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
