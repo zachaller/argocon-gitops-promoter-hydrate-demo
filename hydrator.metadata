@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b3a84681eced7503d9f8ed58969d5a984f069e20",
+  "drySha": "cd76853370afb49a46a634cc2624ce6f64d830ad",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-09T18:03:43-05:00",
-  "subject": "chore: bump version to v1.0.1753",
+  "date": "2026-03-09T18:09:12-05:00",
+  "subject": "chore: bump version to v1.0.1754",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-10T22:06:46-06:00",
-        "subject": "chore(deps): bump the k8s-deps group with 3 updates (#1130)",
-        "body": "Bumps the k8s-deps group with 3 updates: [k8s.io/api](https://github.com/kubernetes/api), [k8s.io/apimachinery](https://github.com/kubernetes/apimachinery) and [k8s.io/client-go](https://github.com/kubernetes/client-go).\n\n\nUpdates `k8s.io/api` from 0.35.1 to 0.35.2\n- [Commits](https://github.com/kubernetes/api/compare/v0.35.1...v0.35.2)\n\nUpdates `k8s.io/apimachinery` from 0.35.1 to 0.35.2\n- [Commits](https://github.com/kubernetes/apimachinery/compare/v0.35.1...v0.35.2)\n\nUpdates `k8s.io/client-go` from 0.35.1 to 0.35.2\n- [Changelog](https://github.com/kubernetes/client-go/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/kubernetes/client-go/compare/v0.35.1...v0.35.2)\n\n---\nupdated-dependencies:\n- dependency-name: k8s.io/api\n  dependency-version: 0.35.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n- dependency-name: k8s.io/apimachinery\n  dependency-version: 0.35.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n- dependency-name: k8s.io/client-go\n  dependency-version: 0.35.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "54fce3c2f4ab05de46868bbfa4ba226f3288272f",
+        "date": "2026-02-17T23:37:21-06:00",
+        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.39.0 to 1.41.0 (#1090)",
+        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.39.0 to 1.41.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.39.0...v1.41.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.41.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "341e7f68af9be6ad6d358952b61a73ea8df51519",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
