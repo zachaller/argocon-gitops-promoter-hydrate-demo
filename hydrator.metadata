@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8ab94cdd8d3603218ab6a7b4c679fe03c0596760",
+  "drySha": "b69e5b3cad0985018e0d76cae56c3cdacc5013a9",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-09T14:58:50-05:00",
-  "subject": "chore: bump version to v1.0.1750",
+  "date": "2026-03-09T15:06:16-05:00",
+  "subject": "chore: bump version to v1.0.1751",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-12T03:22:15-06:00",
-        "subject": "chore(deps): bump k8s.io/klog/v2 from 2.130.1 to 2.140.0 (#1171)",
-        "body": "Bumps [k8s.io/klog/v2](https://github.com/kubernetes/klog) from 2.130.1 to 2.140.0.\n- [Release notes](https://github.com/kubernetes/klog/releases)\n- [Changelog](https://github.com/kubernetes/klog/blob/main/RELEASE.md)\n- [Commits](https://github.com/kubernetes/klog/compare/v2.130.1...2.140.0)\n\n---\nupdated-dependencies:\n- dependency-name: k8s.io/klog/v2\n  dependency-version: 2.140.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "c4685ae30450a114841c6cd58886cd0ac02d1b48",
+        "date": "2026-02-19T20:18:22-06:00",
+        "subject": "docs: add documentation for increasing controller log verbosity (#1101)",
+        "body": "* Initial plan\n\n* docs: add log level configuration documentation\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* docs: document how to increase controller log level for debugging\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* chore: revert accidental package-lock.json changes\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "eab62da3601f5f2ce9008cb2157a13f04602a7a9",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
