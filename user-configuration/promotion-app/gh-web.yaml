@@ -4,8 +4,16 @@ metadata:
   name: github-pr-approval
   namespace: default
 spec:
+  promotionStrategyRef:
+    name: argocon-demo
+
+  key: github-pr-approval
+  reportOn: proposed
+
   descriptionTemplate: |
-    {{- if .ResponseOutput }}
+    {{- if or (not .TriggerOutput) (ne (index .TriggerOutput "lastCheckedSha") .ReportedSha) }}
+    Checking merge requirements…
+    {{- else if .ResponseOutput }}
     {{- if eq (.ResponseOutput.mergeable_state | default "") "clean" }}
     Ready to merge — all required checks passed
     {{- else if eq (.ResponseOutput.mergeable_state | default "") "unstable" }}
@@ -18,6 +26,9 @@ spec:
     {{- else }}
     Checking merge requirements…
     {{- end }}
+
+  urlTemplate: "{{ .Environment.PullRequest.Url }}"
+
   httpRequest:
     authentication:
       scm: {}
@@ -26,44 +37,46 @@ spec:
       X-GitHub-Api-Version: "2022-11-28"
     method: GET
     timeout: 30s
-    urlTemplate: https://api.github.com/repos/{{ index (splitList "/" (trimPrefix
-      "https://github.com" .Environment.PullRequest.Url)) 1 }}/{{ index (splitList
-      "/" (trimPrefix "https://github.com" .Environment.PullRequest.Url)) 2 }}/pulls/{{
-      .Environment.PullRequest.ID }}
-  key: github-pr-approval
-  mode:
-    trigger:
-      requeueDuration: 2m
-      response:
-        output:
-          expression: |
-            {
-              mergeable_state: Response.Body.mergeable_state ?? "unknown",
-              mergeable: Response.Body.mergeable
-            }
-      when:
-        expression: |
-          Environment.PullRequest != nil &&
-          string(Environment.PullRequest.State) == "open" &&
-          all(
-            PromotionStrategy.Status.Environments[:findIndex(PromotionStrategy.Status.Environments, #.Branch == Environment.Branch)],
-            #.PullRequest == nil || #.PullRequest.State != "open"
-          ) &&
-          (TriggerOutput == nil ||
-           TriggerOutput.lastCheckedSha != ReportedSha ||
-           Phase != "success")
-        output:
-          expression: |
-            {
-              lastCheckedSha: ReportedSha
-            }
-  promotionStrategyRef:
-    name: argocon-demo
-  reportOn: proposed
+    urlTemplate: >-
+      https://api.github.com/repos/{{ index (splitList "/" (trimPrefix "https://github.com" .Environment.PullRequest.Url)) 1 }}/{{ index (splitList "/" (trimPrefix "https://github.com" .Environment.PullRequest.Url)) 2 }}/pulls/{{ .Environment.PullRequest.ID }}
+
   success:
     when:
       expression: |
         Response.StatusCode == 200 &&
         (Response.Body.mergeable_state == "clean" ||
          Response.Body.mergeable_state == "unstable")
-  urlTemplate: '{{ .Environment.PullRequest.Url }}'
+
+  mode:
+    trigger:
+      requeueDuration: 2m
+      when:
+        expression: |
+          (TriggerOutput == nil || TriggerOutput.lastCheckedSha != ReportedSha) ||
+          (Environment.PullRequest != nil &&
+           string(Environment.PullRequest.State) == "open" &&
+           all(
+             PromotionStrategy.Status.Environments[:findIndex(PromotionStrategy.Status.Environments, #.Branch == Environment.Branch)],
+             #.PullRequest == nil || #.PullRequest.State != "open"
+           ) &&
+           (
+             Phase != "success" ||
+             (Phase == "success" &&
+              LastSuccessfulSha != "" &&
+              (TriggerOutput == nil || TriggerOutput.lastCheckedSha != LastSuccessfulSha))
+           ))
+        output:
+          expression: |
+            {
+              lastCheckedSha: ReportedSha
+            }
+      response:
+        output:
+          expression: |
+            {
+              mergeable_state: Response.Body.mergeable_state ?? "unknown",
+              mergeable: Response.Body.mergeable,
+              requestCount: (ResponseOutput != nil ? (ResponseOutput.requestCount ?? 0) : 0) + 1
+            }
+
+
