@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "996a0e01c645cddb86a1a09d8b5e5b47f6d219dd",
+  "drySha": "b3a84681eced7503d9f8ed58969d5a984f069e20",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-09T17:33:46-05:00",
-  "subject": "chore: bump version to v1.0.1752",
+  "date": "2026-03-09T18:03:43-05:00",
+  "subject": "chore: bump version to v1.0.1753",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-03T00:16:39-06:00",
-        "subject": "chore(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0 (#1113)",
-        "body": "Bumps [actions/upload-artifact](https://github.com/actions/upload-artifact) from 6.0.0 to 7.0.0.\n- [Release notes](https://github.com/actions/upload-artifact/releases)\n- [Commits](https://github.com/actions/upload-artifact/compare/b7c566a772e6b6bfb58ed0dc250532a479d7789f...bbbca2ddaa5d8feaa63e36b76fdaad77386f024f)\n\n---\nupdated-dependencies:\n- dependency-name: actions/upload-artifact\n  dependency-version: 7.0.0\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "54066eae4d13c3c05f852a276b19006f15ba29f0",
+        "date": "2026-02-10T22:06:46-06:00",
+        "subject": "chore(deps): bump the k8s-deps group with 3 updates (#1130)",
+        "body": "Bumps the k8s-deps group with 3 updates: [k8s.io/api](https://github.com/kubernetes/api), [k8s.io/apimachinery](https://github.com/kubernetes/apimachinery) and [k8s.io/client-go](https://github.com/kubernetes/client-go).\n\n\nUpdates `k8s.io/api` from 0.35.1 to 0.35.2\n- [Commits](https://github.com/kubernetes/api/compare/v0.35.1...v0.35.2)\n\nUpdates `k8s.io/apimachinery` from 0.35.1 to 0.35.2\n- [Commits](https://github.com/kubernetes/apimachinery/compare/v0.35.1...v0.35.2)\n\nUpdates `k8s.io/client-go` from 0.35.1 to 0.35.2\n- [Changelog](https://github.com/kubernetes/client-go/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/kubernetes/client-go/compare/v0.35.1...v0.35.2)\n\n---\nupdated-dependencies:\n- dependency-name: k8s.io/api\n  dependency-version: 0.35.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n- dependency-name: k8s.io/apimachinery\n  dependency-version: 0.35.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n- dependency-name: k8s.io/client-go\n  dependency-version: 0.35.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: k8s-deps\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "54fce3c2f4ab05de46868bbfa4ba226f3288272f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
