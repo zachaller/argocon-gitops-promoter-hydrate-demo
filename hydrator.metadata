@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "19f72d1540bed5913b6c8b721ada16df380e4ff0",
+  "drySha": "1c00cb7d0ba1048d2dc307bedcc82f4b9f67ad33",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-05T14:51:13-06:00",
-  "subject": "chore: bump version to v1.0.1736",
+  "date": "2026-03-09T09:02:41-05:00",
+  "subject": "chore: bump version to v1.0.1749",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-07T01:30:28-06:00",
-        "subject": "chore(deps): bump gitlab.com/gitlab-org/api/client-go from 1.39.0 to 1.41.0 (#1090)",
-        "body": "chore(deps): bump gitlab.com/gitlab-org/api/client-go\n\nBumps [gitlab.com/gitlab-org/api/client-go](https://gitlab.com/gitlab-org/api/client-go) from 1.39.0 to 1.41.0.\n- [Release notes](https://gitlab.com/gitlab-org/api/client-go/tags)\n- [Changelog](https://gitlab.com/gitlab-org/api/client-go/blob/main/CHANGELOG.md)\n- [Commits](https://gitlab.com/gitlab-org/api/client-go/compare/v1.39.0...v1.41.0)\n\n---\nupdated-dependencies:\n- dependency-name: gitlab.com/gitlab-org/api/client-go\n  dependency-version: 1.41.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "341e7f68af9be6ad6d358952b61a73ea8df51519",
+        "date": "2026-02-02T12:19:49-06:00",
+        "subject": "docs: add Argo CD Helm chart values.yaml examples for integrations (#1127)",
+        "body": "* Initial plan\n\n* docs: add Argo CD Helm chart values.yaml examples for integrations\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "f94f91b5e054a6715d1eff79883d29f7b26aa891",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
