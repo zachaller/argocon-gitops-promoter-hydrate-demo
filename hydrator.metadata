@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "78a9f9513c8f01ea3b0d2108d56f3df336c0a0e4",
+  "drySha": "480dc0dfcb8c3069d7af69d5d6e76cd684cbdbe0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-10T14:39:46-05:00",
-  "subject": "chore: bump version to v1.0.1755",
+  "date": "2026-03-10T15:09:02-05:00",
+  "subject": "chore: bump version to v1.0.1756",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-11T10:34:06-06:00",
-        "subject": "docs(cli): add info about command line (#1080)",
+        "date": "2026-02-17T23:56:34-06:00",
+        "subject": "fix: docker version in github action (#1061)",
         "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "8f10f0943bd834654ca300318d23117c043754ec",
+        "sha": "0c8395daa39e03db614376d5d3ad00444d5d191b",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
