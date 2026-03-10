@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b69e5b3cad0985018e0d76cae56c3cdacc5013a9",
+  "drySha": "78a9f9513c8f01ea3b0d2108d56f3df336c0a0e4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-09T15:06:16-05:00",
-  "subject": "chore: bump version to v1.0.1751",
+  "date": "2026-03-10T14:39:46-05:00",
+  "subject": "chore: bump version to v1.0.1755",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-19T20:18:22-06:00",
-        "subject": "docs: add documentation for increasing controller log verbosity (#1101)",
-        "body": "* Initial plan\n\n* docs: add log level configuration documentation\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* docs: document how to increase controller log level for debugging\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n* chore: revert accidental package-lock.json changes\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
-        "sha": "eab62da3601f5f2ce9008cb2157a13f04602a7a9",
+        "date": "2026-02-11T10:34:06-06:00",
+        "subject": "docs(cli): add info about command line (#1080)",
+        "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "8f10f0943bd834654ca300318d23117c043754ec",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
