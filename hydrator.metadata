@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "480dc0dfcb8c3069d7af69d5d6e76cd684cbdbe0",
+  "drySha": "955de3f036c6b6ea94ab41e7b6227ea7578e4916",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-10T15:09:02-05:00",
-  "subject": "chore: bump version to v1.0.1756",
+  "date": "2026-03-11T10:25:58-05:00",
+  "subject": "chore: bump version to v1.0.1757",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-17T23:56:34-06:00",
-        "subject": "fix: docker version in github action (#1061)",
-        "body": "Signed-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "0c8395daa39e03db614376d5d3ad00444d5d191b",
+        "date": "2026-02-22T01:14:36-06:00",
+        "subject": "chore(ci): switch from deprecated codecov action (#1175)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "1b9c5a3498c667430c71c0f79111ca64ad8b633f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
