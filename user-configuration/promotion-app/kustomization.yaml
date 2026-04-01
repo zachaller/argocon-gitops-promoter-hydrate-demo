@@ -9,6 +9,6 @@ resources:
 #  - hcap-cs.yaml
   - argocd-commitstatus.yaml
   - gitcs.yaml
-  - webrequest.yaml
+  - webrequest-single.yaml
 #  - test-cs.yaml
   - gh-web.yaml
