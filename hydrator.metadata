@@ -1,20 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e042b9186567773f39d2813e194e99cfcca5e3cd",
+  "drySha": "8844c72c8b569aad53e7a1350fb1bb0775b10ceb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-12T10:07:44-05:00",
-  "subject": "chore: bump version to v1.0.1759",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
-  "references": [
-    {
-      "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-15T03:07:44-06:00",
-        "subject": "docs: bump manifest versions to v0.22.5 (#1076)",
-        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: emirot <2378256+emirot@users.noreply.github.com>",
-        "sha": "241924f5e166551446f007b0c074bb43beb58448",
-        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
-      }
-    }
-  ]
+  "date": "2026-04-01T15:48:24-05:00",
+  "subject": "fix: singel wrcs",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
 }
