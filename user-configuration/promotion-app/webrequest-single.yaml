@@ -1,0 +1,227 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: WebRequestCommitStatus
+metadata:
+  name: change-management-open
+spec:
+  promotionStrategyRef:
+    name: argocon-demo
+  key: change-management-open
+  reportOn: proposed
+  descriptionTemplate: >-
+    {{ .Phase }}: {{ if .ResponseOutput }}{{- $o := .ResponseOutput -}}{{- $cr := index $o "changeRequest" -}}{{ index $o "changeId" | default "—" }} (HTTP {{ index $o "statusCode" }}) · {{ if $cr }}{{ index $cr "start_time" | default "—" }}{{ else }}—{{ end }} → {{ if $cr }}{{ index $cr "end_time" | default "—" }}{{ else }}—{{ end }} · {{ if $cr }}{{ index $cr "short_description" | default "—" }}{{ else }}—{{ end }}{{ else }}open change request
+    for note dry SHA{{ end }}
+  httpRequest:
+    method: POST
+    timeout: 30s
+    headerTemplates:
+      Accept: application/json
+      Content-Type: application/json
+    urlTemplate: http://localhost:8987/v1/change-management-service/change
+    bodyTemplate: |
+      {
+        "asset_id": "1372489579564901493",
+        "on_behalf_of": "zaller",
+        "short_description": "Automated prod promotion (multi-env)",
+        "description": "Opens a change for the hydrator note dry SHA from the first gated environment that has proposed.note.drySha set.",
+        "environment": "production",
+        "backout_plan": "Rollback via standard GitOps revert / previous hydrated commit.",
+        "change_plan": "Automated deployment pipeline promotion.",
+        "test_plan": "Validated in lower environments per policy.",
+        "category": "Application",
+        "sub_category": "Release",
+        "commit_id": "{{- $key := "change-management-open" -}}{{- $sha := "" -}}{{- range $st := .PromotionStrategy.Status.Environments -}}{{- if eq $sha "" -}}{{- $match := false -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $se.Branch $st.Branch -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $match = true -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if and $match $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}",
+        "start_time": "{{ now | date "2006-01-02T15:04:05Z07:00" }}",
+        "end_time": "{{ now | dateModify "+30m" | date "2006-01-02T15:04:05Z07:00" }}",
+        "risk": "low",
+        "repo_url": "https://github.intuit.com/your-org/your-repo"
+      }
+  success:
+    when:
+      expression: |
+        Response.StatusCode == 202 &&
+        Response.Body != nil &&
+        Response.Body.id != nil &&
+        Response.Body.id != ""
+  mode:
+    context: promotionstrategy
+    trigger:
+      requeueDuration: 30s
+      when:
+        expression: |
+          let key = "change-management-open";
+          let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+          let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
+            let st = #;
+            any(specEnvsList, {
+              let se = #;
+              se.Branch == st.Branch && any(se.ProposedCommitStatuses ?? [], {#.Key == key})
+            })
+          });
+          let allGatedHaveNoteDrySha = len(gatedStatuses) > 0 && all(gatedStatuses, {
+            #.Proposed.Note != nil && #.Proposed.Note.DrySha != ""
+          });
+          let canonicalNoteDrySha = len(gatedStatuses) > 0 && gatedStatuses[0].Proposed.Note != nil ? gatedStatuses[0].Proposed.Note.DrySha : "";
+          let allNoteDryShasMatch = allGatedHaveNoteDrySha && all(gatedStatuses, {
+            #.Proposed.Note.DrySha == canonicalNoteDrySha
+          });
+          let fingerprint = join(map(gatedStatuses, { #.Branch + ":" + (#.Proposed.Note != nil && #.Proposed.Note.DrySha != "" ? #.Proposed.Note.DrySha : "") }), "|");
+          let hasOpenPR = any(gatedStatuses, { #.PullRequest != nil && string(#.PullRequest.State) == "open" });
+          let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
+          let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
+          let needsRetry = fingerprint == (TriggerOutput.lastFingerprint ?? "") &&
+            Phase != "success" &&
+            isRetryable;
+          let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
+          hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry)
+        output:
+          expression: |
+            let key = "change-management-open";
+            let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+            let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
+              let st = #;
+              any(specEnvsList, {
+                let se = #;
+                se.Branch == st.Branch && any(se.ProposedCommitStatuses ?? [], {#.Key == key})
+              })
+            });
+            let allGatedHaveNoteDrySha = len(gatedStatuses) > 0 && all(gatedStatuses, {
+              #.Proposed.Note != nil && #.Proposed.Note.DrySha != ""
+            });
+            let canonicalNoteDrySha = len(gatedStatuses) > 0 && gatedStatuses[0].Proposed.Note != nil ? gatedStatuses[0].Proposed.Note.DrySha : "";
+            let allNoteDryShasMatch = allGatedHaveNoteDrySha && all(gatedStatuses, {
+              #.Proposed.Note.DrySha == canonicalNoteDrySha
+            });
+            let fingerprint = join(map(gatedStatuses, { #.Branch + ":" + (#.Proposed.Note != nil && #.Proposed.Note.DrySha != "" ? #.Proposed.Note.DrySha : "") }), "|");
+            let hasOpenPR = any(gatedStatuses, { #.PullRequest != nil && string(#.PullRequest.State) == "open" });
+            let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
+            let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
+            let needsRetry = fingerprint == (TriggerOutput.lastFingerprint ?? "") &&
+              Phase != "success" &&
+              isRetryable;
+            let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
+            let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry);
+            {
+              lastFingerprint: shouldTrigger ? fingerprint : (TriggerOutput.lastFingerprint ?? "")
+            }
+      response:
+        output:
+          expression: |
+            let id = Response.Body.id;
+            let msg = Response.Body.message;
+            {
+              statusCode: Response.StatusCode,
+              changeId: id == nil ? "" : (type(id) == "string" ? id : string(id)),
+              message: msg == nil ? "" : (type(msg) == "string" ? msg : string(msg)),
+              changeRequest: Response.Body.change_request ?? {},
+              lastRequestedAt: string(now())
+            }
+
+---
+
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: WebRequestCommitStatus
+metadata:
+  name: change-management-approval
+spec:
+  promotionStrategyRef:
+    name: argocon-demo
+  key: change-management-approval
+  reportOn: proposed
+  descriptionTemplate: >-
+    {{ .Phase }}: {{ if .ResponseOutput }}{{ .ResponseOutput.approvedCount | default 0 }}/{{
+    .ResponseOutput.totalRecordCount | default 0 }} approved in window (last check: {{
+    .ResponseOutput.lastCheckedAt | default "—" }}){{ else }}checking for approved change
+    records in current time window{{ end }}
+  httpRequest:
+    method: GET
+    timeout: 30s
+    headerTemplates:
+      Accept: application/json
+    urlTemplate: >-
+      http://localhost:8987/v1/change-management-service/changes/search?asset_id=1372489579564901493&commit_id={{-
+      $key := "change-management-approval" -}}{{- $sha := "" -}}{{- range $st := .PromotionStrategy.Status.Environments -}}{{- if eq $sha "" -}}{{- $match := false -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $se.Branch $st.Branch -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $match = true -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if and $match $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}&limit=25
+  success:
+    when:
+      expression: |
+        Response.StatusCode == 200 &&
+        len(Response.Body.change_records) > 0 &&
+        any(Response.Body.change_records, {
+          date(#.change_request.start_time) <= now() &&
+          date(#.change_request.end_time) >= now()
+        })
+  mode:
+    context: promotionstrategy
+    trigger:
+      requeueDuration: 15s
+      when:
+        expression: |
+          let key = "change-management-approval";
+          let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+          let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
+            let st = #;
+            any(specEnvsList, {
+              let se = #;
+              se.Branch == st.Branch && any(se.ProposedCommitStatuses ?? [], {#.Key == key})
+            })
+          });
+          let allGatedHaveNoteDrySha = len(gatedStatuses) > 0 && all(gatedStatuses, {
+            #.Proposed.Note != nil && #.Proposed.Note.DrySha != ""
+          });
+          let canonicalNoteDrySha = len(gatedStatuses) > 0 && gatedStatuses[0].Proposed.Note != nil ? gatedStatuses[0].Proposed.Note.DrySha : "";
+          let allNoteDryShasMatch = allGatedHaveNoteDrySha && all(gatedStatuses, {
+            #.Proposed.Note.DrySha == canonicalNoteDrySha
+          });
+          let fingerprint = join(map(gatedStatuses, { #.Branch + ":" + (#.Proposed.Note != nil && #.Proposed.Note.DrySha != "" ? #.Proposed.Note.DrySha : "") }), "|");
+          let hasOpenPR = any(gatedStatuses, { #.PullRequest != nil && string(#.PullRequest.State) == "open" });
+          let pollingIntervalMinutes = 1;
+          let isFirstRun = TriggerOutput.lastRequestTime == nil;
+          let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
+          let shouldTriggerByTime = !isFirstRun && (
+            (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
+          );
+          hasOpenPR && allNoteDryShasMatch && (isFirstRun || isNewFingerprint || shouldTriggerByTime)
+        output:
+          expression: |
+            let key = "change-management-approval";
+            let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+            let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
+              let st = #;
+              any(specEnvsList, {
+                let se = #;
+                se.Branch == st.Branch && any(se.ProposedCommitStatuses ?? [], {#.Key == key})
+              })
+            });
+            let allGatedHaveNoteDrySha = len(gatedStatuses) > 0 && all(gatedStatuses, {
+              #.Proposed.Note != nil && #.Proposed.Note.DrySha != ""
+            });
+            let canonicalNoteDrySha = len(gatedStatuses) > 0 && gatedStatuses[0].Proposed.Note != nil ? gatedStatuses[0].Proposed.Note.DrySha : "";
+            let allNoteDryShasMatch = allGatedHaveNoteDrySha && all(gatedStatuses, {
+              #.Proposed.Note.DrySha == canonicalNoteDrySha
+            });
+            let fingerprint = join(map(gatedStatuses, { #.Branch + ":" + (#.Proposed.Note != nil && #.Proposed.Note.DrySha != "" ? #.Proposed.Note.DrySha : "") }), "|");
+            let hasOpenPR = any(gatedStatuses, { #.PullRequest != nil && string(#.PullRequest.State) == "open" });
+            let pollingIntervalMinutes = 1;
+            let isFirstRun = TriggerOutput.lastRequestTime == nil;
+            let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
+            let shouldTriggerByTime = !isFirstRun && (
+              (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
+            );
+            let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isFirstRun || isNewFingerprint || shouldTriggerByTime);
+            {
+              lastFingerprint: fingerprint,
+              lastRequestTime: shouldTrigger ? now() : TriggerOutput.lastRequestTime
+            }
+      response:
+        output:
+          expression: |
+            let approvedRecords = filter(Response.Body.change_records ?? [], {
+              date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now()
+            });
+            {
+              statusCode: Response.StatusCode,
+              totalRecordCount: len(Response.Body.change_records ?? []),
+              approvedRecords: approvedRecords,
+              approvedCount: len(approvedRecords),
+              lastCheckedAt: string(now())
+            }
+
