@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "975c3b25a3e2481e7851a0674df5def8865aaed3",
+  "drySha": "bbd33fd9cc394d6e5d549dbbef15beddbe8003d1",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-02T11:00:58-05:00",
-  "subject": "chore: bump version to v1.0.1761",
+  "date": "2026-04-02T11:33:58-05:00",
+  "subject": "chore: bump version to v1.0.1762",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-19T19:02:28-05:00",
-        "subject": "chore: Update Artifact Hub badge link in README (#1210)",
-        "body": "Link directly to the repo instead of a search page.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "cbff45ea21ed54d1ef45b85c24c638886be89d00",
+        "date": "2026-03-08T13:12:33-05:00",
+        "subject": "chore(deps): bump golang.org/x/sync from 0.19.0 to 0.20.0 (#1169)",
+        "body": "Bumps [golang.org/x/sync](https://github.com/golang/sync) from 0.19.0 to 0.20.0.\n- [Commits](https://github.com/golang/sync/compare/v0.19.0...v0.20.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sync\n  dependency-version: 0.20.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "ff0a7215e5d373bade5f95771985e2e8da079850",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
