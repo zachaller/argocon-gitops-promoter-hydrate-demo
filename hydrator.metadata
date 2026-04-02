@@ -1,20 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "fd39f078cdfa4691994781734526cd9ce91d4023",
+  "drySha": "8844c72c8b569aad53e7a1350fb1bb0775b10ceb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-03-11T16:12:45-05:00",
-  "subject": "chore: bump version to v1.0.1758",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
-  "references": [
-    {
-      "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-02-27T11:28:32-06:00",
-        "subject": "Refactor tests to improve context initialization (#1075)",
-        "body": "* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* chore(test): refactor context\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "3ba6ecf24f4417466116abf2dfafc91aa6877eb5",
-        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
-      }
-    }
-  ]
+  "date": "2026-04-01T15:48:24-05:00",
+  "subject": "fix: singel wrcs",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
 }
