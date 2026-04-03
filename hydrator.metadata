@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "975c3b25a3e2481e7851a0674df5def8865aaed3",
+  "drySha": "637acfbee2a0303cd9ba7096e3c11409f15847e6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-02T11:00:58-05:00",
-  "subject": "chore: bump version to v1.0.1761",
+  "date": "2026-04-03T10:02:08-05:00",
+  "subject": "chore: bump version to v1.0.1763",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-19T19:02:28-05:00",
-        "subject": "chore: Update Artifact Hub badge link in README (#1210)",
-        "body": "Link directly to the repo instead of a search page.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "cbff45ea21ed54d1ef45b85c24c638886be89d00",
+        "date": "2026-03-21T07:38:49-05:00",
+        "subject": "chore(tcs): improve waiting message (#1205)",
+        "body": "* chore(tcs): improve waiting message\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix expectation\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "a776d083e74fcbaeceec0eea410c7d290f60881f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
