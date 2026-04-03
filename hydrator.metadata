@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bbd33fd9cc394d6e5d549dbbef15beddbe8003d1",
+  "drySha": "637acfbee2a0303cd9ba7096e3c11409f15847e6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-02T11:33:58-05:00",
-  "subject": "chore: bump version to v1.0.1762",
+  "date": "2026-04-03T10:02:08-05:00",
+  "subject": "chore: bump version to v1.0.1763",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-08T13:12:33-05:00",
-        "subject": "chore(deps): bump golang.org/x/sync from 0.19.0 to 0.20.0 (#1169)",
-        "body": "Bumps [golang.org/x/sync](https://github.com/golang/sync) from 0.19.0 to 0.20.0.\n- [Commits](https://github.com/golang/sync/compare/v0.19.0...v0.20.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/sync\n  dependency-version: 0.20.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "ff0a7215e5d373bade5f95771985e2e8da079850",
+        "date": "2026-03-21T07:38:49-05:00",
+        "subject": "chore(tcs): improve waiting message (#1205)",
+        "body": "* chore(tcs): improve waiting message\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix expectation\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "a776d083e74fcbaeceec0eea410c7d290f60881f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
