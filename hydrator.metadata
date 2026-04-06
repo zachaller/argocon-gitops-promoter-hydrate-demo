@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6464b35cfa9ffabb81f4b6875b00711d0204c7c4",
+  "drySha": "372a46628e05bd95e0cef67497acb8b9db1a4af8",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-03T18:19:55-05:00",
-  "subject": "chore: bump version to v1.0.1765",
+  "date": "2026-04-06T11:45:44-05:00",
+  "subject": "chore: bump version to v1.0.1766",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-06T04:51:25-06:00",
-        "subject": "chore(deps): bump github.com/fatih/color from 1.18.0 to 1.19.0 (#1229)",
-        "body": "Bumps [github.com/fatih/color](https://github.com/fatih/color) from 1.18.0 to 1.19.0.\n- [Release notes](https://github.com/fatih/color/releases)\n- [Commits](https://github.com/fatih/color/compare/v1.18.0...v1.19.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/fatih/color\n  dependency-version: 1.19.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "be3dfe16de5befa314a33d6dad32365f7404ee80",
+        "date": "2026-03-08T19:27:58-05:00",
+        "subject": "chore(deps): bump github.com/bradleyfalzon/ghinstallation/v2 from 2.17.0 to 2.18.0 (#1183)",
+        "body": "chore(deps): bump github.com/bradleyfalzon/ghinstallation/v2\n\nBumps [github.com/bradleyfalzon/ghinstallation/v2](https://github.com/bradleyfalzon/ghinstallation) from 2.17.0 to 2.18.0.\n- [Release notes](https://github.com/bradleyfalzon/ghinstallation/releases)\n- [Commits](https://github.com/bradleyfalzon/ghinstallation/compare/v2.17.0...v2.18.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/bradleyfalzon/ghinstallation/v2\n  dependency-version: 2.18.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "ff882394e7229095923327028125a2bb615e5011",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
