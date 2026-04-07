@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a09d2315eac905e08f8f6fa7041c16ffce2c69a6",
+  "drySha": "d711df43441c98ee47767b653f6e7922f0eccafd",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-07T08:56:44-05:00",
-  "subject": "chore: bump version to v1.0.1767",
+  "date": "2026-04-07T09:55:18-05:00",
+  "subject": "chore: bump version to v1.0.1769",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-27T01:47:56-05:00",
-        "subject": "docs: add MAINTAINERS.md (#1263)",
-        "body": "* docs: add MAINTAINERS.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* better phrasing\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "18a51c5ce21793e78aa73b243b853e88a27badd8",
+        "date": "2026-03-31T15:46:16-05:00",
+        "subject": "chore(deps): bump actions/upload-artifact from 4 to 7 (#1197)",
+        "body": "Bumps [actions/upload-artifact](https://github.com/actions/upload-artifact) from 4 to 7.\n- [Release notes](https://github.com/actions/upload-artifact/releases)\n- [Commits](https://github.com/actions/upload-artifact/compare/v4...v7)\n\n---\nupdated-dependencies:\n- dependency-name: actions/upload-artifact\n  dependency-version: '7'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "4ef0d8f89d302f4ccde48f8901a30a33eb6c6db3",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
