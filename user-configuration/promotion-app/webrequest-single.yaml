@@ -2,15 +2,14 @@ apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
 metadata:
   name: change-management-open
-  namespace: default
 spec:
   promotionStrategyRef:
     name: argocon-demo
   key: change-management-open
   reportOn: proposed
   descriptionTemplate: >-
-    {{ .Phase }}: {{ if .ResponseOutput }}{{- $o := .ResponseOutput -}}{{- $cr := index $o "changeRequest" -}}{{ index $o "changeId" | default "—" }} (HTTP {{ index $o "statusCode" }}) · {{ if $cr }}{{ index $cr "start_time" | default "—" }}{{ else }}—{{ end }} → {{ if $cr }}{{ index $cr "end_time" | default "—" }}{{ else }}—{{ end }} · {{ if $cr }}{{ index $cr "short_description" | default "—" }}{{ else }}—{{ end }}{{ else }}open change request
-    for note dry SHA{{ end }}
+    {{ .Phase }}: {{ if .ResponseOutput }}{{- $o := .ResponseOutput -}}{{- $cr := index $o "changeRequest" -}}{{ index $o "changeId" | default "—" }}
+    (HTTP {{ index $o "statusCode" }}) · {{ if $cr }}{{ index $cr "start_time" | default "—" }}{{ else }}—{{ end }} → {{ if $cr }}{{ index $cr "end_time" | default "—" }}{{ else }}—{{ end }} · {{ if $cr }}{{ index $cr "short_description" | default "—" }}{{ else }}—{{ end }}{{ else }}open change request for note dry SHA{{ end }}
   httpRequest:
     method: POST
     timeout: 30s
@@ -30,9 +29,9 @@ spec:
         "test_plan": "Prior environments exercised the same hydrated manifests; Argo CD health and policy checks must succeed before this production promotion proceeds.",
         "category": "Application",
         "sub_category": "Release",
-        "commit_id": "{{- $key := "change-management-open" -}}{{- $sha := "" -}}{{- range $st := .PromotionStrategy.Status.Environments -}}{{- if eq $sha "" -}}{{- $match := false -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $se.Branch $st.Branch -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $match = true -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if and $match $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}",
-        "start_time": "{{ now | date "2006-01-02T15:04:05Z07:00" }}",
-        "end_time": "{{ now | dateModify "+30m" | date "2006-01-02T15:04:05Z07:00" }}",
+        "commit_id": "{{- $key := \"change-management-open\" -}}{{- $sha := \"\" -}}{{- range $st := .PromotionStrategy.Status.Environments -}}{{- if eq $sha \"\" -}}{{- $match := false -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $se.Branch $st.Branch -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $match = true -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if and $match $st.Proposed.Note (ne $st.Proposed.Note.DrySha \"\") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}",
+        "start_time": "{{ now | date \"2006-01-02T15:04:05Z07:00\" }}",
+        "end_time": "{{ now | dateModify \"+30m\" | date \"2006-01-02T15:04:05Z07:00\" }}",
         "risk": "low",
         "repo_url": "https://github.intuit.com/your-org/your-repo"
       }
@@ -51,6 +50,22 @@ spec:
         expression: |
           let key = "change-management-open";
           let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+          let globalHasKey = any(PromotionStrategy.Spec.ProposedCommitStatuses ?? [], {#.Key == key});
+          let firstGatedIdx = findIndex(specEnvsList, {
+            globalHasKey || any(#.ProposedCommitStatuses ?? [], {#.Key == key})
+          });
+          let lowerSpecs = (firstGatedIdx != nil && firstGatedIdx > 0)
+            ? take(specEnvsList, firstGatedIdx)
+            : [];
+          let statusList = PromotionStrategy.Status.Environments ?? [];
+          let lowerOk = all(lowerSpecs, {
+            let se = #;
+            let hasKeyHere = globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key});
+            let b = se.Branch;
+            let st = find(statusList, { #.Branch == b });
+            let noOpenPR = st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open";
+            !hasKeyHere && noOpenPR
+          });
           let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
             let st = #;
             any(specEnvsList, {
@@ -73,11 +88,27 @@ spec:
             Phase != "success" &&
             isRetryable;
           let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
-          hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry)
+          hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry) && lowerOk
         output:
           expression: |
             let key = "change-management-open";
             let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+            let globalHasKey = any(PromotionStrategy.Spec.ProposedCommitStatuses ?? [], {#.Key == key});
+            let firstGatedIdx = findIndex(specEnvsList, {
+              globalHasKey || any(#.ProposedCommitStatuses ?? [], {#.Key == key})
+            });
+            let lowerSpecs = (firstGatedIdx != nil && firstGatedIdx > 0)
+              ? take(specEnvsList, firstGatedIdx)
+              : [];
+            let statusList = PromotionStrategy.Status.Environments ?? [];
+            let lowerOk = all(lowerSpecs, {
+              let se = #;
+              let hasKeyHere = globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key});
+              let b = se.Branch;
+              let st = find(statusList, { #.Branch == b });
+              let noOpenPR = st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open";
+              !hasKeyHere && noOpenPR
+            });
             let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
               let st = #;
               any(specEnvsList, {
@@ -100,7 +131,7 @@ spec:
               Phase != "success" &&
               isRetryable;
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
-            let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry);
+            let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry) && lowerOk;
             {
               lastFingerprint: shouldTrigger ? fingerprint : (TriggerOutput.lastFingerprint ?? "")
             }
