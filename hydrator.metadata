@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a09d2315eac905e08f8f6fa7041c16ffce2c69a6",
+  "drySha": "d9fc841791067ac55dddefd9d7a5b43326252942",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-07T08:56:44-05:00",
-  "subject": "chore: bump version to v1.0.1767",
+  "date": "2026-04-07T09:55:11-05:00",
+  "subject": "chore: bump version to v1.0.1768",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-27T01:47:56-05:00",
-        "subject": "docs: add MAINTAINERS.md (#1263)",
-        "body": "* docs: add MAINTAINERS.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* better phrasing\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "18a51c5ce21793e78aa73b243b853e88a27badd8",
+        "date": "2026-03-04T00:27:25-06:00",
+        "subject": "docs: set dimensions on readme logo (#1267)",
+        "body": "docs: set height on readme logo\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "3afea4276cd3b02a9e8f64309b237d31859be448",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
