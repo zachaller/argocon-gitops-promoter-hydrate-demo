@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "372a46628e05bd95e0cef67497acb8b9db1a4af8",
+  "drySha": "a09d2315eac905e08f8f6fa7041c16ffce2c69a6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-06T11:45:44-05:00",
-  "subject": "chore: bump version to v1.0.1766",
+  "date": "2026-04-07T08:56:44-05:00",
+  "subject": "chore: bump version to v1.0.1767",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-08T19:27:58-05:00",
-        "subject": "chore(deps): bump github.com/bradleyfalzon/ghinstallation/v2 from 2.17.0 to 2.18.0 (#1183)",
-        "body": "chore(deps): bump github.com/bradleyfalzon/ghinstallation/v2\n\nBumps [github.com/bradleyfalzon/ghinstallation/v2](https://github.com/bradleyfalzon/ghinstallation) from 2.17.0 to 2.18.0.\n- [Release notes](https://github.com/bradleyfalzon/ghinstallation/releases)\n- [Commits](https://github.com/bradleyfalzon/ghinstallation/compare/v2.17.0...v2.18.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/bradleyfalzon/ghinstallation/v2\n  dependency-version: 2.18.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "ff882394e7229095923327028125a2bb615e5011",
+        "date": "2026-03-27T01:47:56-05:00",
+        "subject": "docs: add MAINTAINERS.md (#1263)",
+        "body": "* docs: add MAINTAINERS.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* better phrasing\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "18a51c5ce21793e78aa73b243b853e88a27badd8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
