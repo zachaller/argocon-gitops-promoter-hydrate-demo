@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d9fc841791067ac55dddefd9d7a5b43326252942",
+  "drySha": "b7280c184c6dc0b5006a80fe6196a0677cefe2eb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-07T09:55:11-05:00",
-  "subject": "chore: bump version to v1.0.1768",
+  "date": "2026-04-07T09:59:59-05:00",
+  "subject": "chore: bump version to v1.0.1770",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-04T00:27:25-06:00",
-        "subject": "docs: set dimensions on readme logo (#1267)",
-        "body": "docs: set height on readme logo\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "3afea4276cd3b02a9e8f64309b237d31859be448",
+        "date": "2026-04-01T07:29:12-05:00",
+        "subject": "chore: exclude node_modules from golangci-lint (#1222)",
+        "body": "Co-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "c021c4a65d75800069d5a95c9f2d66c078d77301",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
