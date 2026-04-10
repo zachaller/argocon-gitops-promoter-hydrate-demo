@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ef1a74d84d3dda423a13f5b5db788f66e9ee0663",
+  "drySha": "61b40abaab1b835827feb08e8d9c3b22113d4a98",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-10T11:45:23-05:00",
-  "subject": "chore: bump version to v1.0.1773",
+  "date": "2026-04-10T12:11:27-05:00",
+  "subject": "chore: bump version to v1.0.1774",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-15T00:31:16-05:00",
-        "subject": "docs: bump manifest versions to v0.25.1 (#1254)",
-        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "42a6d68d4f38c90f0fb743f8dad65ce8c955743d",
+        "date": "2026-04-05T05:05:20-05:00",
+        "subject": "docs: fix grammar in tutorial-argocd-apps.md (#1265)",
+        "body": "* Initial plan\n\n* docs: fix grammar in tutorial-argocd-apps.md\n\nAgent-Logs-Url: https://github.com/argoproj-labs/gitops-promoter/sessions/a73427a6-ff4d-4454-8b7e-9698098a0844\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "de8ec92b99e18ffee99f8c2dd4bd2365628c70c7",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
