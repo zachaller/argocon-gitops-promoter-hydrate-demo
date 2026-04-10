@@ -39,10 +39,12 @@ spec:
   success:
     when:
       expression: |
-        Response.StatusCode == 202 &&
-        Response.Body != nil &&
-        Response.Body.id != nil &&
-        Response.Body.id != ""
+        Response != nil
+          ? (Response.StatusCode == 202 &&
+             Response.Body != nil &&
+             Response.Body.id != nil &&
+             Response.Body.id != "")
+          : Phase == "success"
   mode:
     context: promotionstrategy
     trigger:
@@ -177,12 +179,14 @@ spec:
   success:
     when:
       expression: |
-        Response.StatusCode == 200 &&
-        len(Response.Body.change_records) > 0 &&
-        any(Response.Body.change_records, {
-          date(#.change_request.start_time) <= now() &&
-          date(#.change_request.end_time) >= now()
-        })
+        Response != nil
+          ? (Response.StatusCode == 200 &&
+             len(Response.Body.change_records) > 0 &&
+             any(Response.Body.change_records, {
+               date(#.change_request.start_time) <= now() &&
+               date(#.change_request.end_time) >= now()
+             }))
+          : Phase == "success"
   mode:
     context: promotionstrategy
     trigger:
@@ -258,4 +262,3 @@ spec:
               approvedCount: len(approvedRecords),
               lastCheckedAt: string(now())
             }
-
