@@ -149,7 +149,19 @@ spec:
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
             let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry) && lowerOk;
             {
-              lastFingerprint: shouldTrigger ? fingerprint : (TriggerOutput.lastFingerprint ?? "")
+              lastFingerprint: shouldTrigger ? fingerprint : (TriggerOutput.lastFingerprint ?? ""),
+              shouldTrigger: shouldTrigger,
+              hasOpenPR: hasOpenPR,
+              allNoteDryShasMatch: allNoteDryShasMatch,
+              isNewFingerprint: isNewFingerprint,
+              needsRetry: needsRetry,
+              lowerOk: lowerOk,
+              fingerprint: fingerprint,
+              canonicalNoteDrySha: canonicalNoteDrySha,
+              gatedBranches: map(gatedStatuses, { #.Branch }),
+              lastStatusCode: lastStatusCode,
+              phase: Phase,
+              evaluatedAt: string(now())
             }
       response:
         output:
