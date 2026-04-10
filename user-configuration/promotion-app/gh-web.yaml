@@ -43,10 +43,15 @@ spec:
   success:
     when:
       expression: |
-        Response != nil &&
-        Response.StatusCode == 200 &&
-        (Response.Body.mergeable_state == "clean" ||
-         Response.Body.mergeable_state == "unstable")
+        let envStatus = find(PromotionStrategy.Status.Environments, {.Branch == Branch});
+        let reportedSha = envStatus.Proposed.Hydrated.Sha;
+        let wrcsEnv = find(WebRequestCommitStatus.Status.Environments ?? [], {.Branch == Branch});
+        let lastSuccessfulSha = wrcsEnv != nil ? (wrcsEnv.LastSuccessfulSha ?? "") : "";
+        Response != nil
+          ? (Response.StatusCode == 200 &&
+             (Response.Body.mergeable_state == "clean" ||
+              Response.Body.mergeable_state == "unstable"))
+          : (Phase == "success" && lastSuccessfulSha == reportedSha)
   mode:
     context: environments
     trigger:
