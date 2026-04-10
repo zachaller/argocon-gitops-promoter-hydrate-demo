@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "70be3434da244fd408823c53282e773885c0664a",
+  "drySha": "9cfbe34640af8481631c4aee7b5e2a0ae5ac4e02",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-10T13:13:27-05:00",
-  "subject": "chore: bump version to v1.0.1775",
+  "date": "2026-04-10T13:20:25-05:00",
+  "subject": "chore: bump version to v1.0.1776",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-15T22:52:12-05:00",
-        "subject": "docs: add MAINTAINERS.md (#1263)",
-        "body": "* docs: add MAINTAINERS.md\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* better phrasing\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "18a51c5ce21793e78aa73b243b853e88a27badd8",
+        "date": "2026-04-03T22:53:42-05:00",
+        "subject": "feat: add ps to pr templates (#1208)",
+        "body": "* feat: add ps to pr templates\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: remove un-needed\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* order\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove space\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* return error\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* optional\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* optional\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* use ownerref\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "2bb81d1b8ed5160c1bbda7632614a02faf9f13fd",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
