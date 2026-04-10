@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "9cfbe34640af8481631c4aee7b5e2a0ae5ac4e02",
+  "drySha": "ad553aa58bc7e07484ddd55e3d87c8ad94504ce4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-10T13:20:25-05:00",
-  "subject": "chore: bump version to v1.0.1776",
+  "date": "2026-04-10T17:18:14-05:00",
+  "subject": "chore: bump version to v1.0.1777",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-04-03T22:53:42-05:00",
-        "subject": "feat: add ps to pr templates (#1208)",
-        "body": "* feat: add ps to pr templates\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: logs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* feat: remove un-needed\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* order\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove space\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* add docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* return error\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* optional\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* optional\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* use ownerref\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "2bb81d1b8ed5160c1bbda7632614a02faf9f13fd",
+        "date": "2026-04-04T18:06:08-05:00",
+        "subject": "chore(deps): update dependency pymdown-extensions to v10.21.2 (#1278)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "595b4b58680fa97a04fbe01c1e2a3b198146ded3",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
