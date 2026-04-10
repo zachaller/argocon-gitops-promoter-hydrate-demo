@@ -3,15 +3,18 @@ kind: WebRequestCommitStatus
 metadata:
   name: github-pr-approval
   namespace: default
+  annotations:
+    argocd.argoproj.io/tracking-id: "promotion-strategy:promoter.argoproj.io/WebRequestCommitStatus:default/github-pr-approval"
 spec:
   promotionStrategyRef:
     name: argocon-demo
-
   key: github-pr-approval
   reportOn: proposed
-
-  descriptionTemplate: |
-    {{- if or (not .TriggerOutput) (ne (index .TriggerOutput "lastCheckedSha") .ReportedSha) }}
+  urlTemplate: >-
+    {{- range .PromotionStrategy.Status.Environments }}{{- if eq .Branch $.Branch }}{{ .PullRequest.Url }}{{- end }}{{- end }}
+  descriptionTemplate: >-
+    {{- $reportedSha := "" }}{{- range .PromotionStrategy.Status.Environments }}{{- if eq .Branch $.Branch }}{{- $reportedSha = .Proposed.Hydrated.Sha }}{{- end }}{{- end -}}
+    {{- if or (not .TriggerOutput) (ne (index .TriggerOutput "lastCheckedSha") $reportedSha) }}
     Checking merge requirements…
     {{- else if .ResponseOutput }}
     {{- if eq (.ResponseOutput.mergeable_state | default "") "clean" }}
@@ -26,49 +29,49 @@ spec:
     {{- else }}
     Checking merge requirements…
     {{- end }}
-
-  urlTemplate: "{{ .Environment.PullRequest.Url }}"
-
   httpRequest:
+    method: GET
+    timeout: 30s
     authentication:
       scm: {}
     headerTemplates:
       Accept: application/vnd.github+json
       X-GitHub-Api-Version: "2022-11-28"
-    method: GET
-    timeout: 30s
     urlTemplate: >-
-      https://api.github.com/repos/{{ index (splitList "/" (trimPrefix "https://github.com" .Environment.PullRequest.Url)) 1 }}/{{ index (splitList "/" (trimPrefix "https://github.com" .Environment.PullRequest.Url)) 2 }}/pulls/{{ .Environment.PullRequest.ID }}
-
+      {{- range .PromotionStrategy.Status.Environments }}{{- if eq .Branch $.Branch }}https://api.github.com/repos/{{ index (splitList "/" (trimPrefix "https://github.com" .PullRequest.Url)) 1 }}/{{ index (splitList "/" (trimPrefix "https://github.com" .PullRequest.Url)) 2 }}/pulls/{{ .PullRequest.ID }}{{- end }}{{- end }}
   success:
     when:
       expression: |
         Response.StatusCode == 200 &&
         (Response.Body.mergeable_state == "clean" ||
          Response.Body.mergeable_state == "unstable")
-
   mode:
+    context: environments
     trigger:
       requeueDuration: 2m
       when:
         expression: |
-          (TriggerOutput == nil || TriggerOutput.lastCheckedSha != ReportedSha) ||
-          (Environment.PullRequest != nil &&
-           string(Environment.PullRequest.State) == "open" &&
+          let envStatus = find(PromotionStrategy.Status.Environments, {.Branch == Branch});
+          let reportedSha = envStatus.Proposed.Hydrated.Sha;
+          let wrcsEnv = find(WebRequestCommitStatus.Status.Environments ?? [], {.Branch == Branch});
+          let lastSuccessfulSha = wrcsEnv != nil ? (wrcsEnv.LastSuccessfulSha ?? "") : "";
+          (TriggerOutput == nil || TriggerOutput.lastCheckedSha != reportedSha) ||
+          (envStatus.PullRequest != nil &&
+           string(envStatus.PullRequest.State) == "open" &&
            all(
-             PromotionStrategy.Status.Environments[:findIndex(PromotionStrategy.Status.Environments, #.Branch == Environment.Branch)],
+             PromotionStrategy.Status.Environments[:findIndex(PromotionStrategy.Status.Environments, #.Branch == Branch)],
              #.PullRequest == nil || #.PullRequest.State != "open"
            ) &&
            (
              Phase != "success" ||
              (Phase == "success" &&
-              LastSuccessfulSha != "" &&
-              (TriggerOutput == nil || TriggerOutput.lastCheckedSha != LastSuccessfulSha))
+              lastSuccessfulSha != "" &&
+              (TriggerOutput == nil || TriggerOutput.lastCheckedSha != lastSuccessfulSha))
            ))
         output:
           expression: |
             {
-              lastCheckedSha: ReportedSha
+              lastCheckedSha: find(PromotionStrategy.Status.Environments, {.Branch == Branch}).Proposed.Hydrated.Sha
             }
       response:
         output:
@@ -78,5 +81,3 @@ spec:
               mergeable: Response.Body.mergeable,
               requestCount: (ResponseOutput != nil ? (ResponseOutput.requestCount ?? 0) : 0) + 1
             }
-
-
