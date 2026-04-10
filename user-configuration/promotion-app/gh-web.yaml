@@ -13,22 +13,19 @@ spec:
   urlTemplate: >-
     {{- range .PromotionStrategy.Status.Environments }}{{- if eq .Branch $.Branch }}{{ .PullRequest.Url }}{{- end }}{{- end }}
   descriptionTemplate: >-
-    {{- $reportedSha := "" }}{{- range .PromotionStrategy.Status.Environments }}{{- if eq .Branch $.Branch }}{{- $reportedSha = .Proposed.Hydrated.Sha }}{{- end }}{{- end -}}
-    {{- if or (not .TriggerOutput) (ne (index .TriggerOutput "lastCheckedSha") $reportedSha) }}
-    Checking merge requirements…
-    {{- else if .ResponseOutput }}
-    {{- if eq (.ResponseOutput.mergeable_state | default "") "clean" }}
-    Ready to merge — all required checks passed
-    {{- else if eq (.ResponseOutput.mergeable_state | default "") "unstable" }}
-    Required checks passed (some non-required checks are pending/failing)
-    {{- else if eq (.ResponseOutput.mergeable_state | default "") "blocked" }}
-    Blocked — required reviews or checks have not passed
-    {{- else }}
-    Checking merge requirements… (state: {{ .ResponseOutput.mergeable_state | default "unknown" }})
-    {{- end }}
-    {{- else }}
-    Checking merge requirements…
-    {{- end }}
+    {{- $reportedSha := "" }}{{- range .PromotionStrategy.Status.Environments
+    }}{{- if eq .Branch $.Branch }}{{- $reportedSha = .Proposed.Hydrated.Sha
+    }}{{- end }}{{- end -}} {{- if or (not .TriggerOutput) (ne (index
+    .TriggerOutput "lastCheckedSha") $reportedSha) }} Checking merge
+    requirements… {{- else if .ResponseOutput }} {{- if eq
+    (.ResponseOutput.mergeable_state | default "") "clean" }} Ready to merge —
+    all required checks passed {{- else if eq (.ResponseOutput.mergeable_state |
+    default "") "unstable" }} Required checks passed (some non-required checks
+    are pending/failing) {{- else if eq (.ResponseOutput.mergeable_state |
+    default "") "blocked" }} Blocked — required reviews or checks have not
+    passed {{- else }} Checking merge requirements… (state: {{
+    .ResponseOutput.mergeable_state | default "unknown" }}) {{- end }} {{- else
+    }} Checking merge requirements… {{- end }}
   httpRequest:
     method: GET
     timeout: 30s
@@ -38,10 +35,15 @@ spec:
       Accept: application/vnd.github+json
       X-GitHub-Api-Version: "2022-11-28"
     urlTemplate: >-
-      {{- range .PromotionStrategy.Status.Environments }}{{- if eq .Branch $.Branch }}https://api.github.com/repos/{{ index (splitList "/" (trimPrefix "https://github.com" .PullRequest.Url)) 1 }}/{{ index (splitList "/" (trimPrefix "https://github.com" .PullRequest.Url)) 2 }}/pulls/{{ .PullRequest.ID }}{{- end }}{{- end }}
+      {{- range .PromotionStrategy.Status.Environments }}{{- if eq .Branch
+      $.Branch }}https://api.github.com/repos/{{ index (splitList "/"
+      (trimPrefix "https://github.com" .PullRequest.Url)) 1 }}/{{ index
+      (splitList "/" (trimPrefix "https://github.com" .PullRequest.Url)) 2
+      }}/pulls/{{ .PullRequest.ID }}{{- end }}{{- end }}
   success:
     when:
       expression: |
+        Response != nil &&
         Response.StatusCode == 200 &&
         (Response.Body.mergeable_state == "clean" ||
          Response.Body.mergeable_state == "unstable")
