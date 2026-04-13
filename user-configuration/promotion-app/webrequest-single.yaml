@@ -214,11 +214,12 @@ spec:
           : (Phase == "success" && (
               let key = "change-management-approval";
               let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+              let globalHasKey = any(PromotionStrategy.Spec.ProposedCommitStatuses ?? [], {#.Key == key});
               let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
                 let st = #;
                 any(specEnvsList, {
                   let se = #;
-                  se.Branch == st.Branch && any(se.ProposedCommitStatuses ?? [], {#.Key == key})
+                  se.Branch == st.Branch && (globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key}))
                 })
               });
               let fingerprint = join(map(gatedStatuses, { #.Branch + ":" + (#.Proposed.Note != nil && #.Proposed.Note.DrySha != "" ? #.Proposed.Note.DrySha : "") }), "|");
@@ -232,11 +233,27 @@ spec:
         expression: |
           let key = "change-management-approval";
           let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+          let globalHasKey = any(PromotionStrategy.Spec.ProposedCommitStatuses ?? [], {#.Key == key});
+          let firstGatedIdx = findIndex(specEnvsList, {
+            globalHasKey || any(#.ProposedCommitStatuses ?? [], {#.Key == key})
+          });
+          let lowerSpecs = (firstGatedIdx != nil && firstGatedIdx > 0)
+            ? take(specEnvsList, firstGatedIdx)
+            : [];
+          let statusList = PromotionStrategy.Status.Environments ?? [];
+          let lowerOk = all(lowerSpecs, {
+            let se = #;
+            let hasKeyHere = globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key});
+            let b = se.Branch;
+            let st = find(statusList, { #.Branch == b });
+            let noOpenPR = st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open";
+            !hasKeyHere && noOpenPR
+          });
           let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
             let st = #;
             any(specEnvsList, {
               let se = #;
-              se.Branch == st.Branch && any(se.ProposedCommitStatuses ?? [], {#.Key == key})
+              se.Branch == st.Branch && (globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key}))
             })
           });
           let allGatedHaveNoteDrySha = len(gatedStatuses) > 0 && all(gatedStatuses, {
@@ -254,16 +271,32 @@ spec:
           let shouldTriggerByTime = !isFirstRun && (
             (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
           );
-          hasOpenPR && allNoteDryShasMatch && (isFirstRun || isNewFingerprint || shouldTriggerByTime)
+          hasOpenPR && allNoteDryShasMatch && (isFirstRun || isNewFingerprint || shouldTriggerByTime) && lowerOk
         output:
           expression: |
             let key = "change-management-approval";
             let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+            let globalHasKey = any(PromotionStrategy.Spec.ProposedCommitStatuses ?? [], {#.Key == key});
+            let firstGatedIdx = findIndex(specEnvsList, {
+              globalHasKey || any(#.ProposedCommitStatuses ?? [], {#.Key == key})
+            });
+            let lowerSpecs = (firstGatedIdx != nil && firstGatedIdx > 0)
+              ? take(specEnvsList, firstGatedIdx)
+              : [];
+            let statusList = PromotionStrategy.Status.Environments ?? [];
+            let lowerOk = all(lowerSpecs, {
+              let se = #;
+              let hasKeyHere = globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key});
+              let b = se.Branch;
+              let st = find(statusList, { #.Branch == b });
+              let noOpenPR = st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open";
+              !hasKeyHere && noOpenPR
+            });
             let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
               let st = #;
               any(specEnvsList, {
                 let se = #;
-                se.Branch == st.Branch && any(se.ProposedCommitStatuses ?? [], {#.Key == key})
+                se.Branch == st.Branch && (globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key}))
               })
             });
             let allGatedHaveNoteDrySha = len(gatedStatuses) > 0 && all(gatedStatuses, {
@@ -281,10 +314,20 @@ spec:
             let shouldTriggerByTime = !isFirstRun && (
               (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
             );
-            let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isFirstRun || isNewFingerprint || shouldTriggerByTime);
+            let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isFirstRun || isNewFingerprint || shouldTriggerByTime) && lowerOk;
             {
               lastFingerprint: fingerprint,
-              lastRequestTime: shouldTrigger ? now() : TriggerOutput.lastRequestTime
+              lastRequestTime: shouldTrigger ? now() : TriggerOutput.lastRequestTime,
+              lowerOk: lowerOk,
+              hasOpenPR: hasOpenPR,
+              allNoteDryShasMatch: allNoteDryShasMatch,
+              isNewFingerprint: isNewFingerprint,
+              shouldTriggerByTime: shouldTriggerByTime,
+              shouldTrigger: shouldTrigger,
+              fingerprint: fingerprint,
+              canonicalNoteDrySha: canonicalNoteDrySha,
+              gatedBranches: map(gatedStatuses, { #.Branch }),
+              evaluatedAt: string(now())
             }
       response:
         output:
