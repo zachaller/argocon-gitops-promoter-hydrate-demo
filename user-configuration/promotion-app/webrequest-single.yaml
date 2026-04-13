@@ -39,6 +39,17 @@ spec:
   success:
     when:
       expression: |
+        // success.when — whole expression (ternary on Response):
+        //   HTTP path (Response set this reconcile): success iff POST returned 202, body present, and body.id present and non-empty (change was created).
+        //   No-response path (Response nil this reconcile): success iff Phase is already "success" AND the gated branch:drySha fingerprint equals TriggerOutput.lastFingerprint (default ""), so requeues without a new HTTP do not clear success while the promotion shape still matches what the trigger last persisted.
+        //   Fingerprint (no-response branch): join of "branch:drySha" over gatedStatuses — status rows whose spec branch lists this key (global or per-env); empty drySha yields "branch:" segment.
+        // Conjuncts — HTTP path (all required when Response != nil):
+        //   Response.StatusCode == 202
+        //   Response.Body != nil
+        //   Response.Body.id != nil && Response.Body.id != ""
+        // Conjuncts — no-response path (all required when Response == nil):
+        //   Phase == "success"
+        //   fingerprint == (TriggerOutput["lastFingerprint"] ?? "") after computing fingerprint from gatedStatuses (lets below).
         Response != nil
           ? (Response.StatusCode == 202 &&
              Response.Body != nil &&
@@ -74,13 +85,10 @@ spec:
             ? take(specEnvsList, firstGatedIdx)
             : [];
           let statusList = PromotionStrategy.Status.Environments ?? [];
-          let lowerOk = all(lowerSpecs, {
+          let preGateNoOpenPR = all(lowerSpecs, {
             let se = #;
-            let hasKeyHere = globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key});
-            let b = se.Branch;
-            let st = find(statusList, { #.Branch == b });
-            let noOpenPR = st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open";
-            !hasKeyHere && noOpenPR
+            let st = find(statusList, { #.Branch == se.Branch });
+            st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open"
           });
           let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
             let st = #;
@@ -104,7 +112,13 @@ spec:
             Phase != "success" &&
             isRetryable;
           let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
-          hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry) && lowerOk
+          // Whole expression: open the change only while a gated promotion PR is open, every gated env shares the same proposed.note.drySha, you need a new POST (fingerprint changed or retryable HTTP failure on the same fingerprint), and no spec-ordered branch before the first keyed env still has an open promotion PR on Status.
+          // Conjuncts (all required):
+          //   hasOpenPR — at least one gated env has an open promotion PR.
+          //   allNoteDryShasMatch — every gated env has proposed.note.drySha set and all values match (one hydrator dry SHA).
+          //   (isNewFingerprint || needsRetry) — fingerprint changed vs TriggerOutput.lastFingerprint, or same fingerprint with phase not success and last HTTP 429 or >=500 (retry throttling / server errors).
+          //   preGateNoOpenPR — each spec-ordered env before the first keyed env has no open promotion PR on Status; true when lowerSpecs is empty.
+          hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry) && preGateNoOpenPR
         output:
           expression: |
             let key = "change-management-open";
@@ -117,13 +131,10 @@ spec:
               ? take(specEnvsList, firstGatedIdx)
               : [];
             let statusList = PromotionStrategy.Status.Environments ?? [];
-            let lowerOk = all(lowerSpecs, {
+            let preGateNoOpenPR = all(lowerSpecs, {
               let se = #;
-              let hasKeyHere = globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key});
-              let b = se.Branch;
-              let st = find(statusList, { #.Branch == b });
-              let noOpenPR = st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open";
-              !hasKeyHere && noOpenPR
+              let st = find(statusList, { #.Branch == se.Branch });
+              st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open"
             });
             let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
               let st = #;
@@ -147,7 +158,13 @@ spec:
               Phase != "success" &&
               isRetryable;
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
-            let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry) && lowerOk;
+            // Whole expression (shouldTrigger): open the change only while a gated promotion PR is open, every gated env shares the same proposed.note.drySha, you need a new POST (fingerprint changed or retryable HTTP failure on the same fingerprint), and no spec-ordered branch before the first keyed env still has an open promotion PR on Status.
+            // Conjuncts (all required):
+            //   hasOpenPR — at least one gated env has an open promotion PR.
+            //   allNoteDryShasMatch — every gated env has proposed.note.drySha set and all values match (one hydrator dry SHA).
+            //   (isNewFingerprint || needsRetry) — fingerprint changed vs TriggerOutput.lastFingerprint, or same fingerprint with phase not success and last HTTP 429 or >=500 (retry throttling / server errors).
+            //   preGateNoOpenPR — each spec-ordered env before the first keyed env has no open promotion PR on Status; true when lowerSpecs is empty.
+            let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isNewFingerprint || needsRetry) && preGateNoOpenPR;
             {
               lastFingerprint: shouldTrigger ? fingerprint : (TriggerOutput.lastFingerprint ?? ""),
               shouldTrigger: shouldTrigger,
@@ -155,7 +172,7 @@ spec:
               allNoteDryShasMatch: allNoteDryShasMatch,
               isNewFingerprint: isNewFingerprint,
               needsRetry: needsRetry,
-              lowerOk: lowerOk,
+              preGateNoOpenPR: preGateNoOpenPR,
               fingerprint: fingerprint,
               canonicalNoteDrySha: canonicalNoteDrySha,
               gatedBranches: map(gatedStatuses, { #.Branch }),
@@ -204,6 +221,17 @@ spec:
   success:
     when:
       expression: |
+        // success.when — whole expression (ternary on Response):
+        //   HTTP path (Response set this reconcile): success iff 200, non-empty change_records, and at least one record whose change_request start_time/end_time bracket now() (approved change active in the service window).
+        //   No-response path (Response nil this reconcile): success iff Phase is already "success" AND the gated branch:drySha fingerprint equals TriggerOutput.lastFingerprint (default ""), so requeues without a new HTTP do not clear success while the promotion shape still matches what the trigger last persisted.
+        //   Fingerprint (no-response branch): join of "branch:drySha" over gatedStatuses — status rows whose spec branch references this key (global or per-env); empty drySha yields "branch:" segment.
+        // Conjuncts — HTTP path (all required when Response != nil):
+        //   Response.StatusCode == 200
+        //   len(Response.Body.change_records) > 0
+        //   any(change_records, start_time <= now() && end_time >= now())
+        // Conjuncts — no-response path (all required when Response == nil):
+        //   Phase == "success"
+        //   fingerprint == (TriggerOutput["lastFingerprint"] ?? "") after computing fingerprint from gatedStatuses (lets below).
         Response != nil
           ? (Response.StatusCode == 200 &&
              len(Response.Body.change_records) > 0 &&
@@ -241,13 +269,10 @@ spec:
             ? take(specEnvsList, firstGatedIdx)
             : [];
           let statusList = PromotionStrategy.Status.Environments ?? [];
-          let lowerOk = all(lowerSpecs, {
+          let preGateNoOpenPR = all(lowerSpecs, {
             let se = #;
-            let hasKeyHere = globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key});
-            let b = se.Branch;
-            let st = find(statusList, { #.Branch == b });
-            let noOpenPR = st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open";
-            !hasKeyHere && noOpenPR
+            let st = find(statusList, { #.Branch == se.Branch });
+            st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open"
           });
           let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
             let st = #;
@@ -271,7 +296,13 @@ spec:
           let shouldTriggerByTime = !isFirstRun && (
             (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
           );
-          hasOpenPR && allNoteDryShasMatch && (isFirstRun || isNewFingerprint || shouldTriggerByTime) && lowerOk
+          // Whole expression: poll change-management only while a gated promotion PR is open, every gated env shares the same proposed.note.drySha, a poll is due (first GET, fingerprint changed, or polling interval since lastRequestTime), and no spec-ordered branch before the first keyed env still has an open promotion PR on Status.
+          // Conjuncts (all required):
+          //   hasOpenPR — at least one gated env has an open promotion PR.
+          //   allNoteDryShasMatch — every gated env has proposed.note.drySha set and all values match (one hydrator dry SHA).
+          //   (isFirstRun || isNewFingerprint || shouldTriggerByTime) — first poll (no lastRequestTime), or branch:drySha fingerprint changed vs TriggerOutput.lastFingerprint, or pollingIntervalMinutes elapsed since lastRequestTime (rate-limit vs controller requeue).
+          //   preGateNoOpenPR — each spec-ordered env before the first keyed env has no open promotion PR on Status; true when lowerSpecs is empty.
+          hasOpenPR && allNoteDryShasMatch && (isFirstRun || isNewFingerprint || shouldTriggerByTime) && preGateNoOpenPR
         output:
           expression: |
             let key = "change-management-approval";
@@ -284,13 +315,10 @@ spec:
               ? take(specEnvsList, firstGatedIdx)
               : [];
             let statusList = PromotionStrategy.Status.Environments ?? [];
-            let lowerOk = all(lowerSpecs, {
+            let preGateNoOpenPR = all(lowerSpecs, {
               let se = #;
-              let hasKeyHere = globalHasKey || any(se.ProposedCommitStatuses ?? [], {#.Key == key});
-              let b = se.Branch;
-              let st = find(statusList, { #.Branch == b });
-              let noOpenPR = st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open";
-              !hasKeyHere && noOpenPR
+              let st = find(statusList, { #.Branch == se.Branch });
+              st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open"
             });
             let gatedStatuses = filter(PromotionStrategy.Status.Environments ?? [], {
               let st = #;
@@ -314,11 +342,17 @@ spec:
             let shouldTriggerByTime = !isFirstRun && (
               (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
             );
-            let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isFirstRun || isNewFingerprint || shouldTriggerByTime) && lowerOk;
+            // Whole expression (shouldTrigger): poll change-management only while a gated promotion PR is open, every gated env shares the same proposed.note.drySha, a poll is due (first GET, fingerprint changed, or polling interval since lastRequestTime), and no spec-ordered branch before the first keyed env still has an open promotion PR on Status.
+            // Conjuncts (all required):
+            //   hasOpenPR — at least one gated env has an open promotion PR.
+            //   allNoteDryShasMatch — every gated env has proposed.note.drySha set and all values match (one hydrator dry SHA).
+            //   (isFirstRun || isNewFingerprint || shouldTriggerByTime) — first poll (no lastRequestTime), or branch:drySha fingerprint changed vs TriggerOutput.lastFingerprint, or pollingIntervalMinutes elapsed since lastRequestTime (rate-limit vs controller requeue).
+            //   preGateNoOpenPR — each spec-ordered env before the first keyed env has no open promotion PR on Status; true when lowerSpecs is empty.
+            let shouldTrigger = hasOpenPR && allNoteDryShasMatch && (isFirstRun || isNewFingerprint || shouldTriggerByTime) && preGateNoOpenPR;
             {
               lastFingerprint: fingerprint,
               lastRequestTime: shouldTrigger ? now() : TriggerOutput.lastRequestTime,
-              lowerOk: lowerOk,
+              preGateNoOpenPR: preGateNoOpenPR,
               hasOpenPR: hasOpenPR,
               allNoteDryShasMatch: allNoteDryShasMatch,
               isNewFingerprint: isNewFingerprint,
