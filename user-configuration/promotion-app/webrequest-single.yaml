@@ -43,11 +43,11 @@ spec:
         //   HTTP path (Response set this reconcile): success iff POST returned 202, body present, and body.id present and non-empty (change was created).
         //   No-response path (Response nil this reconcile): success iff Phase is already "success" AND the gated branch:drySha fingerprint equals TriggerOutput.lastFingerprint (default ""), so requeues without a new HTTP do not clear success while the promotion shape still matches what the trigger last persisted.
         //   Fingerprint (no-response branch): join of "branch:drySha" over gatedStatuses — status rows whose spec branch lists this key (global or per-env); empty drySha yields "branch:" segment.
-        // Conjuncts — HTTP path (all required when Response != nil):
+        // Checks — HTTP path (all required when Response != nil):
         //   Response.StatusCode == 202
         //   Response.Body != nil
         //   Response.Body.id != nil && Response.Body.id != ""
-        // Conjuncts — no-response path (all required when Response == nil):
+        // Checks — no-response path (all required when Response == nil):
         //   Phase == "success"
         //   fingerprint == (TriggerOutput["lastFingerprint"] ?? "") after computing fingerprint from gatedStatuses (lets below).
         Response != nil
@@ -113,7 +113,7 @@ spec:
             isRetryable;
           let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
           // Whole expression: open the change only while a gated promotion PR is open, every gated env shares the same proposed.note.drySha, you need a new POST (fingerprint changed or retryable HTTP failure on the same fingerprint), and no spec-ordered branch before the first keyed env still has an open promotion PR on Status.
-          // Conjuncts (all required):
+          // Checks (all required):
           //   hasOpenPR — at least one gated env has an open promotion PR.
           //   allNoteDryShasMatch — every gated env has proposed.note.drySha set and all values match (one hydrator dry SHA).
           //   (isNewFingerprint || needsRetry) — fingerprint changed vs TriggerOutput.lastFingerprint, or same fingerprint with phase not success and last HTTP 429 or >=500 (retry throttling / server errors).
@@ -159,7 +159,7 @@ spec:
               isRetryable;
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
             // Whole expression (shouldTrigger): open the change only while a gated promotion PR is open, every gated env shares the same proposed.note.drySha, you need a new POST (fingerprint changed or retryable HTTP failure on the same fingerprint), and no spec-ordered branch before the first keyed env still has an open promotion PR on Status.
-            // Conjuncts (all required):
+            // Checks (all required):
             //   hasOpenPR — at least one gated env has an open promotion PR.
             //   allNoteDryShasMatch — every gated env has proposed.note.drySha set and all values match (one hydrator dry SHA).
             //   (isNewFingerprint || needsRetry) — fingerprint changed vs TriggerOutput.lastFingerprint, or same fingerprint with phase not success and last HTTP 429 or >=500 (retry throttling / server errors).
@@ -187,8 +187,8 @@ spec:
             let msg = Response.Body.message;
             {
               statusCode: Response.StatusCode,
-              changeId: id == nil ? "" : (type(id) == "string" ? id : string(id)),
-              message: msg == nil ? "" : (type(msg) == "string" ? msg : string(msg)),
+              changeId: id == nil ? "" : string(id),
+              message: msg == nil ? "" : string(msg),
               changeRequest: Response.Body.change_request ?? {},
               lastRequestedAt: string(now())
             }
@@ -225,11 +225,11 @@ spec:
         //   HTTP path (Response set this reconcile): success iff 200, non-empty change_records, and at least one record whose change_request start_time/end_time bracket now() (approved change active in the service window).
         //   No-response path (Response nil this reconcile): success iff Phase is already "success" AND the gated branch:drySha fingerprint equals TriggerOutput.lastFingerprint (default ""), so requeues without a new HTTP do not clear success while the promotion shape still matches what the trigger last persisted.
         //   Fingerprint (no-response branch): join of "branch:drySha" over gatedStatuses — status rows whose spec branch references this key (global or per-env); empty drySha yields "branch:" segment.
-        // Conjuncts — HTTP path (all required when Response != nil):
+        // Checks — HTTP path (all required when Response != nil):
         //   Response.StatusCode == 200
         //   len(Response.Body.change_records) > 0
         //   any(change_records, start_time <= now() && end_time >= now())
-        // Conjuncts — no-response path (all required when Response == nil):
+        // Checks — no-response path (all required when Response == nil):
         //   Phase == "success"
         //   fingerprint == (TriggerOutput["lastFingerprint"] ?? "") after computing fingerprint from gatedStatuses (lets below).
         Response != nil
@@ -297,7 +297,7 @@ spec:
             (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
           );
           // Whole expression: poll change-management only while a gated promotion PR is open, every gated env shares the same proposed.note.drySha, a poll is due (first GET, fingerprint changed, or polling interval since lastRequestTime), and no spec-ordered branch before the first keyed env still has an open promotion PR on Status.
-          // Conjuncts (all required):
+          // Checks (all required):
           //   hasOpenPR — at least one gated env has an open promotion PR.
           //   allNoteDryShasMatch — every gated env has proposed.note.drySha set and all values match (one hydrator dry SHA).
           //   (isFirstRun || isNewFingerprint || shouldTriggerByTime) — first poll (no lastRequestTime), or branch:drySha fingerprint changed vs TriggerOutput.lastFingerprint, or pollingIntervalMinutes elapsed since lastRequestTime (rate-limit vs controller requeue).
@@ -343,7 +343,7 @@ spec:
               (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
             );
             // Whole expression (shouldTrigger): poll change-management only while a gated promotion PR is open, every gated env shares the same proposed.note.drySha, a poll is due (first GET, fingerprint changed, or polling interval since lastRequestTime), and no spec-ordered branch before the first keyed env still has an open promotion PR on Status.
-            // Conjuncts (all required):
+            // Checks (all required):
             //   hasOpenPR — at least one gated env has an open promotion PR.
             //   allNoteDryShasMatch — every gated env has proposed.note.drySha set and all values match (one hydrator dry SHA).
             //   (isFirstRun || isNewFingerprint || shouldTriggerByTime) — first poll (no lastRequestTime), or branch:drySha fingerprint changed vs TriggerOutput.lastFingerprint, or pollingIntervalMinutes elapsed since lastRequestTime (rate-limit vs controller requeue).
