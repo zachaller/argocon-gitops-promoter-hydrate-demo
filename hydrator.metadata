@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ecaa65866beeb9a08102f65fddd3d850e29acd6c",
+  "drySha": "bf1e31794c50d2083c73a7d52fc7cabea064e9bc",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-13T20:42:26-05:00",
-  "subject": "chore: bump version to v1.0.1857",
+  "date": "2026-04-13T20:43:04-05:00",
+  "subject": "chore: bump version to v1.0.1859",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-19T11:50:24-05:00",
-        "subject": "docs: set dimensions on readme logo (#1267)",
-        "body": "docs: set height on readme logo\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "3afea4276cd3b02a9e8f64309b237d31859be448",
+        "date": "2026-03-20T15:57:07-05:00",
+        "subject": "docs: fix grammar in tutorial-argocd-apps.md (#1265)",
+        "body": "* Initial plan\n\n* docs: fix grammar in tutorial-argocd-apps.md\n\nAgent-Logs-Url: https://github.com/argoproj-labs/gitops-promoter/sessions/a73427a6-ff4d-4454-8b7e-9698098a0844\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "de8ec92b99e18ffee99f8c2dd4bd2365628c70c7",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
