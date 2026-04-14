@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bf1e31794c50d2083c73a7d52fc7cabea064e9bc",
+  "drySha": "4c5b94905afefbac865df3e4193e7c0981ba7b0f",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-13T20:43:04-05:00",
-  "subject": "chore: bump version to v1.0.1859",
+  "date": "2026-04-14T09:03:03-05:00",
+  "subject": "chore: bump version to v1.0.1861",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-20T15:57:07-05:00",
-        "subject": "docs: fix grammar in tutorial-argocd-apps.md (#1265)",
-        "body": "* Initial plan\n\n* docs: fix grammar in tutorial-argocd-apps.md\n\nAgent-Logs-Url: https://github.com/argoproj-labs/gitops-promoter/sessions/a73427a6-ff4d-4454-8b7e-9698098a0844\n\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "de8ec92b99e18ffee99f8c2dd4bd2365628c70c7",
+        "date": "2026-04-06T17:48:21-05:00",
+        "subject": "chore: Update Artifact Hub badge link in README (#1210)",
+        "body": "Link directly to the repo instead of a search page.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "cbff45ea21ed54d1ef45b85c24c638886be89d00",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
