@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ec42ad028858ed99c0516637802ed8b1024abe60",
+  "drySha": "11ddf5a0caa297c7aa2115e2bff9481a7a560a87",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-13T13:18:30-05:00",
-  "subject": "chore: bump version to v1.0.1856",
+  "date": "2026-04-13T20:42:32-05:00",
+  "subject": "chore: bump version to v1.0.1858",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-14T04:34:58-05:00",
-        "subject": "chore(deps): update dependency python to 3.14 (#1280)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "fb97278324978ddf3a28068d947d3dc48a5ae7f1",
+        "date": "2026-03-24T14:23:20-05:00",
+        "subject": "chore(tcs): improve waiting message (#1205)",
+        "body": "* chore(tcs): improve waiting message\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix expectation\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "a776d083e74fcbaeceec0eea410c7d290f60881f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
