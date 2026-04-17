@@ -1,18 +1,17 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a5d995c94e1b5354df33ea2e0eda00a455792f54",
+  "drySha": "831687a15316fbc81f0a298c9aee559a0059f718",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-17T09:34:36-05:00",
-  "subject": "chore: bump version to v1.0.1865",
+  "date": "2026-04-17T10:24:01-05:00",
+  "subject": "chore: bump version to v1.0.1866",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-04-06T03:17:37-05:00",
-        "subject": "feat(ui): support multiple promotionstrategies in ui extension (#1213)",
-        "body": "* feat(ui): support multiple promotionstrategies in ui extension\n\nSigned-off-by: Sean Liao <sean.liao@circle.com>\n\n* Apply suggestions from code review\n\nCo-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Sean Liao <sean.liao@circle.com>\n\n---------\n\nSigned-off-by: Sean Liao <sean.liao@circle.com>\nCo-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>",
-        "sha": "ba8fc956ea1c2a6b55e43667dc22edebb871f6c6",
+        "date": "2026-03-24T03:13:36-05:00",
+        "subject": "chore: update configuration",
+        "sha": "9d5ccef278218dea4caa903bb6abb9ed974a1d90",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
