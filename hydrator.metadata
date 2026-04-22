@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "73a80cb8dc22bf7b17c0fdd8dda2ef6627e92974",
+  "drySha": "f8dd828ce45338e8edfb0085714909eb6993e421",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-20T15:55:28-05:00",
-  "subject": "chore: bump version to v1.0.1870",
+  "date": "2026-04-22T12:01:23-05:00",
+  "subject": "chore: bump version to v1.0.1871",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-04-15T09:05:45-05:00",
-        "subject": "fix(ci): sign from tag, not from main (#1305)",
-        "body": "* fix release process\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix syntax\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* docs\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* explain why workflow dispatch\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fixes\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "e1da0a5988c47e4f61dfee0340cda51305ae8967",
+        "date": "2026-03-26T06:08:15-05:00",
+        "subject": "fix(ci): frontend deps (#1240)",
+        "body": "* fix(ci): frontend deps\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* fix(ci): frontend deps\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
+        "sha": "bc5d06e590d93fdaabc9eb497598a927401db5ab",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
