@@ -175,8 +175,8 @@ spec:
                 })
               : [];
 
-            let foundChangeId = (len(matched) > 0 && matched[0].change_request != nil && (matched[0].change_request.id ?? "") != "")
-              ? string(matched[0].change_request.id)
+            let foundChangeId = (len(matched) > 0 && (matched[0].id ?? "") != "")
+              ? string(matched[0].id)
               : "";
 
             let closeOk = isCloseResponse && Response.StatusCode == 202 && (Response.Body.id ?? "") != "";
