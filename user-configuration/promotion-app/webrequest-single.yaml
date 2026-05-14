@@ -124,13 +124,20 @@ spec:
           # lastDoneFingerprint advances when this fingerprint reaches a terminal state for close:
           # either a successful POST (step == "closed") or a non-retryable failure (step == "closeFailedTerminal").
           # lastClosedFingerprint tracks only successful closes — used by success.when carry-forward.
+          # priorStep / priorChangeId come from ResponseOutput, which persists across reconciles and
+          # is NOT reset when the fingerprint rolls forward. Gate "justClosed"/"justDone" on
+          # priorMatchesCurrent so a stale "closed"/"closeFailedTerminal" from the previous fingerprint
+          # cannot stamp the new fingerprint as done before its own close has actually run.
           expression: |
             let shouldTrigger = Variables.allNoteDryShasMatch &&
               !Variables.alreadyDoneForFingerprint &&
               (Variables.isNewFingerprint || Variables.haveChangeId || Variables.needsRetry) &&
               Variables.noOpenPRsOnGated;
-            let justClosed = Variables.priorStep == "closed";
-            let justDone = Variables.priorStep == "closed" || Variables.priorStep == "closeFailedTerminal";
+            let priorMatchesCurrent = Variables.fingerprint != "" &&
+              Variables.fingerprint == (TriggerOutput.lastFingerprint ?? "");
+            let justClosed = priorMatchesCurrent && Variables.priorStep == "closed";
+            let justDone = priorMatchesCurrent &&
+              (Variables.priorStep == "closed" || Variables.priorStep == "closeFailedTerminal");
             {
               lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
               lastDoneFingerprint: justDone ? Variables.fingerprint : (TriggerOutput.lastDoneFingerprint ?? ""),
@@ -144,6 +151,7 @@ spec:
               haveChangeId: Variables.haveChangeId,
               priorStep: Variables.priorStep,
               priorChangeId: Variables.priorChangeId,
+              priorMatchesCurrent: priorMatchesCurrent,
               fingerprint: Variables.fingerprint,
               canonicalNoteDrySha: Variables.canonicalNoteDrySha,
               strategyBranches: map(PromotionStrategy.Spec.Environments, { #.Branch }),
