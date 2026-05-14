@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "37fdd3fd5c9780a26b9b67f37a192494ad62d929",
+  "drySha": "11a327d165c3decfa09a837cdc16d24e29159be6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-14T08:43:14-05:00",
-  "subject": "chore: bump version to v1.0.1872",
+  "date": "2026-05-14T09:29:00-05:00",
+  "subject": "chore: bump version to v1.0.1873",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-04-10T01:22:56-05:00",
-        "subject": "docs: Add Contributor Covenant Code of Conduct (#1288)",
-        "body": "Added Contributor Covenant Code of Conduct to outline community standards and enforcement guidelines.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "447f47b2fd49ee9a7830364ade54dddba7cd60ee",
+        "date": "2026-04-10T10:23:51-05:00",
+        "subject": "chore(deps): bump postcss from 8.5.8 to 8.5.12 in /ui/dashboard (#1370)",
+        "body": "Bumps [postcss](https://github.com/postcss/postcss) from 8.5.8 to 8.5.12.\n- [Release notes](https://github.com/postcss/postcss/releases)\n- [Changelog](https://github.com/postcss/postcss/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/postcss/postcss/compare/8.5.8...8.5.12)\n\n---\nupdated-dependencies:\n- dependency-name: postcss\n  dependency-version: 8.5.12\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "61eb63b01171f6dbbc3587b0640940f439116b8a",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
