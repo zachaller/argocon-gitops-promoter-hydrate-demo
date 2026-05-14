@@ -9,33 +9,59 @@ spec:
   key: change-management-close
   reportOn: active
   descriptionTemplate: >-
-    {{ .Phase }}: {{ if .ResponseOutput }}{{- $o := .ResponseOutput -}}{{ if eq (index $o "step" | default "") "closed" }}closed change {{ index $o "changeId" | default "—" }} (HTTP {{ index $o "statusCode" | default 0 }}){{ else }}found change {{ index $o "changeId" | default "—" }} for active SHA, closing…{{ end }}{{ else }}searching for change record to close{{ end }}
+    {{- /* presentation only — fields come from trigger.response.output.expression / when.variables */ -}}
+    {{- $cid := "" -}}{{- $step := "" -}}{{- $sc := 0 -}}
+    {{- if .ResponseOutput -}}
+      {{- $cid  = index .ResponseOutput "changeId"   | default "" -}}
+      {{- $step = index .ResponseOutput "step"       | default "" -}}
+      {{- $sc   = index .ResponseOutput "statusCode" | default 0  -}}
+    {{- end -}}
+    {{- $sha := "" -}}
+    {{- if .TriggerVariables -}}{{- $sha = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}{{- end -}}
+    {{- $shaShort := "" -}}{{- if ne $sha "" -}}{{- $shaShort = substr 0 7 $sha -}}{{- end -}}
+    {{ .Phase }}:
+    {{- if eq $step "closed" }} closed change {{ $cid }} (HTTP {{ $sc }})
+    {{- else if eq $step "closeFailedTerminal" }} close gave up for {{ $cid }} (HTTP {{ $sc }}) — treating as done
+    {{- else if eq $step "closeRetry" }} close failed for {{ $cid }} (HTTP {{ $sc }}), will retry
+    {{- else if eq $step "found" }} found change {{ $cid }} — closing on next reconcile
+    {{- else if eq $step "searching" }} no change record in window{{ if ne $shaShort "" }} for note dry SHA {{ $shaShort }}{{ end }} — nothing to close
+    {{- else }} searching for change record to close{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
+    {{- end }}
   httpRequest:
+    # mode.trigger.when.variables exposes a single decision flag, .TriggerVariables.inCloseMode,
+    # plus the dynamic values it already had to compute (.priorChangeId for close,
+    # .canonicalNoteDrySha for search). Method selection and URL/body shape live here.
     methodTemplate: >-
-      {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- $step := index .ResponseOutput "step" | default "" -}}{{- if and $cid (ne $cid "") (or (eq $step "found") (eq $step "closeRetry")) -}}POST{{- else -}}GET{{- end -}}{{- else -}}GET{{- end -}}
+      {{- if index .TriggerVariables "inCloseMode" -}}POST{{- else -}}GET{{- end -}}
     timeout: 30s
     headerTemplates:
       Accept: application/json
       Content-Type: application/json
     urlTemplate: >-
-      {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- $step := index .ResponseOutput "step" | default "" -}}{{- if and $cid (ne $cid "") (or (eq $step "found") (eq $step "closeRetry")) -}}http://localhost:8987/v1/change-management-service/change/close/{{ $cid }}{{- else -}}http://localhost:8987/v1/change-management-service/changes/search?asset_id={{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}&commit_id={{- $sha := "" -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $sha "" -}}{{- range $st := $.PromotionStrategy.Status.Environments -}}{{- if and (eq $st.Branch $se.Branch) $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}&limit=25{{- end -}}{{- else -}}http://localhost:8987/v1/change-management-service/changes/search?asset_id={{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}&commit_id={{- $sha := "" -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $sha "" -}}{{- range $st := $.PromotionStrategy.Status.Environments -}}{{- if and (eq $st.Branch $se.Branch) $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}&limit=25{{- end -}}
+      {{- $base := "http://localhost:8987/v1/change-management-service" -}}
+      {{- $assetId := index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}
+      {{- if index .TriggerVariables "inCloseMode" -}}
+      {{ $base }}/change/close/{{ index .TriggerVariables "priorChangeId" }}
+      {{- else -}}
+      {{ $base }}/changes/search?asset_id={{ $assetId }}&commit_id={{ index .TriggerVariables "canonicalNoteDrySha" }}&limit=25
+      {{- end -}}
     bodyTemplate: |
-      {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- $step := index .ResponseOutput "step" | default "" -}}{{- if and $cid (ne $cid "") (or (eq $step "found") (eq $step "closeRetry")) -}}
+      {{- if index .TriggerVariables "inCloseMode" -}}
       {
         "change_execution_status": "SUCCEEDED"
       }
-      {{- end -}}{{- end -}}
+      {{- end -}}
   success:
     when:
-      # Never failure. success when:
-      #   - this reconcile's search GET returned an empty (no in-window record) result, OR
-      #   - this reconcile's close POST returned 2xx, OR
-      #   - this reconcile's close POST returned a non-retryable (non-429 4xx) error, OR
-      #   - no HTTP this reconcile AND we're not mid-close (prior step is not "found"/"closeRetry").
-      # pending only while we have a found change record waiting on (or retrying) close POST,
-      # i.e. prior step == "found" or "closeRetry".
-      # The body shape distinguishes a search response (has change_records) from a close response.
       expression: |
+        // Never failure. success when:
+        //   - this reconcile's search GET returned an empty (no in-window record) result, OR
+        //   - this reconcile's close POST returned 2xx, OR
+        //   - this reconcile's close POST returned a non-retryable (non-429 4xx) error, OR
+        //   - no HTTP this reconcile AND we're not mid-close (prior step is not "found"/"closeRetry").
+        // pending only while we have a found change record waiting on (or retrying) close POST,
+        // i.e. prior step == "found" or "closeRetry".
+        // The body shape distinguishes a search response (has change_records) from a close response.
         Response != nil
           ? (Response.Body != nil && (Response.Body.change_records ?? nil) != nil
               ? len(Response.Body.change_records ?? []) == 0
@@ -50,13 +76,13 @@ spec:
       requeueDuration: 30s
       when:
         variables:
-          # Gating is via activeCommitStatuses for reportOn: active.
-          # gatedSpecs: spec envs that carry the close key (global or per-env).
-          # noOpenPRsOnGated: only fire after the promotion PR(s) have merged on every gated env.
-          # Fingerprint: same construction as change-management-approval — built from Proposed.Note.DrySha.
-          # Two-phase state: priorStep / priorChangeId / haveChangeId capture whether a prior search
-          # already found a change record that still needs to be POST-closed.
           expression: |
+            // Gating is via activeCommitStatuses for reportOn: active.
+            // gatedSpecs: spec envs that carry the close key (global or per-env).
+            // noOpenPRsOnGated: only fire after the promotion PR(s) have merged on every gated env.
+            // Fingerprint: same construction as change-management-approval — built from Proposed.Note.DrySha.
+            // Two-phase state: priorStep / priorChangeId / haveChangeId capture whether a prior search
+            // already found a change record that still needs to be POST-closed.
             let key = "change-management-close";
             let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
             let statusList = PromotionStrategy.Status.Environments ?? [];
@@ -96,6 +122,11 @@ spec:
             let lastStatusCode = ResponseOutput != nil ? (ResponseOutput.statusCode ?? 0) : 0;
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
             let needsRetry = !isNewFingerprint && priorStep == "closeRetry";
+            // inCloseMode == haveChangeId: we have a found changeId from the prior search and
+            // need to POST a close (initial close, or retry after 429/5xx). Surfaced here so the
+            // httpRequest method/url/body templates can branch on a single boolean instead of
+            // re-deriving (priorChangeId != "" && priorStep in {"found","closeRetry"}).
+            let inCloseMode = haveChangeId;
             {
               noOpenPRsOnGated: noOpenPRsOnGated,
               allNoteDryShasMatch: allNoteDryShasMatch,
@@ -107,28 +138,29 @@ spec:
               needsRetry: needsRetry,
               priorStep: priorStep,
               priorChangeId: priorChangeId,
-              lastStatusCode: lastStatusCode
+              lastStatusCode: lastStatusCode,
+              inCloseMode: inCloseMode
             }
-        # Fire when:
-        #  - all proposed note dry SHAs are aligned (hydrator done across envs),
-        #  - we haven't already finished close for this fingerprint (closed OK or terminally failed),
-        #  - any of: new fingerprint (start a fresh search), have a found changeId waiting to be POSTed,
-        #            or we hit a retryable close error and need to retry,
-        #  - no gated env still has an open promotion PR (promotion has merged → safe to close).
         expression: |
+          // Fire when:
+          //  - all proposed note dry SHAs are aligned (hydrator done across envs),
+          //  - we haven't already finished close for this fingerprint (closed OK or terminally failed),
+          //  - any of: new fingerprint (start a fresh search), have a found changeId waiting to be POSTed,
+          //            or we hit a retryable close error and need to retry,
+          //  - no gated env still has an open promotion PR (promotion has merged → safe to close).
           Variables.allNoteDryShasMatch &&
           !Variables.alreadyDoneForFingerprint &&
           (Variables.isNewFingerprint || Variables.haveChangeId || Variables.needsRetry) &&
           Variables.noOpenPRsOnGated
         output:
-          # lastDoneFingerprint advances when this fingerprint reaches a terminal state for close:
-          # either a successful POST (step == "closed") or a non-retryable failure (step == "closeFailedTerminal").
-          # lastClosedFingerprint tracks only successful closes — used by success.when carry-forward.
-          # priorStep / priorChangeId come from ResponseOutput, which persists across reconciles and
-          # is NOT reset when the fingerprint rolls forward. Gate "justClosed"/"justDone" on
-          # priorMatchesCurrent so a stale "closed"/"closeFailedTerminal" from the previous fingerprint
-          # cannot stamp the new fingerprint as done before its own close has actually run.
           expression: |
+            // lastDoneFingerprint advances when this fingerprint reaches a terminal state for close:
+            // either a successful POST (step == "closed") or a non-retryable failure (step == "closeFailedTerminal").
+            // lastClosedFingerprint tracks only successful closes — used by success.when carry-forward.
+            // priorStep / priorChangeId come from ResponseOutput, which persists across reconciles and
+            // is NOT reset when the fingerprint rolls forward. Gate "justClosed"/"justDone" on
+            // priorMatchesCurrent so a stale "closed"/"closeFailedTerminal" from the previous fingerprint
+            // cannot stamp the new fingerprint as done before its own close has actually run.
             let shouldTrigger = Variables.allNoteDryShasMatch &&
               !Variables.alreadyDoneForFingerprint &&
               (Variables.isNewFingerprint || Variables.haveChangeId || Variables.needsRetry) &&
@@ -160,14 +192,14 @@ spec:
             }
       response:
         output:
-          # Two-phase response handling — distinguish search GET from close POST by shape of body.
-          # Search GET returns { change_records: [...] }; close POST does not.
-          # On search, pick the first active (in-window) change record id; fall back to first record id.
-          # On close POST: step depends on status code —
-          #   2xx → "closed"           (terminal success)
-          #   429 / 5xx → "closeRetry" (transient; trigger will re-fire)
-          #   other 4xx → "closeFailedTerminal" (give up; treat as success per "never failure" policy)
           expression: |
+            // Two-phase response handling — distinguish search GET from close POST by shape of body.
+            // Search GET returns { change_records: [...] }; close POST does not.
+            // On search, pick the first active (in-window) change record id; fall back to first record id.
+            // On close POST: step depends on status code —
+            //   2xx → "closed"           (terminal success)
+            //   429 / 5xx → "closeRetry" (transient; trigger will re-fire)
+            //   other 4xx → "closeFailedTerminal" (give up; treat as success per "never failure" policy)
             let isSearch = Response.Body != nil && (Response.Body.change_records ?? nil) != nil;
             let priorChangeId = ResponseOutput != nil ? (ResponseOutput.changeId ?? "") : "";
             let activeRecords = isSearch
@@ -211,10 +243,28 @@ spec:
   key: change-management-open
   reportOn: proposed
   descriptionTemplate: >-
-    {{ .Phase }}: {{ if .ResponseOutput }}{{- $o := .ResponseOutput -}}{{- $cr := index $o "changeRequest" -}}{{ index $o "changeId" | default "—" }}
-    (HTTP {{ index $o "statusCode" }}) · {{ if $cr }}{{ index $cr "start_time" | default "—" }}{{ else }}—{{ end }} → {{ if $cr }}{{ index $cr "end_time" | default "—" }}{{ else }}—{{ end }} · {{ if $cr }}{{ index $cr "short_description" | default "—" }}{{ else }}—{{ end }}{{ else }}open change request for note dry SHA{{ end }}
+    {{- /* presentation only — data fields are flattened by trigger.response.output.expression */ -}}
+    {{- $cid := "" -}}{{- $sc := 0 -}}{{- $start := "" -}}{{- $end := "" -}}{{- $desc := "" -}}
+    {{- if .ResponseOutput -}}
+      {{- $cid   = index .ResponseOutput "changeId"           | default "" -}}
+      {{- $sc    = index .ResponseOutput "statusCode"         | default 0  -}}
+      {{- $start = index .ResponseOutput "crStartTime"        | default "" -}}
+      {{- $end   = index .ResponseOutput "crEndTime"          | default "" -}}
+      {{- $desc  = index .ResponseOutput "crShortDescription" | default "" -}}
+    {{- end -}}
+    {{- $sha := "" -}}
+    {{- if .TriggerVariables -}}{{- $sha = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}{{- end -}}
+    {{- $shaShort := "" -}}{{- if ne $sha "" -}}{{- $shaShort = substr 0 7 $sha -}}{{- end -}}
+    {{ .Phase }}:
+    {{- if not .ResponseOutput }} preparing change record{{ if ne $shaShort "" }} for note dry SHA {{ $shaShort }}{{ end }}
+    {{- else if and (eq $sc 202) (ne $cid "") }} created change {{ $cid }}
+      {{- if ne $desc "" }} — "{{ $desc }}"{{- end -}}
+      {{- if and (ne $start "") (ne $end "") }} · window {{ $start }} → {{ $end }}{{- end }}
+    {{- else if eq $sc 202 }} change request accepted (HTTP 202) but no id returned — will retry
+    {{- else }} change request returned HTTP {{ $sc }} (will retry)
+    {{- end }}
   httpRequest:
-    method: POST
+    methodTemplate: POST
     timeout: 30s
     headerTemplates:
       Accept: application/json
@@ -222,7 +272,7 @@ spec:
     urlTemplate: http://localhost:8987/v1/change-management-service/change
     bodyTemplate: |
       {
-        "asset_id": "1372489579564901493",
+        "asset_id": "{{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}",
         "on_behalf_of": "zaller",
         "short_description": "Automated prod promotion (multi-env)",
         "description": {{- $key := "change-management-open" -}}{{- $global := false -}}{{- range $.PromotionStrategy.Spec.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $global = true -}}{{- end -}}{{- end -}}{{- $out := printf "Production change-management record for GitOps promotion strategy `%s`.\n\n**What is changing:** the hydrator **proposed note dry SHA** on each branch below—that is the dry snapshot queued to move forward on that branch.\n\n**Where it is promoted (spec order):**\n" $.PromotionStrategy.Name -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- $take := false -}}{{- if $global -}}{{- $take = true -}}{{- else -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $take = true -}}{{- end -}}{{- end -}}{{- end -}}{{- if $take -}}{{- $sha := "" -}}{{- $pr := "" -}}{{- range $.PromotionStrategy.Status.Environments -}}{{- if eq .Branch $se.Branch -}}{{- if and .Proposed.Note .Proposed.Note.DrySha -}}{{- $sha = .Proposed.Note.DrySha -}}{{- end -}}{{- if .PullRequest -}}{{- if and (ne .PullRequest.Url "") (eq (printf "%s" .PullRequest.State) "open") -}}{{- $pr = .PullRequest.Url -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if ne $pr "" -}}{{- $disp := "—" -}}{{- if ne $sha "" -}}{{- $disp = $sha -}}{{- end -}}{{- $suffix := printf " — [PR](%s)" $pr -}}{{- $out = printf "%s\n- **%s** — proposed note dry SHA: `%s`%s" $out $se.Branch $disp $suffix -}}{{- end -}}{{- end -}}{{- end -}}{{- $out = printf "%s\n\n**Git repository ref:** `%s`" $out $.PromotionStrategy.Spec.RepositoryReference.Name -}}{{ $out | toJson }},
@@ -232,7 +282,7 @@ spec:
         "test_plan": "This change was initiated as part of a pipeline deployment and has been tested by all the automated tests that run as part of the pipeline.\n\nHowever, further testing by the team may be required after the successful deployment.\n\nAfter the deployment is completed, the team should perform the following validations:\n\n1. Verify the service is running as expected and all Golden Signals are healthy.\n2. Splunk logs and Wavefront dashboards do not show any unexpected errors or behavior.\n3. Run any functional tests (manual or automated) that are typically run after a deployment.\n4. Verify the new features and bug fixes included in this new version work as expected.",
         "category": "Application",
         "sub_category": "Release",
-        "commit_id": "{{- $key := "change-management-open" -}}{{- $global := false -}}{{- range $.PromotionStrategy.Spec.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $global = true -}}{{- end -}}{{- end -}}{{- $sha := "" -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $sha "" -}}{{- $take := false -}}{{- if $global -}}{{- $take = true -}}{{- else -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $take = true -}}{{- end -}}{{- end -}}{{- end -}}{{- if $take -}}{{- range $st := $.PromotionStrategy.Status.Environments -}}{{- if and (eq $st.Branch $se.Branch) $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}",
+        "commit_id": "{{ index .TriggerVariables "canonicalNoteDrySha" }}",
         "start_time": "{{ now | date "2006-01-02T15:04:05Z07:00" }}",
         "end_time": "{{ now | dateModify "+30m" | date "2006-01-02T15:04:05Z07:00" }}",
         "risk": "low",
@@ -355,11 +405,17 @@ spec:
           expression: |
             let id = Response.Body.id;
             let msg = Response.Body.message;
+            let cr = Response.Body.change_request;
+            // crStartTime/crEndTime/crShortDescription are flattened here so descriptionTemplate
+            // doesn't have to nil-defend the changeRequest sub-object on every field read.
             {
               statusCode: Response.StatusCode,
               changeId: id == nil ? "" : string(id),
               message: msg == nil ? "" : string(msg),
-              changeRequest: Response.Body.change_request ?? {},
+              changeRequest: cr ?? {},
+              crStartTime: cr != nil && cr.start_time != nil ? string(cr.start_time) : "",
+              crEndTime: cr != nil && cr.end_time != nil ? string(cr.end_time) : "",
+              crShortDescription: cr != nil && cr.short_description != nil ? string(cr.short_description) : "",
               lastRequestedAt: string(now())
             }
 
@@ -376,18 +432,34 @@ spec:
   key: change-management-approval
   reportOn: proposed
   descriptionTemplate: >-
-    {{ .Phase }}: {{ if .ResponseOutput }}{{ .ResponseOutput.approvedCount | default 0 }}/{{
-    .ResponseOutput.totalRecordCount | default 0 }} approved in window (last check: {{
-    .ResponseOutput.lastCheckedAt | default "—" }}){{ else }}checking for approved change
-    records in current time window{{ end }}
+    {{- /* presentation only — fields come from trigger.response.output.expression / when.variables */ -}}
+    {{- $approved := 0 -}}{{- $total := 0 -}}{{- $sc := 0 -}}{{- $checked := "" -}}
+    {{- if .ResponseOutput -}}
+      {{- $approved = index .ResponseOutput "approvedCount"    | default 0  -}}
+      {{- $total    = index .ResponseOutput "totalRecordCount" | default 0  -}}
+      {{- $sc       = index .ResponseOutput "statusCode"       | default 0  -}}
+      {{- $checked  = index .ResponseOutput "lastCheckedAt"    | default "" -}}
+    {{- end -}}
+    {{- $sha := "" -}}
+    {{- if .TriggerVariables -}}{{- $sha = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}{{- end -}}
+    {{- $shaShort := "" -}}{{- if ne $sha "" -}}{{- $shaShort = substr 0 7 $sha -}}{{- end -}}
+    {{ .Phase }}:
+    {{- if not .ResponseOutput }} checking for approved change record{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
+    {{- else if and (eq $sc 200) (gt $approved 0) }} {{ $approved }} approved change record{{ if gt $approved 1 }}s{{ end }} in window ({{ $total }} total, last check {{ $checked }})
+    {{- else if eq $sc 200 }} {{ $approved }}/{{ $total }} records active in approval window (last check {{ $checked }})
+    {{- else }} approval check returned HTTP {{ $sc }}, will retry
+    {{- end }}
   httpRequest:
-    method: GET
+    methodTemplate: GET
     timeout: 30s
     headerTemplates:
       Accept: application/json
+    # canonicalNoteDrySha is computed in mode.trigger.when.variables (the trigger only fires
+    # when allNoteDryShasMatch, so this is the agreed-upon SHA across all spec envs).
     urlTemplate: >-
-      http://localhost:8987/v1/change-management-service/changes/search?asset_id=1372489579564901493&commit_id={{-
-      $sha := "" -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $sha "" -}}{{- range $st := $.PromotionStrategy.Status.Environments -}}{{- if and (eq $st.Branch $se.Branch) $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}&limit=25
+      {{- $base := "http://localhost:8987/v1/change-management-service" -}}
+      {{- $assetId := index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}
+      {{ $base }}/changes/search?asset_id={{ $assetId }}&commit_id={{ index .TriggerVariables "canonicalNoteDrySha" }}&limit=25
   success:
     when:
       variables:
@@ -515,3 +587,4 @@ spec:
               approvedCount: len(approvedRecords),
               lastCheckedAt: string(now())
             }
+
