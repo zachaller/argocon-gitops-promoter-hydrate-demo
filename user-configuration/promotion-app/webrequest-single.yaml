@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   promotionStrategyRef:
-    name: strategy
+    name: argocon-demo
   key: change-management-close
   reportOn: active
   descriptionTemplate: >-
