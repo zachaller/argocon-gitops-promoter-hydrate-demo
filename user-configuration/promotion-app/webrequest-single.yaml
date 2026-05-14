@@ -54,14 +54,17 @@ spec:
       requeueDuration: 30s
       when:
         variables:
+          # Gating is via activeCommitStatuses for reportOn: active.
+          # gatedSpecs: spec envs that carry the close key (global or per-env).
+          # noOpenPRsOnGated: only fire after the promotion PR(s) have merged on every gated env.
+          # Fingerprint: same construction as change-management-approval — built from Proposed.Note.DrySha.
+          # Two-phase state: priorStep / priorChangeId / haveChangeId capture whether a prior search
+          # already found a change record that still needs to be POST-closed.
           expression: |
             let key = "change-management-close";
             let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
             let statusList = PromotionStrategy.Status.Environments ?? [];
-            # Gating is via activeCommitStatuses for reportOn: active.
             let globalHasKey = any(PromotionStrategy.Spec.ActiveCommitStatuses ?? [], {#.Key == key});
-            # Gated envs (the ones carrying this close key). For reportOn: active we want to fire AFTER
-            # the promotion PR(s) have merged — i.e. no open PR on any gated env.
             let gatedSpecs = filter(specEnvsList, {
               globalHasKey || any(#.ActiveCommitStatuses ?? [], {#.Key == key})
             });
@@ -70,7 +73,6 @@ spec:
               let st = find(statusList, { #.Branch == se.Branch });
               st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open"
             });
-            # Same fingerprint shape as the approval WRCS — built from Proposed.Note.DrySha.
             let allSpecBranchesHaveNoteDrySha = len(specEnvsList) > 0 && all(specEnvsList, {
               let se = #;
               let st = find(statusList, { #.Branch == se.Branch });
@@ -89,7 +91,6 @@ spec:
               let st = find(statusList, { #.Branch == se.Branch });
               se.Branch + ":" + (st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha != "" ? st.Proposed.Note.DrySha : "")
             }), "|");
-            # Two-phase state: which step we're on and whether a search has already found the change id.
             let priorStep = ResponseOutput != nil ? (ResponseOutput.step ?? "") : "";
             let priorChangeId = ResponseOutput != nil ? (ResponseOutput.changeId ?? "") : "";
             let haveChangeId = priorChangeId != "" && priorStep != "closed";
@@ -125,13 +126,13 @@ spec:
           (Variables.isNewFingerprint || Variables.haveChangeId || Variables.needsRetry) &&
           Variables.noOpenPRsOnGated
         output:
+          # lastClosedFingerprint advances only when we just completed a successful POST close;
+          # detect that via prior ResponseOutput.step == "closed" with a 2xx status.
           expression: |
             let shouldTrigger = Variables.allNoteDryShasMatch &&
               !Variables.alreadyClosedForFingerprint &&
               (Variables.isNewFingerprint || Variables.haveChangeId || Variables.needsRetry) &&
               Variables.noOpenPRsOnGated;
-            # lastClosedFingerprint advances only when we just completed a successful POST close;
-            # detect that via prior ResponseOutput.step == "closed" with a 2xx status.
             let justClosed = Variables.priorStep == "closed" &&
               Variables.lastStatusCode >= 200 &&
               Variables.lastStatusCode < 300;
@@ -155,12 +156,12 @@ spec:
             }
       response:
         output:
+          # Two-phase response handling — distinguish search GET from close POST by shape of body.
+          # Search GET returns { change_records: [...] }; close POST does not.
+          # On search, pick the first active (in-window) change record id; fall back to first record id.
           expression: |
-            # Two-phase response handling — distinguish search GET from close POST by shape of body.
-            # Search GET returns { change_records: [...] }; close POST does not.
             let isSearch = Response.Body != nil && (Response.Body.change_records ?? nil) != nil;
             let priorChangeId = ResponseOutput != nil ? (ResponseOutput.changeId ?? "") : "";
-            # On search, pick the first active (in-window) change record id; fall back to first record id.
             let activeRecords = isSearch
               ? filter(Response.Body.change_records ?? [], {
                   date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now()
