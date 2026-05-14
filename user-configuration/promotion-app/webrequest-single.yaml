@@ -1,6 +1,13 @@
+# Local simulator / dev manifest for change-management-close.
+# Fix vs folded scalars: use "|" (literal) for all multi-line expr blocks — ">" folds
+# newlines to spaces and can merge "# ..." comment lines onto the previous line, which
+# comments out the remainder of the expression in expr-lang.
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
 metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: >-
+      promotion-strategy:promoter.argoproj.io/WebRequestCommitStatus:default/change-management-close
   name: change-management-close
   namespace: default
 spec:
@@ -11,17 +18,12 @@ spec:
   descriptionTemplate: >-
     {{ .Phase }}: {{ if .ResponseOutput }}{{- $cid := index .ResponseOutput "changeId" -}}{{- $closeId := index .ResponseOutput "closeRequestId" -}}{{- $closedUuid := index .ResponseOutput "lastClosedUuid" -}}{{- $matched := index .ResponseOutput "matchedSearchRecords" -}}{{- if $closeId }}closed {{ $closedUuid | default "—" }} (req {{ $closeId }}){{ else if $cid }}found CR {{ $cid }}, will close on next reconcile{{ else }}searching for CR ({{ $matched | default 0 }} matches last search){{ end }}{{ else }}awaiting active SHA convergence{{ end }}
   httpRequest:
-    # methodTemplate switches between GET (search) and POST (close) based on whether we already
-    # discovered the CR UUID in a previous reconcile (ResponseOutput.changeId non-empty).
     methodTemplate: >-
       {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- if and $cid (ne $cid "") -}}POST{{- else -}}GET{{- end -}}{{- else -}}GET{{- end -}}
     timeout: 30s
     headerTemplates:
       Accept: application/json
       Content-Type: application/json
-    # urlTemplate flips between /changes/search (find CR by commit_id + status filter) and
-    # /change/close/{uuid} (close the discovered CR). Both endpoints are gated by the same
-    # ResponseOutput.changeId branch so method/url/body switch atomically per reconcile.
     urlTemplate: >-
       {{- if .ResponseOutput -}}
       {{- $cid := index .ResponseOutput "changeId" -}}
@@ -33,7 +35,6 @@ spec:
       {{- else -}}
       http://localhost:8987/v1/change-management-service/changes/search?asset_id={{ index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" }}&commit_id={{ index .TriggerVariables "canonicalNoteDrySha" }}&status=APPROVED&limit=25
       {{- end -}}
-    # bodyTemplate is empty for the search GET; for the close POST we send the success status.
     bodyTemplate: |
       {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- if and $cid (ne $cid "") -}}
       {
@@ -42,8 +43,6 @@ spec:
       {{- end -}}{{- end -}}
   success:
     when:
-      # Phase is always success: this is an after-the-fact, fire-and-forget close that records
-      # success in change management. It runs on the active SHA and must never gate a promotion.
       expression: |
         true
   mode:
@@ -52,60 +51,63 @@ spec:
       requeueDuration: 1m
       when:
         variables:
-          # Production envs are those whose active commit statuses include the
-          # change-management-close key (per-env or strategy-global). The close fires when:
-          #   1. All close-gated envs share the same Proposed.Note.DrySha (hydration complete +
-          #      same dry SHA proposed everywhere — same SHA the CR was opened against).
-          #   2. No close-gated env has an open promotion PR (the proposed has been merged
-          #      through every gated env, so the change is fully deployed).
-          #   3. This fingerprint hasn't already been closed.
-          #
-          # We use Proposed.Note.DrySha (not Active.Dry.Sha) so the search commit_id matches what
-          # change-management-open used at CR creation time. The "no open PRs" guard ensures we
-          # only close after the proposed has actually been merged into active across every gated
-          # env — which is when ProductionStrategy considers the change deployed.
           expression: |
             let closeKey = "change-management-close";
+
             let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
             let statusList = PromotionStrategy.Status.Environments ?? [];
+
             let globalHasKey = any(PromotionStrategy.Spec.ActiveCommitStatuses ?? [], {#.Key == closeKey});
+
             let closeGatedSpecs = filter(specEnvsList, {
               globalHasKey || any(#.ActiveCommitStatuses ?? [], {#.Key == closeKey})
             });
+
             let firstCloseBranch = len(closeGatedSpecs) > 0 ? closeGatedSpecs[0].Branch : "";
+
             let stCanonical = find(statusList, { #.Branch == firstCloseBranch });
+
             let canonicalNoteDrySha = stCanonical != nil && stCanonical.Proposed.Note != nil ? stCanonical.Proposed.Note.DrySha : "";
+
             let allCloseGatedHaveNoteDrySha = len(closeGatedSpecs) > 0 && all(closeGatedSpecs, {
               let se = #;
               let st = find(statusList, { #.Branch == se.Branch });
               st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha != ""
             });
+
             let allCloseGatedNoteDryShasMatch = allCloseGatedHaveNoteDrySha && all(closeGatedSpecs, {
               let se = #;
               let st = find(statusList, { #.Branch == se.Branch });
               st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha == canonicalNoteDrySha
             });
+
             let noOpenPROnCloseGated = len(closeGatedSpecs) > 0 && all(closeGatedSpecs, {
               let se = #;
               let st = find(statusList, { #.Branch == se.Branch });
               st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open"
             });
+
             let fingerprint = join(map(closeGatedSpecs, {
               let se = #;
               let st = find(statusList, { #.Branch == se.Branch });
               se.Branch + ":" + (st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha != "" ? st.Proposed.Note.DrySha : "")
             }), "|");
+
             let hasUuid = ResponseOutput != nil && (ResponseOutput.changeId ?? "") != "";
+
             let alreadyClosedThisFingerprint = fingerprint != "" && fingerprint == (TriggerOutput.lastClosedFingerprint ?? "");
+
             # priorReconcileClosedThisFp suppresses the immediately-next reconcile after a successful
             # close POST: response.output cleared changeId, so without this guard the trigger would
             # re-fire a search GET before trigger.when.output has had a chance to advance
             # lastClosedFingerprint. The fingerprint of the close response is stored in
             # ResponseOutput.fingerprintAtClose for this exact purpose.
+
             let priorReconcileClosedThisFp = ResponseOutput != nil &&
               (ResponseOutput.isCloseResponse ?? false) &&
               (ResponseOutput.statusCode ?? 0) == 202 &&
               (ResponseOutput.fingerprintAtClose ?? "") == fingerprint;
+
             {
               closeKey: closeKey,
               closeGatedBranches: map(closeGatedSpecs, { #.Branch }),
@@ -124,10 +126,6 @@ spec:
             !Variables.alreadyClosedThisFingerprint &&
             !Variables.priorReconcileClosedThisFp
         output:
-          # lastClosedFingerprint advances when the prior reconcile's response.output recorded a
-          # close success (isCloseResponse=true, statusCode=202, fingerprintAtClose matches the
-          # current fingerprint). This persistent advance is what stops the trigger from re-firing
-          # on subsequent reconciles even after ResponseOutput is overwritten.
           expression: |
             let priorCloseSucceeded = ResponseOutput != nil &&
               (ResponseOutput.isCloseResponse ?? false) &&
@@ -151,24 +149,26 @@ spec:
             }
       response:
         output:
-          # Distinguishes search responses (have change_records array) from close responses
-          # (have top-level id field). On a successful close we clear changeId so the next cycle
-          # starts fresh with a search; we also record fingerprintAtClose so trigger.when can
-          # detect the close just happened and trigger.when.output can advance lastClosedFingerprint.
           expression: |
             let isSearchResponse = Response.Body != nil && (Response.Body.change_records ?? nil) != nil;
+
             let isCloseResponse = !isSearchResponse && Response.Body != nil && (Response.Body.id ?? nil) != nil;
+
             let priorChangeId = (ResponseOutput.changeId ?? "");
+
             let matched = isSearchResponse
               ? filter(Response.Body.change_records ?? [], {
                   #.change_request != nil &&
                   (#.change_request.short_description ?? "") == "Automated prod promotion (multi-env)"
                 })
               : [];
+
             let foundChangeId = (len(matched) > 0 && matched[0].change_request != nil && (matched[0].change_request.id ?? "") != "")
               ? string(matched[0].change_request.id)
               : "";
+
             let closeOk = isCloseResponse && Response.StatusCode == 202 && (Response.Body.id ?? "") != "";
+
             {
               statusCode: Response.StatusCode,
               isSearchResponse: isSearchResponse,
@@ -184,6 +184,7 @@ spec:
               matchedSearchRecords: isSearchResponse ? len(matched) : (ResponseOutput.matchedSearchRecords ?? 0),
               lastResponseAt: string(now())
             }
+
 ---
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
