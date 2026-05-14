@@ -30,10 +30,10 @@ spec:
       {{- if and $cid (ne $cid "") -}}
       http://localhost:8987/v1/change-management-service/change/close/{{ $cid }}
       {{- else -}}
-      http://localhost:8987/v1/change-management-service/changes/search?asset_id={{ index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" }}&commit_id={{ index .TriggerVariables "canonicalNoteDrySha" }}&status=CLOSED_SUCCESS&limit=25
+      http://localhost:8987/v1/change-management-service/changes/search?asset_id=1372489579564901493&commit_id={{ index .TriggerVariables "canonicalNoteDrySha" }}&status=CLOSED_SUCCESS&limit=25
       {{- end -}}
       {{- else -}}
-      http://localhost:8987/v1/change-management-service/changes/search?asset_id={{ index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" }}&commit_id={{ index .TriggerVariables "canonicalNoteDrySha" }}&status=CLOSED_SUCCESS&limit=25
+      http://localhost:8987/v1/change-management-service/changes/search?asset_id=1372489579564901493&commit_id={{ index .TriggerVariables "canonicalNoteDrySha" }}&status=CLOSED_SUCCESS&limit=25
       {{- end -}}
     bodyTemplate: |
       {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- if and $cid (ne $cid "") -}}
