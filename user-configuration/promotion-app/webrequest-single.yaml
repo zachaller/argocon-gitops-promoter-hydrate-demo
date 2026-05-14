@@ -17,6 +17,14 @@ spec:
       {{- /* statusCode comes from JSON as float64; coerce to int for clean display + safe comparisons */ -}}
       {{- $sc   = index .ResponseOutput "statusCode" | default 0 | int -}}
     {{- end -}}
+    {{- /* The close POST's response.output evaluator does not have access to ResponseOutput, so the */ -}}
+    {{- /* persisted changeId on the close response is empty. Fall back to TriggerVariables (correct */ -}}
+    {{- /* during the close-POST reconcile) and TriggerOutput.lastClosedChangeId (persisted across */ -}}
+    {{- /* subsequent idle reconciles by trigger.when.output). */ -}}
+    {{- if eq $cid "" -}}
+      {{- if .TriggerVariables -}}{{- $cid = index .TriggerVariables "priorChangeId" | default "" -}}{{- end -}}
+      {{- if and (eq $cid "") .TriggerOutput -}}{{- $cid = index .TriggerOutput "lastClosedChangeId" | default "" -}}{{- end -}}
+    {{- end -}}
     {{- $sha := "" -}}
     {{- if .TriggerVariables -}}{{- $sha = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}{{- end -}}
     {{- $shaShort := "" -}}{{- if ne $sha "" -}}{{- $shaShort = substr 0 7 $sha -}}{{- end -}}
@@ -171,10 +179,17 @@ spec:
             let justClosed = priorMatchesCurrent && Variables.priorStep == "closed";
             let justDone = priorMatchesCurrent &&
               (Variables.priorStep == "closed" || Variables.priorStep == "closeFailedTerminal");
+            // lastClosedChangeId captures the found change id at the moment the close POST fires
+            // (Variables.priorChangeId holds the search-found id then). The response.output expression
+            // does NOT have access to ResponseOutput, so the close response itself persists changeId=""
+            // — this trigger-output field is the only place across reconciles where the closed change id
+            // remains available for the description template.
+            let inFlightClose = shouldTrigger && Variables.inCloseMode && Variables.haveChangeId;
             {
               lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
               lastDoneFingerprint: justDone ? Variables.fingerprint : (TriggerOutput.lastDoneFingerprint ?? ""),
               lastClosedFingerprint: justClosed ? Variables.fingerprint : (TriggerOutput.lastClosedFingerprint ?? ""),
+              lastClosedChangeId: inFlightClose ? Variables.priorChangeId : (TriggerOutput.lastClosedChangeId ?? ""),
               shouldTrigger: shouldTrigger,
               allNoteDryShasMatch: Variables.allNoteDryShasMatch,
               noOpenPRsOnGated: Variables.noOpenPRsOnGated,
