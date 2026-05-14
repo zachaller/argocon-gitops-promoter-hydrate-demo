@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f8dd828ce45338e8edfb0085714909eb6993e421",
+  "drySha": "37fdd3fd5c9780a26b9b67f37a192494ad62d929",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-04-22T12:01:23-05:00",
-  "subject": "chore: bump version to v1.0.1871",
+  "date": "2026-05-14T08:43:14-05:00",
+  "subject": "chore: bump version to v1.0.1872",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-03-26T06:08:15-05:00",
-        "subject": "fix(ci): frontend deps (#1240)",
-        "body": "* fix(ci): frontend deps\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n* fix(ci): frontend deps\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>\n\n---------\n\nSigned-off-by: emirot <emirot.nolan@gmail.com>",
-        "sha": "bc5d06e590d93fdaabc9eb497598a927401db5ab",
+        "date": "2026-04-10T01:22:56-05:00",
+        "subject": "docs: Add Contributor Covenant Code of Conduct (#1288)",
+        "body": "Added Contributor Covenant Code of Conduct to outline community standards and enforcement guidelines.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "447f47b2fd49ee9a7830364ade54dddba7cd60ee",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
