@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "17962a8db12779e65c1b7358bee5c0f310ab8a24",
+  "drySha": "3e6c3d37203dd8e092463d24a9a1e61be593fea5",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-14T10:48:33-05:00",
-  "subject": "chore: bump version to v1.0.1876",
+  "date": "2026-05-14T10:57:44-05:00",
+  "subject": "chore: bump version to v1.0.1877",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-04-20T02:44:22-05:00",
-        "subject": "chore: npm audit fix (#1394)",
-        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
-        "sha": "0a94536556943095df974b62ae70dd847f082b58",
+        "date": "2026-04-09T23:59:13-05:00",
+        "subject": "fix(ctp): avoid SSA empty-object null (#1406)",
+        "body": "* fix(ctp): avoid SSA empty-object null\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* f it\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix nil refs\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "899bb41698b7de0fe42b897fb01c80cb20a431de",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
