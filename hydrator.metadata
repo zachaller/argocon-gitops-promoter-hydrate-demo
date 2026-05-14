@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "11a327d165c3decfa09a837cdc16d24e29159be6",
+  "drySha": "d5fbcea64ceb88c7e63b314f9fcc1a67fb282448",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-14T09:29:00-05:00",
-  "subject": "chore: bump version to v1.0.1873",
+  "date": "2026-05-14T10:05:25-05:00",
+  "subject": "chore: bump version to v1.0.1875",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-04-10T10:23:51-05:00",
-        "subject": "chore(deps): bump postcss from 8.5.8 to 8.5.12 in /ui/dashboard (#1370)",
-        "body": "Bumps [postcss](https://github.com/postcss/postcss) from 8.5.8 to 8.5.12.\n- [Release notes](https://github.com/postcss/postcss/releases)\n- [Changelog](https://github.com/postcss/postcss/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/postcss/postcss/compare/8.5.8...8.5.12)\n\n---\nupdated-dependencies:\n- dependency-name: postcss\n  dependency-version: 8.5.12\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "61eb63b01171f6dbbc3587b0640940f439116b8a",
+        "date": "2026-05-02T17:56:47-05:00",
+        "subject": "chore(deps): bump actions/cache from 5.0.4 to 5.0.5 (#1330)",
+        "body": "Bumps [actions/cache](https://github.com/actions/cache) from 5.0.4 to 5.0.5.\n- [Release notes](https://github.com/actions/cache/releases)\n- [Changelog](https://github.com/actions/cache/blob/main/RELEASES.md)\n- [Commits](https://github.com/actions/cache/compare/668228422ae6a00e4ad889ee87cd7109ec5666a7...27d5ce7f107fe9357f9df03efb73ab90386fccae)\n\n---\nupdated-dependencies:\n- dependency-name: actions/cache\n  dependency-version: 5.0.5\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "299ab327ced6e19cb70a45d0fbf3766f33643c52",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
