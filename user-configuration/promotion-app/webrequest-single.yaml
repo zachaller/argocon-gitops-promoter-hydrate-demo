@@ -149,11 +149,18 @@ spec:
               evaluatedAt: string(now())
             }
       response:
+        # Guard every Response.Body field access with `type(Response.Body) == "map"`.
+        # The controller stores Response.Body as a parsed JSON value when the body decodes, otherwise as a
+        # raw string (e.g. empty body, plain-text 202 from the close POST, or any non-JSON error page).
+        # Without the type guard, a string body crashes the expression with `invalid operation: int(string)`
+        # because expr tries to string-index `Response.Body.field`.
         output:
           expression: |
-            let isSearchResponse = Response.Body != nil && (Response.Body.change_records ?? nil) != nil;
+            let bodyIsMap = Response.Body != nil && type(Response.Body) == "map";
 
-            let isCloseResponse = !isSearchResponse && Response.Body != nil && (Response.Body.id ?? nil) != nil;
+            let isSearchResponse = bodyIsMap && (Response.Body.change_records ?? nil) != nil;
+
+            let isCloseResponse = bodyIsMap && !isSearchResponse && (Response.Body.id ?? nil) != nil;
 
             let priorChangeId = (ResponseOutput.changeId ?? "");
 
