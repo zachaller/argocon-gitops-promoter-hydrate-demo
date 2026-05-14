@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c43075b83766aaf52835d5ea4a5a3a7771a9f92d",
+  "drySha": "3572bb5e0e27725fdddbf175571f1a7615a5ac44",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-14T11:07:24-05:00",
-  "subject": "chore: bump version to v1.0.1878",
+  "date": "2026-05-14T11:26:41-05:00",
+  "subject": "chore: bump version to v1.0.1879",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-05-02T12:32:51-05:00",
-        "subject": "chore(deps-dev): bump vite from 7.3.1 to 7.3.2 in /ui/dashboard (#1294)",
-        "body": "Bumps [vite](https://github.com/vitejs/vite/tree/HEAD/packages/vite) from 7.3.1 to 7.3.2.\n- [Release notes](https://github.com/vitejs/vite/releases)\n- [Changelog](https://github.com/vitejs/vite/blob/v7.3.2/packages/vite/CHANGELOG.md)\n- [Commits](https://github.com/vitejs/vite/commits/v7.3.2/packages/vite)\n\n---\nupdated-dependencies:\n- dependency-name: vite\n  dependency-version: 7.3.2\n  dependency-type: direct:development\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "1c3fa82b22b2c593b01be9f2585ee18a2dc79bfb",
+        "date": "2026-04-14T10:38:55-05:00",
+        "subject": "feat(security): signed releases (#1272)",
+        "body": "* chore(deps): bump go to 1.26.1\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* feat(security): signed releases\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update .goreleaser-latest.yaml\n\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
+        "sha": "ba14eded733ae17fcaf7d4f56f4f0f39b1d7bf72",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
