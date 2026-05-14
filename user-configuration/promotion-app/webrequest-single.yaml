@@ -14,7 +14,8 @@ spec:
     {{- if .ResponseOutput -}}
       {{- $cid  = index .ResponseOutput "changeId"   | default "" -}}
       {{- $step = index .ResponseOutput "step"       | default "" -}}
-      {{- $sc   = index .ResponseOutput "statusCode" | default 0  -}}
+      {{- /* statusCode comes from JSON as float64; coerce to int for clean display + safe comparisons */ -}}
+      {{- $sc   = index .ResponseOutput "statusCode" | default 0 | int -}}
     {{- end -}}
     {{- $sha := "" -}}
     {{- if .TriggerVariables -}}{{- $sha = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}{{- end -}}
@@ -247,7 +248,8 @@ spec:
     {{- $cid := "" -}}{{- $sc := 0 -}}{{- $start := "" -}}{{- $end := "" -}}{{- $desc := "" -}}
     {{- if .ResponseOutput -}}
       {{- $cid   = index .ResponseOutput "changeId"           | default "" -}}
-      {{- $sc    = index .ResponseOutput "statusCode"         | default 0  -}}
+      {{- /* statusCode comes from JSON as float64; coerce to int for clean display + safe comparisons */ -}}
+      {{- $sc    = index .ResponseOutput "statusCode"         | default 0 | int -}}
       {{- $start = index .ResponseOutput "crStartTime"        | default "" -}}
       {{- $end   = index .ResponseOutput "crEndTime"          | default "" -}}
       {{- $desc  = index .ResponseOutput "crShortDescription" | default "" -}}
@@ -435,9 +437,10 @@ spec:
     {{- /* presentation only — fields come from trigger.response.output.expression / when.variables */ -}}
     {{- $approved := 0 -}}{{- $total := 0 -}}{{- $sc := 0 -}}{{- $checked := "" -}}
     {{- if .ResponseOutput -}}
-      {{- $approved = index .ResponseOutput "approvedCount"    | default 0  -}}
-      {{- $total    = index .ResponseOutput "totalRecordCount" | default 0  -}}
-      {{- $sc       = index .ResponseOutput "statusCode"       | default 0  -}}
+      {{- /* numeric fields come from JSON as float64; coerce to int for clean display + safe comparisons */ -}}
+      {{- $approved = index .ResponseOutput "approvedCount"    | default 0 | int -}}
+      {{- $total    = index .ResponseOutput "totalRecordCount" | default 0 | int -}}
+      {{- $sc       = index .ResponseOutput "statusCode"       | default 0 | int -}}
       {{- $checked  = index .ResponseOutput "lastCheckedAt"    | default "" -}}
     {{- end -}}
     {{- $sha := "" -}}
