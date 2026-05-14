@@ -60,6 +60,8 @@ spec:
           # syntax (`#` is the implicit pipeline element token), so it errors at compile time.
           expression: |
             let closeKey = "change-management-close";
+            let ro = ResponseOutput ?? {};
+            let to = TriggerOutput ?? {};
 
             let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
             let statusList = PromotionStrategy.Status.Environments ?? [];
@@ -100,14 +102,13 @@ spec:
               se.Branch + ":" + (st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha != "" ? st.Proposed.Note.DrySha : "")
             }), "|");
 
-            let hasUuid = ResponseOutput != nil && (ResponseOutput.changeId ?? "") != "";
+            let hasUuid = (ro.changeId ?? "") != "";
 
-            let alreadyClosedThisFingerprint = fingerprint != "" && fingerprint == (TriggerOutput.lastClosedFingerprint ?? "");
+            let alreadyClosedThisFingerprint = fingerprint != "" && fingerprint == (to.lastClosedFingerprint ?? "");
 
-            let priorReconcileClosedThisFp = ResponseOutput != nil &&
-              (ResponseOutput.isCloseResponse ?? false) &&
-              (ResponseOutput.statusCode ?? 0) == 202 &&
-              (ResponseOutput.fingerprintAtClose ?? "") == fingerprint;
+            let priorReconcileClosedThisFp = (ro.isCloseResponse ?? false) &&
+              (ro.statusCode ?? 0) == 202 &&
+              (ro.fingerprintAtClose ?? "") == fingerprint;
 
             {
               closeKey: closeKey,
@@ -128,17 +129,18 @@ spec:
             !Variables.priorReconcileClosedThisFp
         output:
           expression: |
-            let priorCloseSucceeded = ResponseOutput != nil &&
-              (ResponseOutput.isCloseResponse ?? false) &&
-              (ResponseOutput.statusCode ?? 0) == 202 &&
-              (ResponseOutput.fingerprintAtClose ?? "") == Variables.fingerprint;
+            let ro = ResponseOutput ?? {};
+            let to = TriggerOutput ?? {};
+            let priorCloseSucceeded = (ro.isCloseResponse ?? false) &&
+              (ro.statusCode ?? 0) == 202 &&
+              (ro.fingerprintAtClose ?? "") == Variables.fingerprint;
             {
               lastClosedFingerprint: priorCloseSucceeded
                 ? Variables.fingerprint
-                : (TriggerOutput.lastClosedFingerprint ?? ""),
+                : (to.lastClosedFingerprint ?? ""),
               lastClosedUuid: priorCloseSucceeded
-                ? (ResponseOutput.lastClosedUuid ?? "")
-                : (TriggerOutput.lastClosedUuid ?? ""),
+                ? (ro.lastClosedUuid ?? "")
+                : (to.lastClosedUuid ?? ""),
               fingerprint: Variables.fingerprint,
               canonicalNoteDrySha: Variables.canonicalNoteDrySha,
               closeGatedBranches: Variables.closeGatedBranches,
@@ -156,13 +158,15 @@ spec:
         # because expr tries to string-index `Response.Body.field`.
         output:
           expression: |
+            let ro = ResponseOutput ?? {};
+            let to = TriggerOutput ?? {};
             let bodyIsMap = Response.Body != nil && type(Response.Body) == "map";
 
             let isSearchResponse = bodyIsMap && (Response.Body.change_records ?? nil) != nil;
 
             let isCloseResponse = bodyIsMap && !isSearchResponse && (Response.Body.id ?? nil) != nil;
 
-            let priorChangeId = (ResponseOutput.changeId ?? "");
+            let priorChangeId = (ro.changeId ?? "");
 
             let matched = isSearchResponse
               ? filter(Response.Body.change_records ?? [], {
@@ -182,14 +186,14 @@ spec:
               isSearchResponse: isSearchResponse,
               isCloseResponse: isCloseResponse,
               changeId: closeOk ? "" : (isSearchResponse ? foundChangeId : priorChangeId),
-              lastClosedUuid: closeOk ? priorChangeId : (ResponseOutput.lastClosedUuid ?? ""),
-              closeRequestId: isCloseResponse ? string(Response.Body.id ?? "") : (ResponseOutput.closeRequestId ?? ""),
-              closeMessage: isCloseResponse ? string(Response.Body.message ?? "") : (ResponseOutput.closeMessage ?? ""),
+              lastClosedUuid: closeOk ? priorChangeId : (ro.lastClosedUuid ?? ""),
+              closeRequestId: isCloseResponse ? string(Response.Body.id ?? "") : (ro.closeRequestId ?? ""),
+              closeMessage: isCloseResponse ? string(Response.Body.message ?? "") : (ro.closeMessage ?? ""),
               fingerprintAtClose: closeOk
-                ? (TriggerOutput.fingerprint ?? "")
-                : (ResponseOutput.fingerprintAtClose ?? ""),
-              totalSearchRecords: isSearchResponse ? len(Response.Body.change_records ?? []) : (ResponseOutput.totalSearchRecords ?? 0),
-              matchedSearchRecords: isSearchResponse ? len(matched) : (ResponseOutput.matchedSearchRecords ?? 0),
+                ? (to.fingerprint ?? "")
+                : (ro.fingerprintAtClose ?? ""),
+              totalSearchRecords: isSearchResponse ? len(Response.Body.change_records ?? []) : (ro.totalSearchRecords ?? 0),
+              matchedSearchRecords: isSearchResponse ? len(matched) : (ro.matchedSearchRecords ?? 0),
               lastResponseAt: string(now())
             }
 
