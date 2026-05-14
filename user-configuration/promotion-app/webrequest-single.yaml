@@ -51,6 +51,13 @@ spec:
       requeueDuration: 1m
       when:
         variables:
+          # priorReconcileClosedThisFp (computed below) suppresses the immediately-next reconcile
+          # after a successful close POST: response.output cleared changeId, so without this guard
+          # the trigger would re-fire a search GET before trigger.when.output has had a chance to
+          # advance lastClosedFingerprint. The fingerprint of the close response is stored in
+          # ResponseOutput.fingerprintAtClose for this exact purpose.
+          # NOTE: do NOT put `#` lines inside the expression scalar — expr-lang has no comment
+          # syntax (`#` is the implicit pipeline element token), so it errors at compile time.
           expression: |
             let closeKey = "change-management-close";
 
@@ -96,12 +103,6 @@ spec:
             let hasUuid = ResponseOutput != nil && (ResponseOutput.changeId ?? "") != "";
 
             let alreadyClosedThisFingerprint = fingerprint != "" && fingerprint == (TriggerOutput.lastClosedFingerprint ?? "");
-
-            # priorReconcileClosedThisFp suppresses the immediately-next reconcile after a successful
-            # close POST: response.output cleared changeId, so without this guard the trigger would
-            # re-fire a search GET before trigger.when.output has had a chance to advance
-            # lastClosedFingerprint. The fingerprint of the close response is stored in
-            # ResponseOutput.fingerprintAtClose for this exact purpose.
 
             let priorReconcileClosedThisFp = ResponseOutput != nil &&
               (ResponseOutput.isCloseResponse ?? false) &&
