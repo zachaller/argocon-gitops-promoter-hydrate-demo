@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3572bb5e0e27725fdddbf175571f1a7615a5ac44",
+  "drySha": "9481f820328aec3397488e7207124cce730c84fd",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-14T11:26:41-05:00",
-  "subject": "chore: bump version to v1.0.1879",
+  "date": "2026-05-14T12:22:54-05:00",
+  "subject": "chore: bump version to v1.0.1880",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-04-14T10:38:55-05:00",
-        "subject": "feat(security): signed releases (#1272)",
-        "body": "* chore(deps): bump go to 1.26.1\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* feat(security): signed releases\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update .goreleaser-latest.yaml\n\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
-        "sha": "ba14eded733ae17fcaf7d4f56f4f0f39b1d7bf72",
+        "date": "2026-05-02T14:46:19-05:00",
+        "subject": "test: fix flaky CommitStatus spec/status read test (#1426)",
+        "body": "* test: fix flaky CommitStatus spec/status read test\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "384fb058c06bc6c7cd5fa339d4913e51082b9c80",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
