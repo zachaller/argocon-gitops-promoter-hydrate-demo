@@ -12,42 +12,38 @@ spec:
     {{ .Phase }}: {{ if .ResponseOutput }}{{- $o := .ResponseOutput -}}{{ if eq (index $o "step" | default "") "closed" }}closed change {{ index $o "changeId" | default "—" }} (HTTP {{ index $o "statusCode" | default 0 }}){{ else }}found change {{ index $o "changeId" | default "—" }} for active SHA, closing…{{ end }}{{ else }}searching for change record to close{{ end }}
   httpRequest:
     methodTemplate: >-
-      {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- $step := index .ResponseOutput "step" | default "" -}}{{- if and $cid (ne $cid "") (ne $step "closed") -}}POST{{- else -}}GET{{- end -}}{{- else -}}GET{{- end -}}
+      {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- $step := index .ResponseOutput "step" | default "" -}}{{- if and $cid (ne $cid "") (or (eq $step "found") (eq $step "closeRetry")) -}}POST{{- else -}}GET{{- end -}}{{- else -}}GET{{- end -}}
     timeout: 30s
     headerTemplates:
       Accept: application/json
       Content-Type: application/json
     urlTemplate: >-
-      {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- $step := index .ResponseOutput "step" | default "" -}}{{- if and $cid (ne $cid "") (ne $step "closed") -}}http://localhost:8987/v1/change-management-service/change/close/{{ $cid }}{{- else -}}https://change-management-service.api.intuit.com/v1/change-management-service/changes/search?asset_id={{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}&commit_id={{- $sha := "" -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $sha "" -}}{{- range $st := $.PromotionStrategy.Status.Environments -}}{{- if and (eq $st.Branch $se.Branch) $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}&limit=25{{- end -}}{{- else -}}https://change-management-service.api.intuit.com/v1/change-management-service/changes/search?asset_id={{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}&commit_id={{- $sha := "" -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $sha "" -}}{{- range $st := $.PromotionStrategy.Status.Environments -}}{{- if and (eq $st.Branch $se.Branch) $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}&limit=25{{- end -}}
+      {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- $step := index .ResponseOutput "step" | default "" -}}{{- if and $cid (ne $cid "") (or (eq $step "found") (eq $step "closeRetry")) -}}http://localhost:8987/v1/change-management-service/change/close/{{ $cid }}{{- else -}}https://change-management-service.api.intuit.com/v1/change-management-service/changes/search?asset_id={{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}&commit_id={{- $sha := "" -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $sha "" -}}{{- range $st := $.PromotionStrategy.Status.Environments -}}{{- if and (eq $st.Branch $se.Branch) $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}&limit=25{{- end -}}{{- else -}}https://change-management-service.api.intuit.com/v1/change-management-service/changes/search?asset_id={{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}&commit_id={{- $sha := "" -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- if eq $sha "" -}}{{- range $st := $.PromotionStrategy.Status.Environments -}}{{- if and (eq $st.Branch $se.Branch) $st.Proposed.Note (ne $st.Proposed.Note.DrySha "") -}}{{- $sha = $st.Proposed.Note.DrySha -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- $sha -}}&limit=25{{- end -}}
     bodyTemplate: |
-      {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- $step := index .ResponseOutput "step" | default "" -}}{{- if and $cid (ne $cid "") (ne $step "closed") -}}
+      {{- if .ResponseOutput -}}{{- $cid := index .ResponseOutput "changeId" -}}{{- $step := index .ResponseOutput "step" | default "" -}}{{- if and $cid (ne $cid "") (or (eq $step "found") (eq $step "closeRetry")) -}}
       {
         "change_execution_status": "SUCCEEDED"
       }
       {{- end -}}{{- end -}}
   success:
     when:
-      variables:
-        # fingerprint: same construction as change-management-approval — stable join of branch:proposedNoteDrySha
-        # across every spec environment (in spec order). Used to detect when proposed SHAs change and to allow
-        # success to carry forward without re-issuing requests once we've already closed for that fingerprint.
-        expression: |
-          let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
-          let statusList = PromotionStrategy.Status.Environments ?? [];
-          let fingerprint = join(map(specEnvsList, {
-            let se = #;
-            let st = find(statusList, { #.Branch == se.Branch });
-            se.Branch + ":" + (st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha != "" ? st.Proposed.Note.DrySha : "")
-          }), "|");
-          { fingerprint: fingerprint }
-      # success when the close POST succeeds (step=="closed" && 2xx), OR carry-forward when we previously
-      # closed for the same fingerprint (TriggerOutput.lastClosedFingerprint set on successful close).
+      # Never failure. success when:
+      #   - this reconcile's search GET returned an empty (no in-window record) result, OR
+      #   - this reconcile's close POST returned 2xx, OR
+      #   - this reconcile's close POST returned a non-retryable (non-429 4xx) error, OR
+      #   - no HTTP this reconcile AND we're not mid-close (prior step is not "found"/"closeRetry").
+      # pending only while we have a found change record waiting on (or retrying) close POST,
+      # i.e. prior step == "found" or "closeRetry".
+      # The body shape distinguishes a search response (has change_records) from a close response.
       expression: |
         Response != nil
-          ? (ResponseOutput != nil &&
-             (ResponseOutput.step ?? "") == "closed" &&
-             Response.StatusCode >= 200 && Response.StatusCode < 300)
-          : (Phase == "success" && Variables.fingerprint == (TriggerOutput["lastClosedFingerprint"] ?? ""))
+          ? (Response.Body != nil && (Response.Body.change_records ?? nil) != nil
+              ? len(Response.Body.change_records ?? []) == 0
+              : ((Response.StatusCode >= 200 && Response.StatusCode < 300) ||
+                 (Response.StatusCode >= 400 && Response.StatusCode != 429 && Response.StatusCode < 500)))
+          : (ResponseOutput == nil ||
+             ((ResponseOutput.step ?? "") != "found" &&
+              (ResponseOutput.step ?? "") != "closeRetry"))
   mode:
     context: promotionstrategy
     trigger:
@@ -93,21 +89,20 @@ spec:
             }), "|");
             let priorStep = ResponseOutput != nil ? (ResponseOutput.step ?? "") : "";
             let priorChangeId = ResponseOutput != nil ? (ResponseOutput.changeId ?? "") : "";
-            let haveChangeId = priorChangeId != "" && priorStep != "closed";
-            let alreadyClosedForFingerprint = fingerprint == (TriggerOutput.lastClosedFingerprint ?? "") && fingerprint != "";
+            let haveChangeId = priorChangeId != "" &&
+              (priorStep == "found" || priorStep == "closeRetry");
+            let alreadyDoneForFingerprint = fingerprint != "" &&
+              fingerprint == (TriggerOutput.lastDoneFingerprint ?? "");
             let lastStatusCode = ResponseOutput != nil ? (ResponseOutput.statusCode ?? 0) : 0;
-            let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
-            let needsRetry = !isNewFingerprint &&
-              Phase != "success" &&
-              isRetryable;
+            let needsRetry = !isNewFingerprint && priorStep == "closeRetry";
             {
               noOpenPRsOnGated: noOpenPRsOnGated,
               allNoteDryShasMatch: allNoteDryShasMatch,
               fingerprint: fingerprint,
               canonicalNoteDrySha: canonicalNoteDrySha,
               haveChangeId: haveChangeId,
-              alreadyClosedForFingerprint: alreadyClosedForFingerprint,
+              alreadyDoneForFingerprint: alreadyDoneForFingerprint,
               isNewFingerprint: isNewFingerprint,
               needsRetry: needsRetry,
               priorStep: priorStep,
@@ -116,35 +111,36 @@ spec:
             }
         # Fire when:
         #  - all proposed note dry SHAs are aligned (hydrator done across envs),
-        #  - we haven't already closed for this fingerprint,
-        #  - any of: new fingerprint (start a fresh search), have a changeId waiting to be POSTed,
-        #            or we hit a retryable error and need to retry,
+        #  - we haven't already finished close for this fingerprint (closed OK or terminally failed),
+        #  - any of: new fingerprint (start a fresh search), have a found changeId waiting to be POSTed,
+        #            or we hit a retryable close error and need to retry,
         #  - no gated env still has an open promotion PR (promotion has merged → safe to close).
         expression: |
           Variables.allNoteDryShasMatch &&
-          !Variables.alreadyClosedForFingerprint &&
+          !Variables.alreadyDoneForFingerprint &&
           (Variables.isNewFingerprint || Variables.haveChangeId || Variables.needsRetry) &&
           Variables.noOpenPRsOnGated
         output:
-          # lastClosedFingerprint advances only when we just completed a successful POST close;
-          # detect that via prior ResponseOutput.step == "closed" with a 2xx status.
+          # lastDoneFingerprint advances when this fingerprint reaches a terminal state for close:
+          # either a successful POST (step == "closed") or a non-retryable failure (step == "closeFailedTerminal").
+          # lastClosedFingerprint tracks only successful closes — used by success.when carry-forward.
           expression: |
             let shouldTrigger = Variables.allNoteDryShasMatch &&
-              !Variables.alreadyClosedForFingerprint &&
+              !Variables.alreadyDoneForFingerprint &&
               (Variables.isNewFingerprint || Variables.haveChangeId || Variables.needsRetry) &&
               Variables.noOpenPRsOnGated;
-            let justClosed = Variables.priorStep == "closed" &&
-              Variables.lastStatusCode >= 200 &&
-              Variables.lastStatusCode < 300;
+            let justClosed = Variables.priorStep == "closed";
+            let justDone = Variables.priorStep == "closed" || Variables.priorStep == "closeFailedTerminal";
             {
               lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
+              lastDoneFingerprint: justDone ? Variables.fingerprint : (TriggerOutput.lastDoneFingerprint ?? ""),
               lastClosedFingerprint: justClosed ? Variables.fingerprint : (TriggerOutput.lastClosedFingerprint ?? ""),
               shouldTrigger: shouldTrigger,
               allNoteDryShasMatch: Variables.allNoteDryShasMatch,
               noOpenPRsOnGated: Variables.noOpenPRsOnGated,
               isNewFingerprint: Variables.isNewFingerprint,
               needsRetry: Variables.needsRetry,
-              alreadyClosedForFingerprint: Variables.alreadyClosedForFingerprint,
+              alreadyDoneForFingerprint: Variables.alreadyDoneForFingerprint,
               haveChangeId: Variables.haveChangeId,
               priorStep: Variables.priorStep,
               priorChangeId: Variables.priorChangeId,
@@ -159,6 +155,10 @@ spec:
           # Two-phase response handling — distinguish search GET from close POST by shape of body.
           # Search GET returns { change_records: [...] }; close POST does not.
           # On search, pick the first active (in-window) change record id; fall back to first record id.
+          # On close POST: step depends on status code —
+          #   2xx → "closed"           (terminal success)
+          #   429 / 5xx → "closeRetry" (transient; trigger will re-fire)
+          #   other 4xx → "closeFailedTerminal" (give up; treat as success per "never failure" policy)
           expression: |
             let isSearch = Response.Body != nil && (Response.Body.change_records ?? nil) != nil;
             let priorChangeId = ResponseOutput != nil ? (ResponseOutput.changeId ?? "") : "";
@@ -174,11 +174,15 @@ spec:
                       ? string((Response.Body.change_records ?? [])[0].id ?? "")
                       : ""))
               : priorChangeId;
+            let sc = Response.StatusCode;
+            let closeStep = sc >= 200 && sc < 300
+              ? "closed"
+              : (sc == 429 || sc >= 500 ? "closeRetry" : "closeFailedTerminal");
             let step = isSearch
               ? (searchedId != "" ? "found" : "searching")
-              : "closed";
+              : closeStep;
             {
-              statusCode: Response.StatusCode,
+              statusCode: sc,
               step: step,
               changeId: searchedId,
               isSearch: isSearch,
