@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3572bb5e0e27725fdddbf175571f1a7615a5ac44",
+  "drySha": "95d3a9e38af7e460b4e7118463a884e1a9ebc896",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-14T11:26:41-05:00",
-  "subject": "chore: bump version to v1.0.1879",
+  "date": "2026-05-14T13:54:03-05:00",
+  "subject": "chore: bump version to v1.0.1881",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-04-14T10:38:55-05:00",
-        "subject": "feat(security): signed releases (#1272)",
-        "body": "* chore(deps): bump go to 1.26.1\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* feat(security): signed releases\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* Update .goreleaser-latest.yaml\n\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Copilot <175728472+Copilot@users.noreply.github.com>\nCo-authored-by: Nolan Emirot <emirot.nolan@gmail.com>",
-        "sha": "ba14eded733ae17fcaf7d4f56f4f0f39b1d7bf72",
+        "date": "2026-04-14T05:47:40-05:00",
+        "subject": "chore(deps): bump go.uber.org/zap from 1.27.1 to 1.28.0 (#1375)",
+        "body": "Bumps [go.uber.org/zap](https://github.com/uber-go/zap) from 1.27.1 to 1.28.0.\n- [Release notes](https://github.com/uber-go/zap/releases)\n- [Changelog](https://github.com/uber-go/zap/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/uber-go/zap/compare/v1.27.1...v1.28.0)\n\n---\nupdated-dependencies:\n- dependency-name: go.uber.org/zap\n  dependency-version: 1.28.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "aa4a70408fc2914929c913a17b0b1c8cbb7c6fb3",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
