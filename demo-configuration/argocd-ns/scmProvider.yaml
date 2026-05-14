@@ -8,6 +8,7 @@ metadata:
   name: scmprovider-sample
   namespace: argocd
 spec:
-  github: {}
+  github:
+    appID: 865488
   secretRef:
     name: my-auth-promotion
