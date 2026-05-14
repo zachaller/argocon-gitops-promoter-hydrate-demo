@@ -15,5 +15,7 @@ spec:
     proposedCommitStatuses:
     - key: change-management-approval
     - key: change-management-open
+    activeCommitStatuses:
+    - key: change-management-close
   gitRepositoryRef:
     name: argocon-demo
