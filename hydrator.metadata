@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "9481f820328aec3397488e7207124cce730c84fd",
+  "drySha": "95d3a9e38af7e460b4e7118463a884e1a9ebc896",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-14T12:22:54-05:00",
-  "subject": "chore: bump version to v1.0.1880",
+  "date": "2026-05-14T13:54:03-05:00",
+  "subject": "chore: bump version to v1.0.1881",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-05-02T14:46:19-05:00",
-        "subject": "test: fix flaky CommitStatus spec/status read test (#1426)",
-        "body": "* test: fix flaky CommitStatus spec/status read test\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "384fb058c06bc6c7cd5fa339d4913e51082b9c80",
+        "date": "2026-04-14T05:47:40-05:00",
+        "subject": "chore(deps): bump go.uber.org/zap from 1.27.1 to 1.28.0 (#1375)",
+        "body": "Bumps [go.uber.org/zap](https://github.com/uber-go/zap) from 1.27.1 to 1.28.0.\n- [Release notes](https://github.com/uber-go/zap/releases)\n- [Changelog](https://github.com/uber-go/zap/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/uber-go/zap/compare/v1.27.1...v1.28.0)\n\n---\nupdated-dependencies:\n- dependency-name: go.uber.org/zap\n  dependency-version: 1.28.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "aa4a70408fc2914929c913a17b0b1c8cbb7c6fb3",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
