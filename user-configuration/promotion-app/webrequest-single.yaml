@@ -29,7 +29,7 @@ spec:
     {{- if .TriggerVariables -}}{{- $sha = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}{{- end -}}
     {{- $shaShort := "" -}}{{- if ne $sha "" -}}{{- $shaShort = substr 0 7 $sha -}}{{- end -}}
     {{ .Phase }}:
-    {{- if eq $step "closed" }} closed change {{ $cid }} (HTTP {{ $sc }})
+    {{- if eq $step "closed" }} closed change {{ $cid }}{{ if ne $shaShort "" }} for sha {{ $shaShort }}{{ end }}
     {{- else if eq $step "closeFailedTerminal" }} close gave up for {{ $cid }} (HTTP {{ $sc }}) — treating as done
     {{- else if eq $step "closeRetry" }} close failed for {{ $cid }} (HTTP {{ $sc }}), will retry
     {{- else if eq $step "found" }} found change {{ $cid }} — closing on next reconcile
@@ -255,11 +255,9 @@ spec:
   key: change-management-open
   reportOn: proposed
   descriptionTemplate: >-
-    {{- /* presentation only — data fields are flattened by trigger.response.output.expression */ -}}
     {{- $cid := "" -}}{{- $sc := 0 -}}{{- $start := "" -}}{{- $end := "" -}}{{- $desc := "" -}}
     {{- if .ResponseOutput -}}
       {{- $cid   = index .ResponseOutput "changeId"           | default "" -}}
-      {{- /* statusCode comes from JSON as float64; coerce to int for clean display + safe comparisons */ -}}
       {{- $sc    = index .ResponseOutput "statusCode"         | default 0 | int -}}
       {{- $start = index .ResponseOutput "crStartTime"        | default "" -}}
       {{- $end   = index .ResponseOutput "crEndTime"          | default "" -}}
