@@ -266,7 +266,7 @@ spec:
     bodyTemplate: |
       {
         "asset_id": "{{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}",
-        "on_behalf_of": "zaller",
+        "on_behalf_of": "{{ index .TriggerVariables "commitAuthor" }}",
         "short_description": "Automated prod promotion (multi-env)",
         "description": {{- $key := "change-management-open" -}}{{- $global := false -}}{{- range $.PromotionStrategy.Spec.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $global = true -}}{{- end -}}{{- end -}}{{- $out := printf "Production change-management record for GitOps promotion strategy `%s`.\n\n**What is changing:** the hydrator **proposed note dry SHA** on each branch below—that is the dry snapshot queued to move forward on that branch.\n\n**Where it is promoted (spec order):**\n" $.PromotionStrategy.Name -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- $take := false -}}{{- if $global -}}{{- $take = true -}}{{- else -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $take = true -}}{{- end -}}{{- end -}}{{- end -}}{{- if $take -}}{{- $sha := "" -}}{{- $pr := "" -}}{{- range $.PromotionStrategy.Status.Environments -}}{{- if eq .Branch $se.Branch -}}{{- if and .Proposed.Note .Proposed.Note.DrySha -}}{{- $sha = .Proposed.Note.DrySha -}}{{- end -}}{{- if .PullRequest -}}{{- if and (ne .PullRequest.Url "") (eq (printf "%s" .PullRequest.State) "open") -}}{{- $pr = .PullRequest.Url -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if ne $pr "" -}}{{- $disp := "—" -}}{{- if ne $sha "" -}}{{- $disp = $sha -}}{{- end -}}{{- $suffix := printf " — [PR](%s)" $pr -}}{{- $out = printf "%s\n- **%s** — proposed note dry SHA: `%s`%s" $out $se.Branch $disp $suffix -}}{{- end -}}{{- end -}}{{- end -}}{{- $out = printf "%s\n\n**Git repository ref:** `%s`" $out $.PromotionStrategy.Spec.RepositoryReference.Name -}}{{ $out | toJson }},
         "environment": "production",
@@ -321,9 +321,11 @@ spec:
             let specEnvs = PromotionStrategy.Spec.Environments ?? [];
             let statusEnvs = PromotionStrategy.Status.Environments ?? [];
             let keyIsGlobal = any(PromotionStrategy.Spec.ProposedCommitStatuses ?? [], {#.Key == key});
-            let firstGatedIdx = findIndex(specEnvs, {
+            let keyedEnvs = filter(specEnvs, {
               keyIsGlobal || any(#.ProposedCommitStatuses ?? [], {#.Key == key})
             });
+            let firstGatedBranch = len(keyedEnvs) > 0 ? keyedEnvs[0].Branch : "";
+            let firstGatedIdx = firstGatedBranch != "" ? findIndex(specEnvs, { #.Branch == firstGatedBranch }) : nil;
             let preGatedEnvs = (firstGatedIdx != nil && firstGatedIdx > 0)
               ? take(specEnvs, firstGatedIdx)
               : [];
@@ -350,16 +352,25 @@ spec:
               let status = find(statusEnvs, { #.Branch == env.Branch });
               env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
             }), "|");
-            let hasOpenPRForKey = any(specEnvs, {
+            let hasOpenPRForKey = any(keyedEnvs, {
               let env = #;
-              let envHasKey = keyIsGlobal || any(env.ProposedCommitStatuses ?? [], {#.Key == key});
               let status = find(statusEnvs, { #.Branch == env.Branch });
-              envHasKey && status != nil && status.PullRequest != nil && string(status.PullRequest.State) == "open"
+              status != nil && status.PullRequest != nil && string(status.PullRequest.State) == "open"
             });
             let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
             let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
             let needsRetry = !isNewFingerprint && Phase != "success" && isRetryable;
+            let keyedAuthors = map(keyedEnvs, {
+              let env = #;
+              let status = find(statusEnvs, { #.Branch == env.Branch });
+              let authorRef = status != nil
+                ? find(status.Proposed.Dry.References ?? [], { #.Commit != nil && (#.Commit.Author ?? "") != "" })
+                : nil;
+              authorRef != nil ? authorRef.Commit.Author : ""
+            });
+            let uniqueAuthors = uniq(keyedAuthors);
+            let commitAuthor = len(uniqueAuthors) == 1 && uniqueAuthors[0] != "" ? uniqueAuthors[0] : "zaller";
             {
               hasOpenPRForKey: hasOpenPRForKey,
               allNoteDryShasMatch: allNoteDryShasMatch,
@@ -367,7 +378,8 @@ spec:
               needsRetry: needsRetry,
               preGateNoOpenPR: preGateNoOpenPR,
               fingerprint: fingerprint,
-              canonicalNoteDrySha: canonicalNoteDrySha
+              canonicalNoteDrySha: canonicalNoteDrySha,
+              commitAuthor: commitAuthor
             }
         # Fire the POST when all gates pass and we have a fresh fingerprint or a retry to do.
         expression: |
