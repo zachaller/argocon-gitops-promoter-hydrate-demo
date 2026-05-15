@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d51c44bdd30e8e514f11863d54980e77845bd2c5",
+  "drySha": "57f3bc2016f8f76aff338aec5a361269dc09d07d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-15T08:51:11-05:00",
-  "subject": "chore: bump version to v1.0.1886",
+  "date": "2026-05-15T14:18:33-05:00",
+  "subject": "chore: bump version to v1.0.1890",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-05-06T11:28:50-05:00",
-        "subject": "chore(ci): minimize permissions (#1307)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "1c796c431d1aa60f685e1419c615bbaae03652e9",
+        "author": "\"zaller\" <code@example.com>",
+        "date": "2026-04-10T17:04:53-05:00",
+        "subject": "docs: use tabs for SCMs in Getting Started (#1398)",
+        "body": "* docs: use tabs for SCMs in Getting Started\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix ToC\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "8887c2c8fe0b0eb48f989266d6e2ce6b5add7f0a",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
