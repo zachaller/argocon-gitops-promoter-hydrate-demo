@@ -367,7 +367,9 @@ spec:
               let authorRef = status != nil
                 ? find(status.Proposed.Dry.References ?? [], { #.Commit != nil && (#.Commit.Author ?? "") != "" })
                 : nil;
-              authorRef != nil ? authorRef.Commit.Author : ""
+              let raw = authorRef != nil ? authorRef.Commit.Author : "";
+              let name = trim(split(raw, "<")[0]);
+              name
             });
             let uniqueAuthors = uniq(keyedAuthors);
             let commitAuthor = len(uniqueAuthors) == 1 && uniqueAuthors[0] != "" ? uniqueAuthors[0] : "zaller";
