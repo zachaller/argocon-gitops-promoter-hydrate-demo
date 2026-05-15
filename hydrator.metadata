@@ -1,17 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ce2f85f4220ba15c7407ce8f2bd713242975efce",
+  "drySha": "c298294faab5a75ca4c1a3d4ac5c8f96af7171b7",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-15T11:26:42-05:00",
-  "subject": "chore: bump version to v1.0.1887",
+  "date": "2026-05-15T11:55:40-05:00",
+  "subject": "chore: bump version to v1.0.1888",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-04-11T07:26:07-05:00",
-        "subject": "chore: update configuration",
-        "sha": "9d5ccef278218dea4caa903bb6abb9ed974a1d90",
+        "date": "2026-04-29T07:05:02-05:00",
+        "subject": "fix: remove git@ from GitHub HTTPS repo URLs (#1353)",
+        "body": "GetGitHttpsRepoUrl was producing URLs of the form\nhttps://git@github.com/... which partially worked for navigation but\nbroke GitHub sub-pages (e.g. the branches view). Authentication is\nhandled entirely via GIT_ASKPASS env vars, so the git@ prefix was\nunnecessary. This fixes the repoURL written to PromotionStrategy status,\nwhich the UI uses to construct web links.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nCo-authored-by: Claude Sonnet 4.6 <noreply@anthropic.com>",
+        "sha": "e43ee43cd12e882ad572f07f7b48e68458a46242",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
