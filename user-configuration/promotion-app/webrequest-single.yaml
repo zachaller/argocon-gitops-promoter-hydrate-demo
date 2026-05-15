@@ -572,7 +572,7 @@ spec:
             let approvedRecords = filter(Response.Body.change_records ?? [], {
               date(#.change_request.start_time) <= now() &&
               date(#.change_request.end_time) >= now() &&
-              ((#.status ?? "") == "APPROVED" || (#.status ?? "") == "CONDITIONALLY_APPROVED" || (#.status ?? "") == "CLOSED_SUCCESS")
+              ((#.status ?? "") == "APPROVED" || (#.status ?? "") == "CONDITIONALLY_APPROVED")
             });
             {
               // Used elsewhere (read by templates / next reconciles):
