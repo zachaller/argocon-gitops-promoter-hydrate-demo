@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "38a8abb966dbd1d53f4146ac78171dc0f45479aa",
+  "drySha": "e06031c95bf9d9f5380b8cf4514deb6cafa7056f",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-14T18:26:37-05:00",
-  "subject": "chore: bump version to v1.0.1883",
+  "date": "2026-05-14T20:03:53-05:00",
+  "subject": "chore: bump version to v1.0.1884",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-05-05T15:28:31-05:00",
-        "subject": "fix(gitlab,api): optimize commit status updates and improve error handling (#1187)",
-        "body": "* fix(gitlab): optimize commit status updates and improve error handling\n\nOptimizes GitLab commit status updates by:\n\nHandling :enqueue state transition errors gracefully\nSigned-off-by: rackam77 <rackam77@users.noreply.github.com>\n\n* fix: compare with desired state\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* cleanup\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* limitation warning\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: rackam77 <rackam77@users.noreply.github.com>\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: rackam77 <rackam77@users.noreply.github.com>\nCo-authored-by: Zach Aller <zachaller@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "56c1bdb5eeb9fa73d75d37fbb078ccc6c8976d9d",
+        "date": "2026-04-18T21:29:48-05:00",
+        "subject": "chore(deps): bump go.uber.org/zap from 1.27.1 to 1.28.0 (#1375)",
+        "body": "Bumps [go.uber.org/zap](https://github.com/uber-go/zap) from 1.27.1 to 1.28.0.\n- [Release notes](https://github.com/uber-go/zap/releases)\n- [Changelog](https://github.com/uber-go/zap/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/uber-go/zap/compare/v1.27.1...v1.28.0)\n\n---\nupdated-dependencies:\n- dependency-name: go.uber.org/zap\n  dependency-version: 1.28.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "aa4a70408fc2914929c913a17b0b1c8cbb7c6fb3",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
