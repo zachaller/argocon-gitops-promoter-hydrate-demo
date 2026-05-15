@@ -265,11 +265,20 @@ spec:
       {{- $end   = index .ResponseOutput "crEndTime"          | default "" -}}
       {{- $desc  = index .ResponseOutput "crShortDescription" | default "" -}}
     {{- end -}}
-    {{- $sha := "" -}}
-    {{- if .TriggerVariables -}}{{- $sha = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}{{- end -}}
+    {{- $sha := "" -}}{{- $curFp := "" -}}
+    {{- if .TriggerVariables -}}
+      {{- $sha   = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}
+      {{- $curFp = index .TriggerVariables "fingerprint"         | default "" -}}
+    {{- end -}}
+    {{- $lastFp := "" -}}
+    {{- if .TriggerOutput -}}{{- $lastFp = index .TriggerOutput "lastFingerprint" | default "" -}}{{- end -}}
     {{- $shaShort := "" -}}{{- if ne $sha "" -}}{{- $shaShort = substr 0 7 $sha -}}{{- end -}}
+    {{- /* stale = a new fingerprint is in flight but the trigger hasn't fired the POST yet */ -}}
+    {{- /* (TriggerOutput.lastFingerprint advances only on shouldTrigger), so any ResponseOutput */ -}}
+    {{- /* present is from the prior fingerprint. */ -}}
+    {{- $stale := and (ne $curFp "") (ne $curFp $lastFp) -}}
     {{ .Phase }}:
-    {{- if not .ResponseOutput }} preparing change record{{ if ne $shaShort "" }} for note dry SHA {{ $shaShort }}{{ end }}
+    {{- if or (not .ResponseOutput) $stale }} preparing change record{{ if ne $shaShort "" }} for note dry SHA {{ $shaShort }}{{ end }}
     {{- else if and (eq $sc 202) (ne $cid "") }} created change {{ $cid }}
       {{- if ne $desc "" }} — "{{ $desc }}"{{- end -}}
       {{- if and (ne $start "") (ne $end "") }} · window {{ $start }} → {{ $end }}{{- end }}
