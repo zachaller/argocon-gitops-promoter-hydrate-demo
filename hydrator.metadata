@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e06031c95bf9d9f5380b8cf4514deb6cafa7056f",
+  "drySha": "fcd61687426456286e3c872ae809917ed90ae3d2",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-14T20:03:53-05:00",
-  "subject": "chore: bump version to v1.0.1884",
+  "date": "2026-05-15T08:37:51-05:00",
+  "subject": "chore: bump version to v1.0.1885",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-04-18T21:29:48-05:00",
-        "subject": "chore(deps): bump go.uber.org/zap from 1.27.1 to 1.28.0 (#1375)",
-        "body": "Bumps [go.uber.org/zap](https://github.com/uber-go/zap) from 1.27.1 to 1.28.0.\n- [Release notes](https://github.com/uber-go/zap/releases)\n- [Changelog](https://github.com/uber-go/zap/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/uber-go/zap/compare/v1.27.1...v1.28.0)\n\n---\nupdated-dependencies:\n- dependency-name: go.uber.org/zap\n  dependency-version: 1.28.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "aa4a70408fc2914929c913a17b0b1c8cbb7c6fb3",
+        "date": "2026-04-26T19:14:07-05:00",
+        "subject": "chore(deps): bump github.com/onsi/ginkgo/v2 from 2.28.2 to 2.28.3 (#1380)",
+        "body": "Bumps [github.com/onsi/ginkgo/v2](https://github.com/onsi/ginkgo) from 2.28.2 to 2.28.3.\n- [Release notes](https://github.com/onsi/ginkgo/releases)\n- [Changelog](https://github.com/onsi/ginkgo/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/onsi/ginkgo/compare/v2.28.2...v2.28.3)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/onsi/ginkgo/v2\n  dependency-version: 2.28.3\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "0c518b8fc9e50aa38e25f20007a160a07484d4ca",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
