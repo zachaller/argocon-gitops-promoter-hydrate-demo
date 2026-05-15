@@ -447,18 +447,25 @@ spec:
   descriptionTemplate: >-
     {{- /* presentation only — fields come from trigger.response.output.expression / when.variables */ -}}
     {{- $approved := 0 -}}{{- $total := 0 -}}{{- $sc := 0 -}}{{- $checked := "" -}}
+    {{- $checkedFp := "" -}}
     {{- if .ResponseOutput -}}
       {{- /* numeric fields come from JSON as float64; coerce to int for clean display + safe comparisons */ -}}
-      {{- $approved = index .ResponseOutput "approvedCount"    | default 0 | int -}}
-      {{- $total    = index .ResponseOutput "totalRecordCount" | default 0 | int -}}
-      {{- $sc       = index .ResponseOutput "statusCode"       | default 0 | int -}}
-      {{- $checked  = index .ResponseOutput "lastCheckedAt"    | default "" -}}
+      {{- $approved  = index .ResponseOutput "approvedCount"      | default 0 | int -}}
+      {{- $total     = index .ResponseOutput "totalRecordCount"   | default 0 | int -}}
+      {{- $sc        = index .ResponseOutput "statusCode"         | default 0 | int -}}
+      {{- $checked   = index .ResponseOutput "lastCheckedAt"      | default "" -}}
+      {{- $checkedFp = index .ResponseOutput "checkedFingerprint" | default "" -}}
     {{- end -}}
-    {{- $sha := "" -}}
-    {{- if .TriggerVariables -}}{{- $sha = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}{{- end -}}
+    {{- $sha := "" -}}{{- $curFp := "" -}}
+    {{- if .TriggerVariables -}}
+      {{- $sha   = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}
+      {{- $curFp = index .TriggerVariables "fingerprint"          | default "" -}}
+    {{- end -}}
     {{- $shaShort := "" -}}{{- if ne $sha "" -}}{{- $shaShort = substr 0 7 $sha -}}{{- end -}}
+    {{- /* stale = ResponseOutput is from a previous fingerprint (new SHA came in but no GET has fired yet) */ -}}
+    {{- $stale := and (ne $curFp "") (ne $checkedFp "") (ne $curFp $checkedFp) -}}
     {{ .Phase }}:
-    {{- if not .ResponseOutput }} checking for approved change record{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
+    {{- if or (not .ResponseOutput) $stale }} checking for approved change record{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
     {{- else if and (eq $sc 200) (gt $approved 0) }} {{ $approved }} approved change record{{ if gt $approved 1 }}s{{ end }} in window ({{ $total }} total, last check {{ $checked }})
     {{- else if eq $sc 200 }} {{ $approved }}/{{ $total }} records active in approval window (last check {{ $checked }})
     {{- else }} approval check returned HTTP {{ $sc }}, will retry
@@ -598,11 +605,17 @@ spec:
               date(#.change_request.end_time) >= now() &&
               ((#.status ?? "") == "APPROVED" || (#.status ?? "") == "CONDITIONALLY_APPROVED" || (#.status ?? "") == "CLOSED_SUCCESS")
             });
+            // Stamp the fingerprint/SHA this response was checked against so
+            // the descriptionTemplate (and any future success-side logic) can
+            // detect stale ResponseOutput when a new fingerprint comes in
+            // before the next GET fires.
             {
               statusCode: Response.StatusCode,
               totalRecordCount: len(Response.Body.change_records ?? []),
               approvedRecords: approvedRecords,
               approvedCount: len(approvedRecords),
+              checkedFingerprint: Variables.fingerprint,
+              checkedCommitSha: Variables.canonicalNoteDrySha,
               lastCheckedAt: string(now())
             }
 
