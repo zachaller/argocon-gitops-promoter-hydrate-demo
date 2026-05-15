@@ -1,48 +1,25 @@
-apiVersion: promoter.argoproj.io/v1alpha1
-kind: WebRequestCommitStatus
-metadata:
-  name: change-management-close
   namespace: default
 spec:
   promotionStrategyRef:
-    name: argocon-demo
-  key: change-management-close
   reportOn: active
-  # Closes the change record after promotion PRs have merged.
-  # Two-phase: first GET searches for the change record by dry SHA, then POST closes it.
-  descriptionTemplate: >-
-    {{- $changeId := "" -}}{{- $step := "" -}}{{- $statusCode := 0 -}}
-    {{- if .ResponseOutput -}}
-      {{- $changeId   = index .ResponseOutput "changeId"   | default "" -}}
-      {{- $step       = index .ResponseOutput "step"       | default "" -}}
-      {{- $statusCode = index .ResponseOutput "statusCode" | default 0 | int -}}
     {{- end -}}
-    {{- /* The close POST response carries no changeId, so fall back to the in-flight value or the last persisted one. */ -}}
-    {{- if eq $changeId "" -}}
-      {{- if .TriggerVariables -}}{{- $changeId = index .TriggerVariables "priorChangeId" | default "" -}}{{- end -}}
-      {{- if and (eq $changeId "") .TriggerOutput -}}{{- $changeId = index .TriggerOutput "lastClosedChangeId" | default "" -}}{{- end -}}
+    {{- /* The close POST's response.output evaluator does not have access to ResponseOutput, so the */ -}}
+    {{- /* persisted changeId on the close response is empty. Fall back to TriggerVariables (correct */ -}}
+    {{- /* during the close-POST reconcile) and TriggerOutput.lastClosedChangeId (persisted across */ -}}
+    {{- /* subsequent idle reconciles by trigger.when.output). */ -}}
+    {{- if eq $cid "" -}}
+      {{- if .TriggerVariables -}}{{- $cid = index .TriggerVariables "priorChangeId" | default "" -}}{{- end -}}
+      {{- if and (eq $cid "") .TriggerOutput -}}{{- $cid = index .TriggerOutput "lastClosedChangeId" | default "" -}}{{- end -}}
     {{- end -}}
-    {{- $drySha := "" -}}{{- $currentFingerprint := "" -}}
-    {{- if .TriggerVariables -}}
-      {{- $drySha             = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}
-      {{- $currentFingerprint = index .TriggerVariables "fingerprint"         | default "" -}}
-    {{- end -}}
-    {{- $lastFiredFingerprint := "" -}}
-    {{- if .TriggerOutput -}}{{- $lastFiredFingerprint = index .TriggerOutput "lastFingerprint" | default "" -}}{{- end -}}
-    {{- $shaShort := "" -}}{{- if ne $drySha "" -}}{{- $shaShort = substr 0 7 $drySha -}}{{- end -}}
-    {{- /* Stale = a new dry SHA arrived but the trigger hasn't fired yet, so any ResponseOutput is from the previous SHA. */ -}}
-    {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) -}}
-    {{ .Phase }}:
-    {{- if or (not .ResponseOutput) $stale }} searching for change record to close{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
-    {{- else if eq $step "closed" }} closed change {{ $changeId }}{{ if ne $shaShort "" }} for sha {{ $shaShort }}{{ end }}
-    {{- else if eq $step "closeFailedTerminal" }} close gave up for {{ $changeId }} (HTTP {{ $statusCode }}) — treating as done
-    {{- else if eq $step "closeRetry" }} close failed for {{ $changeId }} (HTTP {{ $statusCode }}), will retry
-    {{- else if eq $step "found" }} found change {{ $changeId }} — closing on next reconcile
+    {{- $sha := "" -}}
+    {{- if .TriggerVariables -}}{{- $sha = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}{{- end -}}
+    {{- if eq $step "closed" }} closed change {{ $cid }}{{ if ne $shaShort "" }} for sha {{ $shaShort }}{{ end }}
+    {{- else if eq $step "closeFailedTerminal" }} close gave up for {{ $cid }} (HTTP {{ $sc }}) — treating as done
+    {{- else if eq $step "closeRetry" }} close failed for {{ $cid }} (HTTP {{ $sc }}), will retry
+    {{- else if eq $step "found" }} found change {{ $cid }} — closing on next reconcile
     {{- else if eq $step "searching" }} no change record in window{{ if ne $shaShort "" }} for note dry SHA {{ $shaShort }}{{ end }} — nothing to close
-    {{- else }} searching for change record to close{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
-    {{- end }}
   httpRequest:
-    # GET to search for the change record, POST to close it once we know its id.
+    # .canonicalNoteDrySha for search). Method selection and URL/body shape live here.
     methodTemplate: >-
       {{- if index .TriggerVariables "inCloseMode" -}}POST{{- else -}}GET{{- end -}}
     timeout: 30s
@@ -50,8 +27,6 @@ spec:
       Accept: application/json
       Content-Type: application/json
     urlTemplate: >-
-      {{- $base := "http://localhost:8987/v1/change-management-service" -}}
-      {{- $assetId := index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}
       {{- if index .TriggerVariables "inCloseMode" -}}
       {{ $base }}/change/close/{{ index .TriggerVariables "priorChangeId" }}
       {{- else -}}
@@ -63,20 +38,592 @@ spec:
         "change_execution_status": "SUCCEEDED"
       }
       {{- end -}}
-  success:
-    when:
-      # Never report failure. Pending only while a found record is waiting on (or retrying) close.
-      # Body shape distinguishes search responses (have change_records) from close responses.
-      expression: |
-        Response != nil
-          ? (Response.Body != nil && (Response.Body.change_records ?? nil) != nil
+        //   - this reconcile's search GET returned an empty (no in-window record) result, OR
+        //   - this reconcile's close POST returned 2xx, OR
+        // The body shape distinguishes a search response (has change_records) from a close response.
               ? len(Response.Body.change_records ?? []) == 0
-              : ((Response.StatusCode >= 200 && Response.StatusCode < 300) ||
-                 (Response.StatusCode >= 400 && Response.StatusCode != 429 && Response.StatusCode < 500)))
-          : (ResponseOutput == nil ||
              ((ResponseOutput.step ?? "") != "found" &&
               (ResponseOutput.step ?? "") != "closeRetry"))
   mode:
+    context: promotionstrategy
+    trigger:
+        variables:
+          expression: |
+            // Fingerprint: same construction as change-management-approval — built from Proposed.Note.DrySha.
+            // Two-phase state: priorStep / priorChangeId / haveChangeId capture whether a prior search
+            // already found a change record that still needs to be POST-closed.
+            let key = "change-management-close";
+            let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+            let statusList = PromotionStrategy.Status.Environments ?? [];
+            let globalHasKey = any(PromotionStrategy.Spec.ActiveCommitStatuses ?? [], {#.Key == key});
+            let gatedSpecs = filter(specEnvsList, {
+              globalHasKey || any(#.ActiveCommitStatuses ?? [], {#.Key == key})
+            });
+            let noOpenPRsOnGated = len(gatedSpecs) > 0 && all(gatedSpecs, {
+              let se = #;
+              let st = find(statusList, { #.Branch == se.Branch });
+              st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open"
+            });
+            let allSpecBranchesHaveNoteDrySha = len(specEnvsList) > 0 && all(specEnvsList, {
+              let se = #;
+              let st = find(statusList, { #.Branch == se.Branch });
+              st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha != ""
+            });
+            let firstSpecBranch = len(specEnvsList) > 0 ? specEnvsList[0].Branch : "";
+            let allNoteDryShasMatch = allSpecBranchesHaveNoteDrySha && all(specEnvsList, {
+              let se = #;
+              let st = find(statusList, { #.Branch == se.Branch });
+            let fingerprint = join(map(specEnvsList, {
+              let se = #;
+              let st = find(statusList, { #.Branch == se.Branch });
+              se.Branch + ":" + (st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha != "" ? st.Proposed.Note.DrySha : "")
+            }), "|");
+            let priorStep = ResponseOutput != nil ? (ResponseOutput.step ?? "") : "";
+            let priorChangeId = ResponseOutput != nil ? (ResponseOutput.changeId ?? "") : "";
+            let haveChangeId = priorChangeId != "" &&
+              fingerprint == (TriggerOutput.lastDoneFingerprint ?? "");
+              fingerprint: fingerprint,
+              canonicalNoteDrySha: canonicalNoteDrySha,
+              haveChangeId: haveChangeId,
+              alreadyDoneForFingerprint: alreadyDoneForFingerprint,
+              isNewFingerprint: isNewFingerprint,
+              needsRetry: needsRetry,
+              priorStep: priorStep,
+              priorChangeId: priorChangeId,
+            }
+          //  - any of: new fingerprint (start a fresh search), have a found changeId waiting to be POSTed,
+          //            or we hit a retryable close error and need to retry,
+          //  - no gated env still has an open promotion PR (promotion has merged → safe to close).
+          Variables.allNoteDryShasMatch &&
+          expression: |
+            // lastDoneFingerprint advances when this fingerprint reaches a terminal state for close:
+            // either a successful POST (step == "closed") or a non-retryable failure (step == "closeFailedTerminal").
+              (Variables.isNewFingerprint || Variables.haveChangeId || Variables.needsRetry) &&
+              Variables.noOpenPRsOnGated;
+              (Variables.priorStep == "closed" || Variables.priorStep == "closeFailedTerminal");
+              lastClosedFingerprint: justClosed ? Variables.fingerprint : (TriggerOutput.lastClosedFingerprint ?? ""),
+              lastClosedChangeId: inFlightClose ? Variables.priorChangeId : (TriggerOutput.lastClosedChangeId ?? ""),
+              shouldTrigger: shouldTrigger,
+              allNoteDryShasMatch: Variables.allNoteDryShasMatch,
+              noOpenPRsOnGated: Variables.noOpenPRsOnGated,
+              isNewFingerprint: Variables.isNewFingerprint,
+              needsRetry: Variables.needsRetry,
+              priorMatchesCurrent: priorMatchesCurrent,
+              strategyBranches: map(PromotionStrategy.Spec.Environments, { #.Branch }),
+              phase: Phase,
+              evaluatedAt: string(now())
+            }
+      response:
+        output:
+            // Search GET returns { change_records: [...] }; close POST does not.
+            // On search, pick the first active (in-window) change record id; fall back to first record id.
+            // On close POST: step depends on status code —
+            //   2xx → "closed"           (terminal success)
+            //   429 / 5xx → "closeRetry" (transient; trigger will re-fire)
+                      : ""))
+              : priorChangeId;
+            let sc = Response.StatusCode;
+            let closeStep = sc >= 200 && sc < 300
+              ? "closed"
+              : (sc == 429 || sc >= 500 ? "closeRetry" : "closeFailedTerminal");
+              : closeStep;
+            {
+              statusCode: sc,
+              step: step,
+              activeRecordCount: len(activeRecords),
+              totalRecordCount: isSearch ? len(Response.Body.change_records ?? []) : 0,
+              lastRequestedAt: string(now())
+            }
+
+spec:
+  promotionStrategyRef:
+  reportOn: proposed
+      {{- $cid   = index .ResponseOutput "changeId"           | default "" -}}
+      {{- $sc    = index .ResponseOutput "statusCode"         | default 0 | int -}}
+      {{- $start = index .ResponseOutput "crStartTime"        | default "" -}}
+      {{- $end   = index .ResponseOutput "crEndTime"          | default "" -}}
+      {{- $desc  = index .ResponseOutput "crShortDescription" | default "" -}}
+    {{- end -}}
+    {{- $sha := "" -}}{{- $curFp := "" -}}
+    {{- if .TriggerVariables -}}
+    {{- else }} change request returned HTTP {{ $sc }} (will retry)
+    {{- end }}
+  httpRequest:
+    methodTemplate: POST
+      Accept: application/json
+      Content-Type: application/json
+    urlTemplate: http://localhost:8987/v1/change-management-service/change/open
+    bodyTemplate: |
+        "on_behalf_of": "zaller",
+        "short_description": "Automated prod promotion (multi-env)",
+        "environment": "production",
+        "backout_plan": "In the event that this new change introduces a regression in behavior or some other problem, a rollback to the previous version can be initiated through DevPortal or Argo CD.",
+        "change_plan": "Automated GitOps promotion: proposed dry SHA advances through each environment via promoter pull requests, commit statuses, and merge gates before production.",
+        "end_time": "{{ now | dateModify "+30m" | date "2006-01-02T15:04:05Z07:00" }}",
+        "risk": "low",
+  success:
+    when:
+      variables:
+          let statusList = PromotionStrategy.Status.Environments ?? [];
+          let fingerprint = join(map(specEnvsList, {
+            let se = #;
+      expression: |
+        //   No-response path (Response nil this reconcile): success iff Phase is already "success" AND Variables.fingerprint == TriggerOutput.lastFingerprint (from when.variables).
+        // Checks — no-response path (all required when Response == nil):
+        //   Phase == "success"
+             Response.Body != nil &&
+             Response.Body.id != nil &&
+             Response.Body.id != "")
+          : (Phase == "success" && Variables.fingerprint == (TriggerOutput["lastFingerprint"] ?? ""))
+  mode:
+    context: promotionstrategy
+    trigger:
+        variables:
+          expression: |
+            let key = "change-management-open";
+            let preGateNoOpenPR = all(lowerSpecs, {
+              let se = #;
+              let st = find(statusList, { #.Branch == se.Branch });
+            let allSpecBranchesHaveNoteDrySha = len(specEnvsList) > 0 && all(specEnvsList, {
+              st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha != ""
+            });
+            let firstSpecBranch = len(specEnvsList) > 0 ? specEnvsList[0].Branch : "";
+              envHasKey && st != nil && st.PullRequest != nil && string(st.PullRequest.State) == "open"
+            });
+            let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
+            let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
+            let needsRetry = fingerprint == (TriggerOutput.lastFingerprint ?? "") &&
+              Phase != "success" &&
+              isRetryable;
+            let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
+              needsRetry: needsRetry,
+              canonicalNoteDrySha: canonicalNoteDrySha
+            }
+        expression: |
+          // Fire POST when Variables gates pass (shared computation in when.variables).
+          Variables.hasOpenPR && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry) && Variables.preGateNoOpenPR
+        output:
+            let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
+            {
+              lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
+              fingerprint: Variables.fingerprint,
+              canonicalNoteDrySha: Variables.canonicalNoteDrySha,
+              strategyBranches: map(PromotionStrategy.Spec.Environments, { #.Branch }),
+              lastStatusCode: lastStatusCode,
+              phase: Phase,
+              evaluatedAt: string(now())
+            }
+            let msg = Response.Body.message;
+            // doesn't have to nil-defend the changeRequest sub-object on every field read.
+            {
+              crStartTime: cr != nil && cr.start_time != nil ? string(cr.start_time) : "",
+              crEndTime: cr != nil && cr.end_time != nil ? string(cr.end_time) : "",
+              crShortDescription: cr != nil && cr.short_description != nil ? string(cr.short_description) : "",
+              lastRequestedAt: string(now())
+---
+
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: WebRequestCommitStatus
+metadata:
+spec:
+  promotionStrategyRef:
+    name: argocon-demo
+  key: change-management-approval
+  reportOn: proposed
+    {{- end -}}
+    {{- $sha := "" -}}{{- $curFp := "" -}}
+    {{- if .TriggerVariables -}}
+      {{- $sha   = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}
+      {{- $curFp = index .TriggerVariables "fingerprint"         | default "" -}}
+    {{- if .TriggerOutput -}}{{- $lastFp = index .TriggerOutput "lastFingerprint" | default "" -}}{{- end -}}
+    {{- /* (TriggerOutput.lastFingerprint advances only on shouldTrigger), so any ResponseOutput */ -}}
+    {{- /* present is from the prior fingerprint. */ -}}
+    {{- $stale := and (ne $curFp "") (ne $curFp $lastFp) -}}
+    {{ .Phase }}:
+    {{- end }}
+    timeout: 30s
+    headerTemplates:
+      Accept: application/json
+    # canonicalNoteDrySha is computed in mode.trigger.when.variables (the trigger only fires
+    # when allNoteDryShasMatch, so this is the agreed-upon SHA across all spec envs).
+    urlTemplate: >-
+      {{- $base := "http://localhost:8987/v1/change-management-service" -}}
+  success:
+    when:
+          let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+          let statusList = PromotionStrategy.Status.Environments ?? [];
+          let fingerprint = join(map(specEnvsList, {
+            let se = #;
+          }), "|");
+          { fingerprint: fingerprint }
+      expression: |
+        // success.when — whole expression (ternary on Response):
+        // Checks — HTTP path (all required when Response != nil):
+        //   Response.StatusCode == 200
+        //                       && status in ["APPROVED", "CONDITIONALLY_APPROVED", "CLOSED_SUCCESS"])
+        // Checks — no-response path (all required when Response == nil):
+             len(Response.Body.change_records) > 0 &&
+               date(#.change_request.end_time) >= now() &&
+               ((#.status ?? "") == "APPROVED" || (#.status ?? "") == "CONDITIONALLY_APPROVED" || (#.status ?? "") == "CLOSED_SUCCESS")
+             }))
+          : (Phase == "success" && Variables.fingerprint == (TriggerOutput["lastFingerprint"] ?? ""))
+  mode:
+    context: promotionstrategy
+    trigger:
+        variables:
+          expression: |
+            let key = "change-management-approval";
+            let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+            let globalHasKey = any(PromotionStrategy.Spec.ProposedCommitStatuses ?? [], {#.Key == key});
+            let firstGatedIdx = findIndex(specEnvsList, {
+              globalHasKey || any(#.ProposedCommitStatuses ?? [], {#.Key == key})
+            });
+            let lowerSpecs = (firstGatedIdx != nil && firstGatedIdx > 0)
+              ? take(specEnvsList, firstGatedIdx)
+              : [];
+              st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open"
+            });
+            let allSpecBranchesHaveNoteDrySha = len(specEnvsList) > 0 && all(specEnvsList, {
+              let se = #;
+            let stCanonical = find(statusList, { #.Branch == firstSpecBranch });
+            let canonicalNoteDrySha = stCanonical != nil && stCanonical.Proposed.Note != nil ? stCanonical.Proposed.Note.DrySha : "";
+              st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha == canonicalNoteDrySha
+apiVersion: promoter.argoproj.io/v1alpha1
+spec:
+  promotionStrategyRef:
+    name: argocon-demo
+  key: change-management-close
+  reportOn: active
+  descriptionTemplate: >-
+    {{- /* presentation only — fields come from trigger.response.output.expression / when.variables */ -}}
+      {{- $cid  = index .ResponseOutput "changeId"   | default "" -}}
+      {{- $step = index .ResponseOutput "step"       | default "" -}}
+      {{- /* statusCode comes from JSON as float64; coerce to int for clean display + safe comparisons */ -}}
+      {{- $sc   = index .ResponseOutput "statusCode" | default 0 | int -}}
+    {{- end -}}
+    {{- /* The close POST's response.output evaluator does not have access to ResponseOutput, so the */ -}}
+    {{- $sha := "" -}}{{- $curFp := "" -}}
+    {{- if .TriggerVariables -}}
+      {{- $sha   = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}
+      {{- $curFp = index .TriggerVariables "fingerprint"         | default "" -}}
+    {{- end -}}
+    {{- $lastFp := "" -}}
+    {{- if .TriggerOutput -}}{{- $lastFp = index .TriggerOutput "lastFingerprint" | default "" -}}{{- end -}}
+    {{- $shaShort := "" -}}{{- if ne $sha "" -}}{{- $shaShort = substr 0 7 $sha -}}{{- end -}}
+    {{- /* stale = a new fingerprint is in flight but the trigger hasn't fired this reconcile yet */ -}}
+    {{- /* (TriggerOutput.lastFingerprint advances only on shouldTrigger), so any ResponseOutput */ -}}
+    {{- /* present is from the prior fingerprint and must not be used to label the current SHA. */ -}}
+    {{- $stale := and (ne $curFp "") (ne $curFp $lastFp) -}}
+    {{ .Phase }}:
+    {{- if or (not .ResponseOutput) $stale }} searching for change record to close{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
+    {{- else if eq $step "closeRetry" }} close failed for {{ $cid }} (HTTP {{ $sc }}), will retry
+    {{- else }} searching for change record to close{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
+    {{- end }}
+  httpRequest:
+    # mode.trigger.when.variables exposes a single decision flag, .TriggerVariables.inCloseMode,
+    # plus the dynamic values it already had to compute (.priorChangeId for close,
+    # .canonicalNoteDrySha for search). Method selection and URL/body shape live here.
+    methodTemplate: >-
+      {{- if index .TriggerVariables "inCloseMode" -}}POST{{- else -}}GET{{- end -}}
+      Accept: application/json
+      {{- if index .TriggerVariables "inCloseMode" -}}
+      {{ $base }}/changes/search?asset_id={{ $assetId }}&commit_id={{ index .TriggerVariables "canonicalNoteDrySha" }}&limit=25
+      {{- end -}}
+    bodyTemplate: |
+      {{- if index .TriggerVariables "inCloseMode" -}}
+      {
+        "change_execution_status": "SUCCEEDED"
+      }
+      {{- end -}}
+  success:
+        // Never failure. success when:
+        //   - this reconcile's close POST returned a non-retryable (non-429 4xx) error, OR
+        //   - no HTTP this reconcile AND we're not mid-close (prior step is not "found"/"closeRetry").
+        // pending only while we have a found change record waiting on (or retrying) close POST,
+        Response != nil
+              (ResponseOutput.step ?? "") != "closeRetry"))
+  mode:
+    context: promotionstrategy
+    trigger:
+      requeueDuration: 30s
+      when:
+        variables:
+          expression: |
+            // noOpenPRsOnGated: only fire after the promotion PR(s) have merged on every gated env.
+            // Fingerprint: same construction as change-management-approval — built from Proposed.Note.DrySha.
+            // Two-phase state: priorStep / priorChangeId / haveChangeId capture whether a prior search
+            // already found a change record that still needs to be POST-closed.
+            let key = "change-management-close";
+            let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+            let statusList = PromotionStrategy.Status.Environments ?? [];
+            let globalHasKey = any(PromotionStrategy.Spec.ActiveCommitStatuses ?? [], {#.Key == key});
+            let gatedSpecs = filter(specEnvsList, {
+              globalHasKey || any(#.ActiveCommitStatuses ?? [], {#.Key == key})
+              let se = #;
+              let st = find(statusList, { #.Branch == se.Branch });
+              st == nil || st.PullRequest == nil || string(st.PullRequest.State) != "open"
+            });
+            let allSpecBranchesHaveNoteDrySha = len(specEnvsList) > 0 && all(specEnvsList, {
+              let se = #;
+              let st = find(statusList, { #.Branch == se.Branch });
+              st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha != ""
+            });
+            let firstSpecBranch = len(specEnvsList) > 0 ? specEnvsList[0].Branch : "";
+            let allNoteDryShasMatch = allSpecBranchesHaveNoteDrySha && all(specEnvsList, {
+              let se = #;
+              let st = find(statusList, { #.Branch == se.Branch });
+              st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha == canonicalNoteDrySha
+            });
+            let fingerprint = join(map(specEnvsList, {
+              let se = #;
+            }), "|");
+            let haveChangeId = priorChangeId != "" &&
+              (priorStep == "found" || priorStep == "closeRetry");
+            let alreadyDoneForFingerprint = fingerprint != "" &&
+              fingerprint == (TriggerOutput.lastDoneFingerprint ?? "");
+            let lastStatusCode = ResponseOutput != nil ? (ResponseOutput.statusCode ?? 0) : 0;
+              fingerprint: fingerprint,
+              canonicalNoteDrySha: canonicalNoteDrySha,
+              haveChangeId: haveChangeId,
+              alreadyDoneForFingerprint: alreadyDoneForFingerprint,
+              isNewFingerprint: isNewFingerprint,
+              needsRetry: needsRetry,
+              priorStep: priorStep,
+              priorChangeId: priorChangeId,
+              lastStatusCode: lastStatusCode,
+              inCloseMode: inCloseMode
+            }
+        expression: |
+          //            or we hit a retryable close error and need to retry,
+          //  - no gated env still has an open promotion PR (promotion has merged → safe to close).
+          Variables.allNoteDryShasMatch &&
+          Variables.noOpenPRsOnGated
+              !Variables.alreadyDoneForFingerprint &&
+              (Variables.isNewFingerprint || Variables.haveChangeId || Variables.needsRetry) &&
+              Variables.noOpenPRsOnGated;
+              allNoteDryShasMatch: Variables.allNoteDryShasMatch,
+              noOpenPRsOnGated: Variables.noOpenPRsOnGated,
+              isNewFingerprint: Variables.isNewFingerprint,
+              needsRetry: Variables.needsRetry,
+              alreadyDoneForFingerprint: Variables.alreadyDoneForFingerprint,
+              priorChangeId: Variables.priorChangeId,
+              priorMatchesCurrent: priorMatchesCurrent,
+              phase: Phase,
+              evaluatedAt: string(now())
+            }
+      response:
+        output:
+            // Search GET returns { change_records: [...] }; close POST does not.
+            // On search, pick the first active (in-window) change record id; fall back to first record id.
+            // On close POST: step depends on status code —
+            //   2xx → "closed"           (terminal success)
+            //   429 / 5xx → "closeRetry" (transient; trigger will re-fire)
+            //   other 4xx → "closeFailedTerminal" (give up; treat as success per "never failure" policy)
+              : [];
+                  ? string(activeRecords[0].id ?? "")
+                  : (len(Response.Body.change_records ?? []) > 0
+                      ? string((Response.Body.change_records ?? [])[0].id ?? "")
+                      : ""))
+              : priorChangeId;
+            let sc = Response.StatusCode;
+            let closeStep = sc >= 200 && sc < 300
+              ? "closed"
+              : (sc == 429 || sc >= 500 ? "closeRetry" : "closeFailedTerminal");
+            let step = isSearch
+              ? (searchedId != "" ? "found" : "searching")
+              : closeStep;
+            {
+              statusCode: sc,
+              step: step,
+              changeId: searchedId,
+              totalRecordCount: isSearch ? len(Response.Body.change_records ?? []) : 0,
+              lastRequestedAt: string(now())
+spec:
+  key: change-management-open
+  reportOn: proposed
+      {{- $sc    = index .ResponseOutput "statusCode"         | default 0 | int -}}
+      {{- $start = index .ResponseOutput "crStartTime"        | default "" -}}
+      {{- $end   = index .ResponseOutput "crEndTime"          | default "" -}}
+    {{- $sha := "" -}}{{- $curFp := "" -}}
+    {{- if .TriggerVariables -}}
+      {{- $sha   = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}
+      {{- $curFp = index .TriggerVariables "fingerprint"         | default "" -}}
+    {{- if .TriggerOutput -}}{{- $lastFp = index .TriggerOutput "lastFingerprint" | default "" -}}{{- end -}}
+    {{- /* (TriggerOutput.lastFingerprint advances only on shouldTrigger), so any ResponseOutput */ -}}
+    {{- /* present is from the prior fingerprint. */ -}}
+    {{- end }}
+  httpRequest:
+    methodTemplate: POST
+    timeout: 30s
+    headerTemplates:
+      Accept: application/json
+    bodyTemplate: |
+        "on_behalf_of": "zaller",
+        "environment": "production",
+        "backout_plan": "In the event that this new change introduces a regression in behavior or some other problem, a rollback to the previous version can be initiated through DevPortal or Argo CD.",
+        "change_plan": "Automated GitOps promotion: proposed dry SHA advances through each environment via promoter pull requests, commit statuses, and merge gates before production.",
+        "commit_id": "{{ index .TriggerVariables "canonicalNoteDrySha" }}",
+        "start_time": "{{ now | date "2006-01-02T15:04:05Z07:00" }}",
+        "end_time": "{{ now | dateModify "+30m" | date "2006-01-02T15:04:05Z07:00" }}",
+    when:
+      variables:
+          let statusList = PromotionStrategy.Status.Environments ?? [];
+          let fingerprint = join(map(specEnvsList, {
+            se.Branch + ":" + (st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha != "" ? st.Proposed.Note.DrySha : "")
+          }), "|");
+        // success.when — whole expression (ternary on Response):
+        // Checks — HTTP path (all required when Response != nil):
+        //   Response.StatusCode == 202
+        //   Phase == "success"
+          ? (Response.StatusCode == 202 &&
+             Response.Body != nil &&
+    context: promotionstrategy
+    trigger:
+      requeueDuration: 30s
+      when:
+        variables:
+          expression: |
+            let key = "change-management-open";
+            let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+              let se = #;
+              let st = find(statusList, { #.Branch == se.Branch });
+            let allSpecBranchesHaveNoteDrySha = len(specEnvsList) > 0 && all(specEnvsList, {
+              let se = #;
+            });
+            let firstSpecBranch = len(specEnvsList) > 0 ? specEnvsList[0].Branch : "";
+            let stCanonical = find(statusList, { #.Branch == firstSpecBranch });
+            });
+            let needsRetry = fingerprint == (TriggerOutput.lastFingerprint ?? "") &&
+              Phase != "success" &&
+              isRetryable;
+            let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
+            {
+              isNewFingerprint: isNewFingerprint,
+              needsRetry: needsRetry,
+              preGateNoOpenPR: preGateNoOpenPR,
+            }
+        expression: |
+          // Fire POST when Variables gates pass (shared computation in when.variables).
+          expression: |
+            let shouldTrigger = Variables.hasOpenPR && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry) && Variables.preGateNoOpenPR;
+            let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
+            {
+              lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
+              fingerprint: Variables.fingerprint,
+              canonicalNoteDrySha: Variables.canonicalNoteDrySha,
+              phase: Phase,
+              evaluatedAt: string(now())
+            let id = Response.Body.id;
+            let msg = Response.Body.message;
+            let cr = Response.Body.change_request;
+            {
+              statusCode: Response.StatusCode,
+              changeRequest: cr ?? {},
+              crStartTime: cr != nil && cr.start_time != nil ? string(cr.start_time) : "",
+              crEndTime: cr != nil && cr.end_time != nil ? string(cr.end_time) : "",
+              crShortDescription: cr != nil && cr.short_description != nil ? string(cr.short_description) : "",
+              lastRequestedAt: string(now())
+            }
+
+---
+
+apiVersion: promoter.argoproj.io/v1alpha1
+  name: change-management-approval
+  promotionStrategyRef:
+    name: argocon-demo
+  key: change-management-approval
+  reportOn: proposed
+    {{- $sha := "" -}}{{- $curFp := "" -}}
+    {{- if .TriggerVariables -}}
+      {{- $sha   = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}
+      {{- $curFp = index .TriggerVariables "fingerprint"         | default "" -}}
+    {{- /* stale = a new fingerprint is in flight but the trigger hasn't fired the GET yet */ -}}
+    {{- /* (TriggerOutput.lastFingerprint advances only on shouldTrigger), so any ResponseOutput */ -}}
+    {{ .Phase }}:
+    {{- else if eq $sc 200 }} {{ $approved }}/{{ $total }} records active in approval window (last check {{ $checked }})
+    {{- else }} approval check returned HTTP {{ $sc }}, will retry
+    {{- end }}
+    timeout: 30s
+    headerTemplates:
+      Accept: application/json
+    urlTemplate: >-
+    when:
+      variables:
+        expression: |
+          let fingerprint = join(map(specEnvsList, {
+            let se = #;
+            let st = find(statusList, { #.Branch == se.Branch });
+          { fingerprint: fingerprint }
+      expression: |
+        // success.when — whole expression (ternary on Response):
+        //   HTTP path (Response set this reconcile): success iff 200, non-empty change_records, and at least one record whose change_request start_time/end_time bracket now() (approved change active in the service window).
+        //   Response.StatusCode == 200
+        //   len(Response.Body.change_records) > 0
+        //   any(change_records, start_time <= now() && end_time >= now()
+        //   Phase == "success"
+             len(Response.Body.change_records) > 0 &&
+               ((#.status ?? "") == "APPROVED" || (#.status ?? "") == "CONDITIONALLY_APPROVED" || (#.status ?? "") == "CLOSED_SUCCESS")
+             }))
+          : (Phase == "success" && Variables.fingerprint == (TriggerOutput["lastFingerprint"] ?? ""))
+  mode:
+    context: promotionstrategy
+    trigger:
+        variables:
+          expression: |
+            let key = "change-management-approval";
+            let specEnvsList = PromotionStrategy.Spec.Environments ?? [];
+            let globalHasKey = any(PromotionStrategy.Spec.ProposedCommitStatuses ?? [], {#.Key == key});
+            let firstGatedIdx = findIndex(specEnvsList, {
+            let lowerSpecs = (firstGatedIdx != nil && firstGatedIdx > 0)
+              ? take(specEnvsList, firstGatedIdx)
+              : [];
+              let se = #;
+            let firstSpecBranch = len(specEnvsList) > 0 ? specEnvsList[0].Branch : "";
+            let stCanonical = find(statusList, { #.Branch == firstSpecBranch });
+              st != nil && st.Proposed.Note != nil && st.Proposed.Note.DrySha == canonicalNoteDrySha
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: WebRequestCommitStatus
+metadata:
+  name: change-management-close
+  namespace: default
+    name: argocon-demo
+    {{- if .ResponseOutput -}}
+      {{- $changeId   = index .ResponseOutput "changeId"   | default "" -}}
+      {{- $step       = index .ResponseOutput "step"       | default "" -}}
+      {{- $statusCode = index .ResponseOutput "statusCode" | default 0 | int -}}
+    {{- if eq $changeId "" -}}
+      {{- if .TriggerVariables -}}{{- $changeId = index .TriggerVariables "priorChangeId" | default "" -}}{{- end -}}
+      {{- if and (eq $changeId "") .TriggerOutput -}}{{- $changeId = index .TriggerOutput "lastClosedChangeId" | default "" -}}{{- end -}}
+    {{- end -}}
+    {{- $drySha := "" -}}{{- $currentFingerprint := "" -}}
+      {{- $currentFingerprint = index .TriggerVariables "fingerprint"         | default "" -}}
+    {{- end -}}
+    {{- $lastFiredFingerprint := "" -}}
+    {{ .Phase }}:
+    {{- else if eq $step "closeFailedTerminal" }} close gave up for {{ $changeId }} (HTTP {{ $statusCode }}) — treating as done
+    {{- else if eq $step "closeRetry" }} close failed for {{ $changeId }} (HTTP {{ $statusCode }}), will retry
+    {{- else if eq $step "found" }} found change {{ $changeId }} — closing on next reconcile
+    {{- end }}
+  httpRequest:
+      {{- if index .TriggerVariables "inCloseMode" -}}POST{{- else -}}GET{{- end -}}
+    timeout: 30s
+    headerTemplates:
+      Accept: application/json
+      Content-Type: application/json
+    urlTemplate: >-
+      {{- $base := "http://localhost:8987/v1/change-management-service" -}}
+      {{- $assetId := index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}
+      {{- if index .TriggerVariables "inCloseMode" -}}
+      {{ $base }}/change/close/{{ index .TriggerVariables "priorChangeId" }}
+      {{- else -}}
+      {
+        "change_execution_status": "SUCCEEDED"
+      }
+      {{- end -}}
+      # Never report failure. Pending only while a found record is waiting on (or retrying) close.
+        Response != nil
+          ? (Response.Body != nil && (Response.Body.change_records ?? nil) != nil
+             ((ResponseOutput.step ?? "") != "found" &&
     context: promotionstrategy
     trigger:
       requeueDuration: 30s
@@ -89,8 +636,6 @@ spec:
           # - close-phase state: did a previous reconcile already find a change record to close
           expression: |
             let key = "change-management-close";
-            let specEnvs = PromotionStrategy.Spec.Environments ?? [];
-            let statusEnvs = PromotionStrategy.Status.Environments ?? [];
             let keyIsGlobal = any(PromotionStrategy.Spec.ActiveCommitStatuses ?? [], {#.Key == key});
             let gatedEnvs = filter(specEnvs, {
               keyIsGlobal || any(#.ActiveCommitStatuses ?? [], {#.Key == key})
@@ -99,101 +644,44 @@ spec:
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
               status == nil || status.PullRequest == nil || string(status.PullRequest.State) != "open"
-            });
-            let everyEnvHasDrySha = len(specEnvs) > 0 && all(specEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
               status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != ""
-            });
-            let firstBranch = len(specEnvs) > 0 ? specEnvs[0].Branch : "";
-            let firstStatus = find(statusEnvs, { #.Branch == firstBranch });
-            let canonicalNoteDrySha = firstStatus != nil && firstStatus.Proposed.Note != nil ? firstStatus.Proposed.Note.DrySha : "";
-            let allNoteDryShasMatch = everyEnvHasDrySha && all(specEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
-              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha == canonicalNoteDrySha
-            });
             let fingerprint = join(map(specEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
               env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
             }), "|");
-            let priorStep = ResponseOutput != nil ? (ResponseOutput.step ?? "") : "";
-            let priorChangeId = ResponseOutput != nil ? (ResponseOutput.changeId ?? "") : "";
-            let haveChangeIdToClose = priorChangeId != "" &&
-              (priorStep == "found" || priorStep == "closeRetry");
             let alreadyDoneForFingerprint = fingerprint != "" &&
               fingerprint == (TriggerOutput.lastDoneFingerprint ?? "");
-            let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
-            let needsRetry = !isNewFingerprint && priorStep == "closeRetry";
-            {
-              allGatedPRsMerged: allGatedPRsMerged,
               allNoteDryShasMatch: allNoteDryShasMatch,
               fingerprint: fingerprint,
               canonicalNoteDrySha: canonicalNoteDrySha,
               haveChangeIdToClose: haveChangeIdToClose,
-              alreadyDoneForFingerprint: alreadyDoneForFingerprint,
-              isNewFingerprint: isNewFingerprint,
               needsRetry: needsRetry,
-              priorStep: priorStep,
-              priorChangeId: priorChangeId,
-              inCloseMode: haveChangeIdToClose
-            }
-        # Fire when SHAs are aligned, gated PRs are merged, this fingerprint isn't already done,
-        # and we either have a fresh fingerprint, a found change to close, or a retry to do.
         expression: |
           Variables.allNoteDryShasMatch &&
-          !Variables.alreadyDoneForFingerprint &&
-          (Variables.isNewFingerprint || Variables.haveChangeIdToClose || Variables.needsRetry) &&
-          Variables.allGatedPRsMerged
-        output:
           # Persist state across reconciles:
-          # - lastFingerprint: the fingerprint we last fired the trigger on
-          # - lastDoneFingerprint: terminal state reached (closed or terminally failed) — blocks re-firing
-          # - lastClosedChangeId: surfaces the closed id to the description template (the close response itself has no id)
-          # priorMatchesCurrent guards against stale priorStep from an earlier fingerprint marking the new one as done.
-          expression: |
-            let shouldTrigger = Variables.allNoteDryShasMatch &&
-              !Variables.alreadyDoneForFingerprint &&
-              (Variables.isNewFingerprint || Variables.haveChangeIdToClose || Variables.needsRetry) &&
-              Variables.allGatedPRsMerged;
-            let priorMatchesCurrent = Variables.fingerprint != "" &&
-              Variables.fingerprint == (TriggerOutput.lastFingerprint ?? "");
             let justClosed = priorMatchesCurrent && Variables.priorStep == "closed";
-            let justDone = priorMatchesCurrent &&
-              (Variables.priorStep == "closed" || Variables.priorStep == "closeFailedTerminal");
             let isFiringClosePost = shouldTrigger && Variables.inCloseMode && Variables.haveChangeIdToClose;
             {
               // Used elsewhere (read by templates / next reconciles):
               lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
-              lastDoneFingerprint: justDone ? Variables.fingerprint : (TriggerOutput.lastDoneFingerprint ?? ""),
-              lastClosedChangeId: isFiringClosePost ? Variables.priorChangeId : (TriggerOutput.lastClosedChangeId ?? ""),
               // Informational only (surfaced for debugging / status visibility):
               lastClosedFingerprint: justClosed ? Variables.fingerprint : (TriggerOutput.lastClosedFingerprint ?? ""),
               shouldTrigger: shouldTrigger,
-              priorMatchesCurrent: priorMatchesCurrent,
-              fingerprint: Variables.fingerprint,
-              canonicalNoteDrySha: Variables.canonicalNoteDrySha,
               phase: Phase,
               evaluatedAt: string(now())
             }
-      response:
-        output:
           # Parse the response. Search responses contain change_records, close responses do not.
           # Search: pick the first in-window record id, else first record id, else "".
           # Close:  2xx => "closed" (done), 429/5xx => "closeRetry", other 4xx => "closeFailedTerminal" (give up).
           expression: |
             let isSearch = Response.Body != nil && (Response.Body.change_records ?? nil) != nil;
             let priorChangeId = ResponseOutput != nil ? (ResponseOutput.changeId ?? "") : "";
-            let inWindowRecords = isSearch
-              ? filter(Response.Body.change_records ?? [], {
-                  date(#.change_request.start_time) <= now() && date(#.change_request.end_time) >= now()
-                })
-              : [];
-            let foundChangeId = isSearch
               ? (len(inWindowRecords) > 0
-                  ? string(inWindowRecords[0].id ?? "")
-                  : (len(Response.Body.change_records ?? []) > 0
                       ? string((Response.Body.change_records ?? [])[0].id ?? "")
                       : ""))
               : priorChangeId;
@@ -210,377 +698,459 @@ spec:
               step: step,
               changeId: foundChangeId,
               // Informational only (surfaced for debugging / status visibility):
-              isSearch: isSearch,
-              inWindowRecordCount: len(inWindowRecords),
               totalRecordCount: isSearch ? len(Response.Body.change_records ?? []) : 0,
               lastRequestedAt: string(now())
-            }
-
----
-apiVersion: promoter.argoproj.io/v1alpha1
-kind: WebRequestCommitStatus
-metadata:
-  name: change-management-open
   namespace: default
-spec:
-  promotionStrategyRef:
     name: argocon-demo
   key: change-management-open
-  reportOn: proposed
-  # Opens a change record (POST) once the proposed dry SHA is aligned across all envs
   # and a promotion PR exists on a gated env.
-  descriptionTemplate: >-
-    {{- $changeId := "" -}}{{- $statusCode := 0 -}}{{- $startTime := "" -}}{{- $endTime := "" -}}{{- $shortDesc := "" -}}
     {{- if .ResponseOutput -}}
       {{- $changeId   = index .ResponseOutput "changeId"           | default "" -}}
-      {{- $statusCode = index .ResponseOutput "statusCode"         | default 0 | int -}}
-      {{- $startTime  = index .ResponseOutput "crStartTime"        | default "" -}}
-      {{- $endTime    = index .ResponseOutput "crEndTime"          | default "" -}}
-      {{- $shortDesc  = index .ResponseOutput "crShortDescription" | default "" -}}
     {{- end -}}
-    {{- $drySha := "" -}}{{- $currentFingerprint := "" -}}
-    {{- if .TriggerVariables -}}
-      {{- $drySha             = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}
-      {{- $currentFingerprint = index .TriggerVariables "fingerprint"         | default "" -}}
-    {{- end -}}
-    {{- $lastFiredFingerprint := "" -}}
-    {{- if .TriggerOutput -}}{{- $lastFiredFingerprint = index .TriggerOutput "lastFingerprint" | default "" -}}{{- end -}}
-    {{- $shaShort := "" -}}{{- if ne $drySha "" -}}{{- $shaShort = substr 0 7 $drySha -}}{{- end -}}
-    {{- /* Stale = a new dry SHA arrived but the POST hasn't fired yet, so ResponseOutput is from the previous SHA. */ -}}
-    {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) -}}
     {{ .Phase }}:
     {{- if or (not .ResponseOutput) $stale }} preparing change record{{ if ne $shaShort "" }} for note dry SHA {{ $shaShort }}{{ end }}
     {{- else if and (eq $statusCode 202) (ne $changeId "") }} created change {{ $changeId }}
       {{- if ne $shortDesc "" }} — "{{ $shortDesc }}"{{- end -}}
-      {{- if and (ne $startTime "") (ne $endTime "") }} · window {{ $startTime }} → {{ $endTime }}{{- end }}
-    {{- else if eq $statusCode 202 }} change request accepted (HTTP 202) but no id returned — will retry
     {{- else }} change request returned HTTP {{ $statusCode }} (will retry)
     {{- end }}
   httpRequest:
     methodTemplate: POST
     timeout: 30s
-    headerTemplates:
-      Accept: application/json
-      Content-Type: application/json
-    urlTemplate: http://localhost:8987/v1/change-management-service/change/open
-    bodyTemplate: |
-      {
         "asset_id": "{{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}",
         "on_behalf_of": "zaller",
-        "short_description": "Automated prod promotion (multi-env)",
-        "description": {{- $key := "change-management-open" -}}{{- $global := false -}}{{- range $.PromotionStrategy.Spec.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $global = true -}}{{- end -}}{{- end -}}{{- $out := printf "Production change-management record for GitOps promotion strategy `%s`.\n\n**What is changing:** the hydrator **proposed note dry SHA** on each branch below—that is the dry snapshot queued to move forward on that branch.\n\n**Where it is promoted (spec order):**\n" $.PromotionStrategy.Name -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- $take := false -}}{{- if $global -}}{{- $take = true -}}{{- else -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $take = true -}}{{- end -}}{{- end -}}{{- end -}}{{- if $take -}}{{- $sha := "" -}}{{- $pr := "" -}}{{- range $.PromotionStrategy.Status.Environments -}}{{- if eq .Branch $se.Branch -}}{{- if and .Proposed.Note .Proposed.Note.DrySha -}}{{- $sha = .Proposed.Note.DrySha -}}{{- end -}}{{- if .PullRequest -}}{{- if and (ne .PullRequest.Url "") (eq (printf "%s" .PullRequest.State) "open") -}}{{- $pr = .PullRequest.Url -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if ne $pr "" -}}{{- $disp := "—" -}}{{- if ne $sha "" -}}{{- $disp = $sha -}}{{- end -}}{{- $suffix := printf " — [PR](%s)" $pr -}}{{- $out = printf "%s\n- **%s** — proposed note dry SHA: `%s`%s" $out $se.Branch $disp $suffix -}}{{- end -}}{{- end -}}{{- end -}}{{- $out = printf "%s\n\n**Git repository ref:** `%s`" $out $.PromotionStrategy.Spec.RepositoryReference.Name -}}{{ $out | toJson }},
         "environment": "production",
         "backout_plan": "In the event that this new change introduces a regression in behavior or some other problem, a rollback to the previous version can be initiated through DevPortal or Argo CD.",
         "change_plan": "Automated GitOps promotion: proposed dry SHA advances through each environment via promoter pull requests, commit statuses, and merge gates before production.",
-        "test_plan": "This change was initiated as part of a pipeline deployment and has been tested by all the automated tests that run as part of the pipeline.\n\nHowever, further testing by the team may be required after the successful deployment.\n\nAfter the deployment is completed, the team should perform the following validations:\n\n1. Verify the service is running as expected and all Golden Signals are healthy.\n2. Splunk logs and Wavefront dashboards do not show any unexpected errors or behavior.\n3. Run any functional tests (manual or automated) that are typically run after a deployment.\n4. Verify the new features and bug fixes included in this new version work as expected.",
-        "category": "Application",
-        "sub_category": "Release",
-        "commit_id": "{{ index .TriggerVariables "canonicalNoteDrySha" }}",
-        "start_time": "{{ now | date "2006-01-02T15:04:05Z07:00" }}",
         "end_time": "{{ now | dateModify "+30m" | date "2006-01-02T15:04:05Z07:00" }}",
-        "risk": "low",
-        "repo_url": "https://github.intuit.com/your-org/your-repo"
-      }
-  success:
     when:
       variables:
-        # Build the same dry-SHA fingerprint used by the trigger so the no-response
-        # branch can carry forward success when no HTTP fired this reconcile.
         expression: |
           let specEnvs = PromotionStrategy.Spec.Environments ?? [];
           let statusEnvs = PromotionStrategy.Status.Environments ?? [];
           let fingerprint = join(map(specEnvs, {
-            let env = #;
-            let status = find(statusEnvs, { #.Branch == env.Branch });
             env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
           }), "|");
-          { fingerprint: fingerprint }
-      # Success when the POST returned 202 with a body.id, or (no HTTP this reconcile)
       # we're already in success on the same fingerprint.
-      expression: |
-        Response != nil
-          ? (Response.StatusCode == 202 &&
-             Response.Body != nil &&
              Response.Body.id != nil &&
              Response.Body.id != "")
           : (Phase == "success" && Variables.fingerprint == (TriggerOutput["lastFingerprint"] ?? ""))
   mode:
     context: promotionstrategy
     trigger:
-      requeueDuration: 30s
-      when:
         variables:
           # Compute trigger gates:
           # - hasOpenPRForKey: a gated env has an open promotion PR (we open the change for it)
           # - allNoteDryShasMatch: dry SHAs are aligned across envs (hydrator settled)
           # - preGateNoOpenPR: no env *before* the first gated env still has an open PR
-          # - fingerprint / isNewFingerprint: detect a fresh dry-SHA set
-          # - needsRetry: previous POST returned a retryable error (429/5xx)
-          expression: |
-            let key = "change-management-open";
-            let specEnvs = PromotionStrategy.Spec.Environments ?? [];
-            let statusEnvs = PromotionStrategy.Status.Environments ?? [];
-            let keyIsGlobal = any(PromotionStrategy.Spec.ProposedCommitStatuses ?? [], {#.Key == key});
-            let firstGatedIdx = findIndex(specEnvs, {
-              keyIsGlobal || any(#.ProposedCommitStatuses ?? [], {#.Key == key})
-            });
-            let preGatedEnvs = (firstGatedIdx != nil && firstGatedIdx > 0)
               ? take(specEnvs, firstGatedIdx)
-              : [];
-            let preGateNoOpenPR = all(preGatedEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
               status == nil || status.PullRequest == nil || string(status.PullRequest.State) != "open"
             });
             let everyEnvHasDrySha = len(specEnvs) > 0 && all(specEnvs, {
               let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != ""
             });
-            let firstBranch = len(specEnvs) > 0 ? specEnvs[0].Branch : "";
-            let firstStatus = find(statusEnvs, { #.Branch == firstBranch });
-            let canonicalNoteDrySha = firstStatus != nil && firstStatus.Proposed.Note != nil ? firstStatus.Proposed.Note.DrySha : "";
-            let allNoteDryShasMatch = everyEnvHasDrySha && all(specEnvs, {
-              let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha == canonicalNoteDrySha
-            });
-            let fingerprint = join(map(specEnvs, {
-              let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
-            }), "|");
-            let hasOpenPRForKey = any(specEnvs, {
-              let env = #;
               let envHasKey = keyIsGlobal || any(env.ProposedCommitStatuses ?? [], {#.Key == key});
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              envHasKey && status != nil && status.PullRequest != nil && string(status.PullRequest.State) == "open"
-            });
-            let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
             let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
             let needsRetry = !isNewFingerprint && Phase != "success" && isRetryable;
-            {
-              hasOpenPRForKey: hasOpenPRForKey,
               allNoteDryShasMatch: allNoteDryShasMatch,
               isNewFingerprint: isNewFingerprint,
               needsRetry: needsRetry,
-              preGateNoOpenPR: preGateNoOpenPR,
-              fingerprint: fingerprint,
-              canonicalNoteDrySha: canonicalNoteDrySha
             }
         # Fire the POST when all gates pass and we have a fresh fingerprint or a retry to do.
         expression: |
-          Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry) && Variables.preGateNoOpenPR
-        output:
           # Persist the fingerprint we last fired on so success.when can carry forward
           # and isNewFingerprint can detect the next dry-SHA roll.
           expression: |
-            let shouldTrigger = Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry) && Variables.preGateNoOpenPR;
-            let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
-            {
-              // Used elsewhere (read by templates / next reconciles):
-              lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
-              // Informational only (surfaced for debugging / status visibility):
-              shouldTrigger: shouldTrigger,
-              fingerprint: Variables.fingerprint,
               canonicalNoteDrySha: Variables.canonicalNoteDrySha,
               lastStatusCode: lastStatusCode,
-              phase: Phase,
-              evaluatedAt: string(now())
-            }
       response:
-        output:
-          # Flatten the nested change_request fields so the description template
           # doesn't have to nil-check each one.
-          expression: |
-            let id = Response.Body.id;
             let msg = Response.Body.message;
             let cr = Response.Body.change_request;
             {
-              // Used elsewhere (read by templates / next reconciles):
-              statusCode: Response.StatusCode,
               changeId: id == nil ? "" : string(id),
               crStartTime: cr != nil && cr.start_time != nil ? string(cr.start_time) : "",
-              crEndTime: cr != nil && cr.end_time != nil ? string(cr.end_time) : "",
-              crShortDescription: cr != nil && cr.short_description != nil ? string(cr.short_description) : "",
               // Informational only (surfaced for debugging / status visibility):
-              message: msg == nil ? "" : string(msg),
-              changeRequest: cr ?? {},
               lastRequestedAt: string(now())
             }
 
 ---
-
-apiVersion: promoter.argoproj.io/v1alpha1
-kind: WebRequestCommitStatus
-metadata:
-  name: change-management-approval
-  namespace: default
-spec:
-  promotionStrategyRef:
-    name: argocon-demo
   key: change-management-approval
   reportOn: proposed
   # Polls the change-management service for an approved (and currently in-window) change record
   # matching the proposed dry SHA. Becomes success once one is found.
   descriptionTemplate: >-
-    {{- $approvedCount := 0 -}}{{- $totalCount := 0 -}}{{- $statusCode := 0 -}}{{- $lastChecked := "" -}}
-    {{- if .ResponseOutput -}}
       {{- $approvedCount = index .ResponseOutput "approvedCount"    | default 0 | int -}}
-      {{- $totalCount    = index .ResponseOutput "totalRecordCount" | default 0 | int -}}
-      {{- $statusCode    = index .ResponseOutput "statusCode"       | default 0 | int -}}
       {{- $lastChecked   = index .ResponseOutput "lastCheckedAt"    | default "" -}}
     {{- end -}}
     {{- $drySha := "" -}}{{- $currentFingerprint := "" -}}
     {{- if .TriggerVariables -}}
       {{- $drySha             = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}
-      {{- $currentFingerprint = index .TriggerVariables "fingerprint"         | default "" -}}
-    {{- end -}}
     {{- $lastFiredFingerprint := "" -}}
-    {{- if .TriggerOutput -}}{{- $lastFiredFingerprint = index .TriggerOutput "lastFingerprint" | default "" -}}{{- end -}}
-    {{- $shaShort := "" -}}{{- if ne $drySha "" -}}{{- $shaShort = substr 0 7 $drySha -}}{{- end -}}
     {{- /* Stale = a new dry SHA arrived but the GET hasn't fired yet, so ResponseOutput is from the previous SHA. */ -}}
     {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) -}}
     {{ .Phase }}:
-    {{- if or (not .ResponseOutput) $stale }} checking for approved change record{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
-    {{- else if and (eq $statusCode 200) (gt $approvedCount 0) }} {{ $approvedCount }} approved change record{{ if gt $approvedCount 1 }}s{{ end }} in window ({{ $totalCount }} total, last check {{ $lastChecked }})
     {{- else if eq $statusCode 200 }} {{ $approvedCount }}/{{ $totalCount }} records active in approval window (last check {{ $lastChecked }})
     {{- else }} approval check returned HTTP {{ $statusCode }}, will retry
-    {{- end }}
-  httpRequest:
     methodTemplate: GET
     timeout: 30s
     headerTemplates:
       Accept: application/json
-    urlTemplate: >-
-      {{- $base := "http://localhost:8987/v1/change-management-service" -}}
       {{- $assetId := index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}
       {{ $base }}/changes/search?asset_id={{ $assetId }}&commit_id={{ index .TriggerVariables "canonicalNoteDrySha" }}&limit=25
-  success:
-    when:
       variables:
         # Build the dry-SHA fingerprint so the no-response branch can carry forward success.
         expression: |
           let specEnvs = PromotionStrategy.Spec.Environments ?? [];
-          let statusEnvs = PromotionStrategy.Status.Environments ?? [];
-          let fingerprint = join(map(specEnvs, {
-            let env = #;
             let status = find(statusEnvs, { #.Branch == env.Branch });
             env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
-          }), "|");
-          { fingerprint: fingerprint }
       # Success when GET returned 200 and at least one record is approved AND currently in its window,
-      # or (no HTTP this reconcile) we're already in success on the same fingerprint.
-      expression: |
         Response != nil
           ? (Response.StatusCode == 200 &&
              len(Response.Body.change_records) > 0 &&
-             any(Response.Body.change_records, {
-               date(#.change_request.start_time) <= now() &&
                date(#.change_request.end_time) >= now() &&
                ((#.status ?? "") == "APPROVED" || (#.status ?? "") == "CONDITIONALLY_APPROVED" || (#.status ?? "") == "CLOSED_SUCCESS")
              }))
           : (Phase == "success" && Variables.fingerprint == (TriggerOutput["lastFingerprint"] ?? ""))
   mode:
     context: promotionstrategy
-    trigger:
-      requeueDuration: 15s
       when:
         variables:
           # Compute trigger gates plus a 1-minute polling interval so we don't hammer the service.
-          expression: |
-            let key = "change-management-approval";
             let specEnvs = PromotionStrategy.Spec.Environments ?? [];
             let statusEnvs = PromotionStrategy.Status.Environments ?? [];
-            let keyIsGlobal = any(PromotionStrategy.Spec.ProposedCommitStatuses ?? [], {#.Key == key});
-            let firstGatedIdx = findIndex(specEnvs, {
-              keyIsGlobal || any(#.ProposedCommitStatuses ?? [], {#.Key == key})
             });
             let preGatedEnvs = (firstGatedIdx != nil && firstGatedIdx > 0)
               ? take(specEnvs, firstGatedIdx)
               : [];
             let preGateNoOpenPR = all(preGatedEnvs, {
               let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              status == nil || status.PullRequest == nil || string(status.PullRequest.State) != "open"
-            });
             let everyEnvHasDrySha = len(specEnvs) > 0 && all(specEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
               status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != ""
             });
-            let firstBranch = len(specEnvs) > 0 ? specEnvs[0].Branch : "";
-            let firstStatus = find(statusEnvs, { #.Branch == firstBranch });
-            let canonicalNoteDrySha = firstStatus != nil && firstStatus.Proposed.Note != nil ? firstStatus.Proposed.Note.DrySha : "";
             let allNoteDryShasMatch = everyEnvHasDrySha && all(specEnvs, {
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: WebRequestCommitStatus
+metadata:
+  name: change-management-close
+  namespace: default
+    name: argocon-demo
+    {{- if .ResponseOutput -}}
+      {{- $changeId   = index .ResponseOutput "changeId"   | default "" -}}
+      {{- $step       = index .ResponseOutput "step"       | default "" -}}
+      {{- $statusCode = index .ResponseOutput "statusCode" | default 0 | int -}}
+    {{- if eq $changeId "" -}}
+      {{- if .TriggerVariables -}}{{- $changeId = index .TriggerVariables "priorChangeId" | default "" -}}{{- end -}}
+      {{- if and (eq $changeId "") .TriggerOutput -}}{{- $changeId = index .TriggerOutput "lastClosedChangeId" | default "" -}}{{- end -}}
+    {{- end -}}
+    {{- $drySha := "" -}}{{- $currentFingerprint := "" -}}
+      {{- $currentFingerprint = index .TriggerVariables "fingerprint"         | default "" -}}
+    {{- end -}}
+    {{- $lastFiredFingerprint := "" -}}
+    {{ .Phase }}:
+    {{- else if eq $step "closeFailedTerminal" }} close gave up for {{ $changeId }} (HTTP {{ $statusCode }}) — treating as done
+    {{- else if eq $step "closeRetry" }} close failed for {{ $changeId }} (HTTP {{ $statusCode }}), will retry
+    {{- else if eq $step "found" }} found change {{ $changeId }} — closing on next reconcile
+    {{- end }}
+  httpRequest:
+      {{- if index .TriggerVariables "inCloseMode" -}}POST{{- else -}}GET{{- end -}}
+    timeout: 30s
+    headerTemplates:
+      Accept: application/json
+      Content-Type: application/json
+    urlTemplate: >-
+      {{- $base := "http://localhost:8987/v1/change-management-service" -}}
+      {{- $assetId := index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}
+      {{- if index .TriggerVariables "inCloseMode" -}}
+      {{ $base }}/change/close/{{ index .TriggerVariables "priorChangeId" }}
+      {{- else -}}
+      {
+        "change_execution_status": "SUCCEEDED"
+      }
+      {{- end -}}
+      # Never report failure. Pending only while a found record is waiting on (or retrying) close.
+        Response != nil
+          ? (Response.Body != nil && (Response.Body.change_records ?? nil) != nil
+             ((ResponseOutput.step ?? "") != "found" &&
+    context: promotionstrategy
+    trigger:
+      requeueDuration: 30s
+      when:
+        variables:
+          # Compute everything the trigger and HTTP templates need:
+          # - gating: this key is wired up, all gated envs have merged their promotion PRs
+          # - dry SHA alignment: every spec env shows the same proposed note dry SHA
+          # - fingerprint: identifies the current set of dry SHAs across envs
+          # - close-phase state: did a previous reconcile already find a change record to close
+          expression: |
+            let key = "change-management-close";
+            let keyIsGlobal = any(PromotionStrategy.Spec.ActiveCommitStatuses ?? [], {#.Key == key});
+            });
+            let allGatedPRsMerged = len(gatedEnvs) > 0 && all(gatedEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
-              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha == canonicalNoteDrySha
-            });
+              status == nil || status.PullRequest == nil || string(status.PullRequest.State) != "open"
+              let env = #;
+              let status = find(statusEnvs, { #.Branch == env.Branch });
+              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != ""
+              let env = #;
+              let status = find(statusEnvs, { #.Branch == env.Branch });
             let fingerprint = join(map(specEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
               env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
             }), "|");
-            let hasOpenPRForKey = any(specEnvs, {
-              let env = #;
-              let envHasKey = keyIsGlobal || any(env.ProposedCommitStatuses ?? [], {#.Key == key});
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              envHasKey && status != nil && status.PullRequest != nil && string(status.PullRequest.State) == "open"
-            });
-            let pollingIntervalMinutes = 1;
-            let isFirstRun = TriggerOutput.lastRequestTime == nil;
-            let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
-            let pollingIntervalElapsed = !isFirstRun && (
-              (now() - date(TriggerOutput.lastRequestTime)) >= duration(string(pollingIntervalMinutes) + "m")
-            );
-            {
-              hasOpenPRForKey: hasOpenPRForKey,
+            let alreadyDoneForFingerprint = fingerprint != "" &&
+              fingerprint == (TriggerOutput.lastDoneFingerprint ?? "");
               allNoteDryShasMatch: allNoteDryShasMatch,
-              preGateNoOpenPR: preGateNoOpenPR,
               fingerprint: fingerprint,
               canonicalNoteDrySha: canonicalNoteDrySha,
-              isFirstRun: isFirstRun,
-              isNewFingerprint: isNewFingerprint,
-              pollingIntervalElapsed: pollingIntervalElapsed
-            }
-        # Fire the GET when gates pass and we either haven't run yet, have a fresh fingerprint,
-        # or the polling interval has elapsed.
+              haveChangeIdToClose: haveChangeIdToClose,
+              needsRetry: needsRetry,
         expression: |
-          Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isFirstRun || Variables.isNewFingerprint || Variables.pollingIntervalElapsed) && Variables.preGateNoOpenPR
-        output:
-          # lastFingerprint advances only when we actually fire the GET — if a new fingerprint
-          # arrives but trigger gates block it, the description template uses the mismatch
-          # between TriggerVariables.fingerprint and lastFingerprint to flag stale ResponseOutput.
-          expression: |
-            let shouldTrigger = Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isFirstRun || Variables.isNewFingerprint || Variables.pollingIntervalElapsed) && Variables.preGateNoOpenPR;
+          Variables.allNoteDryShasMatch &&
+          # Persist state across reconciles:
+            let justClosed = priorMatchesCurrent && Variables.priorStep == "closed";
+            let isFiringClosePost = shouldTrigger && Variables.inCloseMode && Variables.haveChangeIdToClose;
             {
               // Used elsewhere (read by templates / next reconciles):
               lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
-              lastRequestTime: shouldTrigger ? now() : TriggerOutput.lastRequestTime,
               // Informational only (surfaced for debugging / status visibility):
+              lastClosedFingerprint: justClosed ? Variables.fingerprint : (TriggerOutput.lastClosedFingerprint ?? ""),
               shouldTrigger: shouldTrigger,
-              fingerprint: Variables.fingerprint,
-              canonicalNoteDrySha: Variables.canonicalNoteDrySha,
+              phase: Phase,
               evaluatedAt: string(now())
             }
-      response:
-        output:
-          # Count records that are both approved (or already closed-success) and currently in window.
+          # Parse the response. Search responses contain change_records, close responses do not.
+          # Search: pick the first in-window record id, else first record id, else "".
+          # Close:  2xx => "closed" (done), 429/5xx => "closeRetry", other 4xx => "closeFailedTerminal" (give up).
           expression: |
-            let approvedRecords = filter(Response.Body.change_records ?? [], {
-              date(#.change_request.start_time) <= now() &&
-              date(#.change_request.end_time) >= now() &&
-              ((#.status ?? "") == "APPROVED" || (#.status ?? "") == "CONDITIONALLY_APPROVED")
-            });
+            let isSearch = Response.Body != nil && (Response.Body.change_records ?? nil) != nil;
+            let priorChangeId = ResponseOutput != nil ? (ResponseOutput.changeId ?? "") : "";
+              ? (len(inWindowRecords) > 0
+                      ? string((Response.Body.change_records ?? [])[0].id ?? "")
+                      : ""))
+              : priorChangeId;
+            let statusCode = Response.StatusCode;
+            let closeStep = statusCode >= 200 && statusCode < 300
+              ? "closed"
+              : (statusCode == 429 || statusCode >= 500 ? "closeRetry" : "closeFailedTerminal");
+            let step = isSearch
+              ? (foundChangeId != "" ? "found" : "searching")
+              : closeStep;
             {
               // Used elsewhere (read by templates / next reconciles):
-              statusCode: Response.StatusCode,
-              totalRecordCount: len(Response.Body.change_records ?? []),
-              approvedCount: len(approvedRecords),
-              lastCheckedAt: string(now()),
+              statusCode: statusCode,
+              step: step,
+              changeId: foundChangeId,
               // Informational only (surfaced for debugging / status visibility):
-              approvedRecords: approvedRecords
+              totalRecordCount: isSearch ? len(Response.Body.change_records ?? []) : 0,
+              lastRequestedAt: string(now())
+  namespace: default
+    name: argocon-demo
+  key: change-management-open
+  # and a promotion PR exists on a gated env.
+    {{- if .ResponseOutput -}}
+      {{- $changeId   = index .ResponseOutput "changeId"           | default "" -}}
+    {{- end -}}
+    {{ .Phase }}:
+    {{- if or (not .ResponseOutput) $stale }} preparing change record{{ if ne $shaShort "" }} for note dry SHA {{ $shaShort }}{{ end }}
+    {{- else if and (eq $statusCode 202) (ne $changeId "") }} created change {{ $changeId }}
+      {{- if ne $shortDesc "" }} — "{{ $shortDesc }}"{{- end -}}
+    {{- else }} change request returned HTTP {{ $statusCode }} (will retry)
+    {{- end }}
+  httpRequest:
+    methodTemplate: POST
+    timeout: 30s
+        "asset_id": "{{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}",
+        "on_behalf_of": "zaller",
+        "environment": "production",
+        "backout_plan": "In the event that this new change introduces a regression in behavior or some other problem, a rollback to the previous version can be initiated through DevPortal or Argo CD.",
+        "change_plan": "Automated GitOps promotion: proposed dry SHA advances through each environment via promoter pull requests, commit statuses, and merge gates before production.",
+        "end_time": "{{ now | dateModify "+30m" | date "2006-01-02T15:04:05Z07:00" }}",
+    when:
+      variables:
+        expression: |
+          let specEnvs = PromotionStrategy.Spec.Environments ?? [];
+          let statusEnvs = PromotionStrategy.Status.Environments ?? [];
+          let fingerprint = join(map(specEnvs, {
+            env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
+          }), "|");
+      # we're already in success on the same fingerprint.
+             Response.Body.id != nil &&
+             Response.Body.id != "")
+          : (Phase == "success" && Variables.fingerprint == (TriggerOutput["lastFingerprint"] ?? ""))
+  mode:
+    context: promotionstrategy
+    trigger:
+        variables:
+          # Compute trigger gates:
+          # - hasOpenPRForKey: a gated env has an open promotion PR (we open the change for it)
+          # - allNoteDryShasMatch: dry SHAs are aligned across envs (hydrator settled)
+          # - preGateNoOpenPR: no env *before* the first gated env still has an open PR
+              ? take(specEnvs, firstGatedIdx)
+              let env = #;
+              let status = find(statusEnvs, { #.Branch == env.Branch });
+              status == nil || status.PullRequest == nil || string(status.PullRequest.State) != "open"
+            });
+            let everyEnvHasDrySha = len(specEnvs) > 0 && all(specEnvs, {
+              let env = #;
+            });
+              let envHasKey = keyIsGlobal || any(env.ProposedCommitStatuses ?? [], {#.Key == key});
+            let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
+            let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
+            let needsRetry = !isNewFingerprint && Phase != "success" && isRetryable;
+              allNoteDryShasMatch: allNoteDryShasMatch,
+              isNewFingerprint: isNewFingerprint,
+              needsRetry: needsRetry,
             }
+        # Fire the POST when all gates pass and we have a fresh fingerprint or a retry to do.
+        expression: |
+          # Persist the fingerprint we last fired on so success.when can carry forward
+          # and isNewFingerprint can detect the next dry-SHA roll.
+          expression: |
+              canonicalNoteDrySha: Variables.canonicalNoteDrySha,
+              lastStatusCode: lastStatusCode,
+      response:
+          # doesn't have to nil-check each one.
+            let msg = Response.Body.message;
+            let cr = Response.Body.change_request;
+            {
+              changeId: id == nil ? "" : string(id),
+              crStartTime: cr != nil && cr.start_time != nil ? string(cr.start_time) : "",
+              // Informational only (surfaced for debugging / status visibility):
+              lastRequestedAt: string(now())
+            }
+
+---
+  key: change-management-approval
+  reportOn: proposed
+  # Polls the change-management service for an approved (and currently in-window) change record
+  # matching the proposed dry SHA. Becomes success once one is found.
+  descriptionTemplate: >-
+      {{- $approvedCount = index .ResponseOutput "approvedCount"    | default 0 | int -}}
+      {{- $lastChecked   = index .ResponseOutput "lastCheckedAt"    | default "" -}}
+    {{- end -}}
+    {{- $drySha := "" -}}{{- $currentFingerprint := "" -}}
+    {{- if .TriggerVariables -}}
+      {{- $drySha             = index .TriggerVariables "canonicalNoteDrySha" | default "" -}}
+    {{- $lastFiredFingerprint := "" -}}
+    {{- /* Stale = a new dry SHA arrived but the GET hasn't fired yet, so ResponseOutput is from the previous SHA. */ -}}
+    {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) -}}
+    {{ .Phase }}:
+    {{- else if eq $statusCode 200 }} {{ $approvedCount }}/{{ $totalCount }} records active in approval window (last check {{ $lastChecked }})
+    {{- else }} approval check returned HTTP {{ $statusCode }}, will retry
+    methodTemplate: GET
+    timeout: 30s
+    headerTemplates:
+      Accept: application/json
+      {{- $assetId := index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}
+      {{ $base }}/changes/search?asset_id={{ $assetId }}&commit_id={{ index .TriggerVariables "canonicalNoteDrySha" }}&limit=25
+      variables:
+        # Build the dry-SHA fingerprint so the no-response branch can carry forward success.
+        expression: |
+          let specEnvs = PromotionStrategy.Spec.Environments ?? [];
+            let status = find(statusEnvs, { #.Branch == env.Branch });
+            env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
+      # Success when GET returned 200 and at least one record is approved AND currently in its window,
+        Response != nil
+          ? (Response.StatusCode == 200 &&
+             len(Response.Body.change_records) > 0 &&
+               date(#.change_request.end_time) >= now() &&
+               ((#.status ?? "") == "APPROVED" || (#.status ?? "") == "CONDITIONALLY_APPROVED" || (#.status ?? "") == "CLOSED_SUCCESS")
+             }))
+          : (Phase == "success" && Variables.fingerprint == (TriggerOutput["lastFingerprint"] ?? ""))
+  mode:
+    context: promotionstrategy
+      when:
+        variables:
+          # Compute trigger gates plus a 1-minute polling interval so we don't hammer the service.
+            let specEnvs = PromotionStrategy.Spec.Environments ?? [];
+            let statusEnvs = PromotionStrategy.Status.Environments ?? [];
+            });
+            let preGatedEnvs = (firstGatedIdx != nil && firstGatedIdx > 0)
+              ? take(specEnvs, firstGatedIdx)
+              : [];
+            let preGateNoOpenPR = all(preGatedEnvs, {
+              let env = #;
+            });
+            let everyEnvHasDrySha = len(specEnvs) > 0 && all(specEnvs, {
+              let env = #;
+              let status = find(statusEnvs, { #.Branch == env.Branch });
+            let allNoteDryShasMatch = everyEnvHasDrySha && all(specEnvs, {
+CLOSED_SUCCESS
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
 
