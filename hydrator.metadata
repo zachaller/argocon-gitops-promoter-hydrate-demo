@@ -1,18 +1,17 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d51c44bdd30e8e514f11863d54980e77845bd2c5",
+  "drySha": "ce2f85f4220ba15c7407ce8f2bd713242975efce",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-15T08:51:11-05:00",
-  "subject": "chore: bump version to v1.0.1886",
+  "date": "2026-05-15T11:26:42-05:00",
+  "subject": "chore: bump version to v1.0.1887",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-05-06T11:28:50-05:00",
-        "subject": "chore(ci): minimize permissions (#1307)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "1c796c431d1aa60f685e1419c615bbaae03652e9",
+        "date": "2026-04-11T07:26:07-05:00",
+        "subject": "chore: update configuration",
+        "sha": "9d5ccef278218dea4caa903bb6abb9ed974a1d90",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
