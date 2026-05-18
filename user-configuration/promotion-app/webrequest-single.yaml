@@ -361,18 +361,38 @@ spec:
             let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
             let needsRetry = !isNewFingerprint && Phase != "success" && isRetryable;
-            let keyedAuthors = map(keyedEnvs, {
+            let refAuthors = map(keyedEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
               let authorRef = status != nil
                 ? find(status.Proposed.Dry.References ?? [], { #.Commit != nil && (#.Commit.Author ?? "") != "" })
                 : nil;
               let raw = authorRef != nil ? authorRef.Commit.Author : "";
-              let name = trim(trim(split(raw, "<")[0]), "\"");
-              name
+              trim(trim(split(raw, "<")[0]), "\"")
             });
-            let uniqueAuthors = uniq(keyedAuthors);
-            let commitAuthor = len(uniqueAuthors) == 1 && uniqueAuthors[0] != "" ? uniqueAuthors[0] : "";
+            let dryAuthors = map(keyedEnvs, {
+              let env = #;
+              let status = find(statusEnvs, { #.Branch == env.Branch });
+              let raw = status != nil ? (status.Proposed.Dry.Author ?? "") : "";
+              trim(trim(split(raw, "<")[0]), "\"")
+            });
+            let uniqRefAuthors = uniq(refAuthors);
+            let uniqDryAuthors = uniq(dryAuthors);
+            let refAuthor = len(uniqRefAuthors) == 1 && uniqRefAuthors[0] != "" ? uniqRefAuthors[0] : "";
+            let dryAuthor = len(uniqDryAuthors) == 1 && uniqDryAuthors[0] != "" ? uniqDryAuthors[0] : "";
+            // Author fallback tiers: 0 = ref commit, 1 = proposed.dry.author, 2 = empty.
+            // Bump the tier when the previous attempt returned 400 "is not an active user"
+            // for the same fingerprint+author. Reset to 0 whenever the fingerprint rolls.
+            let prevAuthorTier = int(TriggerOutput.authorTier ?? 0);
+            let prevFingerprint = string(TriggerOutput.lastFingerprint ?? "");
+            let prevStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
+            let prevMessage = ResponseOutput != nil ? string(ResponseOutput.message ?? "") : "";
+            let inactiveUserRejected = prevStatusCode == 400 && prevMessage contains "is not an active user";
+            let sameFingerprint = prevFingerprint == fingerprint && prevFingerprint != "";
+            let bumpTier = sameFingerprint && inactiveUserRejected;
+            let resetTier = !sameFingerprint;
+            let authorTier = resetTier ? 0 : (bumpTier ? prevAuthorTier + 1 : prevAuthorTier);
+            let commitAuthor = authorTier == 0 ? refAuthor : (authorTier == 1 ? dryAuthor : "");
             {
               hasOpenPRForKey: hasOpenPRForKey,
               allNoteDryShasMatch: allNoteDryShasMatch,
@@ -381,20 +401,26 @@ spec:
               preGateNoOpenPR: preGateNoOpenPR,
               fingerprint: fingerprint,
               canonicalNoteDrySha: canonicalNoteDrySha,
-              commitAuthor: commitAuthor
+              commitAuthor: commitAuthor,
+              authorTier: authorTier,
+              needsAuthorRetry: bumpTier
             }
-        # Fire the POST when all gates pass and we have a fresh fingerprint or a retry to do.
+        # Fire the POST when all gates pass and we have a fresh fingerprint, a retry to do,
+        # or we just bumped the author fallback tier after a 'not an active user' rejection.
         expression: |
-          Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry) && Variables.preGateNoOpenPR
+          Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry || Variables.needsAuthorRetry) && Variables.preGateNoOpenPR
         output:
           # Persist the fingerprint we last fired on so success.when can carry forward
-          # and isNewFingerprint can detect the next dry-SHA roll.
+          # and isNewFingerprint can detect the next dry-SHA roll. Also persist the
+          # author tier so we don't keep retrying the same rejected on_behalf_of user.
           expression: |
-            let shouldTrigger = Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry) && Variables.preGateNoOpenPR;
+            let shouldTrigger = Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry || Variables.needsAuthorRetry) && Variables.preGateNoOpenPR;
             let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
             {
               // Used elsewhere (read by templates / next reconciles):
               lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
+              authorTier: Variables.authorTier,
+              commitAuthor: Variables.commitAuthor,
               // Informational only (surfaced for debugging / status visibility):
               shouldTrigger: shouldTrigger,
               fingerprint: Variables.fingerprint,
