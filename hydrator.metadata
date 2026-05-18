@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6d17cf247f293a19c8c36808a138109bbd4a70a3",
+  "drySha": "b72900a6b67650b0082239a5cced64edc7f36197",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-18T11:12:42-05:00",
-  "subject": "chore: bump version to v1.0.1897",
+  "date": "2026-05-18T11:16:36-05:00",
+  "subject": "chore: bump version to v1.0.1899",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"zaller\" <code@example.com>",
-        "date": "2026-04-15T22:57:44-05:00",
-        "subject": "test: fix flaky CommitStatus spec/status read test (#1426)",
-        "body": "* test: fix flaky CommitStatus spec/status read test\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "384fb058c06bc6c7cd5fa339d4913e51082b9c80",
+        "date": "2026-05-03T17:34:45-05:00",
+        "subject": "chore(deps): bump urllib3 from 2.6.3 to 2.7.0 in /docs (#1418)",
+        "body": "Bumps [urllib3](https://github.com/urllib3/urllib3) from 2.6.3 to 2.7.0.\n- [Release notes](https://github.com/urllib3/urllib3/releases)\n- [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)\n- [Commits](https://github.com/urllib3/urllib3/compare/2.6.3...2.7.0)\n\n---\nupdated-dependencies:\n- dependency-name: urllib3\n  dependency-version: 2.7.0\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "7d01261242f49539c575a9d4a8b88fbe363447de",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
