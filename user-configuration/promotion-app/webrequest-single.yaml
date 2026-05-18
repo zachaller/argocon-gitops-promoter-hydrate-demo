@@ -372,7 +372,7 @@ spec:
               name
             });
             let uniqueAuthors = uniq(keyedAuthors);
-            let commitAuthor = len(uniqueAuthors) == 1 && uniqueAuthors[0] != "" ? uniqueAuthors[0] : "zaller";
+            let commitAuthor = len(uniqueAuthors) == 1 && uniqueAuthors[0] != "" ? uniqueAuthors[0] : "";
             {
               hasOpenPRForKey: hasOpenPRForKey,
               allNoteDryShasMatch: allNoteDryShasMatch,
