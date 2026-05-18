@@ -33,13 +33,13 @@ spec:
     {{- /* Stale = a new dry SHA arrived but the trigger hasn't fired yet, so any ResponseOutput is from the previous SHA. */ -}}
     {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) -}}
     {{ .Phase }}:
-    {{- if or (not .ResponseOutput) $stale }} searching for change record to close{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
-    {{- else if eq $step "closed" }} closed change {{ $changeId }}{{ if ne $shaShort "" }} for sha {{ $shaShort }}{{ end }}
+    {{- if or (not .ResponseOutput) $stale }} searching for change record to close{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }}
+    {{- else if eq $step "closed" }} closed change {{ $changeId }}{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }}
     {{- else if eq $step "closeFailedTerminal" }} close gave up for {{ $changeId }} (HTTP {{ $statusCode }}) — treating as done
     {{- else if eq $step "closeRetry" }} close failed for {{ $changeId }} (HTTP {{ $statusCode }}), will retry
     {{- else if eq $step "found" }} found change {{ $changeId }} — closing on next reconcile
-    {{- else if eq $step "searching" }} no change record in window{{ if ne $shaShort "" }} for note dry SHA {{ $shaShort }}{{ end }} — nothing to close
-    {{- else }} searching for change record to close{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
+    {{- else if eq $step "searching" }} no change record in window{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }} — nothing to close
+    {{- else }} searching for change record to close{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }}
     {{- end }}
   httpRequest:
     # GET to search for the change record, POST to close it once we know its id.
@@ -249,11 +249,11 @@ spec:
     {{- /* Stale = a new dry SHA arrived but the POST hasn't fired yet, so ResponseOutput is from the previous SHA. */ -}}
     {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) -}}
     {{ .Phase }}:
-    {{- if or (not .ResponseOutput) $stale }} preparing change record{{ if ne $shaShort "" }} for note dry SHA {{ $shaShort }}{{ end }}
+    {{- if or (not .ResponseOutput) $stale }} preparing change record{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }}
     {{- else if and (eq $statusCode 202) (ne $changeId "") }} created change {{ $changeId }}
       {{- if ne $shortDesc "" }} — "{{ $shortDesc }}"{{- end -}}
       {{- if and (ne $startTime "") (ne $endTime "") }} · window {{ $startTime }} → {{ $endTime }}{{- end }}
-    {{- else if eq $statusCode 202 }} change request accepted (HTTP 202) but no id returned — will retry
+    {{- else if eq $statusCode 202 }} change request accepted (HTTP 202) but no ID returned — will retry
     {{- else }} change request returned HTTP {{ $statusCode }} (will retry)
     {{- end }}
   httpRequest:
@@ -393,9 +393,9 @@ spec:
             let bumpTier = !isNewFingerprint && inactiveUserRejected;
             let baseTier = isNewFingerprint ? 0 : (bumpTier ? prevAuthorTier + 1 : prevAuthorTier);
             // Skip tier 0 if ref authors disagree, skip tier 1 if dry authors disagree.
-            let skip0 = baseTier <= 0 && !refAuthorsAgree;
+            let skip0 = baseTier == 0 && !refAuthorsAgree;
             let tierAfter0 = skip0 ? 1 : baseTier;
-            let skip1 = tierAfter0 <= 1 && !dryAuthorsAgree;
+            let skip1 = tierAfter0 == 1 && !dryAuthorsAgree;
             let authorTier = skip1 ? 2 : tierAfter0;
             let commitAuthor = authorTier == 0 ? refAuthor : (authorTier == 1 ? dryAuthor : "");
             {
@@ -488,7 +488,7 @@ spec:
     {{- /* Stale = a new dry SHA arrived but the GET hasn't fired yet, so ResponseOutput is from the previous SHA. */ -}}
     {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) -}}
     {{ .Phase }}:
-    {{- if or (not .ResponseOutput) $stale }} checking for approved change record{{ if ne $shaShort "" }} matching note dry SHA {{ $shaShort }}{{ end }}
+    {{- if or (not .ResponseOutput) $stale }} checking for approved change record{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }}
     {{- else if and (eq $statusCode 200) (gt $approvedCount 0) }} {{ $approvedCount }} approved change record{{ if gt $approvedCount 1 }}s{{ end }} in window ({{ $totalCount }} total, last check {{ $lastChecked }})
     {{- else if eq $statusCode 200 }} {{ $approvedCount }}/{{ $totalCount }} records active in approval window (last check {{ $lastChecked }})
     {{- else }} approval check returned HTTP {{ $statusCode }}, will retry
