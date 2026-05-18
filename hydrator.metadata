@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "02f40b637161f23f5f9e3fede5558e8dd3369dbf",
+  "drySha": "0abf5264bd39bf509f20b5dd6bf3c6d3e715a4f4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-18T11:09:39-05:00",
-  "subject": "chore: bump version to v1.0.1892",
+  "date": "2026-05-18T11:10:25-05:00",
+  "subject": "chore: bump version to v1.0.1894",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"zaller\" <code@example.com>",
-        "date": "2026-05-06T19:21:14-05:00",
-        "subject": "fix: cache github client / transports (#1432)",
-        "body": "* cache github client / transports\n\nThe ghinstallation.Transport has native refresh capabilities that should\nbe used instead of requesting a new token on every reconcile.\n\nThe github.Client has native rate limiting capabilities that should be\nused.\n\nBoth of these require persisting the clients across reconcile cycles.\nA package level cache seems OK given that it's internal.\n\nSigned-off-by: Sean Liao <sean.liao@circle.com>\n\n* copilot review comments\n\nSigned-off-by: Sean Liao <sean.liao@circle.com>\n\n---------\n\nSigned-off-by: Sean Liao <sean.liao@circle.com>",
-        "sha": "bf727e5d2d04ee7b8fe73cbed2df5be92aacfcc4",
+        "date": "2026-04-19T22:09:11-05:00",
+        "subject": "chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.98 to 0.9.100 (#1387)",
+        "body": "Bumps [github.com/ktrysmt/go-bitbucket](https://github.com/ktrysmt/go-bitbucket) from 0.9.98 to 0.9.100.\n- [Release notes](https://github.com/ktrysmt/go-bitbucket/releases)\n- [Commits](https://github.com/ktrysmt/go-bitbucket/compare/v0.9.98...v0.9.100)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/ktrysmt/go-bitbucket\n  dependency-version: 0.9.100\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "0c29b40edcb62d57720ed2aa84802be9a2117761",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
