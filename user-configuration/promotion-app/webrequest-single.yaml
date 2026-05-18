@@ -378,16 +378,25 @@ spec:
             });
             let uniqRefAuthors = uniq(refAuthors);
             let uniqDryAuthors = uniq(dryAuthors);
-            let refAuthor = len(uniqRefAuthors) == 1 && uniqRefAuthors[0] != "" ? uniqRefAuthors[0] : "";
-            let dryAuthor = len(uniqDryAuthors) == 1 && uniqDryAuthors[0] != "" ? uniqDryAuthors[0] : "";
+            let refAuthorsAgree = len(uniqRefAuthors) == 1 && uniqRefAuthors[0] != "";
+            let dryAuthorsAgree = len(uniqDryAuthors) == 1 && uniqDryAuthors[0] != "";
+            let refAuthor = refAuthorsAgree ? uniqRefAuthors[0] : "";
+            let dryAuthor = dryAuthorsAgree ? uniqDryAuthors[0] : "";
             // Author fallback tiers: 0 = ref commit, 1 = proposed.dry.author, 2 = empty.
             // Bump the tier when the previous attempt returned 400 "is not an active user"
-            // on the same fingerprint. Reset to 0 whenever the fingerprint rolls.
+            // on the same fingerprint, OR when the current tier has no usable author
+            // (envs disagree) so we'd otherwise silently send "" and skip the next tier.
+            // Reset to 0 whenever the fingerprint rolls.
             let prevAuthorTier = int(TriggerOutput.authorTier ?? 0);
             let prevMessage = ResponseOutput != nil ? string(ResponseOutput.message ?? "") : "";
             let inactiveUserRejected = lastStatusCode == 400 && prevMessage contains "is not an active user";
             let bumpTier = !isNewFingerprint && inactiveUserRejected;
-            let authorTier = isNewFingerprint ? 0 : (bumpTier ? prevAuthorTier + 1 : prevAuthorTier);
+            let baseTier = isNewFingerprint ? 0 : (bumpTier ? prevAuthorTier + 1 : prevAuthorTier);
+            // Skip tier 0 if ref authors disagree, skip tier 1 if dry authors disagree.
+            let skip0 = baseTier <= 0 && !refAuthorsAgree;
+            let tierAfter0 = skip0 ? 1 : baseTier;
+            let skip1 = tierAfter0 <= 1 && !dryAuthorsAgree;
+            let authorTier = skip1 ? 2 : tierAfter0;
             let commitAuthor = authorTier == 0 ? refAuthor : (authorTier == 1 ? dryAuthor : "");
             {
               hasOpenPRForKey: hasOpenPRForKey,
