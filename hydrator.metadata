@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "0abf5264bd39bf509f20b5dd6bf3c6d3e715a4f4",
+  "drySha": "434b50b704892226c32e36da67f2085bcf6b4b76",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-18T11:10:25-05:00",
-  "subject": "chore: bump version to v1.0.1894",
+  "date": "2026-05-18T11:12:09-05:00",
+  "subject": "chore: bump version to v1.0.1896",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"zaller\" <code@example.com>",
-        "date": "2026-04-19T22:09:11-05:00",
-        "subject": "chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.98 to 0.9.100 (#1387)",
-        "body": "Bumps [github.com/ktrysmt/go-bitbucket](https://github.com/ktrysmt/go-bitbucket) from 0.9.98 to 0.9.100.\n- [Release notes](https://github.com/ktrysmt/go-bitbucket/releases)\n- [Commits](https://github.com/ktrysmt/go-bitbucket/compare/v0.9.98...v0.9.100)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/ktrysmt/go-bitbucket\n  dependency-version: 0.9.100\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "0c29b40edcb62d57720ed2aa84802be9a2117761",
+        "date": "2026-05-12T00:53:06-05:00",
+        "subject": "test: fix flaky CommitStatus spec/status read test (#1426)",
+        "body": "* test: fix flaky CommitStatus spec/status read test\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "384fb058c06bc6c7cd5fa339d4913e51082b9c80",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
