@@ -382,16 +382,12 @@ spec:
             let dryAuthor = len(uniqDryAuthors) == 1 && uniqDryAuthors[0] != "" ? uniqDryAuthors[0] : "";
             // Author fallback tiers: 0 = ref commit, 1 = proposed.dry.author, 2 = empty.
             // Bump the tier when the previous attempt returned 400 "is not an active user"
-            // for the same fingerprint+author. Reset to 0 whenever the fingerprint rolls.
+            // on the same fingerprint. Reset to 0 whenever the fingerprint rolls.
             let prevAuthorTier = int(TriggerOutput.authorTier ?? 0);
-            let prevFingerprint = string(TriggerOutput.lastFingerprint ?? "");
-            let prevStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
             let prevMessage = ResponseOutput != nil ? string(ResponseOutput.message ?? "") : "";
-            let inactiveUserRejected = prevStatusCode == 400 && prevMessage contains "is not an active user";
-            let sameFingerprint = prevFingerprint == fingerprint && prevFingerprint != "";
-            let bumpTier = sameFingerprint && inactiveUserRejected;
-            let resetTier = !sameFingerprint;
-            let authorTier = resetTier ? 0 : (bumpTier ? prevAuthorTier + 1 : prevAuthorTier);
+            let inactiveUserRejected = lastStatusCode == 400 && prevMessage contains "is not an active user";
+            let bumpTier = !isNewFingerprint && inactiveUserRejected;
+            let authorTier = isNewFingerprint ? 0 : (bumpTier ? prevAuthorTier + 1 : prevAuthorTier);
             let commitAuthor = authorTier == 0 ? refAuthor : (authorTier == 1 ? dryAuthor : "");
             {
               hasOpenPRForKey: hasOpenPRForKey,
