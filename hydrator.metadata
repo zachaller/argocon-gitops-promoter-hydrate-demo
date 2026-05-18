@@ -1,17 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "795e76a544d53f2b66aed2747d5bddb3070453f1",
+  "drySha": "a60c9f84ffa8ef97519fda65eeb458de8d8a8a23",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-18T12:00:33-05:00",
-  "subject": "chore: bump version to v1.0.1902",
+  "date": "2026-05-18T12:28:52-05:00",
+  "subject": "chore: bump version to v1.0.1904",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-04-30T20:10:38-05:00",
-        "subject": "chore: update configuration",
-        "sha": "9d5ccef278218dea4caa903bb6abb9ed974a1d90",
+        "date": "2026-04-22T09:59:52-05:00",
+        "subject": "chore: small fixes (#1304)",
+        "body": "* Apply suggested fix to internal/webhookreceiver/server.go from Copilot Autofix\n\nCo-authored-by: Copilot Autofix powered by AI <223894421+github-code-quality[bot]@users.noreply.github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* Apply suggested fix to internal/webhookreceiver/server.go from Copilot Autofix\n\nCo-authored-by: Copilot Autofix powered by AI <223894421+github-code-quality[bot]@users.noreply.github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* Apply suggested fix to internal/webhookreceiver/server.go from Copilot Autofix\n\nCo-authored-by: Copilot Autofix powered by AI <223894421+github-code-quality[bot]@users.noreply.github.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Copilot Autofix powered by AI <223894421+github-code-quality[bot]@users.noreply.github.com>",
+        "sha": "dd1bf95a001c13bfbe8173949abbe605f02c1e53",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
