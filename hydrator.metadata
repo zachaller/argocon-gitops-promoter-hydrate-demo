@@ -1,15 +1,15 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "434b50b704892226c32e36da67f2085bcf6b4b76",
+  "drySha": "6d17cf247f293a19c8c36808a138109bbd4a70a3",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-18T11:12:09-05:00",
-  "subject": "chore: bump version to v1.0.1896",
+  "date": "2026-05-18T11:12:42-05:00",
+  "subject": "chore: bump version to v1.0.1897",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"zaller\" <code@example.com>",
-        "date": "2026-05-12T00:53:06-05:00",
+        "date": "2026-04-15T22:57:44-05:00",
         "subject": "test: fix flaky CommitStatus spec/status read test (#1426)",
         "body": "* test: fix flaky CommitStatus spec/status read test\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* simplify\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
         "sha": "384fb058c06bc6c7cd5fa339d4913e51082b9c80",
