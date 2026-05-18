@@ -41,6 +41,12 @@ spec:
     {{- else if eq $step "searching" }} no change record in window{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }} — nothing to close
     {{- else }} searching for change record to close{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }}
     {{- end }}
+  urlTemplate: >-
+    {{- $assetId := index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}
+    {{- $ghDomain := index .NamespaceMetadata.Labels "argocd.intuit.com/github-domain" -}}
+    {{- $portalHost := "devportal.intuit.com" -}}
+    {{- if eq $ghDomain "github-dev" -}}{{- $portalHost = "devportal-e2e.intuit.com" -}}{{- end -}}
+    {{- if ne $assetId "" -}}https://{{ $portalHost }}/app/dp/resource/{{ $assetId }}/changeManagement{{- end -}}
   httpRequest:
     # GET to search for the change record, POST to close it once we know its id.
     methodTemplate: >-
@@ -256,6 +262,12 @@ spec:
     {{- else if eq $statusCode 202 }} change request accepted (HTTP 202) but no ID returned — will retry
     {{- else }} change request returned HTTP {{ $statusCode }} (will retry)
     {{- end }}
+  urlTemplate: >-
+    {{- $assetId := index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}
+    {{- $ghDomain := index .NamespaceMetadata.Labels "argocd.intuit.com/github-domain" -}}
+    {{- $portalHost := "devportal.intuit.com" -}}
+    {{- if eq $ghDomain "github-dev" -}}{{- $portalHost = "devportal-e2e.intuit.com" -}}{{- end -}}
+    {{- if ne $assetId "" -}}https://{{ $portalHost }}/app/dp/resource/{{ $assetId }}/changeManagement{{- end -}}
   httpRequest:
     methodTemplate: POST
     timeout: 30s
@@ -493,6 +505,12 @@ spec:
     {{- else if eq $statusCode 200 }} {{ $approvedCount }}/{{ $totalCount }} records active in approval window (last check {{ $lastChecked }})
     {{- else }} approval check returned HTTP {{ $statusCode }}, will retry
     {{- end }}
+  urlTemplate: >-
+    {{- $assetId := index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}
+    {{- $ghDomain := index .NamespaceMetadata.Labels "argocd.intuit.com/github-domain" -}}
+    {{- $portalHost := "devportal.intuit.com" -}}
+    {{- if eq $ghDomain "github-dev" -}}{{- $portalHost = "devportal-e2e.intuit.com" -}}{{- end -}}
+    {{- if ne $assetId "" -}}https://{{ $portalHost }}/app/dp/resource/{{ $assetId }}/changeManagement{{- end -}}
   httpRequest:
     methodTemplate: GET
     timeout: 30s
