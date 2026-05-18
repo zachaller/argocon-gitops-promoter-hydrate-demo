@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f5730eb3272ddc96c9d3fe719b28686fe6edfbd8",
+  "drySha": "0abf5264bd39bf509f20b5dd6bf3c6d3e715a4f4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-18T11:09:46-05:00",
-  "subject": "chore: bump version to v1.0.1893",
+  "date": "2026-05-18T11:10:25-05:00",
+  "subject": "chore: bump version to v1.0.1894",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"zaller\" <code@example.com>",
-        "date": "2026-05-05T14:57:56-05:00",
-        "subject": "chore(deps): bump urllib3 from 2.6.3 to 2.7.0 in /docs (#1418)",
-        "body": "Bumps [urllib3](https://github.com/urllib3/urllib3) from 2.6.3 to 2.7.0.\n- [Release notes](https://github.com/urllib3/urllib3/releases)\n- [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)\n- [Commits](https://github.com/urllib3/urllib3/compare/2.6.3...2.7.0)\n\n---\nupdated-dependencies:\n- dependency-name: urllib3\n  dependency-version: 2.7.0\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "7d01261242f49539c575a9d4a8b88fbe363447de",
+        "date": "2026-04-19T22:09:11-05:00",
+        "subject": "chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.98 to 0.9.100 (#1387)",
+        "body": "Bumps [github.com/ktrysmt/go-bitbucket](https://github.com/ktrysmt/go-bitbucket) from 0.9.98 to 0.9.100.\n- [Release notes](https://github.com/ktrysmt/go-bitbucket/releases)\n- [Commits](https://github.com/ktrysmt/go-bitbucket/compare/v0.9.98...v0.9.100)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/ktrysmt/go-bitbucket\n  dependency-version: 0.9.100\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "0c29b40edcb62d57720ed2aa84802be9a2117761",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
