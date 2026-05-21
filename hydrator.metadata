@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "57565a4fe084589df52859db91f2b99e5652d75d",
+  "drySha": "9149cb1fb181a2df75ba29f97373d07afc833297",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-18T14:30:51-05:00",
-  "subject": "chore: bump version to v1.0.1906",
+  "date": "2026-05-18T15:43:44-05:00",
+  "subject": "chore: bump version to v1.0.1907",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-05-11T21:14:29-05:00",
-        "subject": "docs: bump manifest versions to v0.29.0 (#1427)",
-        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "6d531cff7f17f44b93b259c5e5a03dd2f6c48cc0",
+        "date": "2026-04-21T19:45:17-05:00",
+        "subject": "feat(ui): persist strategy dropdown selection (#1393)",
+        "body": "* fix(ui): persist PromotionStrategy selection across view changes\n\nThe strategy selector tracked its choice only in the URL query string,\nwhich ArgoCD drops when navigating between application views. The\nselector reset to the first strategy on every view switch.\n\nLayer localStorage under the existing URL param so the selection\nsurvives navigation. Resolution order: URL > localStorage > first\nstrategy. The URL remains the authoritative deep-link target; storage\nis just a fallback when the URL has been stripped.\n\nStorage key is scoped per-app to avoid bleed between Applications.\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* fix(ui): render PromotionStrategy selector menu above history dropdown\n\nThe strategy selector's open menu was being clipped behind ArgoCD's\ndeployment-history dropdown, which uses z-index: 1001 on its panel. The\nstrategy dropdown sat in a parent stacking context, so a plain z-index\noverride on the menu wasn't enough.\n\nPortal the react-select menu to document.body and set its zIndex to\n2000 so it renders cleanly over any ArgoCD UI controls.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* test(ui): query strategy options from document for portaled menu\n\nAfter portaling the react-select menu to document.body in 5d89da8,\nthe menu DOM no longer lives under the test container. Query the\nstrategy options via document.querySelectorAll so the four dropdown\nspecs in AppViewExtension.test.tsx can find the rendered options.\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nCo-authored-by: Claude Opus 4.7 (1M context) <noreply@anthropic.com>",
+        "sha": "9c623b2b20d8f7c47eaf1e4e71a50d8ce7bcb8aa",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
