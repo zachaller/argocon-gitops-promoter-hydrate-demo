@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "9149cb1fb181a2df75ba29f97373d07afc833297",
+  "drySha": "d9d7d4d675ae87047c2593459d8541a71748b93c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-18T15:43:44-05:00",
-  "subject": "chore: bump version to v1.0.1907",
+  "date": "2026-05-21T10:13:45-05:00",
+  "subject": "chore: bump version to v1.0.1908",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-04-21T19:45:17-05:00",
-        "subject": "feat(ui): persist strategy dropdown selection (#1393)",
-        "body": "* fix(ui): persist PromotionStrategy selection across view changes\n\nThe strategy selector tracked its choice only in the URL query string,\nwhich ArgoCD drops when navigating between application views. The\nselector reset to the first strategy on every view switch.\n\nLayer localStorage under the existing URL param so the selection\nsurvives navigation. Resolution order: URL > localStorage > first\nstrategy. The URL remains the authoritative deep-link target; storage\nis just a fallback when the URL has been stripped.\n\nStorage key is scoped per-app to avoid bleed between Applications.\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* fix(ui): render PromotionStrategy selector menu above history dropdown\n\nThe strategy selector's open menu was being clipped behind ArgoCD's\ndeployment-history dropdown, which uses z-index: 1001 on its panel. The\nstrategy dropdown sat in a parent stacking context, so a plain z-index\noverride on the menu wasn't enough.\n\nPortal the react-select menu to document.body and set its zIndex to\n2000 so it renders cleanly over any ArgoCD UI controls.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* test(ui): query strategy options from document for portaled menu\n\nAfter portaling the react-select menu to document.body in 5d89da8,\nthe menu DOM no longer lives under the test container. Query the\nstrategy options via document.querySelectorAll so the four dropdown\nspecs in AppViewExtension.test.tsx can find the rendered options.\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nCo-authored-by: Claude Opus 4.7 (1M context) <noreply@anthropic.com>",
-        "sha": "9c623b2b20d8f7c47eaf1e4e71a50d8ce7bcb8aa",
+        "date": "2026-05-06T23:58:15-05:00",
+        "subject": "feat(ui): show PR merge time on live card active badge (#1343)",
+        "body": "Display the PR merge time on the Active section's PR badge in the live\n(non-history) card view, consistent with the existing history view.\n\nFalls back to environment.pullRequest when history[0].pullRequest has no\nid (e.g. externally or manually merged PRs), treating both state=merged\nand externallyMergedOrClosed=true as displayable.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nCo-authored-by: Claude Sonnet 4.6 <noreply@anthropic.com>",
+        "sha": "f1b5f8a06991a9cbb82522dad69ddaa3ebeb9a37",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
