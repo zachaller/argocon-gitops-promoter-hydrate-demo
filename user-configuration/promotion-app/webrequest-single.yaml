@@ -279,8 +279,8 @@ spec:
       {
         "asset_id": "{{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}",
         "on_behalf_of": "{{ index .TriggerVariables "commitAuthor" }}",
-        "short_description": "Automated prod promotion (multi-env)",
-        "description": {{- $key := "change-management-open" -}}{{- $global := false -}}{{- range $.PromotionStrategy.Spec.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $global = true -}}{{- end -}}{{- end -}}{{- $out := printf "Production change-management record for GitOps promotion strategy `%s`.\n\n**What is changing:** the hydrator **proposed note dry SHA** on each branch below—that is the dry snapshot queued to move forward on that branch.\n\n**Where it is promoted (spec order):**\n" $.PromotionStrategy.Name -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- $take := false -}}{{- if $global -}}{{- $take = true -}}{{- else -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $take = true -}}{{- end -}}{{- end -}}{{- end -}}{{- if $take -}}{{- $sha := "" -}}{{- $pr := "" -}}{{- range $.PromotionStrategy.Status.Environments -}}{{- if eq .Branch $se.Branch -}}{{- if and .Proposed.Note .Proposed.Note.DrySha -}}{{- $sha = .Proposed.Note.DrySha -}}{{- end -}}{{- if .PullRequest -}}{{- if and (ne .PullRequest.Url "") (eq (printf "%s" .PullRequest.State) "open") -}}{{- $pr = .PullRequest.Url -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if ne $pr "" -}}{{- $disp := "—" -}}{{- if ne $sha "" -}}{{- $disp = $sha -}}{{- end -}}{{- $suffix := printf " — [PR](%s)" $pr -}}{{- $out = printf "%s\n- **%s** — proposed note dry SHA: `%s`%s" $out $se.Branch $disp $suffix -}}{{- end -}}{{- end -}}{{- end -}}{{- $out = printf "%s\n\n**Git repository ref:** `%s`" $out $.PromotionStrategy.Spec.RepositoryReference.Name -}}{{ $out | toJson }},
+        "short_description": "Automated environment promotion with Argo Promotions",
+        "description": {{- $key := "change-management-open" -}}{{- $global := false -}}{{- range $.PromotionStrategy.Spec.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $global = true -}}{{- end -}}{{- end -}}{{- $out := printf "Production change-management record for GitOps promotion strategy `%s`.\n\n**What is changing:** the hydrator **proposed SHA** on each branch below—that is the dry snapshot queued to move forward on that branch.\n\n**Where it is promoted (spec order):**\n" $.PromotionStrategy.Name -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- $take := false -}}{{- if $global -}}{{- $take = true -}}{{- else -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $take = true -}}{{- end -}}{{- end -}}{{- end -}}{{- if $take -}}{{- $sha := "" -}}{{- $pr := "" -}}{{- range $.PromotionStrategy.Status.Environments -}}{{- if eq .Branch $se.Branch -}}{{- if and .Proposed.Note .Proposed.Note.DrySha -}}{{- $sha = .Proposed.Note.DrySha -}}{{- end -}}{{- if .PullRequest -}}{{- if and (ne .PullRequest.Url "") (eq (printf "%s" .PullRequest.State) "open") -}}{{- $pr = .PullRequest.Url -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if ne $pr "" -}}{{- $disp := "—" -}}{{- if ne $sha "" -}}{{- $disp = $sha -}}{{- end -}}{{- $suffix := printf " — [PR](%s)" $pr -}}{{- $out = printf "%s\n- **%s** — proposed note dry SHA: `%s`%s" $out $se.Branch $disp $suffix -}}{{- end -}}{{- end -}}{{- end -}}{{- $out = printf "%s\n\n**Git repository ref:** `%s`" $out $.PromotionStrategy.Spec.RepositoryReference.Name -}}{{ $out | toJson }},
         "environment": "production",
         "backout_plan": "In the event that this new change introduces a regression in behavior or some other problem, a rollback to the previous version can be initiated through DevPortal or Argo CD.",
         "change_plan": "Automated GitOps promotion: proposed dry SHA advances through each environment via promoter pull requests, commit statuses, and merge gates before production.",
@@ -372,7 +372,12 @@ spec:
             let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
             let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
-            let needsRetry = !isNewFingerprint && Phase != "success" && isRetryable;
+            // True iff we've already opened a CR for this fingerprint. Sticky:
+            // lastSucceededFingerprint is only advanced (never cleared), so it
+            // survives later non-success responses that overwrite ResponseOutput.
+            let lastFingerprintSucceeded = fingerprint != "" &&
+              fingerprint == (TriggerOutput.lastSucceededFingerprint ?? "");
+            let needsRetry = !isNewFingerprint && Phase != "success" && isRetryable && !lastFingerprintSucceeded;
             let refAuthors = map(keyedEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
@@ -402,7 +407,11 @@ spec:
             let prevAuthorTier = int(TriggerOutput.authorTier ?? 0);
             let prevMessage = ResponseOutput != nil ? string(ResponseOutput.message ?? "") : "";
             let inactiveUserRejected = lastStatusCode == 400 && prevMessage contains "is not an active user";
-            let bumpTier = !isNewFingerprint && inactiveUserRejected;
+            // Don't ask for an author-retry if we've already opened a CR for this fingerprint.
+            // Without this clause, a stale 400 ResponseOutput keeps bumpTier=true on every
+            // reconcile until the fingerprint rolls, causing duplicate CRs when a follow-up
+            // reconcile races ahead of the 202 status write.
+            let bumpTier = !isNewFingerprint && inactiveUserRejected && !lastFingerprintSucceeded;
             let baseTier = isNewFingerprint ? 0 : (bumpTier ? prevAuthorTier + 1 : prevAuthorTier);
             // Skip tier 0 if ref authors disagree, skip tier 1 if dry authors disagree.
             let skip0 = baseTier == 0 && !refAuthorsAgree;
@@ -420,22 +429,35 @@ spec:
               canonicalNoteDrySha: canonicalNoteDrySha,
               commitAuthor: commitAuthor,
               authorTier: authorTier,
-              needsAuthorRetry: bumpTier
+              needsAuthorRetry: bumpTier,
+              lastFingerprintSucceeded: lastFingerprintSucceeded
             }
         # Fire the POST when all gates pass and we have a fresh fingerprint, a retry to do,
         # or we just bumped the author fallback tier after a 'not an active user' rejection.
+        # Idempotency guard: if we've already opened a CR for this fingerprint, do not fire
+        # again — even if another sub-clause flips true due to stale ResponseOutput state.
         expression: |
-          Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry || Variables.needsAuthorRetry) && Variables.preGateNoOpenPR
+          Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && !Variables.lastFingerprintSucceeded && (Variables.isNewFingerprint || Variables.needsRetry || Variables.needsAuthorRetry) && Variables.preGateNoOpenPR
         output:
           # Persist the fingerprint we last fired on so success.when can carry forward
           # and isNewFingerprint can detect the next dry-SHA roll. Also persist the
           # author tier so we don't keep retrying the same rejected on_behalf_of user.
           expression: |
-            let shouldTrigger = Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry || Variables.needsAuthorRetry) && Variables.preGateNoOpenPR;
+            let shouldTrigger = Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && !Variables.lastFingerprintSucceeded && (Variables.isNewFingerprint || Variables.needsRetry || Variables.needsAuthorRetry) && Variables.preGateNoOpenPR;
             let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
+            // Did the response we just received represent a successful CR open?
+            // If so, mark this fingerprint as succeeded so future reconciles can't
+            // re-fire the trigger (even if a later non-success response overwrites
+            // ResponseOutput.statusCode/.changeId).
+            let justSucceeded = ResponseOutput != nil &&
+              lastStatusCode == 202 &&
+              string(ResponseOutput.changeId ?? "") != "" &&
+              Variables.fingerprint != "" &&
+              Variables.fingerprint == (TriggerOutput.lastFingerprint ?? "");
             {
               // Used elsewhere (read by templates / next reconciles):
               lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
+              lastSucceededFingerprint: justSucceeded ? Variables.fingerprint : (TriggerOutput.lastSucceededFingerprint ?? ""),
               authorTier: Variables.authorTier,
               commitAuthor: Variables.commitAuthor,
               // Informational only (surfaced for debugging / status visibility):
@@ -443,6 +465,7 @@ spec:
               fingerprint: Variables.fingerprint,
               canonicalNoteDrySha: Variables.canonicalNoteDrySha,
               lastStatusCode: lastStatusCode,
+              lastFingerprintSucceeded: Variables.lastFingerprintSucceeded,
               phase: Phase,
               evaluatedAt: string(now())
             }
