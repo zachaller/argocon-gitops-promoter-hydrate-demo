@@ -46,7 +46,7 @@ spec:
     {{- $ghDomain := index .NamespaceMetadata.Labels "argocd.intuit.com/github-domain" -}}
     {{- $portalHost := "devportal.intuit.com" -}}
     {{- if eq $ghDomain "github-dev" -}}{{- $portalHost = "devportal-e2e.intuit.com" -}}{{- end -}}
-    {{- if ne $assetId "" -}}https://{{ $portalHost }}/app/dp/resource/{{ $assetId }}/changeManagement{{- end -}}
+    {{- if ne $assetId "" -}}https://{{ $portalHost }}/app/dp/resource/{{ $assetId }}/changeManagement?asset={{ printf "{\"assetId\":\"%s\"}" $assetId | urlquery }}{{- end -}}
   httpRequest:
     # GET to search for the change record, POST to close it once we know its id.
     methodTemplate: >-
@@ -106,24 +106,17 @@ spec:
               let status = find(statusEnvs, { #.Branch == env.Branch });
               status == nil || status.PullRequest == nil || string(status.PullRequest.State) != "open"
             });
-            let everyEnvHasDrySha = len(specEnvs) > 0 && all(specEnvs, {
+            // Per spec-env {branch, proposed-note dry SHA} pairs (sha "" when absent), spec order.
+            // Everything downstream (dry-SHA alignment, canonical SHA, fingerprint) derives from this.
+            let envShas = map(specEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
-              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != ""
+              { branch: env.Branch, sha: status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "" }
             });
-            let firstBranch = len(specEnvs) > 0 ? specEnvs[0].Branch : "";
-            let firstStatus = find(statusEnvs, { #.Branch == firstBranch });
-            let canonicalNoteDrySha = firstStatus != nil && firstStatus.Proposed.Note != nil ? firstStatus.Proposed.Note.DrySha : "";
-            let allNoteDryShasMatch = everyEnvHasDrySha && all(specEnvs, {
-              let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha == canonicalNoteDrySha
-            });
-            let fingerprint = join(map(specEnvs, {
-              let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
-            }), "|");
+            let everyEnvHasDrySha = len(envShas) > 0 && all(envShas, { #.sha != "" });
+            let canonicalNoteDrySha = len(envShas) > 0 ? envShas[0].sha : "";
+            let allNoteDryShasMatch = everyEnvHasDrySha && all(envShas, { #.sha == canonicalNoteDrySha });
+            let fingerprint = join(map(envShas, { #.branch + ":" + #.sha }), "|");
             let priorStep = ResponseOutput != nil ? (ResponseOutput.step ?? "") : "";
             let priorChangeId = ResponseOutput != nil ? (ResponseOutput.changeId ?? "") : "";
             let haveChangeIdToClose = priorChangeId != "" &&
@@ -221,7 +214,6 @@ spec:
               totalRecordCount: isSearch ? len(Response.Body.change_records ?? []) : 0,
               lastRequestedAt: string(now())
             }
-
 ---
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
@@ -267,7 +259,7 @@ spec:
     {{- $ghDomain := index .NamespaceMetadata.Labels "argocd.intuit.com/github-domain" -}}
     {{- $portalHost := "devportal.intuit.com" -}}
     {{- if eq $ghDomain "github-dev" -}}{{- $portalHost = "devportal-e2e.intuit.com" -}}{{- end -}}
-    {{- if ne $assetId "" -}}https://{{ $portalHost }}/app/dp/resource/{{ $assetId }}/changeManagement{{- end -}}
+    {{- if ne $assetId "" -}}https://{{ $portalHost }}/app/dp/resource/{{ $assetId }}/changeManagement?asset={{ printf "{\"assetId\":\"%s\"}" $assetId | urlquery }}{{- end -}}
   httpRequest:
     methodTemplate: POST
     timeout: 30s
@@ -279,8 +271,8 @@ spec:
       {
         "asset_id": "{{- index .NamespaceMetadata.Labels "argocd.intuit.com/asset-id" -}}",
         "on_behalf_of": "{{ index .TriggerVariables "commitAuthor" }}",
-        "short_description": "Automated environment promotion with Argo Promotions",
-        "description": {{- $key := "change-management-open" -}}{{- $global := false -}}{{- range $.PromotionStrategy.Spec.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $global = true -}}{{- end -}}{{- end -}}{{- $out := printf "Production change-management record for GitOps promotion strategy `%s`.\n\n**What is changing:** the hydrator **proposed SHA** on each branch below—that is the dry snapshot queued to move forward on that branch.\n\n**Where it is promoted (spec order):**\n" $.PromotionStrategy.Name -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- $take := false -}}{{- if $global -}}{{- $take = true -}}{{- else -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $take = true -}}{{- end -}}{{- end -}}{{- end -}}{{- if $take -}}{{- $sha := "" -}}{{- $pr := "" -}}{{- range $.PromotionStrategy.Status.Environments -}}{{- if eq .Branch $se.Branch -}}{{- if and .Proposed.Note .Proposed.Note.DrySha -}}{{- $sha = .Proposed.Note.DrySha -}}{{- end -}}{{- if .PullRequest -}}{{- if and (ne .PullRequest.Url "") (eq (printf "%s" .PullRequest.State) "open") -}}{{- $pr = .PullRequest.Url -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if ne $pr "" -}}{{- $disp := "—" -}}{{- if ne $sha "" -}}{{- $disp = $sha -}}{{- end -}}{{- $suffix := printf " — [PR](%s)" $pr -}}{{- $out = printf "%s\n- **%s** — proposed note dry SHA: `%s`%s" $out $se.Branch $disp $suffix -}}{{- end -}}{{- end -}}{{- end -}}{{- $out = printf "%s\n\n**Git repository ref:** `%s`" $out $.PromotionStrategy.Spec.RepositoryReference.Name -}}{{ $out | toJson }},
+        "short_description": "Automated production promotion process",
+        "description": {{- $key := "change-management-open" -}}{{- $global := false -}}{{- range $.PromotionStrategy.Spec.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $global = true -}}{{- end -}}{{- end -}}{{- $out := printf "Production change-management record for GitOps promotion strategy `%s`.\n\n**What is changing:** the hydrated **SHA** on each branch below—that is the dry snapshot queued to move forward on that branch.\n\n**Where it is promoted (spec order):**\n" $.PromotionStrategy.Name -}}{{- range $se := $.PromotionStrategy.Spec.Environments -}}{{- $take := false -}}{{- if $global -}}{{- $take = true -}}{{- else -}}{{- range $se.ProposedCommitStatuses -}}{{- if eq .Key $key -}}{{- $take = true -}}{{- end -}}{{- end -}}{{- end -}}{{- if $take -}}{{- $sha := "" -}}{{- $pr := "" -}}{{- range $.PromotionStrategy.Status.Environments -}}{{- if eq .Branch $se.Branch -}}{{- if and .Proposed.Note .Proposed.Note.DrySha -}}{{- $sha = .Proposed.Note.DrySha -}}{{- end -}}{{- if .PullRequest -}}{{- if and (ne .PullRequest.Url "") (eq (printf "%s" .PullRequest.State) "open") -}}{{- $pr = .PullRequest.Url -}}{{- end -}}{{- end -}}{{- end -}}{{- end -}}{{- if ne $pr "" -}}{{- $disp := "—" -}}{{- if ne $sha "" -}}{{- $disp = $sha -}}{{- end -}}{{- $suffix := printf " — [PR](%s)" $pr -}}{{- $out = printf "%s\n- **%s** — SHA: `%s`%s" $out $se.Branch $disp $suffix -}}{{- end -}}{{- end -}}{{- end -}}{{- $out = printf "%s\n\n**Git repository ref:** `%s`" $out $.PromotionStrategy.Spec.RepositoryReference.Name -}}{{ $out | toJson }},
         "environment": "production",
         "backout_plan": "In the event that this new change introduces a regression in behavior or some other problem, a rollback to the previous version can be initiated through DevPortal or Argo CD.",
         "change_plan": "Automated GitOps promotion: proposed dry SHA advances through each environment via promoter pull requests, commit statuses, and merge gates before production.",
@@ -326,6 +318,9 @@ spec:
           # - hasOpenPRForKey: a gated env has an open promotion PR (we open the change for it)
           # - allNoteDryShasMatch: dry SHAs are aligned across envs (hydrator settled)
           # - preGateNoOpenPR: no env *before* the first gated env still has an open PR
+          # - otherProposedChecksSuccess: on the lowest gated (production) env that has an open PR,
+          #   every other proposed commit status is success — excluding the two change-management
+          #   gates this flow itself drives (change-management-open, change-management-approval)
           # - fingerprint / isNewFingerprint: detect a fresh dry-SHA set
           # - needsRetry: previous POST returned a retryable error (429/5xx)
           expression: |
@@ -346,38 +341,42 @@ spec:
               let status = find(statusEnvs, { #.Branch == env.Branch });
               status == nil || status.PullRequest == nil || string(status.PullRequest.State) != "open"
             });
-            let everyEnvHasDrySha = len(specEnvs) > 0 && all(specEnvs, {
+            // Per spec-env {branch, proposed-note dry SHA} pairs (sha "" when absent), spec order.
+            // Everything downstream (dry-SHA alignment, canonical SHA, fingerprint) derives from this.
+            let envShas = map(specEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
-              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != ""
+              { branch: env.Branch, sha: status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "" }
             });
-            let firstBranch = len(specEnvs) > 0 ? specEnvs[0].Branch : "";
-            let firstStatus = find(statusEnvs, { #.Branch == firstBranch });
-            let canonicalNoteDrySha = firstStatus != nil && firstStatus.Proposed.Note != nil ? firstStatus.Proposed.Note.DrySha : "";
-            let allNoteDryShasMatch = everyEnvHasDrySha && all(specEnvs, {
-              let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha == canonicalNoteDrySha
-            });
-            let fingerprint = join(map(specEnvs, {
-              let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
-            }), "|");
-            let hasOpenPRForKey = any(keyedEnvs, {
+            let everyEnvHasDrySha = len(envShas) > 0 && all(envShas, { #.sha != "" });
+            let canonicalNoteDrySha = len(envShas) > 0 ? envShas[0].sha : "";
+            let allNoteDryShasMatch = everyEnvHasDrySha && all(envShas, { #.sha == canonicalNoteDrySha });
+            let fingerprint = join(map(envShas, { #.branch + ":" + #.sha }), "|");
+            // The gated envs (those configured with the change-management-open proposed check)
+            // that currently have an open promotion PR, in spec order.
+            let gatedEnvsWithOpenPR = filter(keyedEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
               status != nil && status.PullRequest != nil && string(status.PullRequest.State) == "open"
             });
+            let hasOpenPRForKey = len(gatedEnvsWithOpenPR) > 0;
+            // The lowest (first in spec order) gated env with an open PR. Before opening the
+            // change record we require that env's *other* proposed commit statuses to all be
+            // success, excluding the two change-management gates this flow itself drives
+            // (change-management-open, change-management-approval).
+            let lowestOpenGatedStatus = len(gatedEnvsWithOpenPR) > 0
+              ? find(statusEnvs, { #.Branch == gatedEnvsWithOpenPR[0].Branch })
+              : nil;
+            let otherProposedChecksSuccess = lowestOpenGatedStatus != nil && all(
+              filter(lowestOpenGatedStatus.Proposed.CommitStatuses ?? [], {
+                #.Key != "change-management-open" && #.Key != "change-management-approval"
+              }),
+              { string(#.Phase) == "success" }
+            );
             let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
             let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
             let isNewFingerprint = fingerprint != (TriggerOutput.lastFingerprint ?? "");
-            // True iff we've already opened a CR for this fingerprint. Sticky:
-            // lastSucceededFingerprint is only advanced (never cleared), so it
-            // survives later non-success responses that overwrite ResponseOutput.
-            let lastFingerprintSucceeded = fingerprint != "" &&
-              fingerprint == (TriggerOutput.lastSucceededFingerprint ?? "");
-            let needsRetry = !isNewFingerprint && Phase != "success" && isRetryable && !lastFingerprintSucceeded;
+            let needsRetry = !isNewFingerprint && Phase != "success" && isRetryable;
             let refAuthors = map(keyedEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
@@ -407,11 +406,7 @@ spec:
             let prevAuthorTier = int(TriggerOutput.authorTier ?? 0);
             let prevMessage = ResponseOutput != nil ? string(ResponseOutput.message ?? "") : "";
             let inactiveUserRejected = lastStatusCode == 400 && prevMessage contains "is not an active user";
-            // Don't ask for an author-retry if we've already opened a CR for this fingerprint.
-            // Without this clause, a stale 400 ResponseOutput keeps bumpTier=true on every
-            // reconcile until the fingerprint rolls, causing duplicate CRs when a follow-up
-            // reconcile races ahead of the 202 status write.
-            let bumpTier = !isNewFingerprint && inactiveUserRejected && !lastFingerprintSucceeded;
+            let bumpTier = !isNewFingerprint && inactiveUserRejected;
             let baseTier = isNewFingerprint ? 0 : (bumpTier ? prevAuthorTier + 1 : prevAuthorTier);
             // Skip tier 0 if ref authors disagree, skip tier 1 if dry authors disagree.
             let skip0 = baseTier == 0 && !refAuthorsAgree;
@@ -425,47 +420,35 @@ spec:
               isNewFingerprint: isNewFingerprint,
               needsRetry: needsRetry,
               preGateNoOpenPR: preGateNoOpenPR,
+              otherProposedChecksSuccess: otherProposedChecksSuccess,
               fingerprint: fingerprint,
               canonicalNoteDrySha: canonicalNoteDrySha,
               commitAuthor: commitAuthor,
               authorTier: authorTier,
               needsAuthorRetry: bumpTier,
-              lastFingerprintSucceeded: lastFingerprintSucceeded
+              lastStatusCode: lastStatusCode
             }
         # Fire the POST when all gates pass and we have a fresh fingerprint, a retry to do,
         # or we just bumped the author fallback tier after a 'not an active user' rejection.
-        # Idempotency guard: if we've already opened a CR for this fingerprint, do not fire
-        # again — even if another sub-clause flips true due to stale ResponseOutput state.
         expression: |
-          Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && !Variables.lastFingerprintSucceeded && (Variables.isNewFingerprint || Variables.needsRetry || Variables.needsAuthorRetry) && Variables.preGateNoOpenPR
+          Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry || Variables.needsAuthorRetry) && Variables.preGateNoOpenPR && Variables.otherProposedChecksSuccess
         output:
           # Persist the fingerprint we last fired on so success.when can carry forward
           # and isNewFingerprint can detect the next dry-SHA roll. Also persist the
           # author tier so we don't keep retrying the same rejected on_behalf_of user.
           expression: |
-            let shouldTrigger = Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && !Variables.lastFingerprintSucceeded && (Variables.isNewFingerprint || Variables.needsRetry || Variables.needsAuthorRetry) && Variables.preGateNoOpenPR;
-            let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
-            // Did the response we just received represent a successful CR open?
-            // If so, mark this fingerprint as succeeded so future reconciles can't
-            // re-fire the trigger (even if a later non-success response overwrites
-            // ResponseOutput.statusCode/.changeId).
-            let justSucceeded = ResponseOutput != nil &&
-              lastStatusCode == 202 &&
-              string(ResponseOutput.changeId ?? "") != "" &&
-              Variables.fingerprint != "" &&
-              Variables.fingerprint == (TriggerOutput.lastFingerprint ?? "");
+            let shouldTrigger = Variables.hasOpenPRForKey && Variables.allNoteDryShasMatch && (Variables.isNewFingerprint || Variables.needsRetry || Variables.needsAuthorRetry) && Variables.preGateNoOpenPR && Variables.otherProposedChecksSuccess;
             {
               // Used elsewhere (read by templates / next reconciles):
               lastFingerprint: shouldTrigger ? Variables.fingerprint : (TriggerOutput.lastFingerprint ?? ""),
-              lastSucceededFingerprint: justSucceeded ? Variables.fingerprint : (TriggerOutput.lastSucceededFingerprint ?? ""),
               authorTier: Variables.authorTier,
               commitAuthor: Variables.commitAuthor,
               // Informational only (surfaced for debugging / status visibility):
               shouldTrigger: shouldTrigger,
+              otherProposedChecksSuccess: Variables.otherProposedChecksSuccess,
               fingerprint: Variables.fingerprint,
               canonicalNoteDrySha: Variables.canonicalNoteDrySha,
-              lastStatusCode: lastStatusCode,
-              lastFingerprintSucceeded: Variables.lastFingerprintSucceeded,
+              lastStatusCode: Variables.lastStatusCode,
               phase: Phase,
               evaluatedAt: string(now())
             }
@@ -489,9 +472,7 @@ spec:
               changeRequest: cr ?? {},
               lastRequestedAt: string(now())
             }
-
 ---
-
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
 metadata:
@@ -533,7 +514,7 @@ spec:
     {{- $ghDomain := index .NamespaceMetadata.Labels "argocd.intuit.com/github-domain" -}}
     {{- $portalHost := "devportal.intuit.com" -}}
     {{- if eq $ghDomain "github-dev" -}}{{- $portalHost = "devportal-e2e.intuit.com" -}}{{- end -}}
-    {{- if ne $assetId "" -}}https://{{ $portalHost }}/app/dp/resource/{{ $assetId }}/changeManagement{{- end -}}
+    {{- if ne $assetId "" -}}https://{{ $portalHost }}/app/dp/resource/{{ $assetId }}/changeManagement?asset={{ printf "{\"assetId\":\"%s\"}" $assetId | urlquery }}{{- end -}}
   httpRequest:
     methodTemplate: GET
     timeout: 30s
@@ -591,24 +572,17 @@ spec:
               let status = find(statusEnvs, { #.Branch == env.Branch });
               status == nil || status.PullRequest == nil || string(status.PullRequest.State) != "open"
             });
-            let everyEnvHasDrySha = len(specEnvs) > 0 && all(specEnvs, {
+            // Per spec-env {branch, proposed-note dry SHA} pairs (sha "" when absent), spec order.
+            // Everything downstream (dry-SHA alignment, canonical SHA, fingerprint) derives from this.
+            let envShas = map(specEnvs, {
               let env = #;
               let status = find(statusEnvs, { #.Branch == env.Branch });
-              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != ""
+              { branch: env.Branch, sha: status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "" }
             });
-            let firstBranch = len(specEnvs) > 0 ? specEnvs[0].Branch : "";
-            let firstStatus = find(statusEnvs, { #.Branch == firstBranch });
-            let canonicalNoteDrySha = firstStatus != nil && firstStatus.Proposed.Note != nil ? firstStatus.Proposed.Note.DrySha : "";
-            let allNoteDryShasMatch = everyEnvHasDrySha && all(specEnvs, {
-              let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha == canonicalNoteDrySha
-            });
-            let fingerprint = join(map(specEnvs, {
-              let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
-              env.Branch + ":" + (status != nil && status.Proposed.Note != nil && status.Proposed.Note.DrySha != "" ? status.Proposed.Note.DrySha : "")
-            }), "|");
+            let everyEnvHasDrySha = len(envShas) > 0 && all(envShas, { #.sha != "" });
+            let canonicalNoteDrySha = len(envShas) > 0 ? envShas[0].sha : "";
+            let allNoteDryShasMatch = everyEnvHasDrySha && all(envShas, { #.sha == canonicalNoteDrySha });
+            let fingerprint = join(map(envShas, { #.branch + ":" + #.sha }), "|");
             let hasOpenPRForKey = any(specEnvs, {
               let env = #;
               let envHasKey = keyIsGlobal || any(env.ProposedCommitStatuses ?? [], {#.Key == key});
@@ -669,4 +643,3 @@ spec:
               // Informational only (surfaced for debugging / status visibility):
               approvedRecords: approvedRecords
             }
-
