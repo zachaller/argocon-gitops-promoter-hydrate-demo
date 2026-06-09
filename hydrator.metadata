@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bf3369a689853a437ea72f07e172ca38b31caa75",
+  "drySha": "975b588b5271c9ff5250d5d03d7208c86c20c092",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-05-22T15:54:48-05:00",
-  "subject": "chore: bump version to v1.0.1909",
+  "date": "2026-06-04T09:39:17-05:00",
+  "subject": "chore: bump version to v1.0.1910",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-05-03T15:15:44-05:00",
-        "subject": "chore(deps): bump crate-ci/typos from 1.46.0 to 1.46.1 (#1416)",
-        "body": "Bumps [crate-ci/typos](https://github.com/crate-ci/typos) from 1.46.0 to 1.46.1.\n- [Release notes](https://github.com/crate-ci/typos/releases)\n- [Changelog](https://github.com/crate-ci/typos/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/crate-ci/typos/compare/bbaefadf97b0ec5fdc942684b647f1a6ab250274...5374cbf686e897b15713110e233094e2874de7ef)\n\n---\nupdated-dependencies:\n- dependency-name: crate-ci/typos\n  dependency-version: 1.46.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "2eb6d4838f3ccf2d51429d9139a6bf884985a93b",
+        "date": "2026-05-21T21:08:40-05:00",
+        "subject": "chore(deps): bump crate-ci/typos from 1.46.1 to 1.46.2 (#1435)",
+        "body": "Bumps [crate-ci/typos](https://github.com/crate-ci/typos) from 1.46.1 to 1.46.2.\n- [Release notes](https://github.com/crate-ci/typos/releases)\n- [Changelog](https://github.com/crate-ci/typos/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/crate-ci/typos/compare/5374cbf686e897b15713110e233094e2874de7ef...aca895bf05aec0cb7dffa6f94495e923224d9f17)\n\n---\nupdated-dependencies:\n- dependency-name: crate-ci/typos\n  dependency-version: 1.46.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "3438543f007095c1046b7b5fc2c6f547c71fa285",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
