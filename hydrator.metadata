@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bb419ff6c202f75a977c280f81d440121e92bc8d",
+  "drySha": "da8baf049979e30067d65f209c1f8293014e3f29",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-06-09T12:39:36-05:00",
-  "subject": "chore: bump version to v1.0.1911",
+  "date": "2026-06-17T10:59:42-05:00",
+  "subject": "chore: bump version to v1.0.1912",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-05-08T02:55:13-05:00",
-        "subject": "fix: typos (#1499)",
-        "body": "* Initial plan\n\n* Fix typos: remove duplicate doc comment, fix tooManyMatchingSha log key, rename creatOrUpdatePullRequest\n\n---------\n\nCo-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>",
-        "sha": "49152f5d2a25f182b2f4faf86fe1fba6d3d3f668",
+        "date": "2026-06-10T16:56:36-05:00",
+        "subject": "chore(deps): bump idna from 3.11 to 3.15 in /docs (#1443)",
+        "body": "Bumps [idna](https://github.com/kjd/idna) from 3.11 to 3.15.\n- [Release notes](https://github.com/kjd/idna/releases)\n- [Changelog](https://github.com/kjd/idna/blob/master/HISTORY.md)\n- [Commits](https://github.com/kjd/idna/compare/v3.11...v3.15)\n\n---\nupdated-dependencies:\n- dependency-name: idna\n  dependency-version: '3.15'\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "977f32c7326f334202a831ac2fecf04ccfe08a44",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
