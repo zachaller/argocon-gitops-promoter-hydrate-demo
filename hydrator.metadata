@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3e73baff1a8956eaed74ed41dcf3107f9b8ce760",
+  "drySha": "90c08f1f257a4a7f5643c07164bc3b227503bb77",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-07-22T09:56:12-05:00",
-  "subject": "chore: bump version to v1.0.1913",
+  "date": "2026-07-22T10:51:06-05:00",
+  "subject": "chore: bump version to v1.0.1914",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-13T17:56:53-05:00",
-        "subject": "chore(deps): bump actions/cache from 6.0.0 to 6.1.0 (#1692)",
-        "body": "Bumps [actions/cache](https://github.com/actions/cache) from 6.0.0 to 6.1.0.\n- [Release notes](https://github.com/actions/cache/releases)\n- [Changelog](https://github.com/actions/cache/blob/main/RELEASES.md)\n- [Commits](https://github.com/actions/cache/compare/2c8a9bd7457de244a408f35966fab2fb45fda9c8...55cc8345863c7cc4c66a329aec7e433d2d1c52a9)\n\n---\nupdated-dependencies:\n- dependency-name: actions/cache\n  dependency-version: 6.1.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "07d4e4baf0d43db0430bf0ae1c6b6caaa113ab06",
+        "date": "2026-06-19T18:01:44-05:00",
+        "subject": "chore(deps): bump github.com/pelletier/go-toml/v2 from 2.4.0 to 2.4.1 (#1666)",
+        "body": "Bumps [github.com/pelletier/go-toml/v2](https://github.com/pelletier/go-toml) from 2.4.0 to 2.4.1.\n- [Release notes](https://github.com/pelletier/go-toml/releases)\n- [Commits](https://github.com/pelletier/go-toml/compare/v2.4.0...v2.4.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/pelletier/go-toml/v2\n  dependency-version: 2.4.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "cf6a4bd2685a6b755cb53f97ee21e071d1d35ba9",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
