@@ -1,0 +1,20 @@
+{
+  "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
+  "drySha": "5e527b6bc640b36f515ef4fdf8620052e8d66afd",
+  "author": "Zach Aller <zach_aller@intuit.com>",
+  "date": "2026-07-22T11:52:08-05:00",
+  "subject": "chore: bump version to v1.0.1915",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
+  "references": [
+    {
+      "commit": {
+        "author": "\"svc-ci\" <code@example.com>",
+        "date": "2026-06-22T15:33:11-05:00",
+        "subject": "chore(deps): update module golang.org/x/tools to v0.47.0 (#1688)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "c7c319832d8fda22ba42f3ab39974445f37204b7",
+        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
+      }
+    }
+  ]
+}
