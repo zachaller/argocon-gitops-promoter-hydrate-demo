@@ -150,11 +150,16 @@ spec:
               activeFingerprint == (TriggerOutput.lastDoneFingerprint ?? "");
             let isNewActiveFingerprint = activeFingerprint != (TriggerOutput.lastFingerprint ?? "");
             let needsRetry = !isNewActiveFingerprint && priorStep == "closeRetry";
+            // Empty succeed-path search must not permanently latch — the CR often appears only
+            // after open/approval (dry SHAs can align while gated PRs are still absent/closed).
+            // Re-search until we find an APPROVED/CA record, close it, or the fingerprint moves on.
+            // Supersede empty search is different: that path latches done via supersedeSearchEmpty.
+            let needsSearchRetry = !isNewActiveFingerprint && !isSupersede && priorStep == "searching";
             let shouldSucceedClose = allNoteDryShasMatch &&
               allGatedPRsMerged &&
               !isSupersede &&
               !alreadyDoneForActive &&
-              (isNewActiveFingerprint || haveChangeIdToClose || needsRetry);
+              (isNewActiveFingerprint || haveChangeIdToClose || needsRetry || needsSearchRetry);
             let shouldSupersedeClose = isSupersede &&
               !alreadyDoneForActive &&
               (isNewActiveFingerprint || haveChangeIdToClose || needsRetry);
@@ -172,6 +177,7 @@ spec:
               alreadyDoneForFingerprint: alreadyDoneForActive,
               isNewFingerprint: isNewActiveFingerprint,
               needsRetry: needsRetry,
+              needsSearchRetry: needsSearchRetry,
               shouldSucceedClose: shouldSucceedClose,
               shouldSupersedeClose: shouldSupersedeClose,
               shouldTrigger: shouldTrigger,
