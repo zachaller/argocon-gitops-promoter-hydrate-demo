@@ -11,7 +11,13 @@ spec:
   - branch: environments/development
     autoMerge: false
   - branch: environments/staging
-  - branch: environments/production
+  - branch: environments/production-use
+    proposedCommitStatuses:
+    - key: change-management-approval
+    - key: change-management-open
+    activeCommitStatuses:
+    - key: change-management-close
+  - branch: environments/production-usw
     proposedCommitStatuses:
     - key: change-management-approval
     - key: change-management-open

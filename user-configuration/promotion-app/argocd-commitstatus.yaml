@@ -16,7 +16,7 @@ spec:
       {{- $label = "development" -}}
       {{- else if eq .Environment "environments/staging" -}}
       {{- $label = "staging" -}}
-      {{- else if eq .Environment "environments/production" -}}
+      {{- else if or (eq .Environment "environments/production-use") (eq .Environment "environments/production-usw") -}}
       {{- $label = "production" -}}
       {{- end -}}
       {{- printf "%s/applications?labels=environment=%s" "http://localhost:4000" (urlQueryEscape $label) -}}

@@ -15,4 +15,6 @@ spec:
     - duration: 3m
       branch: environments/staging
     - duration: 3m
-      branch: environments/production
+      branch: environments/production-use
+    - duration: 3m
+      branch: environments/production-usw

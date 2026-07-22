@@ -16,10 +16,10 @@ spec:
       repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
       targetRevision: HEAD
     hydrateTo:
-      targetBranch: environments/production-next
+      targetBranch: environments/production-use-next
     syncSource:
       path: us-east-2
-      targetBranch: environments/production
+      targetBranch: environments/production-use
   syncPolicy:
     automated: {}
 ---
@@ -41,9 +41,9 @@ spec:
       repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
       targetRevision: HEAD
     hydrateTo:
-      targetBranch: environments/production-next
+      targetBranch: environments/production-usw-next
     syncSource:
       path: us-west-1
-      targetBranch: environments/production
+      targetBranch: environments/production-usw
   syncPolicy:
     automated: {}
