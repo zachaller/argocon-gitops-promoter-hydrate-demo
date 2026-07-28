@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "88f144918d0af5c0cd2cd84491084c937812ed4c",
+  "drySha": "6d83e8ccee01abbf81d0294faa63dc32cd837dd4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-07-28T18:01:07-05:00",
-  "subject": "chore: bump version to v1.0.1919",
+  "date": "2026-07-28T18:05:14-05:00",
+  "subject": "chore: bump version to v1.0.1922",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-12T08:48:30-05:00",
-        "subject": "chore(deps): bump docker/login-action from 4.3.0 to 4.4.0 (#1732)",
-        "body": "Bumps [docker/login-action](https://github.com/docker/login-action) from 4.3.0 to 4.4.0.\n- [Release notes](https://github.com/docker/login-action/releases)\n- [Commits](https://github.com/docker/login-action/compare/c99871dec2022cc055c062a10cc1a1310835ceb4...af1e73f918a031802d376d3c8bbc3fe56130a9b0)\n\n---\nupdated-dependencies:\n- dependency-name: docker/login-action\n  dependency-version: 4.4.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "3cd91d3bd5d7484c9141ca44345115f154e3ea0b",
+        "date": "2026-07-08T11:10:29-05:00",
+        "subject": "chore(deps): bump renovatebot/github-action from 46.1.17 to 46.1.18 (#1731)",
+        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 46.1.17 to 46.1.18.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/dd5302ec17783b2fc721b19ae7209b57b1587765...b50d2ba2bd928235abdcc14d06dfafc217f1c565)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 46.1.18\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "4381c3f7fcd44b9af1f8657f4f52cbff0d2c29bb",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
