@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8124f36bf390574ca51e8a3c355307c3da9d43aa",
+  "drySha": "6d83e8ccee01abbf81d0294faa63dc32cd837dd4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-07-28T18:04:09-05:00",
-  "subject": "chore: bump version to v1.0.1921",
+  "date": "2026-07-28T18:05:14-05:00",
+  "subject": "chore: bump version to v1.0.1922",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-17T03:07:09-05:00",
-        "subject": "chore(deps): bump crate-ci/typos from 1.47.2 to 1.48.0 (#1708)",
-        "body": "Bumps [crate-ci/typos](https://github.com/crate-ci/typos) from 1.47.2 to 1.48.0.\n- [Release notes](https://github.com/crate-ci/typos/releases)\n- [Changelog](https://github.com/crate-ci/typos/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/crate-ci/typos/compare/37bb98842b0d8c4ffebdb75301a13db0267cef89...bee27e3a4fd1ea2111cf90ab89cd076c870fce14)\n\n---\nupdated-dependencies:\n- dependency-name: crate-ci/typos\n  dependency-version: 1.48.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "5661b5a042b340808f5c5084dae7b7bf9ca51138",
+        "date": "2026-07-08T11:10:29-05:00",
+        "subject": "chore(deps): bump renovatebot/github-action from 46.1.17 to 46.1.18 (#1731)",
+        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 46.1.17 to 46.1.18.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/dd5302ec17783b2fc721b19ae7209b57b1587765...b50d2ba2bd928235abdcc14d06dfafc217f1c565)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 46.1.18\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "4381c3f7fcd44b9af1f8657f4f52cbff0d2c29bb",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
