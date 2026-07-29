@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "db1291e006ffa1a63fb43aa8616368072979c649",
+  "drySha": "2617c1dc7317b2bab0d56544357a083685110776",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-07-29T09:57:30-05:00",
-  "subject": "chore: bump version to v1.0.1925",
+  "date": "2026-07-29T09:57:37-05:00",
+  "subject": "chore: bump version to v1.0.1926",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-06-28T06:26:05-05:00",
-        "subject": "chore(deps): bump actions/setup-python from 6.3.0 to 7.0.0 (#1784)",
-        "body": "Bumps [actions/setup-python](https://github.com/actions/setup-python) from 6.3.0 to 7.0.0.\n- [Release notes](https://github.com/actions/setup-python/releases)\n- [Commits](https://github.com/actions/setup-python/compare/ece7cb06caefa5fff74198d8649806c4678c61a1...5fda3b95a4ea91299a34e894583c3862153e4b97)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-python\n  dependency-version: 7.0.0\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "c2a3d97ba85c6ac29a18fa1e6b4dc91b21c5e746",
+        "date": "2026-07-03T04:43:41-05:00",
+        "subject": "fix: un-minimize RBAC (#1769)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "2c5f6a80eeb2a359bfc11b8ed506adba103b3021",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
