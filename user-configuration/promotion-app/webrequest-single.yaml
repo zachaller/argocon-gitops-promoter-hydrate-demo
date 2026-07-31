@@ -313,7 +313,8 @@ spec:
     {{- if .TriggerOutput -}}{{- $lastFiredFingerprint = index .TriggerOutput "lastFingerprint" | default "" -}}{{- end -}}
     {{- $shaShort := "" -}}{{- if ne $drySha "" -}}{{- $shaShort = substr 0 7 $drySha -}}{{- end -}}
     {{- /* Stale = a new dry SHA arrived but the trigger hasn't fired yet, so ResponseOutput is from the previous SHA. */ -}}
-    {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) -}}
+    {{- $openHold := and (eq $step "opened") (ne $changeId "") -}}
+    {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) (not $openHold) -}}
     {{ .Phase }}:
     {{- if or (not .ResponseOutput) $stale }} preparing change record{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }}
     {{- else if eq $step "reusable" }} reusing change {{ $changeId }}{{ if ne $cmStatus "" }} ({{ $cmStatus }}){{ end }}
@@ -412,30 +413,40 @@ spec:
             Response.Body != nil &&
             Response.Body.id != nil &&
             Response.Body.id != "";
+          // Hold success after POST open until a later HTTP response replaces step (e.g. GET
+          // needOpen). Avoids dropping to pending when fingerprint drifts or gates block before
+          // get-before-open can run.
+          let openHold = Response == nil &&
+            ResponseOutput != nil &&
+            string(ResponseOutput.step ?? "") == "opened" &&
+            string(ResponseOutput.changeId ?? "") != "";
           {
             fingerprint: fingerprint,
             getSuccess: getSuccess,
-            openSuccess: openSuccess
+            openSuccess: openSuccess,
+            openHold: openHold
           }
       # Success when:
       # - POST open returned 202 with a body.id, or
       # - GET status is reusable/rejected on the same openedFingerprint, or
+      # - (no HTTP this reconcile) prior POST open succeeded (openHold), or
       # - (no HTTP this reconcile) we're already in success on the same fingerprint and not mid-flight.
       expression: |
         Response != nil
           ? (Variables.openSuccess || Variables.getSuccess)
-          : (Phase == "success" &&
-             Variables.fingerprint == (TriggerOutput["lastFingerprint"] ?? "") &&
-             (ResponseOutput == nil ||
-              ((ResponseOutput.step ?? "") != "needOpen" &&
-               (ResponseOutput.step ?? "") != "needCancel" &&
-               (ResponseOutput.step ?? "") != "cancelled" &&
-               (ResponseOutput.step ?? "") != "cancelFailed" &&
-               (ResponseOutput.step ?? "") != "openRetry" &&
-               (ResponseOutput.step ?? "") != "cancelRetry" &&
-               (ResponseOutput.step ?? "") != "getRetry" &&
-               !(((ResponseOutput.step ?? "") == "reusable" || (ResponseOutput.step ?? "") == "rejected") &&
-                 string(TriggerOutput["openedFingerprint"] ?? "") != Variables.fingerprint))))
+          : (Variables.openHold ||
+             (Phase == "success" &&
+              Variables.fingerprint == (TriggerOutput["lastFingerprint"] ?? "") &&
+              (ResponseOutput == nil ||
+               ((ResponseOutput.step ?? "") != "needOpen" &&
+                (ResponseOutput.step ?? "") != "needCancel" &&
+                (ResponseOutput.step ?? "") != "cancelled" &&
+                (ResponseOutput.step ?? "") != "cancelFailed" &&
+                (ResponseOutput.step ?? "") != "openRetry" &&
+                (ResponseOutput.step ?? "") != "cancelRetry" &&
+                (ResponseOutput.step ?? "") != "getRetry" &&
+                !(((ResponseOutput.step ?? "") == "reusable" || (ResponseOutput.step ?? "") == "rejected") &&
+                  string(TriggerOutput["openedFingerprint"] ?? "") != Variables.fingerprint)))))
   mode:
     context: promotionstrategy
     trigger:
@@ -697,17 +708,18 @@ spec:
             let openStep = openOk
               ? "opened"
               : (postRetry ? "openRetry" : "openFailed");
-            let cancelOk = !isStatusGet && !openOk && statusCode >= 200 && statusCode < 300;
+            let cancelOk = !isStatusGet && !openOk && statusCode >= 200 && statusCode < 300 && statusCode != 202;
             let cancelStep = cancelOk
               ? "cancelled"
               : (postRetry ? "cancelRetry" : "cancelFailed");
-            // Open uses HTTP 202 (and message/error bodies on failure). Cancel uses other 2xx
-            // with an empty/minimal body. Message/error/change_request ⇒ treat as open failure.
+            // Open uses HTTP 202 (and id/change_request/error bodies on failure). Cancel uses
+            // other 2xx (not 202); idempotent cancel may return message-only 200 — still cancel.
+            let isCancelSuccessRange = cancelOk;
             let looksLikeOpenBody = Response.Body != nil &&
               ((Response.Body.change_request ?? nil) != nil ||
-               (Response.Body.message ?? nil) != nil ||
                (Response.Body.error ?? nil) != nil ||
-               (Response.Body.id ?? nil) != nil);
+               (Response.Body.id ?? nil) != nil ||
+               ((Response.Body.message ?? nil) != nil && !isCancelSuccessRange));
             let step = isStatusGet
               ? getStep
               : (openOk || statusCode == 202 || looksLikeOpenBody ? openStep : cancelStep);
