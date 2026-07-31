@@ -376,7 +376,8 @@ spec:
         "sub_category": "Release",
         "commit_id": "{{ index .TriggerVariables "canonicalNoteDrySha" }}",
         "start_time": "{{ now | date "2006-01-02T15:04:05Z07:00" }}",
-        "end_time": "{{ now | dateModify "+8h" | date "2006-01-02T15:04:05Z07:00" }}",
+        {{- $window := index .TriggerVariables "openWindowModifier" | default "+4h" -}}
+        "end_time": "{{ now | dateModify $window | date "2006-01-02T15:04:05Z07:00" }}",
         "risk": "low",
         "repo_url": "{{- $ghDomain := index .NamespaceMetadata.Labels "argocd.intuit.com/github-domain" -}}{{- $ghHost := "github.intuit.com" -}}{{- if eq $ghDomain "github-dev" -}}{{- $ghHost = "github-dev.intuit.com" -}}{{- end -}}https://{{ $ghHost }}/{{ index .NamespaceMetadata.Labels "argocd.intuit.com/github-org" }}/{{ index .NamespaceMetadata.Labels "argocd.intuit.com/github-repo-name" }}"
       }
@@ -497,7 +498,13 @@ spec:
               { string(#.Phase) == "success" }
             );
             let lastStatusCode = ResponseOutput != nil ? ResponseOutput.statusCode : 0;
-            let priorStep = ResponseOutput != nil ? string(ResponseOutput.step ?? "") : "";
+            let priorStepRaw = ResponseOutput != nil ? string(ResponseOutput.step ?? "") : "";
+            // Recover stuck state: cancel 2xx + message (e.g. "already cancelled") was
+            // misclassified as openFailed before response.output treated bare message as open.
+            let priorStep = priorStepRaw == "openFailed" &&
+              string(ResponseOutput.message ?? "") contains "already cancel"
+              ? "cancelled"
+              : priorStepRaw;
             let fromRO = ResponseOutput != nil ? string(ResponseOutput.changeId ?? "") : "";
             let priorChangeId = fromRO != "" ? fromRO : string(TriggerOutput.lastChangeId ?? "");
             let isRetryable = lastStatusCode == 429 || lastStatusCode >= 500;
@@ -582,6 +589,9 @@ spec:
             // GET when we have a prior id and fresh work to do, but are not yet in cancel/open.
             let inGetMode = priorChangeId != "" && wantFreshWork && !inCancelMode && !needOpenFromStatus && !statusHold;
             let shouldTrigger = gatesOk && (inOpenMode || inGetMode || inCancelMode);
+            // Fresh open (new fingerprint / first CR): 4h window. Same-fingerprint reopen
+            // (window elapsed or other needOpen while openedFingerprint still matches): 24h.
+            let openWindowModifier = (inOpenMode && sameOpenedFingerprint) ? "+24h" : "+4h";
             {
               hasOpenPRForKey: hasOpenPRForKey,
               allNoteDryShasMatch: allNoteDryShasMatch,
@@ -604,7 +614,8 @@ spec:
               shouldTrigger: shouldTrigger,
               gatesOk: gatesOk,
               wantFreshWork: wantFreshWork,
-              sameOpenedFingerprint: sameOpenedFingerprint
+              sameOpenedFingerprint: sameOpenedFingerprint,
+              openWindowModifier: openWindowModifier
             }
         # Fire GET (status), POST cancel, or POST open when gates pass and the phase flags say so.
         expression: |
