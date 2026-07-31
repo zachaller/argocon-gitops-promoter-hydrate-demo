@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "cc8ef1b557a96c0483157175472f44cc5b777698",
+  "drySha": "f0f99e20cc5adfa1da7afc30baab1b838a54e894",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-07-24T16:57:24-05:00",
-  "subject": "chore: bump version to v1.0.1917",
+  "date": "2026-07-29T10:01:39-05:00",
+  "subject": "chore: bump version to v1.0.1927",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-11T11:46:34-05:00",
-        "subject": "chore(ui): upgrade dashboard to React 19 and react-router v8 (#1818)",
-        "body": "Migrate react-router-dom@6 to react-router@8.3 (imports moved to the\nconsolidated 'react-router' package) and bump react/react-dom to 19, as\nrequired by 8.3. Clears the react-router npm audit advisories. React 19\nis scoped to the dashboard bundle; the extension stays on 18.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
-        "sha": "fc49ccb86230b1b426d6d41fee55e4be3a6e2288",
+        "date": "2026-06-24T17:38:39-05:00",
+        "subject": "chore(deps): refresh e2e Kind matrix and automate kindest/node bumps (#1681)",
+        "body": "* chore(deps): refresh e2e Kind matrix and automate kindest/node bumps\n\nAdvance the ci-e2e Kubernetes matrix to 1.34–1.36 and teach Renovate to\ntrack kindest/node versions used by the Kind cluster setup.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* chore(deps): bump e2e Kind matrix to latest kindest/node patches\n\nUse 1.34.8 and 1.35.5 (latest patches for those minors); 1.36.1 is\nalready the newest available 1.36.x kindest/node tag.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* stable e2e check name\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+        "sha": "b729e8c66f99001e8e656339b3919fb8b60c1fef",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
