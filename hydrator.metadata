@@ -1,18 +1,17 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5c01acc96ba8ee7e13c55f33004b5e1ef7c8e59e",
+  "drySha": "924618eff1e5387feeb4aee933e1f65a253dbedd",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-03T09:54:04-05:00",
-  "subject": "chore: bump version to v1.0.1930",
+  "date": "2026-08-03T10:28:08-05:00",
+  "subject": "chore: bump version to v1.0.1931",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-04T15:37:33-05:00",
-        "subject": "fix: don't count ControllerConfigs (#1795)",
-        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "0a767a674a44d817bdc912d9372bfe9743928670",
+        "date": "2026-07-07T22:07:13-05:00",
+        "subject": "chore: update configuration",
+        "sha": "9d5ccef278218dea4caa903bb6abb9ed974a1d90",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
