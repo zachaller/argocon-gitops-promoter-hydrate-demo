@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3a1e892854e40c760bd3cf19cf307b0e299afddc",
+  "drySha": "6b51466bb35fe4c28177f30d68035268d5b1c2ad",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-03T15:17:06-05:00",
-  "subject": "chore: bump version to v1.0.1933",
+  "date": "2026-08-05T09:57:59-05:00",
+  "subject": "chore: bump version to v1.0.1936",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-04T21:38:35-05:00",
-        "subject": "fix(test): prevent auto-promotion race in GitCommitStatus revert-detection spec (#1727)",
-        "body": "* fix: test flake in gcs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: test flake in gcs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: no need\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: check promot is done\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "861385906b3a075b878be275bdb7feabd4f00207",
+        "date": "2026-07-14T18:48:33-05:00",
+        "subject": "chore(deps): update quay.io/brancz/kube-rbac-proxy docker tag to v0.22.1 (#1759)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "75210e189bc44b76474fedb895c75dffa4bf8eba",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
