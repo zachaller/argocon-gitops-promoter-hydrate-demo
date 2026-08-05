@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5c2cfc949070d47f306db8a29cd86e6a075f8c4a",
+  "drySha": "3747a6339ef785f662088b2cbd5065344a719ccb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-05T11:58:09-05:00",
-  "subject": "chore: bump version to v1.0.1940",
+  "date": "2026-08-05T11:59:18-05:00",
+  "subject": "chore: bump version to v1.0.1941",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-23T04:47:41-05:00",
-        "subject": "chore(deps): update module github.com/google/go-github/v88 to v89 (#1743)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "f0a1768abe8c3e14f342ddf3f1e6dceb45eaf256",
+        "date": "2026-07-28T06:00:59-05:00",
+        "subject": "chore(deps): bump the go-etcd group across 1 directory with 3 updates (#1808)",
+        "body": "Bumps the go-etcd group with 3 updates in the / directory: [go.etcd.io/etcd/api/v3](https://github.com/etcd-io/etcd), [go.etcd.io/etcd/client/pkg/v3](https://github.com/etcd-io/etcd) and [go.etcd.io/etcd/client/v3](https://github.com/etcd-io/etcd).\n\n\nUpdates `go.etcd.io/etcd/api/v3` from 3.7.0 to 3.7.1\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.0...v3.7.1)\n\nUpdates `go.etcd.io/etcd/client/pkg/v3` from 3.7.0 to 3.7.1\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.0...v3.7.1)\n\nUpdates `go.etcd.io/etcd/client/v3` from 3.7.0 to 3.7.1\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.0...v3.7.1)\n\n---\nupdated-dependencies:\n- dependency-name: go.etcd.io/etcd/api/v3\n  dependency-version: 3.7.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n- dependency-name: go.etcd.io/etcd/client/pkg/v3\n  dependency-version: 3.7.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n- dependency-name: go.etcd.io/etcd/client/v3\n  dependency-version: 3.7.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "937b419fefac084bcc14ed7dce83fda1dd49fe80",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
