@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6b51466bb35fe4c28177f30d68035268d5b1c2ad",
+  "drySha": "d39d6f301e75e599b05075a0397d36ad9bb2b554",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-05T09:57:59-05:00",
-  "subject": "chore: bump version to v1.0.1936",
+  "date": "2026-08-05T10:30:30-05:00",
+  "subject": "chore: bump version to v1.0.1937",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-14T18:48:33-05:00",
-        "subject": "chore(deps): update quay.io/brancz/kube-rbac-proxy docker tag to v0.22.1 (#1759)",
+        "date": "2026-07-06T07:42:22-05:00",
+        "subject": "chore(deps): update dependency argoproj/argo-cd to v3.4.6 (#1843)",
         "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "75210e189bc44b76474fedb895c75dffa4bf8eba",
+        "sha": "a6ae48574eb0fbd138d4ebf19deb8b5a7c2239dc",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
