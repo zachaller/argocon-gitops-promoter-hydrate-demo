@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "5c01acc96ba8ee7e13c55f33004b5e1ef7c8e59e",
+  "drySha": "1540967664d77d590883b39d7ddca4ee6e8a8c20",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-03T09:54:04-05:00",
-  "subject": "chore: bump version to v1.0.1930",
+  "date": "2026-08-05T11:47:32-05:00",
+  "subject": "chore: bump version to v1.0.1938",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-04T15:37:33-05:00",
-        "subject": "fix: don't count ControllerConfigs (#1795)",
-        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "0a767a674a44d817bdc912d9372bfe9743928670",
+        "date": "2026-07-16T21:41:14-05:00",
+        "subject": "chore(deps): bump github.com/pelletier/go-toml/v2 from 2.4.2 to 2.4.3 (#1729)",
+        "body": "Bumps [github.com/pelletier/go-toml/v2](https://github.com/pelletier/go-toml) from 2.4.2 to 2.4.3.\n- [Release notes](https://github.com/pelletier/go-toml/releases)\n- [Commits](https://github.com/pelletier/go-toml/compare/v2.4.2...v2.4.3)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/pelletier/go-toml/v2\n  dependency-version: 2.4.3\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "57f3ce0021e1e139c4dc8382276478372aa5bb60",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
