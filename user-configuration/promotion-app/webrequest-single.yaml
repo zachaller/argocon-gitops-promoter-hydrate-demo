@@ -644,8 +644,10 @@ spec:
             // After GET /status: reusable/rejected are fingerprint-scoped. A new dry SHA
             // (!sameOpenedFingerprint) always proceeds to POST open — including after REJECTED.
             // cancelled / cancelFailed mean cancel finished (or gave up) → POST open next.
+            // openFailed + bumpTier retries POST open directly (skip get-before-open / re-cancel).
             let needOpenFromStatus = priorChangeId != "" && !inCancelMode &&
               (priorStep in ["needOpen", "openRetry", "cancelled", "cancelFailed"] ||
+               (priorStep == "openFailed" && bumpTier) ||
                (priorStep in ["reusable", "rejected"] && !sameOpenedFingerprint));
             // Same-fingerprint reuse/rejected holds skip further status GETs until the window
             // expires (reusable) or the fingerprint rolls (both).
