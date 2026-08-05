@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3747a6339ef785f662088b2cbd5065344a719ccb",
+  "drySha": "c0536226bb3932310e5000e67453bf6f6a25c2d2",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-05T11:59:18-05:00",
-  "subject": "chore: bump version to v1.0.1941",
+  "date": "2026-08-05T12:00:10-05:00",
+  "subject": "chore: bump version to v1.0.1942",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-28T06:00:59-05:00",
-        "subject": "chore(deps): bump the go-etcd group across 1 directory with 3 updates (#1808)",
-        "body": "Bumps the go-etcd group with 3 updates in the / directory: [go.etcd.io/etcd/api/v3](https://github.com/etcd-io/etcd), [go.etcd.io/etcd/client/pkg/v3](https://github.com/etcd-io/etcd) and [go.etcd.io/etcd/client/v3](https://github.com/etcd-io/etcd).\n\n\nUpdates `go.etcd.io/etcd/api/v3` from 3.7.0 to 3.7.1\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.0...v3.7.1)\n\nUpdates `go.etcd.io/etcd/client/pkg/v3` from 3.7.0 to 3.7.1\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.0...v3.7.1)\n\nUpdates `go.etcd.io/etcd/client/v3` from 3.7.0 to 3.7.1\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.0...v3.7.1)\n\n---\nupdated-dependencies:\n- dependency-name: go.etcd.io/etcd/api/v3\n  dependency-version: 3.7.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n- dependency-name: go.etcd.io/etcd/client/pkg/v3\n  dependency-version: 3.7.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n- dependency-name: go.etcd.io/etcd/client/v3\n  dependency-version: 3.7.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "937b419fefac084bcc14ed7dce83fda1dd49fe80",
+        "date": "2026-07-31T06:02:07-05:00",
+        "subject": "chore(deps): bump github.com/google/cel-go from 0.29.2 to 0.30.0 (#1826)",
+        "body": "Bumps [github.com/google/cel-go](https://github.com/google/cel-go) from 0.29.2 to 0.30.0.\n- [Release notes](https://github.com/google/cel-go/releases)\n- [Commits](https://github.com/google/cel-go/compare/v0.29.2...v0.30.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/google/cel-go\n  dependency-version: 0.30.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "95d6f3e0b5e3422987071eeb1a6a7338319f6550",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
