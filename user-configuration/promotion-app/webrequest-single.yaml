@@ -336,11 +336,16 @@ spec:
       {{- $inOpenMode         = index .TriggerVariables "inOpenMode"          | default false -}}
       {{- $inCancelMode       = index .TriggerVariables "inCancelMode"        | default false -}}
     {{- end -}}
-    {{- $lastFiredFingerprint := "" -}}
-    {{- if .TriggerOutput -}}{{- $lastFiredFingerprint = index .TriggerOutput "lastFiredFingerprint" | default "" -}}{{- end -}}
+    {{- $lastFiredFingerprint := "" -}}{{- $openedFingerprint := "" -}}
+    {{- if .TriggerOutput -}}
+      {{- $lastFiredFingerprint = index .TriggerOutput "lastFiredFingerprint" | default "" -}}
+      {{- $openedFingerprint     = index .TriggerOutput "openedFingerprint"     | default "" -}}
+    {{- end -}}
     {{- $shaShort := "" -}}{{- if ne $drySha "" -}}{{- $shaShort = substr 0 7 $drySha -}}{{- end -}}
     {{- /* Stale = a new dry SHA arrived but the trigger hasn't fired yet, so ResponseOutput is from the previous SHA. */ -}}
     {{- $openHold := and (eq $step "opened") (ne $changeId "") -}}
+    {{- /* openHoldDrift = success still latched on the prior open, but the fingerprint moved before gates allowed get-before-open. */ -}}
+    {{- $openHoldDrift := and $openHold (ne $openedFingerprint "") (ne $currentFingerprint "") (ne $currentFingerprint $openedFingerprint) -}}
     {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) (not $openHold) -}}
     {{ .Phase }}:
     {{- if or (not .ResponseOutput) $stale }} preparing change record{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }}
@@ -356,6 +361,7 @@ spec:
     {{- else if eq $step "openRetry" }} open failed for{{ if ne $changeId "" }} {{ $changeId }}{{ end }} (HTTP {{ $statusCode }}), will retry
     {{- else if and (eq $statusCode 202) (eq $changeId "") }} change request accepted (HTTP 202) but no ID returned — will retry
     {{- else if eq $step "openFailed" }} open failed{{ if ne $changeId "" }} for {{ $changeId }}{{ end }} (HTTP {{ $statusCode }})
+    {{- else if $openHoldDrift }} preparing change record{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }} — prior change {{ $changeId }} still open until gates clear
     {{- else if and (ne $changeId "") (or (eq $step "opened") (eq $statusCode 202)) }} created change {{ $changeId }}
       {{- if ne $shortDesc "" }} — "{{ $shortDesc }}"{{- end -}}
       {{- if and (ne $startTime "") (ne $endTime "") }} · window {{ $startTime }} → {{ $endTime }}{{- end }}
