@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "1540967664d77d590883b39d7ddca4ee6e8a8c20",
+  "drySha": "5c2cfc949070d47f306db8a29cd86e6a075f8c4a",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-05T11:47:32-05:00",
-  "subject": "chore: bump version to v1.0.1938",
+  "date": "2026-08-05T11:58:09-05:00",
+  "subject": "chore: bump version to v1.0.1940",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-16T21:41:14-05:00",
-        "subject": "chore(deps): bump github.com/pelletier/go-toml/v2 from 2.4.2 to 2.4.3 (#1729)",
-        "body": "Bumps [github.com/pelletier/go-toml/v2](https://github.com/pelletier/go-toml) from 2.4.2 to 2.4.3.\n- [Release notes](https://github.com/pelletier/go-toml/releases)\n- [Commits](https://github.com/pelletier/go-toml/compare/v2.4.2...v2.4.3)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/pelletier/go-toml/v2\n  dependency-version: 2.4.3\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "57f3ce0021e1e139c4dc8382276478372aa5bb60",
+        "date": "2026-07-23T04:47:41-05:00",
+        "subject": "chore(deps): update module github.com/google/go-github/v88 to v89 (#1743)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "f0a1768abe8c3e14f342ddf3f1e6dceb45eaf256",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
