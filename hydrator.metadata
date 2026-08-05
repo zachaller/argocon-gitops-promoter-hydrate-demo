@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "1540967664d77d590883b39d7ddca4ee6e8a8c20",
+  "drySha": "b0fa58108cc9b9e9611b91e0a5eeabd47a3101fe",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-05T11:47:32-05:00",
-  "subject": "chore: bump version to v1.0.1938",
+  "date": "2026-08-05T11:58:03-05:00",
+  "subject": "chore: bump version to v1.0.1939",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-16T21:41:14-05:00",
-        "subject": "chore(deps): bump github.com/pelletier/go-toml/v2 from 2.4.2 to 2.4.3 (#1729)",
-        "body": "Bumps [github.com/pelletier/go-toml/v2](https://github.com/pelletier/go-toml) from 2.4.2 to 2.4.3.\n- [Release notes](https://github.com/pelletier/go-toml/releases)\n- [Commits](https://github.com/pelletier/go-toml/compare/v2.4.2...v2.4.3)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/pelletier/go-toml/v2\n  dependency-version: 2.4.3\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "57f3ce0021e1e139c4dc8382276478372aa5bb60",
+        "date": "2026-07-05T18:29:04-05:00",
+        "subject": "chore(ui): upgrade dashboard to React 19 and react-router v8 (#1818)",
+        "body": "Migrate react-router-dom@6 to react-router@8.3 (imports moved to the\nconsolidated 'react-router' package) and bump react/react-dom to 19, as\nrequired by 8.3. Clears the react-router npm audit advisories. React 19\nis scoped to the dashboard bundle; the extension stays on 18.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
+        "sha": "fc49ccb86230b1b426d6d41fee55e4be3a6e2288",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
