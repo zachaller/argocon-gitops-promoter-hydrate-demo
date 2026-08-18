@@ -26,7 +26,7 @@ metadata:
   namespace: default
 spec:
   promotionStrategyRef:
-    name: argocon-demo
+    name: my-app
   key: github-required-checks
   reportOn: proposed
 
@@ -48,16 +48,21 @@ spec:
     authentication:
       scm: {}
     timeout: 30s
-    # Two things are fetched in one call:
+    # Three things are fetched in one call:
     #   pullRequest.mergeStateStatus — GitHub's own verdict, which knows about
     #     required checks that have not reported yet (see success.when below).
-    #   object(oid:).statusCheckRollup — the per-check detail used for naming.
+    #   ref(qualifiedName:$baseRef).rules — the ruleset-declared required contexts
+    #     for the branch being merged INTO. This is what makes it possible to name
+    #     a required check that has never reported, since such a check does not
+    #     appear in statusCheckRollup at all.
+    #   object(oid:).statusCheckRollup — the per-check state for what has reported.
     # The commit is fetched by oid rather than as "the PR's head commit" so the
     # gate always reports on exactly the hydrated SHA promoter is promoting.
+    # baseRef is the environment branch, which is the base of promoter's PR.
     bodyTemplate: >-
       {{- range .PromotionStrategy.Status.Environments }}{{- if eq .Branch $.Branch }}
-      {"query":"query($owner:String!,$repo:String!,$oid:GitObjectID!,$pr:Int!){repository(owner:$owner,name:$repo){pullRequest(number:$pr){mergeStateStatus}object(oid:$oid){... on Commit{statusCheckRollup{contexts(first:100){nodes{__typename ... on CheckRun{name status conclusion isRequired(pullRequestNumber:$pr)} ... on StatusContext{context state isRequired(pullRequestNumber:$pr)}}}}}}}}",
-      "variables":{"owner":"{{ index (splitList "/" (trimPrefix "https://github.com/" .PullRequest.Url)) 0 }}","repo":"{{ index (splitList "/" (trimPrefix "https://github.com/" .PullRequest.Url)) 1 }}","oid":"{{ .Proposed.Hydrated.Sha }}","pr":{{ .PullRequest.ID }}}}
+      {"query":"query($owner:String!,$repo:String!,$oid:GitObjectID!,$pr:Int!,$baseRef:String!){repository(owner:$owner,name:$repo){pullRequest(number:$pr){mergeStateStatus}ref(qualifiedName:$baseRef){rules(first:50){nodes{type parameters{... on RequiredStatusChecksParameters{requiredStatusChecks{context}}}}}}object(oid:$oid){... on Commit{oid statusCheckRollup{state contexts(first:100){nodes{__typename ... on CheckRun{name status conclusion isRequired(pullRequestNumber:$pr)} ... on StatusContext{context state isRequired(pullRequestNumber:$pr)}}}}}}}}",
+      "variables":{"owner":"{{ index (splitList "/" (trimPrefix "https://github.com/" .PullRequest.Url)) 0 }}","repo":"{{ index (splitList "/" (trimPrefix "https://github.com/" .PullRequest.Url)) 1 }}","oid":"{{ .Proposed.Hydrated.Sha }}","pr":{{ .PullRequest.ID }},"baseRef":"{{ .Branch }}"}}
       {{- end }}{{- end }}
 
   success:
@@ -65,23 +70,48 @@ spec:
       # requiredContexts below is computed, not configured: GitHub's isRequired
       # field resolves branch protection and rulesets, so there is no list of
       # check names to maintain anywhere in this file.
+      #
+      # allowNoRequiredChecks (first line of the expression) controls what happens
+      # when GitHub reports zero required checks. It defaults to false, i.e. fail
+      # CLOSED: "nothing is required" is far more often a misconfiguration than a
+      # deliberate state, and silently promoting on it defeats the point of the
+      # gate. Note that isRequired is evaluated against the PULL REQUEST'S BASE
+      # BRANCH — for promoter that is the environment branch (e.g.
+      # environments/development), NOT main. Protection rules on main have no
+      # effect here. Set to true only if you really do want unprotected
+      # environments to promote freely.
       variables:
         expression: |
+          let allowNoRequiredChecks = false;
           let envStatus = find(PromotionStrategy.Status.Environments, {.Branch == Branch});
           let wrcsEnv = find(WebRequestCommitStatus.Status.Environments ?? [], {.Branch == Branch});
-          let nodes = Response == nil ? [] : (Response.Body?.data?.repository?.object?.statusCheckRollup?.contexts?.nodes ?? []);
-          let requiredContexts = filter(nodes, (#.isRequired ?? false) == true);
+          let commit = Response == nil ? nil : Response.Body?.data?.repository?.object;
+          let nodes = commit?.statusCheckRollup?.contexts?.nodes ?? [];
+          let reportedNames = map(nodes, #.__typename == "CheckRun" ? #.name : #.context);
+          let ruleNodes = Response == nil ? [] : (Response.Body?.data?.repository?.ref?.rules?.nodes ?? []);
+          let rscLists = map(filter(ruleNodes, #.type == "REQUIRED_STATUS_CHECKS"), #.parameters?.requiredStatusChecks ?? []);
+          let fromRules = map(flatten(rscLists), #.context);
+          let fromRollup = map(filter(nodes, (#.isRequired ?? false) == true), #.__typename == "CheckRun" ? #.name : #.context);
+          let requiredNames = fromRules + filter(fromRollup, !(# in fromRules));
+          let missing = filter(requiredNames, !(# in reportedNames));
           let passed = ["SUCCESS", "SKIPPED", "NEUTRAL"];
           let waiting = ["EXPECTED", "PENDING", "QUEUED", "IN_PROGRESS", "WAITING", "REQUESTED"];
-          let normalized = map(requiredContexts, #.__typename == "CheckRun"
+          let normalized = map(filter(nodes, (#.__typename == "CheckRun" ? #.name : #.context) in requiredNames), #.__typename == "CheckRun"
             ? {name: #.name, state: #.status != "COMPLETED" ? (#.status ?? "PENDING") : (#.conclusion ?? "UNKNOWN")}
             : {name: #.context, state: #.state ?? "UNKNOWN"});
           {
+            allowNoRequiredChecks: allowNoRequiredChecks,
             reportedSha: envStatus != nil ? envStatus.Proposed.Hydrated.Sha : "",
             lastSuccessfulSha: wrcsEnv != nil ? (wrcsEnv.LastSuccessfulSha ?? "") : "",
             graphqlErrors: Response == nil ? [] : map(Response.Body?.errors ?? [], #.message ?? "unknown error"),
             mergeState: Response == nil ? "" : (Response.Body?.data?.repository?.pullRequest?.mergeStateStatus ?? "UNKNOWN"),
-            total: len(normalized),
+            commitFound: commit != nil,
+            returnedOid: commit?.oid ?? "",
+            rollupState: commit?.statusCheckRollup?.state ?? "NONE",
+            allContexts: len(nodes),
+            required: requiredNames,
+            total: len(requiredNames),
+            missing: missing,
             failing: map(filter(normalized, !(#.state in passed) && !(#.state in waiting)), #.name + " (" + lower(#.state) + ")"),
             running: map(filter(normalized, #.state in waiting), #.name)
           }
@@ -102,17 +132,21 @@ spec:
           ? (Phase == "success" && Variables.lastSuccessfulSha == Variables.reportedSha)
           : Response.StatusCode == 200 &&
             len(Variables.graphqlErrors) == 0 &&
+            Variables.commitFound &&
             len(Variables.failing) == 0 &&
             len(Variables.running) == 0 &&
+            len(Variables.missing) == 0 &&
+            (Variables.total > 0 || Variables.allowNoRequiredChecks) &&
             Variables.mergeState in ["CLEAN", "UNSTABLE", "HAS_HOOKS"]
 
       output:
         expression: |
-          let fresh = {sha: Variables.reportedSha, summary: "Waiting for GitHub required checks", failing: [], running: []};
+          let fresh = {sha: Variables.reportedSha, summary: "Waiting for GitHub required checks", required: [], missing: [], failing: [], running: []};
           let mergeable = Variables.mergeState in ["CLEAN", "UNSTABLE", "HAS_HOOKS"];
           let named = trim(
             (len(Variables.failing) > 0 ? "Failing: " + join(Variables.failing, ", ") + "; " : "") +
-            (len(Variables.running) > 0 ? "Waiting on: " + join(Variables.running, ", ") : ""),
+            (len(Variables.running) > 0 ? "Waiting on: " + join(Variables.running, ", ") + "; " : "") +
+            (len(Variables.missing) > 0 ? "Not reported: " + join(Variables.missing, ", ") : ""),
             "; ");
           let blockedReason = {
             "BLOCKED": "Blocked by branch protection — a required review or a required check that has not reported yet",
@@ -126,17 +160,28 @@ spec:
             : {
                 sha: Variables.reportedSha,
                 mergeState: Variables.mergeState,
+                commitFound: Variables.commitFound,
+                returnedOid: Variables.returnedOid,
+                rollupState: Variables.rollupState,
+                allContexts: Variables.allContexts,
+                required: Variables.required,
+                requiredCount: Variables.total,
+                missing: Variables.missing,
                 failing: Variables.failing,
                 running: Variables.running,
                 summary: len(Variables.graphqlErrors) > 0
                   ? "GitHub API error: " + join(Variables.graphqlErrors, "; ")
-                  : (named != ""
-                      ? named
-                      : (mergeable
-                          ? (Variables.total == 0
-                              ? "No required checks configured"
-                              : "All " + string(Variables.total) + (Variables.total == 1 ? " required check passed" : " required checks passed"))
-                          : (blockedReason[Variables.mergeState] ?? ("Not mergeable (state: " + Variables.mergeState + ")"))))
+                  : (!Variables.commitFound
+                      ? "Commit not visible to the GitHub API — check the App can read this repo and that the hydrated SHA is pushed"
+                      : (named != ""
+                          ? named
+                          : (!mergeable
+                              ? (blockedReason[Variables.mergeState] ?? ("Not mergeable (state: " + Variables.mergeState + ")"))
+                              : (Variables.total > 0
+                                  ? "All " + string(Variables.total) + (Variables.total == 1 ? " required check passed" : " required checks passed")
+                                  : (Variables.allContexts == 0
+                                      ? "No checks of any kind reported on this commit (rollup " + Variables.rollupState + ") — nothing to gate on"
+                                      : "None of the " + string(Variables.allContexts) + " checks on this commit are required by the base branch's protection")))))
               }
 
   mode:
