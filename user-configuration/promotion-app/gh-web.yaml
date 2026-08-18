@@ -26,7 +26,7 @@ metadata:
   namespace: default
 spec:
   promotionStrategyRef:
-    name: argocon-demo
+    name: my-app
   key: github-required-checks
   reportOn: proposed
 
@@ -104,9 +104,9 @@ spec:
             returnedOid: commit?.oid ?? "",
             rollupState: commit?.statusCheckRollup?.state ?? "NONE",
             allContexts: len(nodes),
-            required: requiredNames,
+            required: requiredNames ?? [],
             total: len(requiredNames),
-            missing: missing,
+            missing: missing ?? [],
             failing: map(filter(normalized, !(#.state in passed) && !(#.state in waiting)), #.name + " (" + lower(#.state) + ")"),
             running: map(filter(normalized, #.state in waiting), #.name)
           }
@@ -174,7 +174,7 @@ spec:
                               ? (blockedReason[Variables.mergeState] ?? ("Not mergeable (state: " + Variables.mergeState + ")"))
                               : (Variables.total > 0
                                   ? "All " + string(Variables.total) + (Variables.total == 1 ? " required check passed" : " required checks passed")
-                                  : "No required checks on this branch — nothing to gate on")))))
+                                  : "No required checks on this branch — nothing to gate on"))))
               }
 
   mode:
