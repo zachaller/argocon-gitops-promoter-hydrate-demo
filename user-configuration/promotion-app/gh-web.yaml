@@ -26,7 +26,7 @@ metadata:
   namespace: default
 spec:
   promotionStrategyRef:
-    name: argocon-demo
+    name: my-app
   key: github-required-checks
   reportOn: proposed
 
@@ -40,17 +40,23 @@ spec:
     urlTemplate: "https://api.github.com/graphql"
     methodTemplate: POST
     headerTemplates:
-      Accept: "application/vnd.github+json"
+      # merge-info-preview is what unlocks mergeStateStatus on older GitHub
+      # Enterprise Server schemas; it is a no-op on github.com where the field
+      # is already GA.
+      Accept: "application/vnd.github.merge-info-preview+json"
       X-GitHub-Api-Version: "2022-11-28"
     authentication:
       scm: {}
     timeout: 30s
-    # Queried by commit oid (not "the PR's head commit") so the gate always
-    # reports on exactly the hydrated SHA promoter is promoting. The PR number is
-    # only used to resolve isRequired.
+    # Two things are fetched in one call:
+    #   pullRequest.mergeStateStatus — GitHub's own verdict, which knows about
+    #     required checks that have not reported yet (see success.when below).
+    #   object(oid:).statusCheckRollup — the per-check detail used for naming.
+    # The commit is fetched by oid rather than as "the PR's head commit" so the
+    # gate always reports on exactly the hydrated SHA promoter is promoting.
     bodyTemplate: >-
       {{- range .PromotionStrategy.Status.Environments }}{{- if eq .Branch $.Branch }}
-      {"query":"query($owner:String!,$repo:String!,$oid:GitObjectID!,$pr:Int!){repository(owner:$owner,name:$repo){object(oid:$oid){... on Commit{statusCheckRollup{contexts(first:100){nodes{__typename ... on CheckRun{name status conclusion isRequired(pullRequestNumber:$pr)} ... on StatusContext{context state isRequired(pullRequestNumber:$pr)}}}}}}}}",
+      {"query":"query($owner:String!,$repo:String!,$oid:GitObjectID!,$pr:Int!){repository(owner:$owner,name:$repo){pullRequest(number:$pr){mergeStateStatus}object(oid:$oid){... on Commit{statusCheckRollup{contexts(first:100){nodes{__typename ... on CheckRun{name status conclusion isRequired(pullRequestNumber:$pr)} ... on StatusContext{context state isRequired(pullRequestNumber:$pr)}}}}}}}}",
       "variables":{"owner":"{{ index (splitList "/" (trimPrefix "https://github.com/" .PullRequest.Url)) 0 }}","repo":"{{ index (splitList "/" (trimPrefix "https://github.com/" .PullRequest.Url)) 1 }}","oid":"{{ .Proposed.Hydrated.Sha }}","pr":{{ .PullRequest.ID }}}}
       {{- end }}{{- end }}
 
@@ -74,42 +80,63 @@ spec:
             reportedSha: envStatus != nil ? envStatus.Proposed.Hydrated.Sha : "",
             lastSuccessfulSha: wrcsEnv != nil ? (wrcsEnv.LastSuccessfulSha ?? "") : "",
             graphqlErrors: Response == nil ? [] : map(Response.Body?.errors ?? [], #.message ?? "unknown error"),
+            mergeState: Response == nil ? "" : (Response.Body?.data?.repository?.pullRequest?.mergeStateStatus ?? "UNKNOWN"),
             total: len(normalized),
             failing: map(filter(normalized, !(#.state in passed) && !(#.state in waiting)), #.name + " (" + lower(#.state) + ")"),
             running: map(filter(normalized, #.state in waiting), #.name)
           }
 
       # GraphQL answers 200 even for query errors, so errors are checked explicitly.
-      # Zero required checks counts as success — branch protection is not asking for
-      # anything. Add `&& Variables.total > 0` if you would rather fail closed.
+      #
+      # mergeState is the authoritative half of this gate, not a nicety. A check
+      # that is required but has never reported is frequently ABSENT from
+      # statusCheckRollup.contexts rather than present as EXPECTED, so the
+      # failing/running lists alone would fail open and promote. GitHub itself
+      # knows about the unreported check and answers BLOCKED, so the merge state
+      # is what makes this safe; the per-check lists exist to name what is wrong.
+      #
+      # UNSTABLE must be accepted: it means "mergeable, some non-required check is
+      # not passing", which is the state this gate's own pending check run creates.
       expression: |
         Response == nil
           ? (Phase == "success" && Variables.lastSuccessfulSha == Variables.reportedSha)
           : Response.StatusCode == 200 &&
             len(Variables.graphqlErrors) == 0 &&
             len(Variables.failing) == 0 &&
-            len(Variables.running) == 0
+            len(Variables.running) == 0 &&
+            Variables.mergeState in ["CLEAN", "UNSTABLE", "HAS_HOOKS"]
 
       output:
         expression: |
           let fresh = {sha: Variables.reportedSha, summary: "Waiting for GitHub required checks", failing: [], running: []};
+          let mergeable = Variables.mergeState in ["CLEAN", "UNSTABLE", "HAS_HOOKS"];
+          let named = trim(
+            (len(Variables.failing) > 0 ? "Failing: " + join(Variables.failing, ", ") + "; " : "") +
+            (len(Variables.running) > 0 ? "Waiting on: " + join(Variables.running, ", ") : ""),
+            "; ");
+          let blockedReason = {
+            "BLOCKED": "Blocked by branch protection — a required review or a required check that has not reported yet",
+            "BEHIND": "Branch is out of date with its base branch",
+            "DIRTY": "Merge conflict with the base branch",
+            "DRAFT": "Pull request is still a draft",
+            "UNKNOWN": "GitHub is still computing the merge state"
+          };
           Response == nil
             ? ((SuccessOutput != nil && (SuccessOutput.sha ?? "") == Variables.reportedSha) ? SuccessOutput : fresh)
             : {
                 sha: Variables.reportedSha,
+                mergeState: Variables.mergeState,
                 failing: Variables.failing,
                 running: Variables.running,
                 summary: len(Variables.graphqlErrors) > 0
                   ? "GitHub API error: " + join(Variables.graphqlErrors, "; ")
-                  : (len(Variables.failing) + len(Variables.running) == 0
-                      ? (Variables.total == 0
-                          ? "No required checks configured"
-                          : "All " + string(Variables.total) + (Variables.total == 1 ? " required check passed" : " required checks passed"))
-                      : trim(
-                          (len(Variables.failing) > 0 ? "Failing: " + join(Variables.failing, ", ") + "; " : "") +
-                          (len(Variables.running) > 0 ? "Waiting on: " + join(Variables.running, ", ") : ""),
-                          "; "
-                        ))
+                  : (named != ""
+                      ? named
+                      : (mergeable
+                          ? (Variables.total == 0
+                              ? "No required checks configured"
+                              : "All " + string(Variables.total) + (Variables.total == 1 ? " required check passed" : " required checks passed"))
+                          : (blockedReason[Variables.mergeState] ?? ("Not mergeable (state: " + Variables.mergeState + ")"))))
               }
 
   mode:
