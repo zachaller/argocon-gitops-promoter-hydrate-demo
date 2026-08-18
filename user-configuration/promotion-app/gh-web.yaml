@@ -26,7 +26,7 @@ metadata:
   namespace: default
 spec:
   promotionStrategyRef:
-    name: argocon-demo
+    name: my-app
   key: github-required-checks
   reportOn: proposed
 
@@ -92,7 +92,7 @@ spec:
           let rscLists = map(filter(ruleNodes, #.type == "REQUIRED_STATUS_CHECKS"), #.parameters?.requiredStatusChecks ?? []);
           let fromRules = map(flatten(rscLists), #.context);
           let fromRollup = map(filter(nodes, (#.isRequired ?? false) == true), #.__typename == "CheckRun" ? #.name : #.context);
-          let requiredNames = fromRules + filter(fromRollup, !(# in fromRules));
+          let requiredNames = concat(fromRules, filter(fromRollup, !(# in fromRules)));
           let missing = filter(requiredNames, !(# in reportedNames));
           let passed = ["SUCCESS", "SKIPPED", "NEUTRAL"];
           let waiting = ["EXPECTED", "PENDING", "QUEUED", "IN_PROGRESS", "WAITING", "REQUESTED"];
@@ -159,6 +159,7 @@ spec:
             ? ((SuccessOutput != nil && (SuccessOutput.sha ?? "") == Variables.reportedSha) ? SuccessOutput : fresh)
             : {
                 sha: Variables.reportedSha,
+                specGeneration: WebRequestCommitStatus.Generation,
                 mergeState: Variables.mergeState,
                 commitFound: Variables.commitFound,
                 returnedOid: Variables.returnedOid,
@@ -198,9 +199,12 @@ spec:
           let lastSuccessfulSha = wrcsEnv != nil ? (wrcsEnv.LastSuccessfulSha ?? "") : "";
           let idx = findIndex(PromotionStrategy.Status.Environments, #.Branch == Branch);
           let ahead = idx == nil || idx == 0 ? [] : PromotionStrategy.Status.Environments[:idx];
+          let evaluatedGeneration = SuccessOutput != nil ? int(SuccessOutput.specGeneration ?? 0) : 0;
+          let staleResult = lastSuccessfulSha != envStatus?.Proposed.Hydrated.Sha ||
+                            evaluatedGeneration != int(WebRequestCommitStatus.Generation);
           envStatus != nil &&
           envStatus.PullRequest != nil &&
           (envStatus.PullRequest.ID ?? "") != "" &&
           string(envStatus.PullRequest.State) == "open" &&
           all(ahead, #.PullRequest == nil || string(#.PullRequest.State) != "open") &&
-          lastSuccessfulSha != envStatus.Proposed.Hydrated.Sha
+          staleResult
