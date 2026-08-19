@@ -1,8 +1,20 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "731cba6f14320ee502bb8272d45853fdd4f4bfc0",
+  "drySha": "d6f5234994ccc1111dfaf40dc3c42ac6d9fd7d40",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-18T17:14:00-05:00",
-  "subject": "feat: name",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
+  "date": "2026-08-19T10:25:08-05:00",
+  "subject": "chore: bump version to v1.0.1944",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
+  "references": [
+    {
+      "commit": {
+        "author": "\"svc-ci\" <code@example.com>",
+        "date": "2026-07-27T04:59:53-05:00",
+        "subject": "chore(ui): upgrade dashboard to React 19 and react-router v8 (#1818)",
+        "body": "Migrate react-router-dom@6 to react-router@8.3 (imports moved to the\nconsolidated 'react-router' package) and bump react/react-dom to 19, as\nrequired by 8.3. Clears the react-router npm audit advisories. React 19\nis scoped to the dashboard bundle; the extension stays on 18.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
+        "sha": "fc49ccb86230b1b426d6d41fee55e4be3a6e2288",
+        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
+      }
+    }
+  ]
 }
