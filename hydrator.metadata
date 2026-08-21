@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d6f5234994ccc1111dfaf40dc3c42ac6d9fd7d40",
+  "drySha": "945ca5ca1312ed1a1512690bcec1322eafa6400b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-19T10:25:08-05:00",
-  "subject": "chore: bump version to v1.0.1944",
+  "date": "2026-08-21T11:41:44-05:00",
+  "subject": "chore: bump version to v1.0.1946",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-27T04:59:53-05:00",
-        "subject": "chore(ui): upgrade dashboard to React 19 and react-router v8 (#1818)",
-        "body": "Migrate react-router-dom@6 to react-router@8.3 (imports moved to the\nconsolidated 'react-router' package) and bump react/react-dom to 19, as\nrequired by 8.3. Clears the react-router npm audit advisories. React 19\nis scoped to the dashboard bundle; the extension stays on 18.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
-        "sha": "fc49ccb86230b1b426d6d41fee55e4be3a6e2288",
+        "date": "2026-07-23T09:04:15-05:00",
+        "subject": "feat: webhook receiver retry (#1778)",
+        "body": "* feat: webhook receiver retry\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* refactor\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* TODO\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* rename\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* re-org\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* reduce duplication\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* nil check\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* send error upstream to http req\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove sem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* switch to base ctx\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "0f1a58c506e4800419d7b8e2f35ce7042d969e14",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
