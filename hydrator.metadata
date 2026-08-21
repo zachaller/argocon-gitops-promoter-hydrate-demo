@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "945ca5ca1312ed1a1512690bcec1322eafa6400b",
+  "drySha": "aca20e39b4000c3b43a718d9a535e36dd269a826",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-21T11:41:44-05:00",
-  "subject": "chore: bump version to v1.0.1946",
+  "date": "2026-08-21T12:04:20-05:00",
+  "subject": "chore: bump version to v1.0.1947",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-23T09:04:15-05:00",
-        "subject": "feat: webhook receiver retry (#1778)",
-        "body": "* feat: webhook receiver retry\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* refactor\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* TODO\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* rename\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* re-org\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* reduce duplication\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* nil check\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* send error upstream to http req\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* remove sem\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* switch to base ctx\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "0f1a58c506e4800419d7b8e2f35ce7042d969e14",
+        "date": "2026-08-04T23:00:20-05:00",
+        "subject": "chore(deps): update module golang.org/x/tools to v0.49.0 (#1888)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "8aa47fb333c74910bdfa6513c350ed23ef8b0644",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
