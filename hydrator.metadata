@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "aca20e39b4000c3b43a718d9a535e36dd269a826",
+  "drySha": "319fb0049fafd2311b5404016f283c8cc3f49235",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-21T12:04:20-05:00",
-  "subject": "chore: bump version to v1.0.1947",
+  "date": "2026-08-25T09:53:28-05:00",
+  "subject": "chore: bump version to v1.0.1950",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-04T23:00:20-05:00",
-        "subject": "chore(deps): update module golang.org/x/tools to v0.49.0 (#1888)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "8aa47fb333c74910bdfa6513c350ed23ef8b0644",
+        "date": "2026-07-26T02:32:01-05:00",
+        "subject": "chore(deps): bump renovatebot/github-action from 46.2.1 to 46.2.2 (#1878)",
+        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 46.2.1 to 46.2.2.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/316d7cd859606d6039a2182b7d69199e9b036835...e09d604f8f803bb527bd8321ed5be06c460b8682)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 46.2.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "4dc1f9a7811c90ff5158397b350015a3a2482d67",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
