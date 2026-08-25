@@ -1,7 +1,7 @@
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
 metadata:
-  name: change-management-close
+  name: change-management-close-gitlab
   namespace: default
 spec:
   promotionStrategyRef:
@@ -306,7 +306,7 @@ spec:
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
 metadata:
-  name: change-management-open
+  name: change-management-open-gitlab
   namespace: default
 spec:
   promotionStrategyRef:
@@ -803,7 +803,7 @@ spec:
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: WebRequestCommitStatus
 metadata:
-  name: change-management-approval
+  name: change-management-approval-gitlab
   namespace: default
 spec:
   promotionStrategyRef:
