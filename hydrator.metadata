@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "71c471293e7af4fd9351a90061cad1554d5d983c",
+  "drySha": "319fb0049fafd2311b5404016f283c8cc3f49235",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-24T14:27:05-05:00",
-  "subject": "chore: bump version to v1.0.1949",
+  "date": "2026-08-25T09:53:28-05:00",
+  "subject": "chore: bump version to v1.0.1950",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-23T19:26:20-05:00",
-        "subject": "chore(deps): bump the codeql-action group across 1 directory with 3 updates (#1866)",
-        "body": "Bumps the codeql-action group with 3 updates in the / directory: [github/codeql-action/init](https://github.com/github/codeql-action), [github/codeql-action/analyze](https://github.com/github/codeql-action) and [github/codeql-action/upload-sarif](https://github.com/github/codeql-action).\n\n\nUpdates `github/codeql-action/init` from 4.37.5 to 4.37.6\n- [Release notes](https://github.com/github/codeql-action/releases)\n- [Changelog](https://github.com/github/codeql-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/github/codeql-action/compare/d1ba80a13dd99fba24a470575428917156a28b43...5595ccaf912efad79be6eef63a5619ff05969be3)\n\nUpdates `github/codeql-action/analyze` from 4.37.5 to 4.37.6\n- [Release notes](https://github.com/github/codeql-action/releases)\n- [Changelog](https://github.com/github/codeql-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/github/codeql-action/compare/d1ba80a13dd99fba24a470575428917156a28b43...5595ccaf912efad79be6eef63a5619ff05969be3)\n\nUpdates `github/codeql-action/upload-sarif` from 4.37.5 to 4.37.6\n- [Release notes](https://github.com/github/codeql-action/releases)\n- [Changelog](https://github.com/github/codeql-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/github/codeql-action/compare/d1ba80a13dd99fba24a470575428917156a28b43...5595ccaf912efad79be6eef63a5619ff05969be3)\n\n---\nupdated-dependencies:\n- dependency-name: github/codeql-action/analyze\n  dependency-version: 4.37.6\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: codeql-action\n- dependency-name: github/codeql-action/init\n  dependency-version: 4.37.6\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: codeql-action\n- dependency-name: github/codeql-action/upload-sarif\n  dependency-version: 4.37.6\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n  dependency-group: codeql-action\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "ad110652223fd798b6ceb67e7b58d99745818d2d",
+        "date": "2026-07-26T02:32:01-05:00",
+        "subject": "chore(deps): bump renovatebot/github-action from 46.2.1 to 46.2.2 (#1878)",
+        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 46.2.1 to 46.2.2.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/316d7cd859606d6039a2182b7d69199e9b036835...e09d604f8f803bb527bd8321ed5be06c460b8682)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 46.2.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "4dc1f9a7811c90ff5158397b350015a3a2482d67",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
