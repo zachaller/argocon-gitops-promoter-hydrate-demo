@@ -1,0 +1,22 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: ArgoCDCommitStatus
+metadata:
+  name: argocdcommitstatus-gitlab
+  namespace: default
+spec:
+  promotionStrategyRef:
+    name: promoter-test-gitlab
+  applicationSelector:
+    matchLabels:
+      app: demo
+  url:
+    template: >
+      {{- $label := "" -}}
+      {{- if eq .Environment "environments/development" -}}
+      {{- $label = "development" -}}
+      {{- else if eq .Environment "environments/staging" -}}
+      {{- $label = "staging" -}}
+      {{- else if or (eq .Environment "environments/production-use") (eq .Environment "environments/production-usw") -}}
+      {{- $label = "production" -}}
+      {{- end -}}
+      {{- printf "%s/applications?labels=environment=%s" "http://localhost:4000" (urlQueryEscape $label) -}}

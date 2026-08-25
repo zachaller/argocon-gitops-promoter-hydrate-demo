@@ -1,0 +1,11 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: GitCommitStatus
+metadata:
+  name: gitcommitstatus-gitlab
+  namespace: default
+spec:
+  promotionStrategyRef:
+    name: promoter-test-gitlab
+  key: revert-check
+  description: "Non-promoter changes on running environment"
+  expression: '!(Commit.Subject startsWith "Revert" || Commit.Body startsWith "Revert" || ("Git-commit-status" in Commit.Trailers && Commit.Trailers["Git-commit-status"][0] == "pending"))'

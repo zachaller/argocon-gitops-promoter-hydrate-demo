@@ -1,0 +1,26 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: PromotionStrategy
+metadata:
+  name: promoter-test-gitlab
+  namespace: default
+spec:
+  activeCommitStatuses:
+  - key: argocd-health
+  environments:
+  - branch: environments/development
+    autoMerge: false
+  - branch: environments/staging
+  - branch: environments/production-use
+    proposedCommitStatuses:
+    - key: change-management-approval
+    - key: change-management-open
+    activeCommitStatuses:
+    - key: change-management-close
+  - branch: environments/production-usw
+    proposedCommitStatuses:
+    - key: change-management-approval
+    - key: change-management-open
+    activeCommitStatuses:
+    - key: change-management-close
+  gitRepositoryRef:
+    name: promoter-test-gitlab

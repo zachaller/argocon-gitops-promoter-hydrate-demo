@@ -1,0 +1,10 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: ScmProvider
+metadata:
+  name: scmprovider-gitlab
+  namespace: default
+spec:
+  # SaaS gitlab.com: omit domain (setting "gitlab.com" is rejected by the API).
+  gitlab: {}
+  secretRef:
+    name: gitlab-auth

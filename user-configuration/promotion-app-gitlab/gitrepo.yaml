@@ -1,0 +1,15 @@
+apiVersion: promoter.argoproj.io/v1alpha1
+kind: GitRepository
+metadata:
+  labels:
+    app.kubernetes.io/name: promoter
+    app.kubernetes.io/managed-by: kustomize
+  name: promoter-test-gitlab
+  namespace: default
+spec:
+  gitlab:
+    namespace: zachaller
+    name: promoter-test
+    projectId: 56675590
+  scmProviderRef:
+    name: scmprovider-gitlab
