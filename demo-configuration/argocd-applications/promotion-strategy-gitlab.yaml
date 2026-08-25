@@ -12,6 +12,7 @@ spec:
     - /metadata/annotations/hcapActive
   destination:
     server: https://kubernetes.default.svc
+    namespace: promotion-gitlab
   project: default
   source:
     path: user-configuration/promotion-app-gitlab

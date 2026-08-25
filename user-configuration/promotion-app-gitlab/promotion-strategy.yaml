@@ -3,24 +3,26 @@ kind: PromotionStrategy
 metadata:
   name: promoter-test-gitlab
   namespace: default
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   activeCommitStatuses:
-  - key: argocd-health
+  - key: argocd-health-gitlab
   environments:
   - branch: environments/development
     autoMerge: false
   - branch: environments/staging
   - branch: environments/production-use
     proposedCommitStatuses:
-    - key: change-management-approval
-    - key: change-management-open
+    - key: change-management-approval-gitlab
+    - key: change-management-open-gitlab
     activeCommitStatuses:
-    - key: change-management-close
+    - key: change-management-close-gitlab
   - branch: environments/production-usw
     proposedCommitStatuses:
-    - key: change-management-approval
-    - key: change-management-open
+    - key: change-management-approval-gitlab
+    - key: change-management-open-gitlab
     activeCommitStatuses:
-    - key: change-management-close
+    - key: change-management-close-gitlab
   gitRepositoryRef:
     name: promoter-test-gitlab

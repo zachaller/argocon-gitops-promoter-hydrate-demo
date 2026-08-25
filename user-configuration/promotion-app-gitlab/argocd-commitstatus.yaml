@@ -6,6 +6,7 @@ metadata:
 spec:
   promotionStrategyRef:
     name: promoter-test-gitlab
+  key: argocd-health-gitlab
   applicationSelector:
     matchLabels:
       app: demo

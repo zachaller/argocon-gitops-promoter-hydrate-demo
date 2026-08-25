@@ -9,6 +9,7 @@ metadata:
 spec:
   promotionStrategyRef:
     name: promoter-test-gitlab
+  key: timer-gitlab
   environments:
     - duration: 3m
       branch: environments/development

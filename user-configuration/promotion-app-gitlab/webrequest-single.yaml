@@ -6,7 +6,7 @@ metadata:
 spec:
   promotionStrategyRef:
     name: promoter-test-gitlab
-  key: change-management-close
+  key: change-management-close-gitlab
   reportOn: active
   # Closes the change record after promotion PRs have merged (SUCCEEDED), or
   # cancels an unfinished record when a newer dry SHA arrives (POST /change/cancel/{id}).
@@ -114,7 +114,7 @@ spec:
           # - isSupersede: fingerprint rolled away from an unfinished observed SHA → cancel that CR
           # - close-phase state: did a previous reconcile already find a change record to close
           expression: |
-            let key = "change-management-close";
+            let key = "change-management-close-gitlab";
             let specEnvs = PromotionStrategy.Spec.Environments ?? [];
             let statusEnvs = PromotionStrategy.Status.Environments ?? [];
 
@@ -311,7 +311,7 @@ metadata:
 spec:
   promotionStrategyRef:
     name: promoter-test-gitlab
-  key: change-management-open
+  key: change-management-open-gitlab
   reportOn: proposed
   # Opens (and when needed cancels + replaces) the production change record.
   # Up to three phases: GET /change/{id}/status when a prior changeId exists, an optional
@@ -401,7 +401,7 @@ spec:
         "description":
         {{- /* Markdown summary: which gated branches are promoting, each branch's queued dry SHA,
              and a link to its open promotion PR. Only branches with an open PR are listed. */ -}}
-        {{- $key := "change-management-open" -}}
+        {{- $key := "change-management-open-gitlab" -}}
         {{- $keyIsGlobal := false -}}
         {{- range $.PromotionStrategy.Spec.ProposedCommitStatuses -}}
           {{- if eq .Key $key -}}{{- $keyIsGlobal = true -}}{{- end -}}
@@ -522,7 +522,7 @@ spec:
           # - inCancelMode: POST /change/cancel/{id} before replacing a still-active prior CR
           # - inOpenMode: POST /change/open (no prior id, or prior GET said needOpen / openRetry)
           expression: |
-            let key = "change-management-open";
+            let key = "change-management-open-gitlab";
             let specEnvs = PromotionStrategy.Spec.Environments ?? [];
             let statusEnvs = PromotionStrategy.Status.Environments ?? [];
 
@@ -570,7 +570,7 @@ spec:
               : nil;
             let otherProposedChecksSuccess = lowestOpenGatedEnvStatus != nil && all(
               filter(lowestOpenGatedEnvStatus.Proposed.CommitStatuses ?? [], {
-                !(#.Key in ["change-management-open", "change-management-approval"])
+                !(#.Key in ["change-management-open-gitlab", "change-management-approval-gitlab"])
               }),
               { string(#.Phase) == "success" }
             );
@@ -808,7 +808,7 @@ metadata:
 spec:
   promotionStrategyRef:
     name: promoter-test-gitlab
-  key: change-management-approval
+  key: change-management-approval-gitlab
   reportOn: proposed
   # Polls the change-management service for an approved (and currently in-window) change record
   # matching the proposed dry SHA. Becomes success once one is found.
@@ -884,7 +884,7 @@ spec:
         variables:
           # Compute trigger gates plus a 1-minute polling interval so we don't hammer the service.
           expression: |
-            let key = "change-management-approval";
+            let key = "change-management-approval-gitlab";
             let specEnvs = PromotionStrategy.Spec.Environments ?? [];
             let statusEnvs = PromotionStrategy.Status.Environments ?? [];
 

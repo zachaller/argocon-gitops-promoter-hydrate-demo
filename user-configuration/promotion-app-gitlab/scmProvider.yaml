@@ -3,6 +3,8 @@ kind: ScmProvider
 metadata:
   name: scmprovider-gitlab
   namespace: default
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   # SaaS gitlab.com: omit domain (setting "gitlab.com" is rejected by the API).
   gitlab: {}
