@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "0c9ff02a8f23a7bb85e92e0ab395af91c530f18c",
+  "drySha": "b599438bf0503e4865c4e13b1489a0b282d94eec",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-27T10:40:52-05:00",
-  "subject": "chore: bump version to v1.0.1951",
+  "date": "2026-08-27T14:06:48-05:00",
+  "subject": "chore: bump version to v1.0.1952",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-29T07:02:23-05:00",
-        "subject": "chore(deps): bump docker/login-action from 4.5.2 to 4.6.0 (#1840)",
-        "body": "Bumps [docker/login-action](https://github.com/docker/login-action) from 4.5.2 to 4.6.0.\n- [Release notes](https://github.com/docker/login-action/releases)\n- [Commits](https://github.com/docker/login-action/compare/371161bbe7024a29a25c5e19bfcbc0804fe9ad2c...dbcb813823bdd20940b903addbd779551569679f)\n\n---\nupdated-dependencies:\n- dependency-name: docker/login-action\n  dependency-version: 4.6.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "160194444f265ad874c1fec43b5840710672972c",
+        "date": "2026-07-31T11:09:22-05:00",
+        "subject": "chore(deps): update dependency tilt-dev/tilt to v0.37.5 (#1598)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "a96d52387d045b6c391cadcb6172f4c4a8471568",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
