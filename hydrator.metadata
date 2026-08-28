@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "65c7ff7b6bd89722df80bb6e7e679d10091e4b75",
+  "drySha": "24a710aa3e751623486ccc1739d9da2ccc0b981a",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T09:19:27-05:00",
-  "subject": "chore: bump version to v1.0.1967",
+  "date": "2026-08-28T09:21:24-05:00",
+  "subject": "chore: bump version to v1.0.1968",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-08T08:10:40-05:00",
-        "subject": "ci: enable ginkgolinter and fix no-op Eventually assertions (#1902)",
-        "body": "* ci: enable ginkgolinter and fix no-op Eventually assertions\n\nEventually without Should() never polls, which made GitRepository\nfinalizer tests flake under load. Enable the linter and fix the\nexisting hits.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* test: use a real merge SHA in title-then-merge PullRequest spec\n\nThe fake SCM rejects merge when Spec.MergeSha does not match the source\nbranch HEAD. The deletion Eventually was previously a no-op, so this\nnever failed.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* test: point title-then-merge at real branches and clear leftover ginkgolinter hit\n\nThe fake git server only has environment/* refs, so ls-remote of development-next never returned a merge SHA. Rebasing onto main also reintroduced a len() assertion that ginkgolinter rejects.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
-        "sha": "582fc17bfb15cd76589208529bc32ce9cac70aba",
+        "date": "2026-08-05T19:26:28-05:00",
+        "subject": "chore(deps): bump golang.org/x/arch from 0.29.0 to 0.30.0 in the golang-org-x group (#1874)",
+        "body": "chore(deps): bump golang.org/x/arch in the golang-org-x group\n\nBumps the golang-org-x group with 1 update: [golang.org/x/arch](https://github.com/golang/arch).\n\n\nUpdates `golang.org/x/arch` from 0.29.0 to 0.30.0\n- [Commits](https://github.com/golang/arch/compare/v0.29.0...v0.30.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/arch\n  dependency-version: 0.30.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "fdfe9bc19ad8c1a372fb48acb934724d48b56b40",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
