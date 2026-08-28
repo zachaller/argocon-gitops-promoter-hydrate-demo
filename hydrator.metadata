@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c8ed4245f67b287a22c2e7140d5ebd22a7535b98",
+  "drySha": "f0e50bcf394368b681d8ad0db0c347d4ff586d45",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T08:43:04-05:00",
-  "subject": "chore: bump version to v1.0.1954",
+  "date": "2026-08-28T08:43:11-05:00",
+  "subject": "chore: bump version to v1.0.1955",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-14T19:01:17-05:00",
-        "subject": "chore(deps): bump the golang-org-x group with 5 updates (#1889)",
-        "body": "Bumps the golang-org-x group with 5 updates:\n\n| Package | From | To |\n| --- | --- | --- |\n| [golang.org/x/crypto](https://github.com/golang/crypto) | `0.54.0` | `0.55.0` |\n| [golang.org/x/mod](https://github.com/golang/mod) | `0.39.0` | `0.40.0` |\n| [golang.org/x/net](https://github.com/golang/net) | `0.57.0` | `0.58.0` |\n| [golang.org/x/text](https://github.com/golang/text) | `0.40.0` | `0.41.0` |\n| [golang.org/x/tools](https://github.com/golang/tools) | `0.48.0` | `0.49.0` |\n\n\nUpdates `golang.org/x/crypto` from 0.54.0 to 0.55.0\n- [Commits](https://github.com/golang/crypto/compare/v0.54.0...v0.55.0)\n\nUpdates `golang.org/x/mod` from 0.39.0 to 0.40.0\n- [Commits](https://github.com/golang/mod/compare/v0.39.0...v0.40.0)\n\nUpdates `golang.org/x/net` from 0.57.0 to 0.58.0\n- [Commits](https://github.com/golang/net/compare/v0.57.0...v0.58.0)\n\nUpdates `golang.org/x/text` from 0.40.0 to 0.41.0\n- [Release notes](https://github.com/golang/text/releases)\n- [Commits](https://github.com/golang/text/compare/v0.40.0...v0.41.0)\n\nUpdates `golang.org/x/tools` from 0.48.0 to 0.49.0\n- [Release notes](https://github.com/golang/tools/releases)\n- [Commits](https://github.com/golang/tools/compare/v0.48.0...v0.49.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/crypto\n  dependency-version: 0.55.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n- dependency-name: golang.org/x/mod\n  dependency-version: 0.40.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n- dependency-name: golang.org/x/net\n  dependency-version: 0.58.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n- dependency-name: golang.org/x/text\n  dependency-version: 0.41.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n- dependency-name: golang.org/x/tools\n  dependency-version: 0.49.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "6a768801d0e5ab59a6a33497eee399c34221425e",
+        "date": "2026-08-21T13:00:46-05:00",
+        "subject": "chore(ci): group interdependent upgrades (#1914)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "0e6d981d60aaf357c4c519dbb40d22de6216343e",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
