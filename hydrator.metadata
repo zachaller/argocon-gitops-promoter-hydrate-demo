@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a02ef9adfd4f4947fe29cb444517f380c1d470bf",
+  "drySha": "0eb38583b23c132596fa7db659371f3b9ed6198f",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T09:17:36-05:00",
-  "subject": "chore: bump version to v1.0.1965",
+  "date": "2026-08-28T09:18:16-05:00",
+  "subject": "chore: bump version to v1.0.1966",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-17T22:35:43-05:00",
-        "subject": "docs: structuring changes (#1896)",
-        "body": "* docs: structuring changes\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fixes\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "132e91ac455704eaab77b5451cbca039b516644b",
+        "date": "2026-07-31T10:33:29-05:00",
+        "subject": "chore(deps): update dependency argoproj/argo-cd to v3.4.6 (#1843)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "a6ae48574eb0fbd138d4ebf19deb8b5a7c2239dc",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
