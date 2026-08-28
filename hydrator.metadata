@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "98f35edd165a7785f09c350cc6876a3d5ef975d9",
+  "drySha": "cd454dcb548d4b4da2927c32e7fb63024a1ab7f4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T11:00:37-05:00",
-  "subject": "chore: bump version to v1.0.1979",
+  "date": "2026-08-28T14:41:22-05:00",
+  "subject": "chore: bump version to v1.0.1982",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-19T15:52:14-05:00",
-        "subject": "chore(deps): bump the opentelemetry group across 1 directory with 6 updates (#1865)",
-        "body": "Bumps the opentelemetry group with 3 updates in the / directory: [go.opentelemetry.io/otel](https://github.com/open-telemetry/opentelemetry-go), [go.opentelemetry.io/otel/exporters/otlp/otlptrace](https://github.com/open-telemetry/opentelemetry-go) and [go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc](https://github.com/open-telemetry/opentelemetry-go).\n\n\nUpdates `go.opentelemetry.io/otel` from 1.44.0 to 1.45.0\n- [Release notes](https://github.com/open-telemetry/opentelemetry-go/releases)\n- [Changelog](https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/open-telemetry/opentelemetry-go/compare/v1.44.0...v1.45.0)\n\nUpdates `go.opentelemetry.io/otel/exporters/otlp/otlptrace` from 1.44.0 to 1.45.0\n- [Release notes](https://github.com/open-telemetry/opentelemetry-go/releases)\n- [Changelog](https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/open-telemetry/opentelemetry-go/compare/v1.44.0...v1.45.0)\n\nUpdates `go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc` from 1.44.0 to 1.45.0\n- [Release notes](https://github.com/open-telemetry/opentelemetry-go/releases)\n- [Changelog](https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/open-telemetry/opentelemetry-go/compare/v1.44.0...v1.45.0)\n\nUpdates `go.opentelemetry.io/otel/metric` from 1.44.0 to 1.45.0\n- [Release notes](https://github.com/open-telemetry/opentelemetry-go/releases)\n- [Changelog](https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/open-telemetry/opentelemetry-go/compare/v1.44.0...v1.45.0)\n\nUpdates `go.opentelemetry.io/otel/sdk` from 1.44.0 to 1.45.0\n- [Release notes](https://github.com/open-telemetry/opentelemetry-go/releases)\n- [Changelog](https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/open-telemetry/opentelemetry-go/compare/v1.44.0...v1.45.0)\n\nUpdates `go.opentelemetry.io/otel/trace` from 1.44.0 to 1.45.0\n- [Release notes](https://github.com/open-telemetry/opentelemetry-go/releases)\n- [Changelog](https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/open-telemetry/opentelemetry-go/compare/v1.44.0...v1.45.0)\n\n---\nupdated-dependencies:\n- dependency-name: go.opentelemetry.io/otel\n  dependency-version: 1.45.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: opentelemetry\n- dependency-name: go.opentelemetry.io/otel/exporters/otlp/otlptrace\n  dependency-version: 1.45.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: opentelemetry\n- dependency-name: go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc\n  dependency-version: 1.45.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: opentelemetry\n- dependency-name: go.opentelemetry.io/otel/metric\n  dependency-version: 1.45.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: opentelemetry\n- dependency-name: go.opentelemetry.io/otel/sdk\n  dependency-version: 1.45.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: opentelemetry\n- dependency-name: go.opentelemetry.io/otel/trace\n  dependency-version: 1.45.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: opentelemetry\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "7927b3ed6f6b293393c130148f4df0e685a7b6de",
+        "date": "2026-08-13T15:38:42-05:00",
+        "subject": "chore(deps): update dependency tilt-dev/tilt to v0.37.7 (#1886)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "ddd2ec4be2ad0dd5955ee3e72436ab2560788576",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
