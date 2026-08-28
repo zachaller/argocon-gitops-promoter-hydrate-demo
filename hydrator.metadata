@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c29dd3b661450b3ff09ba133344101741add4415",
+  "drySha": "1a455462dda4156cefaacd5911b8703c65aca7fb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T08:55:36-05:00",
-  "subject": "chore: bump version to v1.0.1962",
+  "date": "2026-08-28T08:58:35-05:00",
+  "subject": "chore: bump version to v1.0.1964",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-27T13:09:46-05:00",
-        "subject": "Add Red Hat to USERS.md (#1847)",
-        "body": "Signed-off-by: Patrick Martin <patmarti@redhat.com>",
-        "sha": "53bf56c3b0a5fe0632ab33fd225fd0173d23d770",
+        "date": "2026-07-30T01:46:25-05:00",
+        "subject": "chore(deps): bump github.com/google/cel-go from 0.30.0 to 0.31.0 (#1877)",
+        "body": "Bumps [github.com/google/cel-go](https://github.com/google/cel-go) from 0.30.0 to 0.31.0.\n- [Release notes](https://github.com/google/cel-go/releases)\n- [Commits](https://github.com/google/cel-go/compare/v0.30.0...v0.31.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/google/cel-go\n  dependency-version: 0.31.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "16d9584f319fba6bc1b20e9b9d2f91b3c50cc116",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
