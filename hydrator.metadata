@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b599438bf0503e4865c4e13b1489a0b282d94eec",
+  "drySha": "415fa23ef03e3aa105326c9f63286d54d7b8f2cc",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-27T14:06:48-05:00",
-  "subject": "chore: bump version to v1.0.1952",
+  "date": "2026-08-28T08:29:47-05:00",
+  "subject": "chore: bump version to v1.0.1953",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-31T11:09:22-05:00",
-        "subject": "chore(deps): update dependency tilt-dev/tilt to v0.37.5 (#1598)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "a96d52387d045b6c391cadcb6172f4c4a8471568",
+        "date": "2026-08-13T20:02:44-05:00",
+        "subject": "chore(deps): bump github.com/mattn/go-isatty from 0.0.23 to 0.0.24 (#1812)",
+        "body": "Bumps [github.com/mattn/go-isatty](https://github.com/mattn/go-isatty) from 0.0.23 to 0.0.24.\n- [Commits](https://github.com/mattn/go-isatty/compare/v0.0.23...v0.0.24)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-isatty\n  dependency-version: 0.0.24\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "c0350a132196e052d320cc59b8459c5ea3143718",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
