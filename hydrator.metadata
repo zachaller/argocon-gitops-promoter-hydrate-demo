@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "95259183fab9d95b66611858223ee9df63b2552e",
+  "drySha": "f5489d5935deff73b091edac66e66f901ba71185",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T08:54:43-05:00",
-  "subject": "chore: bump version to v1.0.1960",
+  "date": "2026-08-28T08:54:50-05:00",
+  "subject": "chore: bump version to v1.0.1961",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-23T01:23:18-05:00",
-        "subject": "chore(deps): update module golang.org/x/tools to v0.49.0 (#1888)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "8aa47fb333c74910bdfa6513c350ed23ef8b0644",
+        "date": "2026-08-01T11:43:44-05:00",
+        "subject": "chore: fix Tilt (#1832)",
+        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "b2b339f7dcfa149867ecec4ba0ad310e8d02ef4e",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
