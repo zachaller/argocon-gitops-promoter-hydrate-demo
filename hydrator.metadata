@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "395175236fbe7e5dfbe57c85b8a7f3af79516413",
+  "drySha": "721a2f812b4cdd633ec774419427bcde0c9b4a68",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T09:22:08-05:00",
-  "subject": "chore: bump version to v1.0.1969",
+  "date": "2026-08-28T09:23:33-05:00",
+  "subject": "chore: bump version to v1.0.1970",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-30T22:49:07-05:00",
-        "subject": "fix(ui): use correct PR link in history view detail drawer (#1918)",
-        "body": "* use correct PR link in history view detail drawer\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* fix: resolve PR id/url as a single pair in history detail drawer\n\nPreviously the id and url were each resolved independently from\ncell.pullRequest and row, which could produce a mismatched pair or\nan anchor with a missing href.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "da58ee7ef96051c3fc1493f7217807d3964be04c",
+        "date": "2026-08-01T00:05:29-05:00",
+        "subject": "chore(ci): group interdependent upgrades (#1914)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "0e6d981d60aaf357c4c519dbb40d22de6216343e",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
