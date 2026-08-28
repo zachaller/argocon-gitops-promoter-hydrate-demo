@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "415fa23ef03e3aa105326c9f63286d54d7b8f2cc",
+  "drySha": "f0e50bcf394368b681d8ad0db0c347d4ff586d45",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T08:29:47-05:00",
-  "subject": "chore: bump version to v1.0.1953",
+  "date": "2026-08-28T08:43:11-05:00",
+  "subject": "chore: bump version to v1.0.1955",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-13T20:02:44-05:00",
-        "subject": "chore(deps): bump github.com/mattn/go-isatty from 0.0.23 to 0.0.24 (#1812)",
-        "body": "Bumps [github.com/mattn/go-isatty](https://github.com/mattn/go-isatty) from 0.0.23 to 0.0.24.\n- [Commits](https://github.com/mattn/go-isatty/compare/v0.0.23...v0.0.24)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/mattn/go-isatty\n  dependency-version: 0.0.24\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "c0350a132196e052d320cc59b8459c5ea3143718",
+        "date": "2026-08-21T13:00:46-05:00",
+        "subject": "chore(ci): group interdependent upgrades (#1914)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "0e6d981d60aaf357c4c519dbb40d22de6216343e",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
