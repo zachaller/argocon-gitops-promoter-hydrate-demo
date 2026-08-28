@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "0eb38583b23c132596fa7db659371f3b9ed6198f",
+  "drySha": "65c7ff7b6bd89722df80bb6e7e679d10091e4b75",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T09:18:16-05:00",
-  "subject": "chore: bump version to v1.0.1966",
+  "date": "2026-08-28T09:19:27-05:00",
+  "subject": "chore: bump version to v1.0.1967",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-31T10:33:29-05:00",
-        "subject": "chore(deps): update dependency argoproj/argo-cd to v3.4.6 (#1843)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "a6ae48574eb0fbd138d4ebf19deb8b5a7c2239dc",
+        "date": "2026-08-08T08:10:40-05:00",
+        "subject": "ci: enable ginkgolinter and fix no-op Eventually assertions (#1902)",
+        "body": "* ci: enable ginkgolinter and fix no-op Eventually assertions\n\nEventually without Should() never polls, which made GitRepository\nfinalizer tests flake under load. Enable the linter and fix the\nexisting hits.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* test: use a real merge SHA in title-then-merge PullRequest spec\n\nThe fake SCM rejects merge when Spec.MergeSha does not match the source\nbranch HEAD. The deletion Eventually was previously a no-op, so this\nnever failed.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* test: point title-then-merge at real branches and clear leftover ginkgolinter hit\n\nThe fake git server only has environment/* refs, so ls-remote of development-next never returned a merge SHA. Rebasing onto main also reintroduced a len() assertion that ginkgolinter rejects.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+        "sha": "582fc17bfb15cd76589208529bc32ce9cac70aba",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
