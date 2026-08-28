@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "006217ce76412667a29946d884a5fe2bd778a4d1",
+  "drySha": "95259183fab9d95b66611858223ee9df63b2552e",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T08:45:47-05:00",
-  "subject": "chore: bump version to v1.0.1959",
+  "date": "2026-08-28T08:54:43-05:00",
+  "subject": "chore: bump version to v1.0.1960",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-11T17:43:52-05:00",
-        "subject": "chore(deps): bump golang.org/x/mod from 0.38.0 to 0.39.0 in the golang-org-x group (#1882)",
-        "body": "chore(deps): bump golang.org/x/mod in the golang-org-x group\n\nBumps the golang-org-x group with 1 update: [golang.org/x/mod](https://github.com/golang/mod).\n\n\nUpdates `golang.org/x/mod` from 0.38.0 to 0.39.0\n- [Commits](https://github.com/golang/mod/compare/v0.38.0...v0.39.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/mod\n  dependency-version: 0.39.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "30c56d3881a5870ca5becdf629f151f30cd5f8eb",
+        "date": "2026-08-23T01:23:18-05:00",
+        "subject": "chore(deps): update module golang.org/x/tools to v0.49.0 (#1888)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "8aa47fb333c74910bdfa6513c350ed23ef8b0644",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
