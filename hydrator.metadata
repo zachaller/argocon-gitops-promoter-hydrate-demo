@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f0e50bcf394368b681d8ad0db0c347d4ff586d45",
+  "drySha": "848d63dd20c3d409d6f7475ec082edb4c4b23328",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T08:43:11-05:00",
-  "subject": "chore: bump version to v1.0.1955",
+  "date": "2026-08-28T08:44:38-05:00",
+  "subject": "chore: bump version to v1.0.1956",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-21T13:00:46-05:00",
-        "subject": "chore(ci): group interdependent upgrades (#1914)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "0e6d981d60aaf357c4c519dbb40d22de6216343e",
+        "date": "2026-08-02T08:58:56-05:00",
+        "subject": "chore(deps): bump github.com/bytedance/sonic from 1.15.2 to 1.15.3 (#1924)",
+        "body": "Bumps [github.com/bytedance/sonic](https://github.com/bytedance/sonic) from 1.15.2 to 1.15.3.\n- [Release notes](https://github.com/bytedance/sonic/releases)\n- [Commits](https://github.com/bytedance/sonic/compare/v1.15.2...v1.15.3)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/bytedance/sonic\n  dependency-version: 1.15.3\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "27c14c170cc2e171814dd2d31417846b0b03adc3",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
