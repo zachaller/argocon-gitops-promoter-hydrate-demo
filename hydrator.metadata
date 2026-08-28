@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "110439430c6179a5fb6a797d6866d7e6e6af7412",
+  "drySha": "a9bf8c085f21c56adf48a5cc9bb6c8ff1f7615a3",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T09:53:14-05:00",
-  "subject": "chore: bump version to v1.0.1973",
+  "date": "2026-08-28T09:54:15-05:00",
+  "subject": "chore: bump version to v1.0.1974",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-26T16:40:54-05:00",
-        "subject": "chore(deps): update node.js to v24.19.0 (#1855)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "aeea1cfad9735fe994f4e74801ad4b4b5cc6cc94",
+        "date": "2026-07-27T07:26:28-05:00",
+        "subject": "feat(ui): history view cell improvements and detail-drawer deep-linking (#1793)",
+        "body": "* feat(ui): distinguish aged-out history cells from no-changes\n\nAdd an 'unknown-history' cell kind to the HistoryView matrix. When a\ncommit predates an environment's capped (5-entry) history, its record\nmay have been dropped, so we can no longer claim it never reached that\nenvironment. These cells now render distinctly with a hatched \"History\nunavailable\" treatment instead of the definitive \"No changes\".\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* feat(ui): deep-link to history view detail drawer\n\nAdd URL-driven cell selection to the HistoryView detail drawer so a\nspecific commit/environment cell can be linked and reopened.\n\nHistoryView gains an `initialSelection` prop and `onSelectionChange`\ncallback, keeping selection state internal while letting each host sync\nit to its own URL scheme. The dashboard uses `?commit=<sha>&env=<branch>`\nvia react-router; the Argo CD extension uses `?psCommit`/`?psEnv` and\nopens directly on the history tab when a selection is present. A stale\nlink whose cell no longer resolves clears the drawer and strips the\nparams.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* chore(ui): bump immutable to 5.1.9 to fix npm audit failure\n\nThe dashboard's transitive immutable (via sass) triggered high-severity\nadvisories GHSA-v56q-mh7h-f735 and GHSA-xvcm-6775-5m9r, failing the\n`npm audit --omit=dev` gate in CI. Bump to the patched 5.1.9 (within\nsass's ^5.1.5 range; package.json unchanged).\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* fix(ui): reject deep links to non-selectable history cells\n\nThe selection validation effect accepted a cell from ?commit/?env even\nwhen its resolved kind was no-changes or unknown-history, opening the\ndrawer on a state the matrix and drawer navigation treat as\nnon-selectable. Validate the resolved cell with isEmptyCellKind.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
+        "sha": "44fbf23a6cae65296810b3ae17bbad1085c67204",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
