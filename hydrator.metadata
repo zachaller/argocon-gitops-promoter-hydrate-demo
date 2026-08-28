@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d068de24b71bb098a59fa1ed33fd713c4176fdce",
+  "drySha": "6df936d19f1ec2ee307723c8cd36aa0d4184c823",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T09:54:50-05:00",
-  "subject": "chore: bump version to v1.0.1975",
+  "date": "2026-08-28T09:56:06-05:00",
+  "subject": "chore: bump version to v1.0.1976",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-06T05:53:43-05:00",
-        "subject": "chore(deps): bump google.golang.org/grpc from 1.83.0 to 1.83.1 in the google-golang-org group (#1908)",
-        "body": "chore(deps): bump google.golang.org/grpc in the google-golang-org group\n\nBumps the google-golang-org group with 1 update: [google.golang.org/grpc](https://github.com/grpc/grpc-go).\n\n\nUpdates `google.golang.org/grpc` from 1.83.0 to 1.83.1\n- [Release notes](https://github.com/grpc/grpc-go/releases)\n- [Commits](https://github.com/grpc/grpc-go/compare/v1.83.0...v1.83.1)\n\n---\nupdated-dependencies:\n- dependency-name: google.golang.org/grpc\n  dependency-version: 1.83.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: google-golang-org\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "5b072b9e97e316870da30a74079ab14416d39d83",
+        "date": "2026-08-15T11:58:54-05:00",
+        "subject": "docs: bump manifest versions to v0.35.0 (#1871)",
+        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
+        "sha": "cabfecc9ba28cffb0da2f32a7d5a93516ae059c1",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
