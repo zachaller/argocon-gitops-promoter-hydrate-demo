@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f5489d5935deff73b091edac66e66f901ba71185",
+  "drySha": "c29dd3b661450b3ff09ba133344101741add4415",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T08:54:50-05:00",
-  "subject": "chore: bump version to v1.0.1961",
+  "date": "2026-08-28T08:55:36-05:00",
+  "subject": "chore: bump version to v1.0.1962",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-01T11:43:44-05:00",
-        "subject": "chore: fix Tilt (#1832)",
-        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "b2b339f7dcfa149867ecec4ba0ad310e8d02ef4e",
+        "date": "2026-07-27T13:09:46-05:00",
+        "subject": "Add Red Hat to USERS.md (#1847)",
+        "body": "Signed-off-by: Patrick Martin <patmarti@redhat.com>",
+        "sha": "53bf56c3b0a5fe0632ab33fd225fd0173d23d770",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
