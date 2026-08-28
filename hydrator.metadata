@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "24a710aa3e751623486ccc1739d9da2ccc0b981a",
+  "drySha": "395175236fbe7e5dfbe57c85b8a7f3af79516413",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T09:21:24-05:00",
-  "subject": "chore: bump version to v1.0.1968",
+  "date": "2026-08-28T09:22:08-05:00",
+  "subject": "chore: bump version to v1.0.1969",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-05T19:26:28-05:00",
-        "subject": "chore(deps): bump golang.org/x/arch from 0.29.0 to 0.30.0 in the golang-org-x group (#1874)",
-        "body": "chore(deps): bump golang.org/x/arch in the golang-org-x group\n\nBumps the golang-org-x group with 1 update: [golang.org/x/arch](https://github.com/golang/arch).\n\n\nUpdates `golang.org/x/arch` from 0.29.0 to 0.30.0\n- [Commits](https://github.com/golang/arch/compare/v0.29.0...v0.30.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/arch\n  dependency-version: 0.30.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "fdfe9bc19ad8c1a372fb48acb934724d48b56b40",
+        "date": "2026-07-30T22:49:07-05:00",
+        "subject": "fix(ui): use correct PR link in history view detail drawer (#1918)",
+        "body": "* use correct PR link in history view detail drawer\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n* fix: resolve PR id/url as a single pair in history detail drawer\n\nPreviously the id and url were each resolved independently from\ncell.pullRequest and row, which could produce a mismatched pair or\nan anchor with a missing href.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\n\n---------\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "da58ee7ef96051c3fc1493f7217807d3964be04c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
