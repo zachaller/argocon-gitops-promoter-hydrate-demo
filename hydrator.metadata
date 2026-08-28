@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c29dd3b661450b3ff09ba133344101741add4415",
+  "drySha": "153a093bf3aac37ab341252de8c1a8064a15515a",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T08:55:36-05:00",
-  "subject": "chore: bump version to v1.0.1962",
+  "date": "2026-08-28T08:57:32-05:00",
+  "subject": "chore: bump version to v1.0.1963",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-07-27T13:09:46-05:00",
-        "subject": "Add Red Hat to USERS.md (#1847)",
-        "body": "Signed-off-by: Patrick Martin <patmarti@redhat.com>",
-        "sha": "53bf56c3b0a5fe0632ab33fd225fd0173d23d770",
+        "date": "2026-08-19T02:20:18-05:00",
+        "subject": "chore(deps): bump github.com/bytedance/sonic/loader from 0.5.1 to 0.5.2 (#1839)",
+        "body": "Bumps [github.com/bytedance/sonic/loader](https://github.com/bytedance/sonic) from 0.5.1 to 0.5.2.\n- [Release notes](https://github.com/bytedance/sonic/releases)\n- [Commits](https://github.com/bytedance/sonic/compare/loader/v0.5.1...loader/v0.5.2)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/bytedance/sonic/loader\n  dependency-version: 0.5.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "ce2633ba871bd027c341fb22080aefb21b80c887",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
