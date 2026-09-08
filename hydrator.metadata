@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "cd454dcb548d4b4da2927c32e7fb63024a1ab7f4",
+  "drySha": "3a6f7eca6af5838105d2d886c51cbb836f279688",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-08-28T14:41:22-05:00",
-  "subject": "chore: bump version to v1.0.1982",
+  "date": "2026-09-01T10:05:58-05:00",
+  "subject": "chore: bump version to v1.0.1985",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-13T15:38:42-05:00",
-        "subject": "chore(deps): update dependency tilt-dev/tilt to v0.37.7 (#1886)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "ddd2ec4be2ad0dd5955ee3e72436ab2560788576",
+        "date": "2026-08-14T18:58:07-05:00",
+        "subject": "chore: npm audit fix (#1867)",
+        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "d58c8459ae30afa527ce68efce105dd5fe5a93a0",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
