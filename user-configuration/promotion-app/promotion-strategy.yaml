@@ -7,6 +7,8 @@ metadata:
 spec:
   activeCommitStatuses:
   - key: argocd-health
+  proposedCommitStatuses:
+  - key: dependents-successful
   environments:
   - branch: environments/development
     autoMerge: false

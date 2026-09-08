@@ -1,0 +1,7 @@
+kind: DependentsSuccessfulCommitStatus
+metadata:
+  name: demo
+spec:
+  key: dependents-successful
+  promotionStrategyRef:
+    name: argocon-demo
