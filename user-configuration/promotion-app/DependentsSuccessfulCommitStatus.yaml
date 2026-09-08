@@ -1,7 +1,8 @@
 apiVersion: promoter.argoproj.io/v1alpha1
 kind: DependentsSuccessfulCommitStatus
 metadata:
-  name: demo
+  name: active-checks-dscs
+  namespace: default
 spec:
   key: dependents-successful
   promotionStrategyRef:
