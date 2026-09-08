@@ -12,3 +12,4 @@ resources:
   - webrequest-single.yaml
 #  - test-cs.yaml
   - gh-web.yaml
+  - DependentsSuccessfulCommitStatus.yaml
