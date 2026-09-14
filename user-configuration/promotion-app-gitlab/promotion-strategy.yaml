@@ -6,8 +6,12 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
+  orderCommitStatusRef:
+    group: promoter.argoproj.io
+    kind: DependentsSuccessfulCommitStatus
+    name: active-checks-dscs
   activeCommitStatuses:
-  - key: argocd-health-gitlab
+    - key: argocd-health-gitlab
   environments:
   - branch: environments/development
     autoMerge: false

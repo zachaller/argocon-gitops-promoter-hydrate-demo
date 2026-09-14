@@ -11,3 +11,4 @@ resources:
   - argocd-commitstatus.yaml
   - gitcs.yaml
   - webrequest-single.yaml
+  - DependentsSuccessfulCommitStatus.yaml

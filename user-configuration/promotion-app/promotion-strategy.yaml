@@ -5,10 +5,12 @@ metadata:
   name: argocon-demo
   namespace: default
 spec:
+  orderCommitStatusRef:
+    group: promoter.argoproj.io
+    kind: DependentsSuccessfulCommitStatus
+    name: active-checks-dscs
   activeCommitStatuses:
   - key: argocd-health
-  proposedCommitStatuses:
-  - key: dependents-successful
   environments:
   - branch: environments/development
     autoMerge: false
