@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "383b7d647a270ccbc36a887bdf8f3b2278aa222c",
+  "drySha": "cf4601e9cd84c41abc9331361398a48591659d26",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-08T14:56:55-05:00",
-  "subject": "chore: bump version to v1.0.1989",
+  "date": "2026-09-14T09:53:59-05:00",
+  "subject": "chore: bump version to v1.0.1990",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-08T11:26:45-05:00",
-        "subject": "chore(deps): bump crate-ci/typos from 1.49.0 to 1.50.0 (#1943)",
-        "body": "Bumps [crate-ci/typos](https://github.com/crate-ci/typos) from 1.49.0 to 1.50.0.\n- [Release notes](https://github.com/crate-ci/typos/releases)\n- [Changelog](https://github.com/crate-ci/typos/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/crate-ci/typos/compare/8a48f81b6c64dcfea44b3633223084c4be58ac5f...4d9c206a77c041268485162b8e2579ad7a5cb9a3)\n\n---\nupdated-dependencies:\n- dependency-name: crate-ci/typos\n  dependency-version: 1.50.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "d8e8274848541a01cca6b86b47dfb21d191221e0",
+        "date": "2026-09-09T02:20:24-05:00",
+        "subject": "chore(deps): regenerate codegen after Kubernetes platform Renovate bumps (#1929)",
+        "body": "Kubernetes API/OpenAPI changes need committed view OpenAPI, CRDs, and UI types so those PRs compile and pass Check Codegen.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+        "sha": "47ea7d6f0b5a3787dbfeaea281050c0bb6d7d99f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
