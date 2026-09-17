@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7523c5bdfeefed0443c02ca704d2043a88e41d79",
+  "drySha": "cedc173e357f602731be3f76de7eb799ff711529",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-17T12:24:26-05:00",
-  "subject": "chore: bump version to v1.0.1993",
+  "date": "2026-09-17T12:25:40-05:00",
+  "subject": "chore: bump version to v1.0.1994",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-24T00:37:27-05:00",
-        "subject": "refactor: extract EnqueueCommitStatusGatesForPromotionStrategy helper (#1984)",
-        "body": "* refactor: extract EnqueueCommitStatusGatesForPromotionStrategy helper\n\nDeduplicate PromotionStrategy watch enqueue logic across commit-status gate\ncontrollers using field-indexed listing.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* refactor: share PromotionStrategy gate enqueue watch handler\n\nExtract EnqueueCommitStatusGatesForPromotionStrategy and\nCommitStatusGatePromotionStrategyWatchHandler so gate controllers\nregister a one-line watch instead of duplicating list-and-enqueue logic.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* refactor: simplify gate list generic and update contributor docs\n\nUse a typed list pointer constraint instead of reflect to allocate\ngate lists, and document CommitStatusGatePromotionStrategyWatchHandler\nfor in-tree gate controllers.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* test for list failure\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
-        "sha": "fb767261956dd1643fafcdca753cdc06c43876ad",
+        "date": "2026-08-16T05:19:31-05:00",
+        "subject": "fix(controller): drop DSCS legacy cleanup annotation stamp (#2009)",
+        "body": "The migration helper no longer patches DependentsSuccessfulCommitStatus\nmetadata, avoiding a forbidden error where the controller SA lacks patch\non the main resource. Legacy previous-environment CommitStatuses are still\ndeleted; the per-object Get scan runs each reconcile until v1.0.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "ca61bee0cfb20f54ee5bbee42a584d97e9dd1661",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
