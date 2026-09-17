@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "cedc173e357f602731be3f76de7eb799ff711529",
+  "drySha": "ba8b30554ef11df2058d78786bdf8bc9316ce374",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-17T12:25:40-05:00",
-  "subject": "chore: bump version to v1.0.1994",
+  "date": "2026-09-17T12:43:44-05:00",
+  "subject": "chore: bump version to v1.0.1995",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-16T05:19:31-05:00",
-        "subject": "fix(controller): drop DSCS legacy cleanup annotation stamp (#2009)",
-        "body": "The migration helper no longer patches DependentsSuccessfulCommitStatus\nmetadata, avoiding a forbidden error where the controller SA lacks patch\non the main resource. Legacy previous-environment CommitStatuses are still\ndeleted; the per-object Get scan runs each reconcile until v1.0.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "ca61bee0cfb20f54ee5bbee42a584d97e9dd1661",
+        "date": "2026-08-23T07:41:02-05:00",
+        "subject": "chore(ci): batch GitHub Actions bumps into a weekly Dependabot PR (#1979)",
+        "body": "Action updates have been low-risk; group all github-actions bumps into\none weekly PR instead of opening many daily individual updates.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "085f5d0be9fc4541dd4dd81246046ca4ec222f4f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
