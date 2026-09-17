@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b6e01fb6b8845efda2a359ca45d0f7a3f27213d9",
+  "drySha": "ba8b30554ef11df2058d78786bdf8bc9316ce374",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-17T12:14:43-05:00",
-  "subject": "chore: bump version to v1.0.1992",
+  "date": "2026-09-17T12:43:44-05:00",
+  "subject": "chore: bump version to v1.0.1995",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-15T15:54:59-05:00",
-        "subject": "chore(deps): bump renovatebot/github-action from 46.2.2 to 46.2.4 (#1925)",
-        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 46.2.2 to 46.2.4.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/e09d604f8f803bb527bd8321ed5be06c460b8682...5402b206248e5a8c8427a15102702eb9c1793efc)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 46.2.4\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "72b6a4e2cfe66d435022aa5d300c20a4aba3bf57",
+        "date": "2026-08-23T07:41:02-05:00",
+        "subject": "chore(ci): batch GitHub Actions bumps into a weekly Dependabot PR (#1979)",
+        "body": "Action updates have been low-risk; group all github-actions bumps into\none weekly PR instead of opening many daily individual updates.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "085f5d0be9fc4541dd4dd81246046ca4ec222f4f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
