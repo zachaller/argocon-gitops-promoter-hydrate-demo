@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "cf4601e9cd84c41abc9331361398a48591659d26",
+  "drySha": "c5047321db6e01526788af4a1be17812ef2d2398",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-14T09:53:59-05:00",
-  "subject": "chore: bump version to v1.0.1990",
+  "date": "2026-09-16T21:44:16-05:00",
+  "subject": "chore: bump version to v1.0.1991",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-09T02:20:24-05:00",
-        "subject": "chore(deps): regenerate codegen after Kubernetes platform Renovate bumps (#1929)",
-        "body": "Kubernetes API/OpenAPI changes need committed view OpenAPI, CRDs, and UI types so those PRs compile and pass Check Codegen.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
-        "sha": "47ea7d6f0b5a3787dbfeaea281050c0bb6d7d99f",
+        "date": "2026-09-04T14:27:48-05:00",
+        "subject": "fix(controller): adopt hydrator note from first-parent after ours-merge (#1930)",
+        "body": "* fix(controller): adopt hydrator note from first-parent after ours-merge\n\nWhen conflict-resolution ours-merge advances the proposed branch tip past\nthe hydrated commit, walk first-parent ancestors for a hydrator note whose\ndrySha matches hydrator.metadata on the tip so downstream gates see\nproposed.note.drySha.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* int tests\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix(git): prefer tip hydrator note before ancestor walk\n\nReturn a git note on the branch tip even when its drySha differs from\nhydrator.metadata, preserving note-only hydrator updates. Walk\nfirst-parent ancestors only when the tip has no note (ours-merge).\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "d7eb4979dc0a5be4d354dd2ab643e3422968c0ea",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
