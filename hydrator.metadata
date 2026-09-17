@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c5047321db6e01526788af4a1be17812ef2d2398",
+  "drySha": "b6e01fb6b8845efda2a359ca45d0f7a3f27213d9",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-16T21:44:16-05:00",
-  "subject": "chore: bump version to v1.0.1991",
+  "date": "2026-09-17T12:14:43-05:00",
+  "subject": "chore: bump version to v1.0.1992",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-04T14:27:48-05:00",
-        "subject": "fix(controller): adopt hydrator note from first-parent after ours-merge (#1930)",
-        "body": "* fix(controller): adopt hydrator note from first-parent after ours-merge\n\nWhen conflict-resolution ours-merge advances the proposed branch tip past\nthe hydrated commit, walk first-parent ancestors for a hydrator note whose\ndrySha matches hydrator.metadata on the tip so downstream gates see\nproposed.note.drySha.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* review\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* int tests\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix(git): prefer tip hydrator note before ancestor walk\n\nReturn a git note on the branch tip even when its drySha differs from\nhydrator.metadata, preserving note-only hydrator updates. Walk\nfirst-parent ancestors only when the tip has no note (ours-merge).\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "d7eb4979dc0a5be4d354dd2ab643e3422968c0ea",
+        "date": "2026-08-15T15:54:59-05:00",
+        "subject": "chore(deps): bump renovatebot/github-action from 46.2.2 to 46.2.4 (#1925)",
+        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 46.2.2 to 46.2.4.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/e09d604f8f803bb527bd8321ed5be06c460b8682...5402b206248e5a8c8427a15102702eb9c1793efc)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 46.2.4\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "72b6a4e2cfe66d435022aa5d300c20a4aba3bf57",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
