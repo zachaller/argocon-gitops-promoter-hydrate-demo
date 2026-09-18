@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ba8b30554ef11df2058d78786bdf8bc9316ce374",
+  "drySha": "022900805bf3568a65a0a8cb9b14f6e8bf4786d7",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-17T12:43:44-05:00",
-  "subject": "chore: bump version to v1.0.1995",
+  "date": "2026-09-18T13:31:44-05:00",
+  "subject": "chore: bump version to v1.0.1996",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-23T07:41:02-05:00",
-        "subject": "chore(ci): batch GitHub Actions bumps into a weekly Dependabot PR (#1979)",
-        "body": "Action updates have been low-risk; group all github-actions bumps into\none weekly PR instead of opening many daily individual updates.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "085f5d0be9fc4541dd4dd81246046ca4ec222f4f",
+        "date": "2026-09-12T19:21:45-05:00",
+        "subject": "chore(deps): update dependency goreleaser/goreleaser to v2.18.1 (#1985)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "a2654d35e904102c31d5dac430910eeb973f405e",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
