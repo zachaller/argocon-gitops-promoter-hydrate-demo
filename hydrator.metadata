@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6851d3ef9cd08ac267420c28b769b94ccdb93d11",
+  "drySha": "e139e707c1cba52f251c6bef4a274cb4b8bb1630",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-25T10:44:55-05:00",
-  "subject": "chore: bump version to v1.0.2001",
+  "date": "2026-09-25T10:48:32-05:00",
+  "subject": "chore: bump version to v1.0.2002",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-04T18:41:54-05:00",
-        "subject": "chore(deps): update kubernetes platform (#1927)",
-        "body": "* chore(deps): update kubernetes platform\n\n* nullable\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "91fb72bfd2047fb7286f7089e7fc9b10a2f1adc9",
+        "date": "2026-09-19T09:44:48-05:00",
+        "subject": "refactor(pr): formalize reconcile strategy (#1944)",
+        "body": "* refactor(pr): formalize reconcile strategy\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix CRD validation\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* avoid PR spec updates after PR is already merged or closed\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lock in terminal pr status\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint and codegen\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* coderabbit fixes\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* code too buttery\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "81bfeed822c7867964dc307e3801c2e29c400e0f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
