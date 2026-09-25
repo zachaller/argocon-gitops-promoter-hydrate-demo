@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "76da23d7ec2bb5888deb2959393a2be253b38062",
+  "drySha": "e077303c44639639a42140b19cf5e1b66731f781",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-25T10:21:23-05:00",
-  "subject": "chore: bump version to v1.0.1998",
+  "date": "2026-09-25T13:08:22-05:00",
+  "subject": "chore: bump version to v1.0.2003",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-06T16:49:31-05:00",
-        "subject": "refactor(controller): use controller-runtime read-your-own-write cons… (#1998)",
-        "body": "* refactor(controller): use controller-runtime read-your-own-write consistency\n\nUpgrade controller-runtime to v0.25 and enable\nEnableReadYourWritesConsistency on manager clients so cached reads wait\nfor prior writes to be observed. Remove the WebRequestCommitStatus\nResourceVersionTracker workaround and its tests.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: lint\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix: codegen fix\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix(build): do not fail make when pinned tools are already installed\n\nThe go-install-tool helper used need_install && { install }, which\npropagates exit code 1 when no reinstall is needed and breaks targets\nlike controller-gen in CI deploy.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "c77005cc5c00628d8d04a49e05faec921cc3f47f",
+        "date": "2026-08-23T00:18:41-05:00",
+        "subject": "chore(deps): update kubernetes platform (#1980)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "ff5ecb9c017b172dd2ecd65ebb4b7b0e377ece14",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
