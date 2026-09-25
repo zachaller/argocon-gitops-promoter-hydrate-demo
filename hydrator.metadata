@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b6e01fb6b8845efda2a359ca45d0f7a3f27213d9",
+  "drySha": "383b7d647a270ccbc36a887bdf8f3b2278aa222c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-17T12:14:43-05:00",
-  "subject": "chore: bump version to v1.0.1992",
+  "date": "2026-09-08T14:56:55-05:00",
+  "subject": "chore: bump version to v1.0.1989",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-15T15:54:59-05:00",
-        "subject": "chore(deps): bump renovatebot/github-action from 46.2.2 to 46.2.4 (#1925)",
-        "body": "Bumps [renovatebot/github-action](https://github.com/renovatebot/github-action) from 46.2.2 to 46.2.4.\n- [Release notes](https://github.com/renovatebot/github-action/releases)\n- [Changelog](https://github.com/renovatebot/github-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/renovatebot/github-action/compare/e09d604f8f803bb527bd8321ed5be06c460b8682...5402b206248e5a8c8427a15102702eb9c1793efc)\n\n---\nupdated-dependencies:\n- dependency-name: renovatebot/github-action\n  dependency-version: 46.2.4\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "72b6a4e2cfe66d435022aa5d300c20a4aba3bf57",
+        "date": "2026-08-08T11:26:45-05:00",
+        "subject": "chore(deps): bump crate-ci/typos from 1.49.0 to 1.50.0 (#1943)",
+        "body": "Bumps [crate-ci/typos](https://github.com/crate-ci/typos) from 1.49.0 to 1.50.0.\n- [Release notes](https://github.com/crate-ci/typos/releases)\n- [Changelog](https://github.com/crate-ci/typos/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/crate-ci/typos/compare/8a48f81b6c64dcfea44b3633223084c4be58ac5f...4d9c206a77c041268485162b8e2579ad7a5cb9a3)\n\n---\nupdated-dependencies:\n- dependency-name: crate-ci/typos\n  dependency-version: 1.50.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "d8e8274848541a01cca6b86b47dfb21d191221e0",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
