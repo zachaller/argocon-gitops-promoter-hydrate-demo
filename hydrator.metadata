@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "30af938a759fb68fbae975378bc1b822b84844ae",
+  "drySha": "6851d3ef9cd08ac267420c28b769b94ccdb93d11",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-25T10:23:42-05:00",
-  "subject": "chore: bump version to v1.0.2000",
+  "date": "2026-09-25T10:44:55-05:00",
+  "subject": "chore: bump version to v1.0.2001",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-12T01:14:24-05:00",
-        "subject": "chore(deps): bump the prometheus group with 2 updates (#1973)",
-        "body": "Bumps the prometheus group with 2 updates: [github.com/prometheus/client_model](https://github.com/prometheus/client_model) and [github.com/prometheus/common](https://github.com/prometheus/common).\n\n\nUpdates `github.com/prometheus/client_model` from 0.6.2 to 0.6.3\n- [Release notes](https://github.com/prometheus/client_model/releases)\n- [Commits](https://github.com/prometheus/client_model/compare/v0.6.2...v0.6.3)\n\nUpdates `github.com/prometheus/common` from 0.70.1 to 0.71.0\n- [Release notes](https://github.com/prometheus/common/releases)\n- [Changelog](https://github.com/prometheus/common/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/prometheus/common/compare/v0.70.1...v0.71.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/client_model\n  dependency-version: 0.6.3\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: prometheus\n- dependency-name: github.com/prometheus/common\n  dependency-version: 0.71.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: prometheus\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "82fc23c121264fad60a8feddd7b81c88a71c4f56",
+        "date": "2026-09-04T18:41:54-05:00",
+        "subject": "chore(deps): update kubernetes platform (#1927)",
+        "body": "* chore(deps): update kubernetes platform\n\n* nullable\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "91fb72bfd2047fb7286f7089e7fc9b10a2f1adc9",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
