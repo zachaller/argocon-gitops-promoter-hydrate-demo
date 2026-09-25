@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "dcf3fcf38d994f029ecd9de5cef1665366acdc27",
+  "drySha": "ba8b30554ef11df2058d78786bdf8bc9316ce374",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-22T09:22:40-05:00",
-  "subject": "chore: bump version to v1.0.1997",
+  "date": "2026-09-17T12:43:44-05:00",
+  "subject": "chore: bump version to v1.0.1995",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-23T00:05:33-05:00",
-        "subject": "docs: bump manifest versions to v0.41.0 (#2057)",
-        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "a8169b9dc4ad6f45afb3b27aab02a073c15bbf75",
+        "date": "2026-08-23T07:41:02-05:00",
+        "subject": "chore(ci): batch GitHub Actions bumps into a weekly Dependabot PR (#1979)",
+        "body": "Action updates have been low-risk; group all github-actions bumps into\none weekly PR instead of opening many daily individual updates.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "085f5d0be9fc4541dd4dd81246046ca4ec222f4f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
