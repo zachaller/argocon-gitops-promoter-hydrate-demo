@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e077303c44639639a42140b19cf5e1b66731f781",
+  "drySha": "4737dab2a67b640dd3e61485f695445b1127670b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-25T13:08:22-05:00",
-  "subject": "chore: bump version to v1.0.2003",
+  "date": "2026-09-25T13:29:59-05:00",
+  "subject": "chore: bump version to v1.0.2004",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-23T00:18:41-05:00",
-        "subject": "chore(deps): update kubernetes platform (#1980)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "ff5ecb9c017b172dd2ecd65ebb4b7b0e377ece14",
+        "date": "2026-08-25T13:39:48-05:00",
+        "subject": "chore(ci): pin release workflow actions with semver comments (#1978)",
+        "body": "Bump docker/setup-docker-action to v5.4.0 and add version comments so\nDependabot opens semver-labeled PRs instead of opaque SHA-to-SHA bumps.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "aaccbebcfc690791cbc03eaceaddb68534f2d77e",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
