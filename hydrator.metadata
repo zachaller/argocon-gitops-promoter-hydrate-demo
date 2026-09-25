@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "34ada8cc4e2668ec1b4d866bac7643b106e2f029",
+  "drySha": "e077303c44639639a42140b19cf5e1b66731f781",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-25T14:53:12-05:00",
-  "subject": "chore: bump version to v1.0.2006",
+  "date": "2026-09-25T13:08:22-05:00",
+  "subject": "chore: bump version to v1.0.2003",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-09T23:38:37-05:00",
-        "subject": "chore(deps): update dependency kubernetes-sigs/controller-tools to v0.22.0 (#1962)",
+        "date": "2026-08-23T00:18:41-05:00",
+        "subject": "chore(deps): update kubernetes platform (#1980)",
         "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "832e3975ecb84f9286391705525f971aa2d5b520",
+        "sha": "ff5ecb9c017b172dd2ecd65ebb4b7b0e377ece14",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
