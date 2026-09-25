@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e077303c44639639a42140b19cf5e1b66731f781",
+  "drySha": "23966a8b70c6e6ff08a5849e2e8458679947b0e3",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-25T13:08:22-05:00",
-  "subject": "chore: bump version to v1.0.2003",
+  "date": "2026-09-25T17:28:37-05:00",
+  "subject": "chore: bump version to v1.0.2007",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-23T00:18:41-05:00",
-        "subject": "chore(deps): update kubernetes platform (#1980)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "ff5ecb9c017b172dd2ecd65ebb4b7b0e377ece14",
+        "date": "2026-09-06T02:16:24-05:00",
+        "subject": "fix(ctp): strip Pull-request-merge-time from status commit bodies (#2042)",
+        "body": "* fix(ctp): strip Pull-request-merge-time from status commit bodies\n\nMerge-time was left out of removeKnownTrailers, so it leaked into CTP and PromotionStrategy hydrated bodies after a promoter merge.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* real test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "e0610f16adaa3a5527c8f79525895aa717a5cd93",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
