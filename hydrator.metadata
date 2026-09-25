@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "022900805bf3568a65a0a8cb9b14f6e8bf4786d7",
+  "drySha": "dcf3fcf38d994f029ecd9de5cef1665366acdc27",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-18T13:31:44-05:00",
-  "subject": "chore: bump version to v1.0.1996",
+  "date": "2026-09-22T09:22:40-05:00",
+  "subject": "chore: bump version to v1.0.1997",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-12T19:21:45-05:00",
-        "subject": "chore(deps): update dependency goreleaser/goreleaser to v2.18.1 (#1985)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "a2654d35e904102c31d5dac430910eeb973f405e",
+        "date": "2026-08-23T00:05:33-05:00",
+        "subject": "docs: bump manifest versions to v0.41.0 (#2057)",
+        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "a8169b9dc4ad6f45afb3b27aab02a073c15bbf75",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
