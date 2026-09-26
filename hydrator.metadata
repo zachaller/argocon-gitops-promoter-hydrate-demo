@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e077303c44639639a42140b19cf5e1b66731f781",
+  "drySha": "fb294e4cc39e838f2816eccd50d82827a3258c02",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-25T13:08:22-05:00",
-  "subject": "chore: bump version to v1.0.2003",
+  "date": "2026-09-25T17:56:05-05:00",
+  "subject": "chore: bump version to v1.0.2008",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-23T00:18:41-05:00",
-        "subject": "chore(deps): update kubernetes platform (#1980)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "ff5ecb9c017b172dd2ecd65ebb4b7b0e377ece14",
+        "date": "2026-08-24T00:19:39-05:00",
+        "subject": "test: speed up tests (#2058)",
+        "body": "* test: speed up tests\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix races\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "3920b8ac752037d80051bc28bdd761d60776aadb",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
