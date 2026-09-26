@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "9ff623ea8b434aca5d65ee3db4632321e9b7ecd7",
+  "drySha": "f0ac109189447d828d96064cda64551a3be615b2",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-26T09:30:02-05:00",
-  "subject": "chore: bump version to v1.0.2009",
+  "date": "2026-09-26T13:01:07-05:00",
+  "subject": "chore: bump version to v1.0.2010",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-15T18:00:06-05:00",
-        "subject": "chore(deps): update node.js to v24.21.0 (#2001)",
+        "date": "2026-08-24T01:49:47-05:00",
+        "subject": "chore(deps): update module sigs.k8s.io/controller-runtime to v0.25.1 (#2029)",
         "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "c28ae6342f42f3795498bb6c5df3e33073fb7b05",
+        "sha": "8ad5b21125b1d5d0e46f2bbce221cbeb8d7c6a73",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
