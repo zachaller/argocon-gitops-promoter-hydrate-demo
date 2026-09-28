@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8c9e6440e806089f94375cee9758ca059bd2518c",
+  "drySha": "c085ce5db268b286fd6f649169a04252111f2431",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-26T15:24:17-05:00",
-  "subject": "chore: bump version to v1.0.2012",
+  "date": "2026-09-28T08:51:19-05:00",
+  "subject": "chore: bump version to v1.0.2013",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-24T11:57:12-05:00",
-        "subject": "docs: add upgrade docs (#2020)",
-        "body": "add upgrade docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "238d95420fe80cc6860a15b50c700c0f195cd811",
+        "date": "2026-09-08T19:29:08-05:00",
+        "subject": "chore: Update USERS.md (#2088)",
+        "body": "* Update USERS.md\n\nSigned-off-by: Tomas Terälä <tomas.terala@gmail.com>\n\n* fix url\n\nSigned-off-by: Tomas Terälä <tomas.terala@gmail.com>\n\n---------\n\nSigned-off-by: Tomas Terälä <tomas.terala@gmail.com>",
+        "sha": "a1a3032a341d707d9ae6cb1a7ddd2be99ad52b49",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
