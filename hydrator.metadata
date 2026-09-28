@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "d3b6957f9bfcbaecd89abae58265ae34d739ea10",
+  "drySha": "cf876c0143b8148cc418fe8ae678dc29d6354f8a",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-28T11:46:43-05:00",
-  "subject": "chore: bump version to v1.0.2024",
+  "date": "2026-09-28T12:08:18-05:00",
+  "subject": "chore: bump version to v1.0.2025",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-13T21:08:10-05:00",
-        "subject": "fix(ps): retry indefinitely for CTP note disagreement (#2031)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "afefb99b4a3c9aa4f1b14ed94cd2e6636f0f1913",
+        "date": "2026-09-03T10:13:30-05:00",
+        "subject": "chore(deps): update dependency helm/helm to v4.3.0 (#2015)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "be761174b641df5770989ad57b375032d31085e6",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
