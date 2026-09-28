@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3fed31695b24237aa2aba69cdaf76edb355be313",
+  "drySha": "4fca4a2c1ef4dd0a24fbb762da8c8e9c69a6d582",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-28T08:52:01-05:00",
-  "subject": "chore: bump version to v1.0.2015",
+  "date": "2026-09-28T11:16:47-05:00",
+  "subject": "chore: bump version to v1.0.2018",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-18T22:57:43-05:00",
-        "subject": "chore(deps): bump sigs.k8s.io/apiserver-network-proxy/konnectivity-client from 0.36.0 to 0.37.0 (#2086)",
-        "body": "chore(deps): bump sigs.k8s.io/apiserver-network-proxy/konnectivity-client\n\nBumps [sigs.k8s.io/apiserver-network-proxy/konnectivity-client](https://github.com/kubernetes-sigs/apiserver-network-proxy) from 0.36.0 to 0.37.0.\n- [Release notes](https://github.com/kubernetes-sigs/apiserver-network-proxy/releases)\n- [Changelog](https://github.com/kubernetes-sigs/apiserver-network-proxy/blob/master/RELEASE.md)\n- [Commits](https://github.com/kubernetes-sigs/apiserver-network-proxy/compare/v0.36.0...v0.37.0)\n\n---\nupdated-dependencies:\n- dependency-name: sigs.k8s.io/apiserver-network-proxy/konnectivity-client\n  dependency-version: 0.37.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "82dac81de56bb47f3c4e71c255afb7e0a354cd1c",
+        "date": "2026-09-12T19:25:52-05:00",
+        "subject": "chore(deps): bump crate-ci/typos from 1.50.0 to 1.50.1 (#1975)",
+        "body": "Bumps [crate-ci/typos](https://github.com/crate-ci/typos) from 1.50.0 to 1.50.1.\n- [Release notes](https://github.com/crate-ci/typos/releases)\n- [Changelog](https://github.com/crate-ci/typos/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/crate-ci/typos/compare/4d9c206a77c041268485162b8e2579ad7a5cb9a3...d43b6c087ac471e2ea7b8af622ff15f05c0c365b)\n\n---\nupdated-dependencies:\n- dependency-name: crate-ci/typos\n  dependency-version: 1.50.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "eb0a307b65500a80285127c3260b77265d71a7fa",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
