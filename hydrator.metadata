@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3fed31695b24237aa2aba69cdaf76edb355be313",
+  "drySha": "d3b6957f9bfcbaecd89abae58265ae34d739ea10",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-28T08:52:01-05:00",
-  "subject": "chore: bump version to v1.0.2015",
+  "date": "2026-09-28T11:46:43-05:00",
+  "subject": "chore: bump version to v1.0.2024",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-18T22:57:43-05:00",
-        "subject": "chore(deps): bump sigs.k8s.io/apiserver-network-proxy/konnectivity-client from 0.36.0 to 0.37.0 (#2086)",
-        "body": "chore(deps): bump sigs.k8s.io/apiserver-network-proxy/konnectivity-client\n\nBumps [sigs.k8s.io/apiserver-network-proxy/konnectivity-client](https://github.com/kubernetes-sigs/apiserver-network-proxy) from 0.36.0 to 0.37.0.\n- [Release notes](https://github.com/kubernetes-sigs/apiserver-network-proxy/releases)\n- [Changelog](https://github.com/kubernetes-sigs/apiserver-network-proxy/blob/master/RELEASE.md)\n- [Commits](https://github.com/kubernetes-sigs/apiserver-network-proxy/compare/v0.36.0...v0.37.0)\n\n---\nupdated-dependencies:\n- dependency-name: sigs.k8s.io/apiserver-network-proxy/konnectivity-client\n  dependency-version: 0.37.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "82dac81de56bb47f3c4e71c255afb7e0a354cd1c",
+        "date": "2026-09-13T21:08:10-05:00",
+        "subject": "fix(ps): retry indefinitely for CTP note disagreement (#2031)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "afefb99b4a3c9aa4f1b14ed94cd2e6636f0f1913",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
