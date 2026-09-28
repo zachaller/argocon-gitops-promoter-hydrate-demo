@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8c9e6440e806089f94375cee9758ca059bd2518c",
+  "drySha": "9cd9c7f05e3f8063327f22f35a223c5dbc4ede66",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-26T15:24:17-05:00",
-  "subject": "chore: bump version to v1.0.2012",
+  "date": "2026-09-28T09:54:00-05:00",
+  "subject": "chore: bump version to v1.0.2017",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-24T11:57:12-05:00",
-        "subject": "docs: add upgrade docs (#2020)",
-        "body": "add upgrade docs\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "238d95420fe80cc6860a15b50c700c0f195cd811",
+        "date": "2026-09-09T19:04:09-05:00",
+        "subject": "chore(deps): bump github.com/prometheus/procfs from 0.21.1 to 0.22.0 in the prometheus group across 1 directory (#1945)",
+        "body": "chore(deps): bump github.com/prometheus/procfs\n\nBumps the prometheus group with 1 update in the / directory: [github.com/prometheus/procfs](https://github.com/prometheus/procfs).\n\n\nUpdates `github.com/prometheus/procfs` from 0.21.1 to 0.22.0\n- [Release notes](https://github.com/prometheus/procfs/releases)\n- [Commits](https://github.com/prometheus/procfs/compare/v0.21.1...v0.22.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/procfs\n  dependency-version: 0.22.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: prometheus\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "734bd53849668efc5debf3681afc91a4c7967b7c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
