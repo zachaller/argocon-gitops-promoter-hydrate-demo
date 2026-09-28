@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "4fca4a2c1ef4dd0a24fbb762da8c8e9c69a6d582",
+  "drySha": "55cd173ca4ef79cc1f885c054ecf6756546087f4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-28T11:16:47-05:00",
-  "subject": "chore: bump version to v1.0.2018",
+  "date": "2026-09-28T11:23:38-05:00",
+  "subject": "chore: bump version to v1.0.2019",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-12T19:25:52-05:00",
-        "subject": "chore(deps): bump crate-ci/typos from 1.50.0 to 1.50.1 (#1975)",
-        "body": "Bumps [crate-ci/typos](https://github.com/crate-ci/typos) from 1.50.0 to 1.50.1.\n- [Release notes](https://github.com/crate-ci/typos/releases)\n- [Changelog](https://github.com/crate-ci/typos/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/crate-ci/typos/compare/4d9c206a77c041268485162b8e2579ad7a5cb9a3...d43b6c087ac471e2ea7b8af622ff15f05c0c365b)\n\n---\nupdated-dependencies:\n- dependency-name: crate-ci/typos\n  dependency-version: 1.50.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "eb0a307b65500a80285127c3260b77265d71a7fa",
+        "date": "2026-09-14T12:27:07-05:00",
+        "subject": "chore(ci): go a bit easier on the go bumps (#2043) (#2049)",
+        "body": "* chore(ci): go a bit easier on the go bumps (#2043)\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix(ci): tidy go.mod after go-fix-maybe-bump early exits\n\nPass 1 can drop imports on the common path (same language floor as the\ntoolchain) and previously skipped go mod tidy. Also stop treating a\nfailed go fix as success before choosing a language floor.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+        "sha": "df390b462b3246bb95eac68d9372548c6ce467ce",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
