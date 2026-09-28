@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "2df329759b7f7bb9e3d9b5a521884a6d46a41cf2",
+  "drySha": "9cd9c7f05e3f8063327f22f35a223c5dbc4ede66",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-28T09:22:56-05:00",
-  "subject": "chore: bump version to v1.0.2016",
+  "date": "2026-09-28T09:54:00-05:00",
+  "subject": "chore: bump version to v1.0.2017",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-17T23:27:53-05:00",
-        "subject": "chore(deps): bump go.mongodb.org/mongo-driver/v2 from 2.9.0 to 2.9.1 (#2018)",
-        "body": "Bumps [go.mongodb.org/mongo-driver/v2](https://github.com/mongodb/mongo-go-driver) from 2.9.0 to 2.9.1.\n- [Release notes](https://github.com/mongodb/mongo-go-driver/releases)\n- [Commits](https://github.com/mongodb/mongo-go-driver/compare/v2.9.0...v2.9.1)\n\n---\nupdated-dependencies:\n- dependency-name: go.mongodb.org/mongo-driver/v2\n  dependency-version: 2.9.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "543768c5f3efe8644331db58e0a91f4b80734fe7",
+        "date": "2026-09-09T19:04:09-05:00",
+        "subject": "chore(deps): bump github.com/prometheus/procfs from 0.21.1 to 0.22.0 in the prometheus group across 1 directory (#1945)",
+        "body": "chore(deps): bump github.com/prometheus/procfs\n\nBumps the prometheus group with 1 update in the / directory: [github.com/prometheus/procfs](https://github.com/prometheus/procfs).\n\n\nUpdates `github.com/prometheus/procfs` from 0.21.1 to 0.22.0\n- [Release notes](https://github.com/prometheus/procfs/releases)\n- [Commits](https://github.com/prometheus/procfs/compare/v0.21.1...v0.22.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/procfs\n  dependency-version: 0.22.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: prometheus\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "734bd53849668efc5debf3681afc91a4c7967b7c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
