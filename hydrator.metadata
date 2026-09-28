@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c085ce5db268b286fd6f649169a04252111f2431",
+  "drySha": "03d1b745544394aa555352e2fd7ecb69a60a85bf",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-28T08:51:19-05:00",
-  "subject": "chore: bump version to v1.0.2013",
+  "date": "2026-09-28T08:51:26-05:00",
+  "subject": "chore: bump version to v1.0.2014",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-08T19:29:08-05:00",
-        "subject": "chore: Update USERS.md (#2088)",
-        "body": "* Update USERS.md\n\nSigned-off-by: Tomas Terälä <tomas.terala@gmail.com>\n\n* fix url\n\nSigned-off-by: Tomas Terälä <tomas.terala@gmail.com>\n\n---------\n\nSigned-off-by: Tomas Terälä <tomas.terala@gmail.com>",
-        "sha": "a1a3032a341d707d9ae6cb1a7ddd2be99ad52b49",
+        "date": "2026-09-17T15:28:03-05:00",
+        "subject": "refactor(git): slim GetBranchSha to branch-tip resolution only (#1952)",
+        "body": "* refactor(git): split dry metadata read out of GetBranchShas\n\nGetBranchShas now resolves only the hydrated branch tip; callers read\nhydrator.metadata separately via GetShaMetadataFromFile after prefetching\nthe tip commit, enabling batched git reads in the reconcile path.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* refactor(git): rename GetBranchShas to GetBranchSha\n\nDrop the BranchShas wrapper and return the origin/<branch> commit SHA\ndirectly now that dry metadata is read separately.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "456a1b4b9dbd9852564d7eed2ce74b8c3d6e8f0d",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
