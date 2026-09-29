@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "78c8fcb9f7fc8d2467f46aa080cc7785b4930dfc",
+  "drySha": "94651a34ee33be20b72dbde39e63a7a90031ab5c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-28T21:34:06-05:00",
-  "subject": "chore: bump version to v1.0.2032",
+  "date": "2026-09-29T08:38:51-05:00",
+  "subject": "chore: bump version to v1.0.2034",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-01T11:01:14-05:00",
-        "subject": "fix(ctp): strip Pull-request-merge-time from status commit bodies (#2042)",
-        "body": "* fix(ctp): strip Pull-request-merge-time from status commit bodies\n\nMerge-time was left out of removeKnownTrailers, so it leaked into CTP and PromotionStrategy hydrated bodies after a promoter merge.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* real test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "e0610f16adaa3a5527c8f79525895aa717a5cd93",
+        "date": "2026-09-01T08:22:59-05:00",
+        "subject": "chore(ci): allow major SMD bump w/ k8s platform group (#2003)",
+        "body": "* chore(ci): allow major SMD bump w/ k8s platform group\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* align w/ go-github\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "5f8e07b431053e8c23efe3bb886e5ab2f15f5dd6",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
