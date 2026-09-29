@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "26e533569e301c57ff107dd4401aee847dea8f54",
+  "drySha": "7279ba6db2903ee97ef472c4ff44c6c6fafc25ba",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-29T10:04:01-05:00",
-  "subject": "chore: bump version to v1.0.2035",
+  "date": "2026-09-29T10:18:11-05:00",
+  "subject": "chore: bump version to v1.0.2036",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-19T06:59:26-05:00",
-        "subject": "chore(ci): pin release workflow actions with semver comments (#1978)",
-        "body": "Bump docker/setup-docker-action to v5.4.0 and add version comments so\nDependabot opens semver-labeled PRs instead of opaque SHA-to-SHA bumps.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "aaccbebcfc690791cbc03eaceaddb68534f2d77e",
+        "date": "2026-08-28T14:00:06-05:00",
+        "subject": "chore(deps): update quay.io/brancz/kube-rbac-proxy docker tag to v0.23.0 (#2083)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "55dafc761acebbaea518fc7d61de948fd4c0abbb",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
