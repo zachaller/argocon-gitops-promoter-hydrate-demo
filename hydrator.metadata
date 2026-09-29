@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "78c8fcb9f7fc8d2467f46aa080cc7785b4930dfc",
+  "drySha": "bf0d7c622de233c97e221f6eae035ff54231737b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-28T21:34:06-05:00",
-  "subject": "chore: bump version to v1.0.2032",
+  "date": "2026-09-29T08:38:43-05:00",
+  "subject": "chore: bump version to v1.0.2033",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-01T11:01:14-05:00",
-        "subject": "fix(ctp): strip Pull-request-merge-time from status commit bodies (#2042)",
-        "body": "* fix(ctp): strip Pull-request-merge-time from status commit bodies\n\nMerge-time was left out of removeKnownTrailers, so it leaked into CTP and PromotionStrategy hydrated bodies after a promoter merge.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* real test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "e0610f16adaa3a5527c8f79525895aa717a5cd93",
+        "date": "2026-09-17T15:13:40-05:00",
+        "subject": "chore(deps-dev): bump browserslist from 4.28.1 to 4.28.8 in /ui/extension (#1951)",
+        "body": "chore(deps-dev): bump browserslist in /ui/extension\n\nBumps [browserslist](https://github.com/browserslist/browserslist) from 4.28.1 to 4.28.8.\n- [Release notes](https://github.com/browserslist/browserslist/releases)\n- [Changelog](https://github.com/browserslist/browserslist/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/browserslist/browserslist/compare/4.28.1...4.28.8)\n\n---\nupdated-dependencies:\n- dependency-name: browserslist\n  dependency-version: 4.28.8\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "ce3af5cd237b124a30827dcd162d2e381c36229a",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
