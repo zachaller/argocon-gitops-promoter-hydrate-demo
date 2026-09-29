@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bf0d7c622de233c97e221f6eae035ff54231737b",
+  "drySha": "94651a34ee33be20b72dbde39e63a7a90031ab5c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-29T08:38:43-05:00",
-  "subject": "chore: bump version to v1.0.2033",
+  "date": "2026-09-29T08:38:51-05:00",
+  "subject": "chore: bump version to v1.0.2034",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-17T15:13:40-05:00",
-        "subject": "chore(deps-dev): bump browserslist from 4.28.1 to 4.28.8 in /ui/extension (#1951)",
-        "body": "chore(deps-dev): bump browserslist in /ui/extension\n\nBumps [browserslist](https://github.com/browserslist/browserslist) from 4.28.1 to 4.28.8.\n- [Release notes](https://github.com/browserslist/browserslist/releases)\n- [Changelog](https://github.com/browserslist/browserslist/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/browserslist/browserslist/compare/4.28.1...4.28.8)\n\n---\nupdated-dependencies:\n- dependency-name: browserslist\n  dependency-version: 4.28.8\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "ce3af5cd237b124a30827dcd162d2e381c36229a",
+        "date": "2026-09-01T08:22:59-05:00",
+        "subject": "chore(ci): allow major SMD bump w/ k8s platform group (#2003)",
+        "body": "* chore(ci): allow major SMD bump w/ k8s platform group\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* align w/ go-github\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "5f8e07b431053e8c23efe3bb886e5ab2f15f5dd6",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
