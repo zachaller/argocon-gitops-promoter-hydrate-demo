@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b68dcf1264e6965e89083559343cb2a3f294811a",
+  "drySha": "78c8fcb9f7fc8d2467f46aa080cc7785b4930dfc",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-28T14:54:56-05:00",
-  "subject": "chore: bump version to v1.0.2031",
+  "date": "2026-09-28T21:34:06-05:00",
+  "subject": "chore: bump version to v1.0.2032",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-11T21:13:34-05:00",
-        "subject": "chore(deps): bump sigs.k8s.io/apiserver-network-proxy/konnectivity-client from 0.36.0 to 0.37.0 (#2086)",
-        "body": "chore(deps): bump sigs.k8s.io/apiserver-network-proxy/konnectivity-client\n\nBumps [sigs.k8s.io/apiserver-network-proxy/konnectivity-client](https://github.com/kubernetes-sigs/apiserver-network-proxy) from 0.36.0 to 0.37.0.\n- [Release notes](https://github.com/kubernetes-sigs/apiserver-network-proxy/releases)\n- [Changelog](https://github.com/kubernetes-sigs/apiserver-network-proxy/blob/master/RELEASE.md)\n- [Commits](https://github.com/kubernetes-sigs/apiserver-network-proxy/compare/v0.36.0...v0.37.0)\n\n---\nupdated-dependencies:\n- dependency-name: sigs.k8s.io/apiserver-network-proxy/konnectivity-client\n  dependency-version: 0.37.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "82dac81de56bb47f3c4e71c255afb7e0a354cd1c",
+        "date": "2026-09-01T11:01:14-05:00",
+        "subject": "fix(ctp): strip Pull-request-merge-time from status commit bodies (#2042)",
+        "body": "* fix(ctp): strip Pull-request-merge-time from status commit bodies\n\nMerge-time was left out of removeKnownTrailers, so it leaked into CTP and PromotionStrategy hydrated bodies after a promoter merge.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* real test\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "e0610f16adaa3a5527c8f79525895aa717a5cd93",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
