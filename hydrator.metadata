@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "77b8ee6c6640715a50caf023fb4218cf17e15303",
+  "drySha": "8f1e65343ee97519d1720b6ba1d3df2afa5cff15",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-30T09:22:37-05:00",
-  "subject": "chore: bump version to v1.0.2038",
+  "date": "2026-09-30T09:45:54-05:00",
+  "subject": "chore: bump version to v1.0.2039",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-18T11:25:19-05:00",
-        "subject": "chore(deps): bump the go-etcd group with 3 updates (#2084)",
-        "body": "Bumps the go-etcd group with 3 updates: [go.etcd.io/etcd/api/v3](https://github.com/etcd-io/etcd), [go.etcd.io/etcd/client/pkg/v3](https://github.com/etcd-io/etcd) and [go.etcd.io/etcd/client/v3](https://github.com/etcd-io/etcd).\n\n\nUpdates `go.etcd.io/etcd/api/v3` from 3.7.1 to 3.7.2\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.1...v3.7.2)\n\nUpdates `go.etcd.io/etcd/client/pkg/v3` from 3.7.1 to 3.7.2\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.1...v3.7.2)\n\nUpdates `go.etcd.io/etcd/client/v3` from 3.7.1 to 3.7.2\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.1...v3.7.2)\n\n---\nupdated-dependencies:\n- dependency-name: go.etcd.io/etcd/api/v3\n  dependency-version: 3.7.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n- dependency-name: go.etcd.io/etcd/client/pkg/v3\n  dependency-version: 3.7.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n- dependency-name: go.etcd.io/etcd/client/v3\n  dependency-version: 3.7.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "f934e5c74251aea45ab933758c546535b8686330",
+        "date": "2026-08-26T18:35:35-05:00",
+        "subject": "chore(deps): update dependency helm/helm to v4.3.0 (#2015)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "be761174b641df5770989ad57b375032d31085e6",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
