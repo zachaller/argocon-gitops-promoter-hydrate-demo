@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "9de8e6dc2532ac302d72d94a88875a3dadf217df",
+  "drySha": "cc0f51f1d517c7ceff7ee575f22eff9cc614e94a",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-30T15:02:51-05:00",
-  "subject": "chore: bump version to v1.0.2042",
+  "date": "2026-09-30T15:39:38-05:00",
+  "subject": "chore: bump version to v1.0.2043",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-10T17:10:55-05:00",
-        "subject": "chore(deps): bump golang.org/x/crypto from 0.55.0 to 0.56.0 in the golang-org-x group (#1986)",
-        "body": "chore(deps): bump golang.org/x/crypto in the golang-org-x group\n\nBumps the golang-org-x group with 1 update: [golang.org/x/crypto](https://github.com/golang/crypto).\n\n\nUpdates `golang.org/x/crypto` from 0.55.0 to 0.56.0\n- [Commits](https://github.com/golang/crypto/compare/v0.55.0...v0.56.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/crypto\n  dependency-version: 0.56.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "ff61f70ad53960a10ba69e02019341278b2eccf8",
+        "date": "2026-09-23T08:30:45-05:00",
+        "subject": "refactor: extract EnqueueCommitStatusGatesForPromotionStrategy helper (#1984)",
+        "body": "* refactor: extract EnqueueCommitStatusGatesForPromotionStrategy helper\n\nDeduplicate PromotionStrategy watch enqueue logic across commit-status gate\ncontrollers using field-indexed listing.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* refactor: share PromotionStrategy gate enqueue watch handler\n\nExtract EnqueueCommitStatusGatesForPromotionStrategy and\nCommitStatusGatePromotionStrategyWatchHandler so gate controllers\nregister a one-line watch instead of duplicating list-and-enqueue logic.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* refactor: simplify gate list generic and update contributor docs\n\nUse a typed list pointer constraint instead of reflect to allocate\ngate lists, and document CommitStatusGatePromotionStrategyWatchHandler\nfor in-tree gate controllers.\n\nCo-authored-by: Cursor <cursoragent@cursor.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* test for list failure\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+        "sha": "fb767261956dd1643fafcdca753cdc06c43876ad",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
