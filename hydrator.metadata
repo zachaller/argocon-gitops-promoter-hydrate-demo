@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7a3e55fdda4f047beb059a4b87d4e94b5bb2d840",
+  "drySha": "77b8ee6c6640715a50caf023fb4218cf17e15303",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-29T10:32:20-05:00",
-  "subject": "chore: bump version to v1.0.2037",
+  "date": "2026-09-30T09:22:37-05:00",
+  "subject": "chore: bump version to v1.0.2038",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-30T04:26:10-05:00",
-        "subject": "refactor(controller): rebuild promotion history at note site without historyNoteWritten (#1960)",
-        "body": "* refactor(controller): rebuild promotion history at note site without historyNoteWritten\n\nensurePromotionHistoryNote now fetches the active branch, writes the note when\nabsent, and calls calculateHistory in place. The skip check evaluates the\ncurrent history against the active tip so the rebuild is not repeated later in\nthe reconcile.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* perf(controller): use GetBranchSha cache in ensurePromotionHistoryNote\n\nReplace the unconditional FetchBranch with GetBranchSha and\nStatus.Active.Hydrated.Sha so later passes in the merge/finalizer window\nskip the network fetch when the remote tip is unchanged.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* perf(controller): skip early history rebuild when merge tip is already recorded\n\nGuard ensurePromotionHistoryNote's calculateHistory with\nshouldSkipHistoryRecalculation against mergedTargetSha so later passes in\nthe merge/finalizer window avoid redundant work when history already\ndescribes the merge commit.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* docs(controller): explain multi-reconcile path for early history rebuild\n\nClarify why ensurePromotionHistoryNote may run across several reconciles\nwhile the PR finalizer is held, and why later passes skip the rebuild.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix(controller): rebuild history on the pass that writes the promotion note\n\nOnly consult shouldSkipHistoryRecalculation when the note already exists,\nso a trailer-derived history entry with a matching PR ID is replaced by\nthe note-derived one on first write. Skip the branch fetch on steady\nfinalizer passes when the note and history both describe the merge commit.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "b7e69a80a1ad158533dd3614080ff57bb9c8870e",
+        "date": "2026-09-18T11:25:19-05:00",
+        "subject": "chore(deps): bump the go-etcd group with 3 updates (#2084)",
+        "body": "Bumps the go-etcd group with 3 updates: [go.etcd.io/etcd/api/v3](https://github.com/etcd-io/etcd), [go.etcd.io/etcd/client/pkg/v3](https://github.com/etcd-io/etcd) and [go.etcd.io/etcd/client/v3](https://github.com/etcd-io/etcd).\n\n\nUpdates `go.etcd.io/etcd/api/v3` from 3.7.1 to 3.7.2\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.1...v3.7.2)\n\nUpdates `go.etcd.io/etcd/client/pkg/v3` from 3.7.1 to 3.7.2\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.1...v3.7.2)\n\nUpdates `go.etcd.io/etcd/client/v3` from 3.7.1 to 3.7.2\n- [Release notes](https://github.com/etcd-io/etcd/releases)\n- [Commits](https://github.com/etcd-io/etcd/compare/v3.7.1...v3.7.2)\n\n---\nupdated-dependencies:\n- dependency-name: go.etcd.io/etcd/api/v3\n  dependency-version: 3.7.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n- dependency-name: go.etcd.io/etcd/client/pkg/v3\n  dependency-version: 3.7.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n- dependency-name: go.etcd.io/etcd/client/v3\n  dependency-version: 3.7.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: go-etcd\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "f934e5c74251aea45ab933758c546535b8686330",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
