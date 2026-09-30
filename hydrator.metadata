@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "8f1e65343ee97519d1720b6ba1d3df2afa5cff15",
+  "drySha": "0b3342d817614b7b08645815a9356246a90e6194",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-30T09:45:54-05:00",
-  "subject": "chore: bump version to v1.0.2039",
+  "date": "2026-09-30T10:47:57-05:00",
+  "subject": "chore: bump version to v1.0.2041",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-08-26T18:35:35-05:00",
-        "subject": "chore(deps): update dependency helm/helm to v4.3.0 (#2015)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "be761174b641df5770989ad57b375032d31085e6",
+        "date": "2026-09-03T04:34:08-05:00",
+        "subject": "chore(deps): bump golang.org/x/crypto from 0.55.0 to 0.56.0 in the golang-org-x group (#1986)",
+        "body": "chore(deps): bump golang.org/x/crypto in the golang-org-x group\n\nBumps the golang-org-x group with 1 update: [golang.org/x/crypto](https://github.com/golang/crypto).\n\n\nUpdates `golang.org/x/crypto` from 0.55.0 to 0.56.0\n- [Commits](https://github.com/golang/crypto/compare/v0.55.0...v0.56.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/crypto\n  dependency-version: 0.56.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "ff61f70ad53960a10ba69e02019341278b2eccf8",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
