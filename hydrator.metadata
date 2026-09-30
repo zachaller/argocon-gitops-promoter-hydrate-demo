@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "c051dc9c2cb308a39cb367b298a0be6d7c7f127d",
+  "drySha": "8f1e65343ee97519d1720b6ba1d3df2afa5cff15",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-09-30T10:27:57-05:00",
-  "subject": "chore: bump version to v1.0.2040",
+  "date": "2026-09-30T09:45:54-05:00",
+  "subject": "chore: bump version to v1.0.2039",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-18T15:26:12-05:00",
-        "subject": "fix(controller): never skip history recalculation when the newest entry has no PR ID (#1955)",
-        "body": "shouldSkipHistoryRecalculation (added in #1923) trusted prev.History from\nthe cached CTP read. After the reconcile that writes the promotion-history\nnote and rebuilds history, the PullRequest deletion enqueues another\nreconcile that can read the CTP before that status patch lands. Its stale\nnewest entry (built from the trailer-less squash commit: SHAs matching the\ntip, no PR ID) satisfied every skip condition, so the reconcile re-applied\nthe stale history over the note-derived one and pinned it until the active\ntip moved. This is what made the \"externally squash-merged PR\" spec flake.\n\nTreat a newest entry without a pull request ID as untrusted so the rebuild\npicks the note up on the next pass. Commits with genuinely no PR metadata\nfall back to the pre-#1923 behavior of recalculating each reconcile.\n\n\nClaude-Session: https://claude.ai/code/session_01B5aqP1x4gLFd3zuyzKTsWR\n\nSigned-off-by: Zach Aller <allerzach@gmail.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
-        "sha": "6af07c2a802a38242ad9307dfa3ace02b749a837",
+        "date": "2026-08-26T18:35:35-05:00",
+        "subject": "chore(deps): update dependency helm/helm to v4.3.0 (#2015)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "be761174b641df5770989ad57b375032d31085e6",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
