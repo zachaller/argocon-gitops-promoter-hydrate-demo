@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "4ad025f386d30a0c8bb31f35845d483113bf9178",
+  "drySha": "0523ba1177a21c10a3245f0244e4902de4e7e8bd",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-10-02T11:35:53-05:00",
-  "subject": "chore: bump version to v1.0.2045",
+  "date": "2026-10-02T11:41:40-05:00",
+  "subject": "chore: bump version to v1.0.2046",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-02T09:31:06-05:00",
-        "subject": "chore(deps): bump github.com/gin-contrib/sse from 1.1.1 to 1.1.2 (#1991)",
-        "body": "Bumps [github.com/gin-contrib/sse](https://github.com/gin-contrib/sse) from 1.1.1 to 1.1.2.\n- [Release notes](https://github.com/gin-contrib/sse/releases)\n- [Commits](https://github.com/gin-contrib/sse/compare/v1.1.1...v1.1.2)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-contrib/sse\n  dependency-version: 1.1.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "f2423f3a9caf121ff761ceec4981ebb5c960234a",
+        "date": "2026-09-05T11:01:48-05:00",
+        "subject": "docs: bump manifest versions to v0.41.0 (#2057)",
+        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "a8169b9dc4ad6f45afb3b27aab02a073c15bbf75",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
