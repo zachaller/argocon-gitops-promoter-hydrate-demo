@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "dfec43da1a3a7a6ac16db187439d5a95dbcd1292",
+  "drySha": "bf6caccaa0482f540db41556f9c156b4630d35d3",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-10-02T13:26:35-05:00",
-  "subject": "chore: bump version to v1.0.2051",
+  "date": "2026-10-02T13:38:50-05:00",
+  "subject": "chore: bump version to v1.0.2052",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-02T14:58:36-05:00",
-        "subject": "docs: bump manifest versions to v0.38.0 (#2006)",
-        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: crenshaw-dev <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "32db4b269f81ce7e276f84104ef22f74a165ece3",
+        "date": "2026-09-25T01:58:41-05:00",
+        "subject": "docs: update gif (#2094)",
+        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "2e59b68557688d061765e5664c47c8d239faaecb",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
