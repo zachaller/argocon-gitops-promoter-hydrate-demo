@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "4ad025f386d30a0c8bb31f35845d483113bf9178",
+  "drySha": "7893106726515cd35b7eb5007a492f252f59ec8e",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-10-02T11:35:53-05:00",
-  "subject": "chore: bump version to v1.0.2045",
+  "date": "2026-10-02T12:57:16-05:00",
+  "subject": "chore: bump version to v1.0.2048",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-02T09:31:06-05:00",
-        "subject": "chore(deps): bump github.com/gin-contrib/sse from 1.1.1 to 1.1.2 (#1991)",
-        "body": "Bumps [github.com/gin-contrib/sse](https://github.com/gin-contrib/sse) from 1.1.1 to 1.1.2.\n- [Release notes](https://github.com/gin-contrib/sse/releases)\n- [Commits](https://github.com/gin-contrib/sse/compare/v1.1.1...v1.1.2)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-contrib/sse\n  dependency-version: 1.1.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "f2423f3a9caf121ff761ceec4981ebb5c960234a",
+        "date": "2026-09-17T06:40:45-05:00",
+        "subject": "chore(deps): bump github.com/go-playground/universal-translator from 0.18.1 to 0.18.2 (#2068)",
+        "body": "chore(deps): bump github.com/go-playground/universal-translator\n\nBumps [github.com/go-playground/universal-translator](https://github.com/go-playground/universal-translator) from 0.18.1 to 0.18.2.\n- [Release notes](https://github.com/go-playground/universal-translator/releases)\n- [Commits](https://github.com/go-playground/universal-translator/compare/v0.18.1...v0.18.2)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/go-playground/universal-translator\n  dependency-version: 0.18.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "65c84610909ba8a17b86d0055cd969bb13836cf5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
