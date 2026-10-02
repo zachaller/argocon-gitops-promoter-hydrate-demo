@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ec95cc72d3a7ebf02752818453afc331a196dcd2",
+  "drySha": "4ad025f386d30a0c8bb31f35845d483113bf9178",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-10-02T12:31:49-05:00",
-  "subject": "chore: bump version to v1.0.2047",
+  "date": "2026-10-02T11:35:53-05:00",
+  "subject": "chore: bump version to v1.0.2045",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-08T21:39:15-05:00",
-        "subject": "fix(controller): never skip history recalculation when the newest entry has no PR ID (#1955)",
-        "body": "shouldSkipHistoryRecalculation (added in #1923) trusted prev.History from\nthe cached CTP read. After the reconcile that writes the promotion-history\nnote and rebuilds history, the PullRequest deletion enqueues another\nreconcile that can read the CTP before that status patch lands. Its stale\nnewest entry (built from the trailer-less squash commit: SHAs matching the\ntip, no PR ID) satisfied every skip condition, so the reconcile re-applied\nthe stale history over the note-derived one and pinned it until the active\ntip moved. This is what made the \"externally squash-merged PR\" spec flake.\n\nTreat a newest entry without a pull request ID as untrusted so the rebuild\npicks the note up on the next pass. Commits with genuinely no PR metadata\nfall back to the pre-#1923 behavior of recalculating each reconcile.\n\n\nClaude-Session: https://claude.ai/code/session_01B5aqP1x4gLFd3zuyzKTsWR\n\nSigned-off-by: Zach Aller <allerzach@gmail.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
-        "sha": "6af07c2a802a38242ad9307dfa3ace02b749a837",
+        "date": "2026-09-02T09:31:06-05:00",
+        "subject": "chore(deps): bump github.com/gin-contrib/sse from 1.1.1 to 1.1.2 (#1991)",
+        "body": "Bumps [github.com/gin-contrib/sse](https://github.com/gin-contrib/sse) from 1.1.1 to 1.1.2.\n- [Release notes](https://github.com/gin-contrib/sse/releases)\n- [Commits](https://github.com/gin-contrib/sse/compare/v1.1.1...v1.1.2)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-contrib/sse\n  dependency-version: 1.1.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "f2423f3a9caf121ff761ceec4981ebb5c960234a",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
