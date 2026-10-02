@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "60a90372eb3fab19c2df445a50f990cc846b391f",
+  "drySha": "2b3892ffbdc23e3c66c0d473c9c75b926528dcd6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-10-02T13:09:32-05:00",
-  "subject": "chore: bump version to v1.0.2049",
+  "date": "2026-10-02T13:20:50-05:00",
+  "subject": "chore: bump version to v1.0.2050",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-08T05:25:48-05:00",
-        "subject": "chore(deps): bump github.com/go-playground/validator/v10 from 10.30.4 to 10.30.5 (#2067)",
-        "body": "chore(deps): bump github.com/go-playground/validator/v10\n\nBumps [github.com/go-playground/validator/v10](https://github.com/go-playground/validator) from 10.30.4 to 10.30.5.\n- [Release notes](https://github.com/go-playground/validator/releases)\n- [Commits](https://github.com/go-playground/validator/compare/v10.30.4...v10.30.5)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/go-playground/validator/v10\n  dependency-version: 10.30.5\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "30b2926375676cc1b8ea16263a490470ef632d13",
+        "date": "2026-09-11T06:01:34-05:00",
+        "subject": "chore(deps): update quay.io/brancz/kube-rbac-proxy docker tag to v0.23.0 (#2083)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "55dafc761acebbaea518fc7d61de948fd4c0abbb",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
