@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bf6caccaa0482f540db41556f9c156b4630d35d3",
+  "drySha": "2b3892ffbdc23e3c66c0d473c9c75b926528dcd6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-10-02T13:38:50-05:00",
-  "subject": "chore: bump version to v1.0.2052",
+  "date": "2026-10-02T13:20:50-05:00",
+  "subject": "chore: bump version to v1.0.2050",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-25T01:58:41-05:00",
-        "subject": "docs: update gif (#2094)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "2e59b68557688d061765e5664c47c8d239faaecb",
+        "date": "2026-09-11T06:01:34-05:00",
+        "subject": "chore(deps): update quay.io/brancz/kube-rbac-proxy docker tag to v0.23.0 (#2083)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "55dafc761acebbaea518fc7d61de948fd4c0abbb",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
