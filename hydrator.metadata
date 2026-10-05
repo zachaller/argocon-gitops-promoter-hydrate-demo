@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "bf6caccaa0482f540db41556f9c156b4630d35d3",
+  "drySha": "24ae22bf83fa6cc9ecb7242b44a98fe033ca76de",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-10-02T13:38:50-05:00",
-  "subject": "chore: bump version to v1.0.2052",
+  "date": "2026-10-05T14:56:20-05:00",
+  "subject": "chore: bump version to v1.0.2053",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-25T01:58:41-05:00",
-        "subject": "docs: update gif (#2094)",
-        "body": "Signed-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "2e59b68557688d061765e5664c47c8d239faaecb",
+        "date": "2026-09-16T23:15:43-05:00",
+        "subject": "chore(deps): bump github.com/quic-go/quic-go from 0.62.0 to 0.63.0 (#2087)",
+        "body": "Bumps [github.com/quic-go/quic-go](https://github.com/quic-go/quic-go) from 0.62.0 to 0.63.0.\n- [Release notes](https://github.com/quic-go/quic-go/releases)\n- [Commits](https://github.com/quic-go/quic-go/compare/v0.62.0...v0.63.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/quic-go/quic-go\n  dependency-version: 0.63.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "9cdfc17be88b8d3a80e09fe0c127a95d9075d1c5",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
