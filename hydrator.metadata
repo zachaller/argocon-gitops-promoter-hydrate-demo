@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7818e8c5a37bb2164ee4debdf86eed97eadd8048",
+  "drySha": "f6913b958d544c679773146dff89c50de322213f",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-10-05T15:12:32-05:00",
-  "subject": "chore: bump version to v1.0.2054",
+  "date": "2026-10-07T13:24:00-05:00",
+  "subject": "chore: bump version to v1.0.2055",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-16T01:46:10-05:00",
-        "subject": "docs: bump manifest versions to v0.39.0 (#2021)",
-        "body": "Signed-off-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: zachaller <201390+zachaller@users.noreply.github.com>",
-        "sha": "8fd9226cd95412a1cb2c915f2ab31a7cf4fb6046",
+        "date": "2026-09-06T22:47:34-05:00",
+        "subject": "perf(git): prefetch history notes in one git log (#2071)",
+        "body": "* perf(git): prefetch history notes in one git log\n\nLoad the promotion-history notes for a CTPH window with a single git log so GetHistoryNote does not spawn git notes show per commit.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* perf(git): drop unused history-note cache clears\n\nThe cache lives on a per-reconcile EnvironmentOperations and is filled only after FetchNotes, so nothing in that reconcile has a populated map to invalidate.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "a8286becf2121de3a539c1e52035ee9bb93b3614",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
