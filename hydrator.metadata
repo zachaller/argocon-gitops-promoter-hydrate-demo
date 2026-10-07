@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f6913b958d544c679773146dff89c50de322213f",
+  "drySha": "c585e6a5b88752cd66683302c0dc8848ba270c24",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-10-07T13:24:00-05:00",
-  "subject": "chore: bump version to v1.0.2055",
+  "date": "2026-10-07T13:24:08-05:00",
+  "subject": "chore: bump version to v1.0.2056",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"svc-ci\" <code@example.com>",
-        "date": "2026-09-06T22:47:34-05:00",
-        "subject": "perf(git): prefetch history notes in one git log (#2071)",
-        "body": "* perf(git): prefetch history notes in one git log\n\nLoad the promotion-history notes for a CTPH window with a single git log so GetHistoryNote does not spawn git notes show per commit.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* perf(git): drop unused history-note cache clears\n\nThe cache lives on a per-reconcile EnvironmentOperations and is filled only after FetchNotes, so nothing in that reconcile has a populated map to invalidate.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "a8286becf2121de3a539c1e52035ee9bb93b3614",
+        "date": "2026-09-10T03:44:46-05:00",
+        "subject": "chore(deps): bump github.com/goccy/go-json from 0.11.1 to 0.11.2 (#2115)",
+        "body": "Bumps [github.com/goccy/go-json](https://github.com/goccy/go-json) from 0.11.1 to 0.11.2.\n- [Release notes](https://github.com/goccy/go-json/releases)\n- [Changelog](https://github.com/goccy/go-json/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/goccy/go-json/compare/v0.11.1...v0.11.2)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/goccy/go-json\n  dependency-version: 0.11.2\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "e7a9a183ed48b59fe30977f997692d7edd7af918",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
