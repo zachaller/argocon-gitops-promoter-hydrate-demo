@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "baa06ebff59fd5461b05aa1de4d1f083f485f7d1",
+  "drySha": "ba813ed258c63beca918aa992f48f2995a606b99",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-03T14:48:12-06:00",
-  "subject": "chore: bump version to v1.0.2058",
+  "date": "2026-10-14T08:53:08-05:00",
+  "subject": "chore: bump version to v1.0.2057",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-23T07:28:37-05:00",
-        "subject": "docs: re-record the demo GIF on the Promotion Explorer with a diamond DAG (#2294)",
-        "body": "The dashboard replaced Overview and History with one Explorer view, so\nthe recorder's storyboard no longer matched the UI. The demo strategy is\nnow a diamond: development fans out to staging-us and staging-eu, which\nboth feed production. staging-eu soaks longer, so production visibly\nwaits for the slower branch.\n\n- record.mjs: open the promotion map, follow the new change's row\n  through the matrix, then open the production details panel. Widen the\n  viewport so all four environment columns fit.\n- demo.sh and manifests: four environments with dependsOn.\n- cluster.sh up: install the Argo CD Application CRD when missing; the\n  controller does not start without it.\n- make-gif.sh: default to 1300 px so cell text stays legible.\n- SKILL.md: new storyboard, invariants, and troubleshooting.\n- README.md, getting-started.md: alt text for the new animation.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "c78ae8af030503a693ef100d850500e67ea5167c",
+        "author": "\"svc-ci\" <code@example.com>",
+        "date": "2026-09-14T12:46:37-05:00",
+        "subject": "chore(deps): update go and linter tooling to v0.51.0 (#2111)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "680b1823236ed1a292ec450f725b89911cd99bec",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
