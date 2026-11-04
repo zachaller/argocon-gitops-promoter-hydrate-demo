@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "baa06ebff59fd5461b05aa1de4d1f083f485f7d1",
+  "drySha": "60c38c1b5215340d31b3474b1ed28fb95dba7bc8",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-03T14:48:12-06:00",
-  "subject": "chore: bump version to v1.0.2058",
+  "date": "2026-11-03T16:43:15-06:00",
+  "subject": "chore: bump version to v1.0.2059",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-23T07:28:37-05:00",
-        "subject": "docs: re-record the demo GIF on the Promotion Explorer with a diamond DAG (#2294)",
-        "body": "The dashboard replaced Overview and History with one Explorer view, so\nthe recorder's storyboard no longer matched the UI. The demo strategy is\nnow a diamond: development fans out to staging-us and staging-eu, which\nboth feed production. staging-eu soaks longer, so production visibly\nwaits for the slower branch.\n\n- record.mjs: open the promotion map, follow the new change's row\n  through the matrix, then open the production details panel. Widen the\n  viewport so all four environment columns fit.\n- demo.sh and manifests: four environments with dependsOn.\n- cluster.sh up: install the Argo CD Application CRD when missing; the\n  controller does not start without it.\n- make-gif.sh: default to 1300 px so cell text stays legible.\n- SKILL.md: new storyboard, invariants, and troubleshooting.\n- README.md, getting-started.md: alt text for the new animation.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "c78ae8af030503a693ef100d850500e67ea5167c",
+        "date": "2026-10-26T08:22:18-05:00",
+        "subject": "fix(rac): delete a RestoreActiveCommit whose tip is already unblocked (#2290)",
+        "body": "* fix(rac): delete a RestoreActiveCommit whose tip is already unblocked\n\nA policy can adopt a restore after the previous object stamped Promoter-restore-unblocked-at and deleted itself. RestoreActiveBranch refuses that tip, so the new object never records status and blocks promotion. Delete it and leave the existing stamp in place.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* test: wait out a transient adopted RestoreActiveCommit after unblock\n\nDocument RestoreAlreadyReleased. The unblock spec no longer fails when a ChangeTransferPolicy adopts an object from a stale notes snapshot; that object deletes itself, and the spec waits until the list stays empty.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "28039beb11f4dced2ef7f2992afab7c979e65425",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
