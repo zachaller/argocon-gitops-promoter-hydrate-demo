@@ -56,7 +56,7 @@ spec:
       steps:
         - setWeight: 100
         - pause:
-            duration: 30s
+            duration: 5s
   template:
     metadata:
       annotations:
