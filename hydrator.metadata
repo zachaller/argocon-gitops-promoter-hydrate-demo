@@ -1,20 +1,8 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "0a9c8063c2631b5025968f7721419fbeab4c1cc7",
+  "drySha": "1702824f757b9112b381db8685c1fbf0ca5e657f",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-04T09:00:19-06:00",
-  "subject": "chore: bump version to v1.0.2060",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
-  "references": [
-    {
-      "commit": {
-        "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-19T17:51:38-05:00",
-        "subject": "chore(deps-dev): bump brace-expansion from 2.1.4 to 2.1.7 in /ui/codegen (#2103)",
-        "body": "Bumps [brace-expansion](https://github.com/juliangruber/brace-expansion) from 2.1.4 to 2.1.7.\n- [Release notes](https://github.com/juliangruber/brace-expansion/releases)\n- [Commits](https://github.com/juliangruber/brace-expansion/compare/v2.1.4...v2.1.7)\n\n---\nupdated-dependencies:\n- dependency-name: brace-expansion\n  dependency-version: 2.1.7\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "746377d97b95038fd6591181d58b67571e334264",
-        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
-      }
-    }
-  ]
+  "date": "2026-11-04T09:08:07-06:00",
+  "subject": "ro steps",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
 }
