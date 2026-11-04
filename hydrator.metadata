@@ -1,8 +1,20 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "1702824f757b9112b381db8685c1fbf0ca5e657f",
+  "drySha": "6d153f68fcfe8b0f3f2b637a46e623250015e571",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-04T09:08:07-06:00",
-  "subject": "ro steps",
-  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n"
+  "date": "2026-11-04T09:17:44-06:00",
+  "subject": "chore: bump version to v1.0.2061",
+  "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
+  "references": [
+    {
+      "commit": {
+        "author": "\"Zach Aller\" <code@example.com>",
+        "date": "2026-10-09T05:32:44-05:00",
+        "subject": "test: retry direct Secret finalizer writes and wait for the timed gate's CommitStatus (#2281)",
+        "body": "The integration suite's API server can reject writes (K8S_FAULT_PROBABILITY,\non in CI). Two specs assumed a single write succeeds:\n\n- The Secret finalizer specs call ensure/removeSecretFinalizerForProvider\n  once. Retry them in Eventually, as a reconcile would.\n- The long-duration TimedCommitStatus spec waits for the gate's status, then\n  checks its CommitStatus in a Consistently. The status can land before the\n  CommitStatus when the CommitStatus write is rejected, so wait for both.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+        "sha": "363dd0eff5ab82881bbecfa4106c5c5942c0dd8b",
+        "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
+      }
+    }
+  ]
 }
