@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a0667d2ba9eb003dbde4cf6c180c71c787d64298",
+  "drySha": "63dbe6255983fe84326baa4cff7eb35f3e3e8c44",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-04T13:10:57-06:00",
-  "subject": "chore: bump version to v1.0.2063",
+  "date": "2026-11-04T14:22:03-06:00",
+  "subject": "chore: bump version to v1.0.2064",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-28T03:31:03-05:00",
-        "subject": "chore(deps): bump go.yaml.in/yaml/v3 from 3.0.5 to 3.0.6 (#2366)",
-        "body": "Bumps [go.yaml.in/yaml/v3](https://github.com/yaml/go-yaml) from 3.0.5 to 3.0.6.\n- [Commits](https://github.com/yaml/go-yaml/compare/v3.0.5...v3.0.6)\n\n---\nupdated-dependencies:\n- dependency-name: go.yaml.in/yaml/v3\n  dependency-version: 3.0.6\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "26b40e84799b0482a862aff8eccf7d4066e35eed",
+        "date": "2026-10-15T08:29:31-05:00",
+        "subject": "feat(azuredevops): support Azure workload identity on ClusterScmProvider (#2237)",
+        "body": "* feat(azuredevops): support Azure workload identity on ClusterScmProvider\n\nAdd spec.azureDevOps.workloadIdentity so the controller can authenticate to\nAzure DevOps with a Microsoft Entra ID token from Azure workload identity\ninstead of a personal access token. The token is sent as a Bearer header to\nthe Azure DevOps API and, through GitHTTPHeaderProvider, to git over HTTPS.\nclientID and tenantID optionally override the values the workload identity\nwebhook injects.\n\nWorkload identity uses the controller's own credentials, so it is only\nsupported on ClusterScmProvider: CEL rules reject it on ScmProvider, together\nwith secretRef, and with a custom domain, and the provider code refuses it on\na namespaced ScmProvider as well. A missing secretRef is now reported as an\nerror instead of panicking, except for workload identity.\n\nSigned-off-by: Gijs van Dulmen <gijs@vandulmen.net>\n\n* refactor(api): give ClusterScmProvider its own spec type so workloadIdentity stays off ScmProvider\n\nSplit the provider fields that are identical on both kinds into\nScmProviderSpecCommon, and give each kind its own spec type inlining it:\nScmProviderSpec keeps azureDevOps as AzureDevOps, and ClusterScmProviderSpec\nuses ClusterAzureDevOps, which adds workloadIdentity.\n\nazureDevOps.workloadIdentity keeps its YAML location on ClusterScmProvider\nbut is no longer in the ScmProvider schema, so it no longer needs a CEL rule\nto block it there, and the runtime *ClusterScmProvider type checks go away.\n\nGenericScmProvider.GetSpec() now returns *ClusterScmProviderSpec, the\nsuperset of both specs; ScmProvider converts its spec with a small shim.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* docs(api): clarify ScmProvider.GetSpec aliasing and the duplicated ExactlyOneOf\n\nScmProvider.GetSpec converts shallowly, so pointer fields are shared with the\nScmProvider: say to treat the result as read-only instead of claiming changes\nare not applied. Note that ExactlyOneOf is declared on both spec types and a\nnew provider must be added to both lists.\n\nSigned-off-by: Gijs van Dulmen <gijs@vandulmen.net>\n\n---------\n\nSigned-off-by: Gijs van Dulmen <gijs@vandulmen.net>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+        "sha": "ff429b7a0ef975cdecf2039475fda7928ee6d4b4",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
