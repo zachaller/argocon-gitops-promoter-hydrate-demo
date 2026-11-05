@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "63dbe6255983fe84326baa4cff7eb35f3e3e8c44",
+  "drySha": "6d153f68fcfe8b0f3f2b637a46e623250015e571",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-04T14:22:03-06:00",
-  "subject": "chore: bump version to v1.0.2064",
+  "date": "2026-11-04T09:17:44-06:00",
+  "subject": "chore: bump version to v1.0.2061",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-15T08:29:31-05:00",
-        "subject": "feat(azuredevops): support Azure workload identity on ClusterScmProvider (#2237)",
-        "body": "* feat(azuredevops): support Azure workload identity on ClusterScmProvider\n\nAdd spec.azureDevOps.workloadIdentity so the controller can authenticate to\nAzure DevOps with a Microsoft Entra ID token from Azure workload identity\ninstead of a personal access token. The token is sent as a Bearer header to\nthe Azure DevOps API and, through GitHTTPHeaderProvider, to git over HTTPS.\nclientID and tenantID optionally override the values the workload identity\nwebhook injects.\n\nWorkload identity uses the controller's own credentials, so it is only\nsupported on ClusterScmProvider: CEL rules reject it on ScmProvider, together\nwith secretRef, and with a custom domain, and the provider code refuses it on\na namespaced ScmProvider as well. A missing secretRef is now reported as an\nerror instead of panicking, except for workload identity.\n\nSigned-off-by: Gijs van Dulmen <gijs@vandulmen.net>\n\n* refactor(api): give ClusterScmProvider its own spec type so workloadIdentity stays off ScmProvider\n\nSplit the provider fields that are identical on both kinds into\nScmProviderSpecCommon, and give each kind its own spec type inlining it:\nScmProviderSpec keeps azureDevOps as AzureDevOps, and ClusterScmProviderSpec\nuses ClusterAzureDevOps, which adds workloadIdentity.\n\nazureDevOps.workloadIdentity keeps its YAML location on ClusterScmProvider\nbut is no longer in the ScmProvider schema, so it no longer needs a CEL rule\nto block it there, and the runtime *ClusterScmProvider type checks go away.\n\nGenericScmProvider.GetSpec() now returns *ClusterScmProviderSpec, the\nsuperset of both specs; ScmProvider converts its spec with a small shim.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* docs(api): clarify ScmProvider.GetSpec aliasing and the duplicated ExactlyOneOf\n\nScmProvider.GetSpec converts shallowly, so pointer fields are shared with the\nScmProvider: say to treat the result as read-only instead of claiming changes\nare not applied. Note that ExactlyOneOf is declared on both spec types and a\nnew provider must be added to both lists.\n\nSigned-off-by: Gijs van Dulmen <gijs@vandulmen.net>\n\n---------\n\nSigned-off-by: Gijs van Dulmen <gijs@vandulmen.net>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "ff429b7a0ef975cdecf2039475fda7928ee6d4b4",
+        "date": "2026-10-09T05:32:44-05:00",
+        "subject": "test: retry direct Secret finalizer writes and wait for the timed gate's CommitStatus (#2281)",
+        "body": "The integration suite's API server can reject writes (K8S_FAULT_PROBABILITY,\non in CI). Two specs assumed a single write succeeds:\n\n- The Secret finalizer specs call ensure/removeSecretFinalizerForProvider\n  once. Retry them in Eventually, as a reconcile would.\n- The long-duration TimedCommitStatus spec waits for the gate's status, then\n  checks its CommitStatus in a Consistently. The status can land before the\n  CommitStatus when the CommitStatus write is rejected, so wait for both.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+        "sha": "363dd0eff5ab82881bbecfa4106c5c5942c0dd8b",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
