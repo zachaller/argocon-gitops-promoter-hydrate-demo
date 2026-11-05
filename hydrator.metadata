@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "4fb2f13b2f71de8ef189a6567af873558f93f47d",
+  "drySha": "546076af2ff62fcce9a4f32dec848259ff5e5a1a",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T10:08:19-06:00",
-  "subject": "chore: bump version to v1.0.2069",
+  "date": "2026-11-05T10:11:03-06:00",
+  "subject": "chore: bump version to v1.0.2071",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-20T14:55:41-05:00",
-        "subject": "test: build the expected short SHA the way the PR title template does (#2287)",
-        "body": "makeChangeAndHydrateRepo used `git rev-parse --short=5`, which returns a\nlonger prefix when 5 characters are ambiguous among the clone's objects.\nThe shipped title template always uses `trunc 5`, so specs comparing PR\ntitles occasionally failed (e.g. \"c8efc\" vs \"c8efcf\"). Take the first 5\ncharacters of the full SHA instead.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "84074e06b5adde616c1d5ea2627c07caffedcded",
+        "date": "2026-10-12T17:53:04-05:00",
+        "subject": "chore(deps): bump github.com/prometheus/procfs from 0.22.0 to 0.23.0 in the prometheus group (#2259)",
+        "body": "chore(deps): bump github.com/prometheus/procfs\n\nBumps the prometheus group with 1 update: [github.com/prometheus/procfs](https://github.com/prometheus/procfs).\n\n\nUpdates `github.com/prometheus/procfs` from 0.22.0 to 0.23.0\n- [Release notes](https://github.com/prometheus/procfs/releases)\n- [Commits](https://github.com/prometheus/procfs/compare/v0.22.0...v0.23.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/procfs\n  dependency-version: 0.23.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: prometheus\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "a8d3cbe2915c38801efca4c00d4bc7c411cfd214",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
