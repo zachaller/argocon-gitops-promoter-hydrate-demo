@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "595176008a8a4c27fc628b61d0ba9a352699c9ed",
+  "drySha": "6825a5e0676de23333cb6b87a8d809160fb00f5b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T14:09:54-06:00",
-  "subject": "chore: bump version to v1.0.2081",
+  "date": "2026-11-05T14:11:15-06:00",
+  "subject": "chore: bump version to v1.0.2082",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-18T13:00:10-05:00",
-        "subject": "fix(commitstatus): dedupe woken ChangeTransferPolicies by namespace and name (#2356)",
-        "body": "CommitStatus gating is cross-namespace on purpose: a CommitStatus can gate\npolicies in any namespace, and triggerReconcileChangeTransferPolicy lists\npolicies on the SHA cluster-wide to wake them. The merge of those lists,\nUpsertChangeTransferPolicy, keyed on name only, so two namespaces promoting\nthe same repository with a same-named PromotionStrategy produced same-named\npolicies that collapsed to one entry, and the other was never woken.\n\nKey the merge on namespace and name. The lookups stay cluster-wide.\n\n\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
-        "sha": "b100d5c74619dc20ca1bf7291ad455d61430a8ec",
+        "date": "2026-10-21T07:47:30-05:00",
+        "subject": "docs: re-record the demo GIF on the Promotion Explorer with a diamond DAG (#2294)",
+        "body": "The dashboard replaced Overview and History with one Explorer view, so\nthe recorder's storyboard no longer matched the UI. The demo strategy is\nnow a diamond: development fans out to staging-us and staging-eu, which\nboth feed production. staging-eu soaks longer, so production visibly\nwaits for the slower branch.\n\n- record.mjs: open the promotion map, follow the new change's row\n  through the matrix, then open the production details panel. Widen the\n  viewport so all four environment columns fit.\n- demo.sh and manifests: four environments with dependsOn.\n- cluster.sh up: install the Argo CD Application CRD when missing; the\n  controller does not start without it.\n- make-gif.sh: default to 1300 px so cell text stays legible.\n- SKILL.md: new storyboard, invariants, and troubleshooting.\n- README.md, getting-started.md: alt text for the new animation.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+        "sha": "c78ae8af030503a693ef100d850500e67ea5167c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
