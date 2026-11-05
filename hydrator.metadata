@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "eb54c2a604b4c358e332041bc8363bc6414f7f54",
+  "drySha": "ad70c0cd7f5f37d0e63cfaa591283a8d971a48af",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T11:18:25-06:00",
-  "subject": "chore: bump version to v1.0.2077",
+  "date": "2026-11-05T13:38:12-06:00",
+  "subject": "chore: bump version to v1.0.2078",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-08T16:18:20-05:00",
-        "subject": "test: retry direct Secret finalizer writes and wait for the timed gate's CommitStatus (#2281)",
-        "body": "The integration suite's API server can reject writes (K8S_FAULT_PROBABILITY,\non in CI). Two specs assumed a single write succeeds:\n\n- The Secret finalizer specs call ensure/removeSecretFinalizerForProvider\n  once. Retry them in Eventually, as a reconcile would.\n- The long-duration TimedCommitStatus spec waits for the gate's status, then\n  checks its CommitStatus in a Consistently. The status can land before the\n  CommitStatus when the CommitStatus write is rejected, so wait for both.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "363dd0eff5ab82881bbecfa4106c5c5942c0dd8b",
+        "date": "2026-10-16T21:53:48-05:00",
+        "subject": "fix(api)!: require exactly one rate limiter strategy in ControllerConfiguration (#2354)",
+        "body": "* fix(api)!: require exactly one rate limiter strategy in ControllerConfiguration\n\nspec.<controller>.workQueue.rateLimiter was validated with AtMostOneOf over\nfastSlow, exponentialFailure, bucket and maxOf, and each maxOf entry with\nAtMostOneOf over the three leaf strategies. So `rateLimiter: {}` and\n`maxOf: [{}]` were API-valid, and the controller rejected them later, at\nstartup, with \"no valid rate limiter configuration found\": a crash loop for a\nmistake the API server could have caught.\n\nChange the top-level marker to ExactlyOneOf and add an items-level CEL rule on\nmaxOf requiring exactly one leaf strategy per entry. The in-code behavior is\nunchanged: there is still no fallback default, since defaults live in the\nmanifests, and the shipped ControllerConfiguration sets a strategy for every\ncontroller.\n\nBREAKING CHANGE: a ControllerConfiguration with an empty rateLimiter or an\nempty maxOf entry is rejected on write instead of failing controller startup.\nSuch a configuration could not start the controller before either, so no\nworking install is affected. See docs/upgrading.md.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix(api): reject an empty maxOf list, and restore the 0.46 upgrade heading\n\nExactlyOneOf compiles to has(self.maxOf), which is true for a field that is\npresent but empty, so a literal `maxOf: []` passed the new rule and still\nfailed controller startup. Require at least one entry. Go clients never hit\nthis because omitempty drops an empty slice, so the spec sends the literal\nlist through an unstructured object.\n\nThe previous commit replaced the 0.46 heading in docs/upgrading.md instead of\ninserting above it; put it back.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+        "sha": "ced67fb7776380277857dba60880258132a05337",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
