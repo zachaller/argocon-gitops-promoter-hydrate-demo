@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "46b8364e98bfacbff0e1fdb6314dd2be7753cbd9",
+  "drySha": "4fb2f13b2f71de8ef189a6567af873558f93f47d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T10:04:21-06:00",
-  "subject": "chore: bump version to v1.0.2065",
+  "date": "2026-11-05T10:08:19-06:00",
+  "subject": "chore: bump version to v1.0.2069",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-07T15:38:09-05:00",
-        "subject": "feat: provide namespaced mode (#310) (#2107)",
-        "body": "* feat: provide namespaced mode (#310)\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* do not depend on informer for resource count\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* cleanup\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* fix linting in tests\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* clarify docs from coderabbit review\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* add new fields\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* generate namespaced install manifests\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* update apiserver\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* cleanup settings\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* rework docs\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* require restart\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* codegen\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* fix linting\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "bdd42c1c5e05a72940c4d2d10a3a9088d9daab85",
+        "date": "2026-10-20T14:55:41-05:00",
+        "subject": "test: build the expected short SHA the way the PR title template does (#2287)",
+        "body": "makeChangeAndHydrateRepo used `git rev-parse --short=5`, which returns a\nlonger prefix when 5 characters are ambiguous among the clone's objects.\nThe shipped title template always uses `trunc 5`, so specs comparing PR\ntitles occasionally failed (e.g. \"c8efc\" vs \"c8efcf\"). Take the first 5\ncharacters of the full SHA instead.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+        "sha": "84074e06b5adde616c1d5ea2627c07caffedcded",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
