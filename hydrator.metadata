@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7f4f52275fbcdcf15413d8bef585b2a2f0245f86",
+  "drySha": "9cf226330694fa1ae95af339e4a30ed865e4f954",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T10:41:11-06:00",
-  "subject": "chore: bump version to v1.0.2073",
+  "date": "2026-11-05T10:49:10-06:00",
+  "subject": "chore: bump version to v1.0.2074",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-12T23:07:41-05:00",
-        "subject": "fix: patch Secret finalizers instead of updating cache-served Secrets (#2255)",
-        "body": "The manager cache stores Secrets through secretDataTransform, which drops\nevery data key promoter does not read. The ScmProvider and\nClusterScmProvider finalizer helpers read the Secret through that cache and\nwrote it back with Update, so adding or removing the finalizer deleted all\nother keys from the referenced Secret on the API server.\n\nWrite only metadata.finalizers with a merge patch under optimistic locking,\nretrying on conflict. Grant patch instead of update on secrets in the\nClusterRole, regenerate the install bundles, update the contributor docs,\nand add an envtest regression test that reads through the production cache\noptions and asserts non-promoter keys survive both the add and remove paths.\n\nSigned-off-by: Zach Aller <allerzach@gmail.com>",
-        "sha": "a0ba6fedbca1a5228cc7b79bd043b2e3ff1323d0",
+        "date": "2026-10-03T03:49:58-05:00",
+        "subject": "chore(deps-dev): bump undici from 7.30.0 to 7.30.1 in /ui/extension (#2249)",
+        "body": "Bumps [undici](https://github.com/nodejs/undici) from 7.30.0 to 7.30.1.\n- [Release notes](https://github.com/nodejs/undici/releases)\n- [Commits](https://github.com/nodejs/undici/compare/v7.30.0...v7.30.1)\n\n---\nupdated-dependencies:\n- dependency-name: undici\n  dependency-version: 7.30.1\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "c01e1e86bf81eb2444c15ad74d28fa7a62e82d67",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
