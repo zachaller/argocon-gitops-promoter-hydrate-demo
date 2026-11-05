@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "71da9566f05c618ad41e45fb1117439bfb30ca46",
+  "drySha": "0c5e6c2199a7f57b27ef5be0a7b33ac3b30222fb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T14:14:01-06:00",
-  "subject": "chore: bump version to v1.0.2084",
+  "date": "2026-11-05T14:14:58-06:00",
+  "subject": "chore: bump version to v1.0.2085",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-09T03:11:07-05:00",
-        "subject": "docs: update docs for the Promotion Explorer (#2221)",
-        "body": "Update README and the getting-started, rolling-back, ui-types and\nArgoCD integration docs for the unified view and its URL parameters.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
-        "sha": "4f1676117fc7a1c006c6d1da20ca01d3aa8a3ef8",
+        "date": "2026-10-27T13:03:00-05:00",
+        "subject": "ci(e2e): check out the repo before setting up Go so the module cache restores (#2329)",
+        "body": "actions/setup-go keys its module and build cache on go.sum, which has to\nbe in the workspace when the action runs. The e2e workflow ran setup-go\nbefore checkout, so every matrix leg logged\n\n  Restore cache failed: Some specified paths were not resolved, unable to cache dependencies.\n\nand re-downloaded the whole module graph from proxy.golang.org on each\nrun. Three legs per pull request made the suite the most exposed job to\nproxy stream errors (the \"make install\" failures seen on #2322 and\n#2324). Swap the two steps; ci.yaml already has them in this order.\n\n\nClaude-Session: https://claude.ai/code/session_01BmNNrks98vPwCpW9DDBQ6z\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+        "sha": "5fe6339bd88eff88578d5d437167c7a7e54763df",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
