@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "863c6035dfd631cfc04ecc12d48ec288a5b4119e",
+  "drySha": "341d42cee8329eb6073958f2197c4a640f13dcde",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T11:03:46-06:00",
-  "subject": "chore: bump version to v1.0.2075",
+  "date": "2026-11-05T11:11:28-06:00",
+  "subject": "chore: bump version to v1.0.2076",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-21T21:44:31-05:00",
-        "subject": "test: track the externally closed PR by UID, not name (#2288)",
-        "body": "\"should remove CTP finalizer from PR when PR is externally closed\" waited\nfor the PullRequest name to return NotFound. The CTP still has a pending\npromotion, so once the closed PR is gone it creates a new one with the\nsame name, often within ~10ms. The spec passed only when a poll landed in\nthat gap and timed out otherwise (about 1 run in 5 locally).\n\nRecord the closed PR's UID, delete with a UID precondition, and pass once\nno PullRequest with that UID exists.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "b7adbd8aaf79df3ee147b0385094dda9defed4d3",
+        "date": "2026-10-29T07:17:33-05:00",
+        "subject": "fix(api)!: require exactly one rate limiter strategy in ControllerConfiguration (#2354)",
+        "body": "* fix(api)!: require exactly one rate limiter strategy in ControllerConfiguration\n\nspec.<controller>.workQueue.rateLimiter was validated with AtMostOneOf over\nfastSlow, exponentialFailure, bucket and maxOf, and each maxOf entry with\nAtMostOneOf over the three leaf strategies. So `rateLimiter: {}` and\n`maxOf: [{}]` were API-valid, and the controller rejected them later, at\nstartup, with \"no valid rate limiter configuration found\": a crash loop for a\nmistake the API server could have caught.\n\nChange the top-level marker to ExactlyOneOf and add an items-level CEL rule on\nmaxOf requiring exactly one leaf strategy per entry. The in-code behavior is\nunchanged: there is still no fallback default, since defaults live in the\nmanifests, and the shipped ControllerConfiguration sets a strategy for every\ncontroller.\n\nBREAKING CHANGE: a ControllerConfiguration with an empty rateLimiter or an\nempty maxOf entry is rejected on write instead of failing controller startup.\nSuch a configuration could not start the controller before either, so no\nworking install is affected. See docs/upgrading.md.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix(api): reject an empty maxOf list, and restore the 0.46 upgrade heading\n\nExactlyOneOf compiles to has(self.maxOf), which is true for a field that is\npresent but empty, so a literal `maxOf: []` passed the new rule and still\nfailed controller startup. Require at least one entry. Go clients never hit\nthis because omitempty drops an empty slice, so the spec sends the literal\nlist through an unstructured object.\n\nThe previous commit replaced the 0.46 heading in docs/upgrading.md instead of\ninserting above it; put it back.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+        "sha": "ced67fb7776380277857dba60880258132a05337",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
