@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7c4e18290a284a87690f097f33d51ada2946714c",
+  "drySha": "4fb2f13b2f71de8ef189a6567af873558f93f47d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T10:06:59-06:00",
-  "subject": "chore: bump version to v1.0.2068",
+  "date": "2026-11-05T10:08:19-06:00",
+  "subject": "chore: bump version to v1.0.2069",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-23T05:30:37-05:00",
-        "subject": "chore(deps): bump go.yaml.in/yaml/v3 from 3.0.5 to 3.0.6 (#2366)",
-        "body": "Bumps [go.yaml.in/yaml/v3](https://github.com/yaml/go-yaml) from 3.0.5 to 3.0.6.\n- [Commits](https://github.com/yaml/go-yaml/compare/v3.0.5...v3.0.6)\n\n---\nupdated-dependencies:\n- dependency-name: go.yaml.in/yaml/v3\n  dependency-version: 3.0.6\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "26b40e84799b0482a862aff8eccf7d4066e35eed",
+        "date": "2026-10-20T14:55:41-05:00",
+        "subject": "test: build the expected short SHA the way the PR title template does (#2287)",
+        "body": "makeChangeAndHydrateRepo used `git rev-parse --short=5`, which returns a\nlonger prefix when 5 characters are ambiguous among the clone's objects.\nThe shipped title template always uses `trunc 5`, so specs comparing PR\ntitles occasionally failed (e.g. \"c8efc\" vs \"c8efcf\"). Take the first 5\ncharacters of the full SHA instead.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+        "sha": "84074e06b5adde616c1d5ea2627c07caffedcded",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
