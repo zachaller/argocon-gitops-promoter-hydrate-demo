@@ -531,13 +531,36 @@ spec:
             let gatedEnvs = filter(specEnvs, {
               keyIsGlobal || any(#.ProposedCommitStatuses ?? [], { #.Key == key })
             });
-            // Envs upstream of the first gated env must have no open promotion PR.
-            let preGatedEnvs = len(gatedEnvs) == 0
-              ? []
-              : take(specEnvs, findIndex(specEnvs, { #.Branch == gatedEnvs[0].Branch }));
-            let preGateNoOpenPR = all(preGatedEnvs, {
+            // Ancestors of every gated environment must have no open promotion PR.
+            // dependsOn is the graph when any environment sets it (an empty list is a root).
+            // When none do, each environment depends on the one before it in spec order.
+            // That linear chain is not written back onto the strategy. One reduce pass per
+            // environment collects the full ancestor set. Copy #acc to acc before the nested
+            // filter: inside that predicate # is the row, and #acc is not in scope. Gated
+            // branches are left out, so a production pull request still opens the record.
+            let explicitDAG = any(specEnvs, { len(#.DependsOn ?? []) > 0 });
+            let indexed = map(specEnvs, {
               let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
+              let idx = findIndex(specEnvs, { #.Branch == env.Branch });
+              {
+                branch: env.Branch,
+                parents: explicitDAG
+                  ? (env.DependsOn ?? [])
+                  : (idx > 0 ? [specEnvs[idx - 1].Branch] : [])
+              }
+            });
+            let gatedBranches = map(gatedEnvs, { #.Branch });
+            let closure = reduce(indexed, {
+              let acc = #acc;
+              concat(acc, uniq(flatten(map(
+                filter(indexed, { #.branch in acc }),
+                { #.parents }
+              ))))
+            }, gatedBranches);
+            let ancestorBranches = filter(uniq(closure), { !(# in gatedBranches) });
+            let preGateNoOpenPR = all(ancestorBranches, {
+              let branch = #;
+              let status = find(statusEnvs, { #.Branch == branch });
               string(status?.PullRequest?.State ?? "") != "open"
             });
 
@@ -812,13 +835,15 @@ spec:
   reportOn: proposed
   # Polls the change-management service for an approved (and currently in-window) change record
   # matching the proposed dry SHA. Becomes success once one is found.
+  # Keep this text stable across polls. It is copied onto the SCM check, and any change is a
+  # Checks API update. lastCheckedAt (string(now()), including the monotonic clock) stays on
+  # status for debugging and is intentionally not rendered here.
   descriptionTemplate: >-
-    {{- $approvedCount := 0 -}}{{- $totalCount := 0 -}}{{- $statusCode := 0 -}}{{- $lastChecked := "" -}}
+    {{- $approvedCount := 0 -}}{{- $totalCount := 0 -}}{{- $statusCode := 0 -}}
     {{- if .ResponseOutput -}}
       {{- $approvedCount = index .ResponseOutput "approvedCount"    | default 0 | int -}}
       {{- $totalCount    = index .ResponseOutput "totalRecordCount" | default 0 | int -}}
       {{- $statusCode    = index .ResponseOutput "statusCode"       | default 0 | int -}}
-      {{- $lastChecked   = index .ResponseOutput "lastCheckedAt"    | default "" -}}
     {{- end -}}
     {{- $drySha := "" -}}{{- $currentFingerprint := "" -}}
     {{- if .TriggerVariables -}}
@@ -832,8 +857,8 @@ spec:
     {{- $stale := and (ne $currentFingerprint "") (ne $currentFingerprint $lastFiredFingerprint) -}}
     {{ .Phase }}:
     {{- if or (not .ResponseOutput) $stale }} checking for approved change record{{ if ne $shaShort "" }} for commit {{ $shaShort }}{{ end }}
-    {{- else if and (eq $statusCode 200) (gt $approvedCount 0) }} {{ $approvedCount }} approved change record{{ if gt $approvedCount 1 }}s{{ end }} in window ({{ $totalCount }} total, last check {{ $lastChecked }})
-    {{- else if eq $statusCode 200 }} {{ $approvedCount }}/{{ $totalCount }} records active in approval window (last check {{ $lastChecked }})
+    {{- else if and (eq $statusCode 200) (gt $approvedCount 0) }} {{ $approvedCount }} approved change record{{ if gt $approvedCount 1 }}s{{ end }} in window ({{ $totalCount }} total)
+    {{- else if eq $statusCode 200 }} {{ $approvedCount }}/{{ $totalCount }} records active in approval window
     {{- else }} approval check returned HTTP {{ $statusCode }}, will retry
     {{- end }}
   urlTemplate: >-
@@ -893,13 +918,36 @@ spec:
             let gatedEnvs = filter(specEnvs, {
               keyIsGlobal || any(#.ProposedCommitStatuses ?? [], { #.Key == key })
             });
-            // Envs upstream of the first gated env must have no open promotion PR.
-            let preGatedEnvs = len(gatedEnvs) == 0
-              ? []
-              : take(specEnvs, findIndex(specEnvs, { #.Branch == gatedEnvs[0].Branch }));
-            let preGateNoOpenPR = all(preGatedEnvs, {
+            // Ancestors of every gated environment must have no open promotion PR.
+            // dependsOn is the graph when any environment sets it (an empty list is a root).
+            // When none do, each environment depends on the one before it in spec order.
+            // That linear chain is not written back onto the strategy. One reduce pass per
+            // environment collects the full ancestor set. Copy #acc to acc before the nested
+            // filter: inside that predicate # is the row, and #acc is not in scope. Gated
+            // branches are left out, so a production pull request still counts as the reason to poll.
+            let explicitDAG = any(specEnvs, { len(#.DependsOn ?? []) > 0 });
+            let indexed = map(specEnvs, {
               let env = #;
-              let status = find(statusEnvs, { #.Branch == env.Branch });
+              let idx = findIndex(specEnvs, { #.Branch == env.Branch });
+              {
+                branch: env.Branch,
+                parents: explicitDAG
+                  ? (env.DependsOn ?? [])
+                  : (idx > 0 ? [specEnvs[idx - 1].Branch] : [])
+              }
+            });
+            let gatedBranches = map(gatedEnvs, { #.Branch });
+            let closure = reduce(indexed, {
+              let acc = #acc;
+              concat(acc, uniq(flatten(map(
+                filter(indexed, { #.branch in acc }),
+                { #.parents }
+              ))))
+            }, gatedBranches);
+            let ancestorBranches = filter(uniq(closure), { !(# in gatedBranches) });
+            let preGateNoOpenPR = all(ancestorBranches, {
+              let branch = #;
+              let status = find(statusEnvs, { #.Branch == branch });
               string(status?.PullRequest?.State ?? "") != "open"
             });
 
@@ -977,7 +1025,8 @@ spec:
               statusCode: Response.StatusCode,
               totalRecordCount: len(Response.Body.change_records ?? []),
               approvedCount: len(approvedRecords),
+              // Informational only (status / debugging). lastCheckedAt is string(now())
+              // and must stay out of descriptionTemplate: a new description is an SCM API call.
               lastCheckedAt: string(now()),
-              // Informational only (surfaced for debugging / status visibility):
               approvedRecords: approvedRecords
             }
