@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3a8175c1e2da33bd4191d6abbd92a9270a9684bd",
+  "drySha": "0c5e6c2199a7f57b27ef5be0a7b33ac3b30222fb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T14:03:52-06:00",
-  "subject": "chore: bump version to v1.0.2079",
+  "date": "2026-11-05T14:14:58-06:00",
+  "subject": "chore: bump version to v1.0.2085",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-29T17:08:25-05:00",
-        "subject": "fix(webrequest): keep .SuccessVariables when polling skips a successful SHA (#2279)",
-        "body": "* fix(webrequest): keep .SuccessVariables when polling skips a successful SHA\n\nIn polling mode, once a SHA has succeeded, later reconciles skip the HTTP\nrequest and re-emit the CommitStatus. That path rendered the description and\nURL templates without evaluating success.when.variables, so a template like\n`Build: {{ index .SuccessVariables \"tag\" }}` reverted to `Build: <no value>`\non the first requeue after success.\n\nEvaluate success.when.variables on the skip path too, in both the\nenvironments and promotionstrategy contexts. An expression that needs the\nHTTP response can't be evaluated there and stays unset, as before.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix(webrequest): evaluate skipped promotionstrategy variables without a Branch\n\nIn promotionstrategy context the shared request evaluates\nsuccess.when.variables with no Branch. The skip path evaluated it once per\nenvironment with that environment's Branch, so an expression reading Branch\ngave the skipped CommitStatuses different values than the request did.\nEvaluate it once, the same way the request does.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* test(webrequest): cover the documented SuccessOutput fallback on a polling skip\n\nThe docs example reads Response.Body when there is a response and\notherwise falls back to the SuccessOutput it persisted. Check that a\nskipped poll still exposes those values as .SuccessVariables in both\ncontexts.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix(webrequest): surface success.when.variables failures on a polling skip\n\nWhen a polling reconcile skips the request for an already successful SHA,\nsuccess.when.variables is evaluated with Response nil. Log a failure at the\ndefault level instead of V(4), so an expression that needs a Response does\nnot silently leave .SuccessVariables unset on every poll.\n\nDocument that the skip evaluates the variables without a Response, and that\nguarding with Response != nil and falling back to SuccessOutput keeps the\nvalues from the request.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>\nCo-authored-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "30ab498c79e156e82e6c5d646af0c4ee7317d5dc",
+        "date": "2026-10-27T13:03:00-05:00",
+        "subject": "ci(e2e): check out the repo before setting up Go so the module cache restores (#2329)",
+        "body": "actions/setup-go keys its module and build cache on go.sum, which has to\nbe in the workspace when the action runs. The e2e workflow ran setup-go\nbefore checkout, so every matrix leg logged\n\n  Restore cache failed: Some specified paths were not resolved, unable to cache dependencies.\n\nand re-downloaded the whole module graph from proxy.golang.org on each\nrun. Three legs per pull request made the suite the most exposed job to\nproxy stream errors (the \"make install\" failures seen on #2322 and\n#2324). Swap the two steps; ci.yaml already has them in this order.\n\n\nClaude-Session: https://claude.ai/code/session_01BmNNrks98vPwCpW9DDBQ6z\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+        "sha": "5fe6339bd88eff88578d5d437167c7a7e54763df",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
