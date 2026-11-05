@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "0c5e6c2199a7f57b27ef5be0a7b33ac3b30222fb",
+  "drySha": "2b089ecacf55f5bcc5a817e6c25713392dab52a4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T14:14:58-06:00",
-  "subject": "chore: bump version to v1.0.2085",
+  "date": "2026-11-05T14:22:55-06:00",
+  "subject": "chore: bump version to v1.0.2086",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-27T13:03:00-05:00",
-        "subject": "ci(e2e): check out the repo before setting up Go so the module cache restores (#2329)",
-        "body": "actions/setup-go keys its module and build cache on go.sum, which has to\nbe in the workspace when the action runs. The e2e workflow ran setup-go\nbefore checkout, so every matrix leg logged\n\n  Restore cache failed: Some specified paths were not resolved, unable to cache dependencies.\n\nand re-downloaded the whole module graph from proxy.golang.org on each\nrun. Three legs per pull request made the suite the most exposed job to\nproxy stream errors (the \"make install\" failures seen on #2322 and\n#2324). Swap the two steps; ci.yaml already has them in this order.\n\n\nClaude-Session: https://claude.ai/code/session_01BmNNrks98vPwCpW9DDBQ6z\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
-        "sha": "5fe6339bd88eff88578d5d437167c7a7e54763df",
+        "date": "2026-10-02T11:27:47-05:00",
+        "subject": "fix(ui): link commits on GitLab and Bitbucket Cloud correctly (#2282)",
+        "body": "Every commit link in the Promotion Explorer was built as\n<repo>/commit/<sha>. That works for GitHub, Gitea, Forgejo, and Azure\nDevOps, and Bitbucket Data Center was already special-cased by URL\nshape, but GitLab serves commits at /-/commit/<sha> and Bitbucket Cloud\nat /commits/<sha>, so those links were broken.\n\nThe PromotionStrategyDetails bundle from the dashboard APIService now\ncarries the strategy's ScmProvider or ClusterScmProvider. The dashboard\nand the Argo CD extension pass its spec to the explorer, and\ngetCommitUrl uses the GitLab or Bitbucket Cloud layout for URLs on that\nprovider's domain. That covers self-hosted GitLab and Bitbucket Cloud\ndomain overrides, which a hard-coded host list can't. gitlab.com and\nbitbucket.org are recognized without the provider, so references to\ncommits on those hosts from other repos link correctly too.\n\nThe dashboard store keeps the provider specs beside its items rather\nthan on them, since the live manifest view renders the item as the\nPromotionStrategy.\n\nSupersedes the domain lookup in #1037.\n\n\nClaude-Session: https://claude.ai/code/session_01Mp42qe21Ft6tLnS2TnGysd\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+        "sha": "390ace2ddcd11d2a8d24c8480ea3339400530366",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
