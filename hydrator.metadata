@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "6825a5e0676de23333cb6b87a8d809160fb00f5b",
+  "drySha": "6b7ee5c5aa65fb2cac3092208afaab355402b6e3",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T14:11:15-06:00",
-  "subject": "chore: bump version to v1.0.2082",
+  "date": "2026-11-05T14:12:59-06:00",
+  "subject": "chore: bump version to v1.0.2083",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-21T07:47:30-05:00",
-        "subject": "docs: re-record the demo GIF on the Promotion Explorer with a diamond DAG (#2294)",
-        "body": "The dashboard replaced Overview and History with one Explorer view, so\nthe recorder's storyboard no longer matched the UI. The demo strategy is\nnow a diamond: development fans out to staging-us and staging-eu, which\nboth feed production. staging-eu soaks longer, so production visibly\nwaits for the slower branch.\n\n- record.mjs: open the promotion map, follow the new change's row\n  through the matrix, then open the production details panel. Widen the\n  viewport so all four environment columns fit.\n- demo.sh and manifests: four environments with dependsOn.\n- cluster.sh up: install the Argo CD Application CRD when missing; the\n  controller does not start without it.\n- make-gif.sh: default to 1300 px so cell text stays legible.\n- SKILL.md: new storyboard, invariants, and troubleshooting.\n- README.md, getting-started.md: alt text for the new animation.\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "c78ae8af030503a693ef100d850500e67ea5167c",
+        "date": "2026-10-07T16:43:46-05:00",
+        "subject": "chore(deps-dev): bump @humanfs/node from 0.16.7 to 0.16.8 in /ui/extension (#1961)",
+        "body": "chore(deps-dev): bump @humanfs/node in /ui/extension\n\nBumps [@humanfs/node](https://github.com/humanwhocodes/humanfs/tree/HEAD/packages/node) from 0.16.7 to 0.16.8.\n- [Release notes](https://github.com/humanwhocodes/humanfs/releases)\n- [Changelog](https://github.com/humanwhocodes/humanfs/blob/main/packages/node/CHANGELOG.md)\n- [Commits](https://github.com/humanwhocodes/humanfs/commits/node-v0.16.8/packages/node)\n\n---\nupdated-dependencies:\n- dependency-name: \"@humanfs/node\"\n  dependency-version: 0.16.8\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "93d187494ae6381edcba6ba01523c4d59d2e67dc",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
