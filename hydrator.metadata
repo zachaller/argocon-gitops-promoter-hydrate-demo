@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3a8175c1e2da33bd4191d6abbd92a9270a9684bd",
+  "drySha": "595176008a8a4c27fc628b61d0ba9a352699c9ed",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T14:03:52-06:00",
-  "subject": "chore: bump version to v1.0.2079",
+  "date": "2026-11-05T14:09:54-06:00",
+  "subject": "chore: bump version to v1.0.2081",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-29T17:08:25-05:00",
-        "subject": "fix(webrequest): keep .SuccessVariables when polling skips a successful SHA (#2279)",
-        "body": "* fix(webrequest): keep .SuccessVariables when polling skips a successful SHA\n\nIn polling mode, once a SHA has succeeded, later reconciles skip the HTTP\nrequest and re-emit the CommitStatus. That path rendered the description and\nURL templates without evaluating success.when.variables, so a template like\n`Build: {{ index .SuccessVariables \"tag\" }}` reverted to `Build: <no value>`\non the first requeue after success.\n\nEvaluate success.when.variables on the skip path too, in both the\nenvironments and promotionstrategy contexts. An expression that needs the\nHTTP response can't be evaluated there and stays unset, as before.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* fix(webrequest): evaluate skipped promotionstrategy variables without a Branch\n\nIn promotionstrategy context the shared request evaluates\nsuccess.when.variables with no Branch. The skip path evaluated it once per\nenvironment with that environment's Branch, so an expression reading Branch\ngave the skipped CommitStatuses different values than the request did.\nEvaluate it once, the same way the request does.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* test(webrequest): cover the documented SuccessOutput fallback on a polling skip\n\nThe docs example reads Response.Body when there is a response and\notherwise falls back to the SuccessOutput it persisted. Check that a\nskipped poll still exposes those values as .SuccessVariables in both\ncontexts.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* fix(webrequest): surface success.when.variables failures on a polling skip\n\nWhen a polling reconcile skips the request for an already successful SHA,\nsuccess.when.variables is evaluated with Response nil. Log a failure at the\ndefault level instead of V(4), so an expression that needs a Response does\nnot silently leave .SuccessVariables unset on every poll.\n\nDocument that the skip evaluates the variables without a Response, and that\nguarding with Response != nil and falling back to SuccessOutput keeps the\nvalues from the request.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>\nCo-authored-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "30ab498c79e156e82e6c5d646af0c4ee7317d5dc",
+        "date": "2026-10-18T13:00:10-05:00",
+        "subject": "fix(commitstatus): dedupe woken ChangeTransferPolicies by namespace and name (#2356)",
+        "body": "CommitStatus gating is cross-namespace on purpose: a CommitStatus can gate\npolicies in any namespace, and triggerReconcileChangeTransferPolicy lists\npolicies on the SHA cluster-wide to wake them. The merge of those lists,\nUpsertChangeTransferPolicy, keyed on name only, so two namespaces promoting\nthe same repository with a same-named PromotionStrategy produced same-named\npolicies that collapsed to one entry, and the other was never woken.\n\nKey the merge on namespace and name. The lookups stay cluster-wide.\n\n\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+        "sha": "b100d5c74619dc20ca1bf7291ad455d61430a8ec",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
