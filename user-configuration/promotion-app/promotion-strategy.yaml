@@ -14,14 +14,25 @@ spec:
   environments:
   - branch: environments/development
     autoMerge: false
-  - branch: environments/staging
+  - branch: environments/staging-e2e
+    dependsOn:
+    - environments/development
+  - branch: environments/staging-integration
+    dependsOn:
+    - environments/development
   - branch: environments/production-use
+    dependsOn:
+    - environments/staging-e2e
+    - environments/staging-integration
     proposedCommitStatuses:
     - key: change-management-approval
     - key: change-management-open
     activeCommitStatuses:
     - key: change-management-close
   - branch: environments/production-usw
+    dependsOn:
+    - environments/staging-e2e
+    - environments/staging-integration
     proposedCommitStatuses:
     - key: change-management-approval
     - key: change-management-open

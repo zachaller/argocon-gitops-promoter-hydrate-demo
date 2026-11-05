@@ -13,7 +13,9 @@ spec:
     - duration: 3m
       branch: environments/development
     - duration: 3m
-      branch: environments/staging
+      branch: environments/staging-e2e
+    - duration: 3m
+      branch: environments/staging-integration
     - duration: 3m
       branch: environments/production-use
     - duration: 3m

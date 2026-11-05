@@ -14,7 +14,7 @@ spec:
       {{- $label := "" -}}
       {{- if eq .Environment "environments/development" -}}
       {{- $label = "development" -}}
-      {{- else if eq .Environment "environments/staging" -}}
+      {{- else if or (eq .Environment "environments/staging-e2e") (eq .Environment "environments/staging-integration") -}}
       {{- $label = "staging" -}}
       {{- else if or (eq .Environment "environments/production-use") (eq .Environment "environments/production-usw") -}}
       {{- $label = "production" -}}

@@ -16,10 +16,10 @@ spec:
       repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
       targetRevision: HEAD
     hydrateTo:
-      targetBranch: environments/staging-next
+      targetBranch: environments/staging-e2e-next
     syncSource:
       path: e2e
-      targetBranch: environments/staging
+      targetBranch: environments/staging-e2e
   syncPolicy:
     automated: {}
 ---
@@ -41,9 +41,9 @@ spec:
       repoURL: https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo.git
       targetRevision: HEAD
     hydrateTo:
-      targetBranch: environments/staging-next
+      targetBranch: environments/staging-integration-next
     syncSource:
       path: integration
-      targetBranch: environments/staging
+      targetBranch: environments/staging-integration
   syncPolicy:
     automated: {}

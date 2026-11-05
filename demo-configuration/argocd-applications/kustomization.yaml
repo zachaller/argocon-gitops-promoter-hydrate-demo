@@ -7,5 +7,4 @@ resources:
   - staging.yaml
   - production.yaml
   - promotion-strategy.yaml
-  - promotion-strategy-gitlab.yaml
 
