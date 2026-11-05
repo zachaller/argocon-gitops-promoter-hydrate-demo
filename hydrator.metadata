@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "4a123d2776eae0ae05e2bef510c4033f245265f1",
+  "drySha": "595176008a8a4c27fc628b61d0ba9a352699c9ed",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-05T14:09:47-06:00",
-  "subject": "chore: bump version to v1.0.2080",
+  "date": "2026-11-05T14:09:54-06:00",
+  "subject": "chore: bump version to v1.0.2081",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-05T14:47:06-05:00",
-        "subject": "feat!: require a webrequestcommitstatus-access label on Secrets used by WebRequestCommitStatus authentication (#2256)",
-        "body": "* feat!: require an opt-in label on Secrets used by WebRequestCommitStatus authentication\n\nWebRequestCommitStatus httpRequest.authentication (basic, bearer, oauth2,\ntls) reads a Secret by name from its namespace and sends the credentials to\nthe request URL the author templates, or to the oauth2 tokenURL. Anyone who\ncan create a WebRequestCommitStatus could therefore read any such Secret in\nthe namespace without secrets RBAC, including a namespaced ScmProvider's\ntoken, which sidesteps the host check that only auth.scm enforces.\n\nThe controller now reads a referenced Secret only when it carries the label\npromoter.argoproj.io/allow-webrequest: \"true\". Otherwise the reconcile\nfails with a Ready=False condition naming the label and no request is made.\nOnly a user who can already write the Secret can add it. auth.scm is\nunchanged.\n\nBREAKING CHANGE: every WebRequestCommitStatus using basic, bearer, oauth2,\nor tls authentication stops making requests after upgrading until the\nreferenced Secret is labeled promoter.argoproj.io/allow-webrequest=true.\nMigration steps are in docs/upgrading.md.\n\nDocument the label in the web request gate page, the multi-tenancy page,\nand the sample manifest; add an envtest spec covering the refusal and the\nlabeled retry.\n\nSigned-off-by: Zach Aller <allerzach@gmail.com>\n\n* feat!: rename WebRequestCommitStatus Secret opt-in label to webrequestcommitstatus-access: allowed\n\nSecrets referenced by WebRequestCommitStatus httpRequest.authentication secretRefs must now be labeled promoter.argoproj.io/webrequestcommitstatus-access: allowed instead of promoter.argoproj.io/allow-webrequest: \"true\". The label value is a typed WebRequestSecretAccess enum so more access levels can be added later. Docs also clarify that the label is the only check and grants access to every WebRequestCommitStatus author in the namespace.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* refactor: make the access label value a generic Access type\n\nRename WebRequestSecretAccess to Access (AccessAllowed) and WebRequestSecretOptInLabel to WebRequestCommitStatusAccessLabel. The <kind>-access label or annotation can be set on any object type, so the value type is not tied to Secrets or to WebRequestCommitStatus. The label key and value are unchanged.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* docs: note that WebRequestCommitStatus only references Secrets in its own namespace\n\nClarify that secretRefs are local to the WebRequestCommitStatus's namespace, so restricting WebRequestCommitStatus create permissions in a namespace limits who can use its labeled Secrets.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* test: move WebRequestCommitStatus Secret opt-in spec into the main controller test\n\nPlace the Secret opt-in Describe next to the SCM host validation tests, the other authentication gate, instead of in its own file.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <allerzach@gmail.com>\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "e8a31092c1692e995c105c5c3089aae6f6b889b2",
+        "date": "2026-10-18T13:00:10-05:00",
+        "subject": "fix(commitstatus): dedupe woken ChangeTransferPolicies by namespace and name (#2356)",
+        "body": "CommitStatus gating is cross-namespace on purpose: a CommitStatus can gate\npolicies in any namespace, and triggerReconcileChangeTransferPolicy lists\npolicies on the SHA cluster-wide to wake them. The merge of those lists,\nUpsertChangeTransferPolicy, keyed on name only, so two namespaces promoting\nthe same repository with a same-named PromotionStrategy produced same-named\npolicies that collapsed to one entry, and the other was never woken.\n\nKey the merge on namespace and name. The lookups stay cluster-wide.\n\n\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+        "sha": "b100d5c74619dc20ca1bf7291ad455d61430a8ec",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
