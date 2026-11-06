@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "662ee1cbb01fc771221dda6edd4e70de6131c96c",
+  "drySha": "36ddb10395bf547eab806fe500b9d36c8aa4765b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-06T09:01:33-06:00",
-  "subject": "chore: bump version to v1.0.2093",
+  "date": "2026-11-06T09:09:43-06:00",
+  "subject": "chore: bump version to v1.0.2094",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-14T11:25:57-05:00",
-        "subject": "perf(commitstatus): honor the configured workqueue concurrency and rate limiter (#2346)",
-        "body": "The shipped ControllerConfiguration sets commitStatus.workQueue to ten\nconcurrent reconciles with the bucket/fastSlow rate limiter, and the settings\npackage parses it, but CommitStatusReconciler.SetupWithManager never passed\ncontroller options, so the controller ran with controller-runtime's defaults:\none worker and the default exponential backoff. Every other reconciler reads\nits section the same way; this one was missed.\n\nWith one worker every CommitStatus in the cluster is reconciled serially at\ncontroller start, each with a round trip to the SCM. For a few hundred\nCommitStatuses against a real SCM that is minutes of startup, and until the\nbacklog drains the ChangeTransferPolicies read stale gate phases.\n\nRead the section like the other controllers. Deployments that need fewer\nconcurrent SCM writes can lower maxConcurrentReconciles in the\nControllerConfiguration, which now takes effect.\n\n\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
-        "sha": "fa7d996f3b081ad08a8a5172f412377f2fbf848f",
+        "date": "2026-10-07T12:39:00-05:00",
+        "subject": "chore(deps): bump github.com/gin-contrib/sse from 1.1.2 to 1.2.0 (#2376)",
+        "body": "Bumps [github.com/gin-contrib/sse](https://github.com/gin-contrib/sse) from 1.1.2 to 1.2.0.\n- [Release notes](https://github.com/gin-contrib/sse/releases)\n- [Commits](https://github.com/gin-contrib/sse/compare/v1.1.2...v1.2.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-contrib/sse\n  dependency-version: 1.2.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "c4147bb36cdc4db63a3fd43f9655816ae5c8ea7a",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
