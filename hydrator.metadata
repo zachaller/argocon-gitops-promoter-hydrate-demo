@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "f3588b1bb5cd45756fe8254158c81865a49b1344",
+  "drySha": "662ee1cbb01fc771221dda6edd4e70de6131c96c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-06T08:52:56-06:00",
-  "subject": "chore: bump version to v1.0.2092",
+  "date": "2026-11-06T09:01:33-06:00",
+  "subject": "chore: bump version to v1.0.2093",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-24T19:41:28-05:00",
-        "subject": "feat(ui): redesign Promotion Explorer cells and checks list (#2218)",
-        "body": "Redesign the grid cells. The header shows the state pill, the hydrated\ncommit sha, the pull request link with an icon and a time. Checks are\nlisted in a scrollable list with detail links, SVG status icons and a\n\"N more\" indicator when they overflow. Rows now size to their content.\n\nCell and drawer check links go through a new safeHttpUrl helper that\ndrops non-http(s) urls. Remove the unused healthSummary helper.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
-        "sha": "88043a1a47b2ecf84c7a8ace63bfa33a478ad20a",
+        "date": "2026-10-14T11:25:57-05:00",
+        "subject": "perf(commitstatus): honor the configured workqueue concurrency and rate limiter (#2346)",
+        "body": "The shipped ControllerConfiguration sets commitStatus.workQueue to ten\nconcurrent reconciles with the bucket/fastSlow rate limiter, and the settings\npackage parses it, but CommitStatusReconciler.SetupWithManager never passed\ncontroller options, so the controller ran with controller-runtime's defaults:\none worker and the default exponential backoff. Every other reconciler reads\nits section the same way; this one was missed.\n\nWith one worker every CommitStatus in the cluster is reconciled serially at\ncontroller start, each with a round trip to the SCM. For a few hundred\nCommitStatuses against a real SCM that is minutes of startup, and until the\nbacklog drains the ChangeTransferPolicies read stale gate phases.\n\nRead the section like the other controllers. Deployments that need fewer\nconcurrent SCM writes can lower maxConcurrentReconciles in the\nControllerConfiguration, which now takes effect.\n\n\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+        "sha": "fa7d996f3b081ad08a8a5172f412377f2fbf848f",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
