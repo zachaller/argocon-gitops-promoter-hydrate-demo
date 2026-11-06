@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7608c36cdbd48f26732204aed76a8e5263c14967",
+  "drySha": "2154d19543ec7a0e43bad0cbce2df5cc7a89e99a",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-06T08:38:02-06:00",
-  "subject": "chore: bump version to v1.0.2090",
+  "date": "2026-11-06T08:44:53-06:00",
+  "subject": "chore: bump version to v1.0.2091",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-31T18:32:22-05:00",
-        "subject": "feat: provide namespaced mode (#310) (#2107)",
-        "body": "* feat: provide namespaced mode (#310)\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* do not depend on informer for resource count\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* cleanup\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* fix linting in tests\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* clarify docs from coderabbit review\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* add new fields\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* generate namespaced install manifests\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* update apiserver\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* cleanup settings\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* rework docs\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* require restart\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* codegen\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* fix linting\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "bdd42c1c5e05a72940c4d2d10a3a9088d9daab85",
+        "date": "2026-10-04T00:59:27-05:00",
+        "subject": "chore(deps): bump github.com/AzureAD/microsoft-authentication-library-for-go from 1.8.0 to 1.10.1 (#2303)",
+        "body": "chore(deps): bump github.com/AzureAD/microsoft-authentication-library-for-go\n\nBumps [github.com/AzureAD/microsoft-authentication-library-for-go](https://github.com/AzureAD/microsoft-authentication-library-for-go) from 1.8.0 to 1.10.1.\n- [Release notes](https://github.com/AzureAD/microsoft-authentication-library-for-go/releases)\n- [Changelog](https://github.com/AzureAD/microsoft-authentication-library-for-go/blob/main/changelog.md)\n- [Commits](https://github.com/AzureAD/microsoft-authentication-library-for-go/compare/1.8.0...v1.10.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/AzureAD/microsoft-authentication-library-for-go\n  dependency-version: 1.10.1\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "db000eeca653e0c116a6bc180ff44c3ade426947",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
