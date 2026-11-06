@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "7608c36cdbd48f26732204aed76a8e5263c14967",
+  "drySha": "f3588b1bb5cd45756fe8254158c81865a49b1344",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-06T08:38:02-06:00",
-  "subject": "chore: bump version to v1.0.2090",
+  "date": "2026-11-06T08:52:56-06:00",
+  "subject": "chore: bump version to v1.0.2092",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-31T18:32:22-05:00",
-        "subject": "feat: provide namespaced mode (#310) (#2107)",
-        "body": "* feat: provide namespaced mode (#310)\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* do not depend on informer for resource count\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* cleanup\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* fix linting in tests\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* clarify docs from coderabbit review\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* add new fields\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* generate namespaced install manifests\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* update apiserver\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* cleanup settings\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* rework docs\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* require restart\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* codegen\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* fix linting\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
-        "sha": "bdd42c1c5e05a72940c4d2d10a3a9088d9daab85",
+        "date": "2026-10-24T19:41:28-05:00",
+        "subject": "feat(ui): redesign Promotion Explorer cells and checks list (#2218)",
+        "body": "Redesign the grid cells. The header shows the state pill, the hydrated\ncommit sha, the pull request link with an icon and a time. Checks are\nlisted in a scrollable list with detail links, SVG status icons and a\n\"N more\" indicator when they overflow. Rows now size to their content.\n\nCell and drawer check links go through a new safeHttpUrl helper that\ndrops non-http(s) urls. Remove the unused healthSummary helper.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
+        "sha": "88043a1a47b2ecf84c7a8ace63bfa33a478ad20a",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
