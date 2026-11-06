@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "82a5d56e43cada9dd079097aca486798b1757809",
+  "drySha": "ff34bbac81f43687fa33425062c216b5b0d24dbe",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-06T09:53:37-06:00",
-  "subject": "chore: bump version to v1.0.2095",
+  "date": "2026-11-06T10:32:53-06:00",
+  "subject": "chore: bump version to v1.0.2096",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-05T16:29:53-05:00",
-        "subject": "fix(rac): delete a RestoreActiveCommit whose tip is already unblocked (#2290)",
-        "body": "* fix(rac): delete a RestoreActiveCommit whose tip is already unblocked\n\nA policy can adopt a restore after the previous object stamped Promoter-restore-unblocked-at and deleted itself. RestoreActiveBranch refuses that tip, so the new object never records status and blocks promotion. Delete it and leave the existing stamp in place.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* test: wait out a transient adopted RestoreActiveCommit after unblock\n\nDocument RestoreAlreadyReleased. The unblock spec no longer fails when a ChangeTransferPolicy adopts an object from a stale notes snapshot; that object deletes itself, and the spec waits until the list stays empty.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "28039beb11f4dced2ef7f2992afab7c979e65425",
+        "date": "2026-10-05T21:32:18-05:00",
+        "subject": "fix: clear stale CTP pull request status instead of copying an empty successor status (#2253)",
+        "body": "setPullRequestState unconditionally copied the live PullRequest's\nstatus onto ctp.Status.PullRequest, including the window right after\na successor PR is created but before the PullRequest controller has\npopulated its status. That produces an all-empty\nPullRequestCommonStatus, which (every field is omitempty) marshals to\n\"{}\" in the server-side-apply body. Structured-merge turns that into\na JSON null on re-apply (kubernetes/kubernetes#135841), and unlike\nstatus.proposed.dry (+nullable), the CRD schema for status.pullRequest\nrejects a null value, so the full status apply fails and falls back to\na conditions-only apply that leaves the stale pullRequest status in\nplace.\n\nClear ctp.Status.PullRequest to nil in that window instead of copying\nthe empty fields over it. This is safe because\npullRequestUpdateEnqueuesChangeTransferPolicyPredicate already\nre-triggers a CTP reconcile once the new PR's status is populated\n(Status.ID transitions from empty to non-empty), so the real status is\nfilled in on the very next reconcile rather than being lost.\n\nThe existing \"no PR resource found, keep last-known status\" branch\n(len(pr.Items) == 0) is unrelated and unchanged: it is deliberately\nscoped to the PR-object-fully-deleted case (added in #844).\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+        "sha": "a183655fbb81f9a639282337b5a2f8f65f81ca31",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
