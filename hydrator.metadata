@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "36ddb10395bf547eab806fe500b9d36c8aa4765b",
+  "drySha": "82a5d56e43cada9dd079097aca486798b1757809",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-06T09:09:43-06:00",
-  "subject": "chore: bump version to v1.0.2094",
+  "date": "2026-11-06T09:53:37-06:00",
+  "subject": "chore: bump version to v1.0.2095",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-07T12:39:00-05:00",
-        "subject": "chore(deps): bump github.com/gin-contrib/sse from 1.1.2 to 1.2.0 (#2376)",
-        "body": "Bumps [github.com/gin-contrib/sse](https://github.com/gin-contrib/sse) from 1.1.2 to 1.2.0.\n- [Release notes](https://github.com/gin-contrib/sse/releases)\n- [Commits](https://github.com/gin-contrib/sse/compare/v1.1.2...v1.2.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-contrib/sse\n  dependency-version: 1.2.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "c4147bb36cdc4db63a3fd43f9655816ae5c8ea7a",
+        "date": "2026-10-05T16:29:53-05:00",
+        "subject": "fix(rac): delete a RestoreActiveCommit whose tip is already unblocked (#2290)",
+        "body": "* fix(rac): delete a RestoreActiveCommit whose tip is already unblocked\n\nA policy can adopt a restore after the previous object stamped Promoter-restore-unblocked-at and deleted itself. RestoreActiveBranch refuses that tip, so the new object never records status and blocks promotion. Delete it and leave the existing stamp in place.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* test: wait out a transient adopted RestoreActiveCommit after unblock\n\nDocument RestoreAlreadyReleased. The unblock spec no longer fails when a ChangeTransferPolicy adopts an object from a stale notes snapshot; that object deletes itself, and the spec waits until the list stays empty.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "28039beb11f4dced2ef7f2992afab7c979e65425",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
