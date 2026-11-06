@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "66cab1468a67ea0f3c65f146d674739df6632e81",
+  "drySha": "36ddb10395bf547eab806fe500b9d36c8aa4765b",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-06T12:38:30-06:00",
-  "subject": "chore: bump version to v1.0.2097",
+  "date": "2026-11-06T09:09:43-06:00",
+  "subject": "chore: bump version to v1.0.2094",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-30T21:05:23-05:00",
-        "subject": "ci: report all test results and coverage to Codecov (#2292)",
-        "body": "* ci: report all test results and coverage to Codecov\n\nWhen the integration tests failed on main, the UI coverage upload was\nskipped, so Codecov got a partial report for that commit. A failing UI\ntest step also kept the integration tests from running, so they produced\nno JUnit report.\n\n- Run each test step and upload step unless the job was cancelled or\n  Build failed.\n- Write JUnit reports from Vitest and upload them under the ui flag.\n- Write a Ginkgo JUnit report from the e2e suite and upload it from\n  every matrix leg, flagged by Kubernetes version.\n- Give the Go test-results upload explicit files and a flag.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* ci: keep Vitest's github-actions reporter alongside junit\n\nSetting reporters replaces Vitest's default list, which in GitHub Actions\nalso includes the github-actions reporter for failure annotations.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "95e6e144a3cb4357c2cb5c750d0e98851ac15a61",
+        "date": "2026-10-07T12:39:00-05:00",
+        "subject": "chore(deps): bump github.com/gin-contrib/sse from 1.1.2 to 1.2.0 (#2376)",
+        "body": "Bumps [github.com/gin-contrib/sse](https://github.com/gin-contrib/sse) from 1.1.2 to 1.2.0.\n- [Release notes](https://github.com/gin-contrib/sse/releases)\n- [Commits](https://github.com/gin-contrib/sse/compare/v1.1.2...v1.2.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-contrib/sse\n  dependency-version: 1.2.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "c4147bb36cdc4db63a3fd43f9655816ae5c8ea7a",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
