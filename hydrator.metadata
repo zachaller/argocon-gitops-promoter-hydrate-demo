@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "2154d19543ec7a0e43bad0cbce2df5cc7a89e99a",
+  "drySha": "f3588b1bb5cd45756fe8254158c81865a49b1344",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-06T08:44:53-06:00",
-  "subject": "chore: bump version to v1.0.2091",
+  "date": "2026-11-06T08:52:56-06:00",
+  "subject": "chore: bump version to v1.0.2092",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-04T00:59:27-05:00",
-        "subject": "chore(deps): bump github.com/AzureAD/microsoft-authentication-library-for-go from 1.8.0 to 1.10.1 (#2303)",
-        "body": "chore(deps): bump github.com/AzureAD/microsoft-authentication-library-for-go\n\nBumps [github.com/AzureAD/microsoft-authentication-library-for-go](https://github.com/AzureAD/microsoft-authentication-library-for-go) from 1.8.0 to 1.10.1.\n- [Release notes](https://github.com/AzureAD/microsoft-authentication-library-for-go/releases)\n- [Changelog](https://github.com/AzureAD/microsoft-authentication-library-for-go/blob/main/changelog.md)\n- [Commits](https://github.com/AzureAD/microsoft-authentication-library-for-go/compare/1.8.0...v1.10.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/AzureAD/microsoft-authentication-library-for-go\n  dependency-version: 1.10.1\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "db000eeca653e0c116a6bc180ff44c3ade426947",
+        "date": "2026-10-24T19:41:28-05:00",
+        "subject": "feat(ui): redesign Promotion Explorer cells and checks list (#2218)",
+        "body": "Redesign the grid cells. The header shows the state pill, the hydrated\ncommit sha, the pull request link with an icon and a time. Checks are\nlisted in a scrollable list with detail links, SVG status icons and a\n\"N more\" indicator when they overflow. Rows now size to their content.\n\nCell and drawer check links go through a new safeHttpUrl helper that\ndrops non-http(s) urls. Remove the unused healthSummary helper.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
+        "sha": "88043a1a47b2ecf84c7a8ace63bfa33a478ad20a",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
