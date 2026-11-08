@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "50bb760d8c60de652de69918a17c1682cdba4c6b",
+  "drySha": "e5fb419641ae2c2414d38c6e4eb5f37da43f80d1",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-06T14:43:13-06:00",
-  "subject": "chore: bump version to v1.0.2099",
+  "date": "2026-11-08T07:19:59-06:00",
+  "subject": "chore: bump version to v1.0.2102",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-10T04:34:30-05:00",
-        "subject": "chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/internal from 1.12.0 to 1.13.0 (#2304)",
-        "body": "chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/internal\n\nBumps [github.com/Azure/azure-sdk-for-go/sdk/internal](https://github.com/Azure/azure-sdk-for-go) from 1.12.0 to 1.13.0.\n- [Release notes](https://github.com/Azure/azure-sdk-for-go/releases)\n- [Commits](https://github.com/Azure/azure-sdk-for-go/compare/sdk/azcore/v1.12.0...sdk/azcore/v1.13.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/Azure/azure-sdk-for-go/sdk/internal\n  dependency-version: 1.13.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "8cd2e2fc76fad325be899cd69f36fc0a4533143c",
+        "date": "2026-10-20T07:51:13-05:00",
+        "subject": "chore(deps): update dependency goreleaser/goreleaser to v2.20.0 (#2388)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
+        "sha": "c63ad0b6dbaba14f63d985d408a733721249db77",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
