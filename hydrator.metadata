@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e5fb419641ae2c2414d38c6e4eb5f37da43f80d1",
+  "drySha": "ee4bd2642cbe7527f683893a3ae619a3d7df4a4a",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-08T07:19:59-06:00",
-  "subject": "chore: bump version to v1.0.2102",
+  "date": "2026-11-08T07:21:56-06:00",
+  "subject": "chore: bump version to v1.0.2103",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-20T07:51:13-05:00",
-        "subject": "chore(deps): update dependency goreleaser/goreleaser to v2.20.0 (#2388)",
+        "date": "2026-10-31T17:36:26-05:00",
+        "subject": "chore(deps): update k8s.io/utils digest to ca04ba5 (#2244)",
         "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "c63ad0b6dbaba14f63d985d408a733721249db77",
+        "sha": "c612f77507d001ecf1e0fbc3dab7fba5c0a8af27",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
