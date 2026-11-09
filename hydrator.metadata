@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "1f94aa874b315344adec513854e1bccf2bab6ef0",
+  "drySha": "34e5bf970865c7a52e1080a473a2883b129c1f06",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-09T09:43:51-07:00",
-  "subject": "chore: bump version to v1.0.2117",
+  "date": "2026-11-09T09:31:29-07:00",
+  "subject": "chore: bump version to v1.0.2115",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-30T01:39:53-06:00",
-        "subject": "feat(ui): use the Promotion Explorer in the dashboard and extension (#2220)",
-        "body": "Render the explorer directly in the dashboard strategy page and the\nArgo CD app view extension and drop the Overview/History toggle. The\ndashboard keeps the selected cell, the environment selection and the\nview in the commit, env, node and view query parameters, and redirects\nlegacy /history/* routes to the explorer route. The extension does the\nsame with psCommit, psEnv and psNode, and the resource extension also\nrenders the explorer.\n\nRemove the Overview components (Card, ActiveCard, CommitInfo,\nHealthSummary, PrIndicator, ProposedChangesCard, the old Tooltip),\ngetProcessingEnvs, enrichFromEnvironments, ViewStore, HistoryPage,\nBackButton, statusLabel and DeploymentCommit, along with the tests of\nthat removed code. Scope the Escape handler to the explorer so it\nignores inputs, dialogs and focus elsewhere in the host page. Let the\ndashboard type-check and run tsx tests.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
-        "sha": "4197b9e8212beecca0e24b2b9a4a3e48e38514be",
+        "date": "2026-10-08T18:48:55-06:00",
+        "subject": "fix(chore): allow to set namespace for apiserver via makefile (#2317)",
+        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "55bdb5fe81f8d69f87d2084a51ffec1eddfb1320",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
