@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "e1b8459188dbc3ed09872ee5dbb712747fa7ebe4",
+  "drySha": "9a79cccbe678274e2861f7d1acb16cc6db2007bb",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-08T22:47:08-07:00",
-  "subject": "chore: bump version to v1.0.2110",
+  "date": "2026-11-09T09:06:33-07:00",
+  "subject": "chore: bump version to v1.0.2112",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-08T15:12:04-06:00",
-        "subject": "fix(commitstatus): dedupe woken ChangeTransferPolicies by namespace and name (#2356)",
-        "body": "CommitStatus gating is cross-namespace on purpose: a CommitStatus can gate\npolicies in any namespace, and triggerReconcileChangeTransferPolicy lists\npolicies on the SHA cluster-wide to wake them. The merge of those lists,\nUpsertChangeTransferPolicy, keyed on name only, so two namespaces promoting\nthe same repository with a same-named PromotionStrategy produced same-named\npolicies that collapsed to one entry, and the other was never woken.\n\nKey the merge on namespace and name. The lookups stay cluster-wide.\n\n\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
-        "sha": "b100d5c74619dc20ca1bf7291ad455d61430a8ec",
+        "date": "2026-10-28T00:01:07-06:00",
+        "subject": "fix(azuredevops): build PR and commit URLs for ClusterScmProviders (#2277)",
+        "body": "generatePullRequestUrl resolved the SCM provider with\nGetScmProviderAndSecretFromRepositoryReference and an empty controller\nnamespace. A ClusterScmProvider's Secret lives in the controller\nnamespace, so the lookup asked for the Secret in \"\" and failed. Every\nPullRequest against Azure DevOps through a ClusterScmProvider then\nfailed right after the PR was created on the SCM (\"failed to get pull\nrequest URL: ... secret from ClusterScmProvider not found\"), and after\nthree fast retries sat in the rate limiter's slow delay.\n\nOnly the provider's spec is needed to build the URL, so resolve it with\nGetScmProviderFromGitRepository and skip the Secret. Do the same in\nCommitStatus.Set, which passed the CommitStatus's namespace as the\ncontroller namespace and so only worked when the two matched.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+        "sha": "1ebd0e1b423ba265e2ab12830c725e57e2b927c4",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
