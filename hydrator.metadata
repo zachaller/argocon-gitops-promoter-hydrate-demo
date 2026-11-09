@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "428de4ccf6d79dee55463e25e0e95093032d6168",
+  "drySha": "b60479652269d668bb6bfda5a5052a6a5c5d0c5c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-08T22:46:05-06:00",
-  "subject": "chore: bump version to v1.0.2106",
+  "date": "2026-11-08T23:02:26-06:00",
+  "subject": "chore: bump version to v1.0.2107",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-26T11:07:15-06:00",
-        "subject": "chore(deps): update node.js to v26 (#2296)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>\nCo-authored-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "83a8a88eb2b06a86dd1b731525b7432864279e11",
+        "date": "2026-10-28T16:29:41-06:00",
+        "subject": "ci: post the Codecov comment only after every coverage upload has arrived (#2357)",
+        "body": "* ci: post the Codecov comment only after every coverage upload has arrived\n\nA pull request commit receives five coverage uploads: integration and ui from\nci.yaml and one e2e upload per Kubernetes version from ci-e2e.yaml. The e2e\nworkflow usually finishes first, and Codecov posted the PR comment on the\nfirst upload and never refreshed it, so the comment compared e2e-only\ncoverage (about 49%) against a complete base (about 85%); #2348 and #2356\nboth showed that. The status checks use the merged report and were never\naffected. Wait for all uploads before commenting.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* ci: Codecov counts the e2e matrix as one report, so wait for three\n\nWith after_n_builds: 5 no comment was posted on this PR although all\nuploads arrived; the three e2e matrix uploads share one name and flag and\ncount once.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+        "sha": "8892b48e15c6c5964e10d08d9bb5c4f283fae1a0",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
