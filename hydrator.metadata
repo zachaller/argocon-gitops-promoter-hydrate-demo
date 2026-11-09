@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b8167a553d8baa449a87043d453fcc123c0681c3",
+  "drySha": "e1b8459188dbc3ed09872ee5dbb712747fa7ebe4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-08T23:10:16-06:00",
-  "subject": "chore: bump version to v1.0.2108",
+  "date": "2026-11-08T22:47:08-07:00",
+  "subject": "chore: bump version to v1.0.2110",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-12T17:22:07-06:00",
-        "subject": "test: wait for git, not ChangeTransferPolicy status, before the revert push (#2283)",
-        "body": "The revert detection spec waits for staging to be idle before pushing a\nrevert commit to its active branch, so a promotion can't land on top of it.\nIt judged idle from ChangeTransferPolicy status, which can lag the\nrepository: a newer dry SHA can already be on staging's proposed branch\nwhile the status still shows the old one. Its promotion then merges on top\nof the revert, the gate evaluates that merge commit, and staging stays\nsuccess.\n\nAlso wait until staging's active branch carries the proposed branch's dry\nSHA in the repository itself.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "8e528e784fb91d7d416d971fcb510cee7ece1f3d",
+        "date": "2026-10-08T15:12:04-06:00",
+        "subject": "fix(commitstatus): dedupe woken ChangeTransferPolicies by namespace and name (#2356)",
+        "body": "CommitStatus gating is cross-namespace on purpose: a CommitStatus can gate\npolicies in any namespace, and triggerReconcileChangeTransferPolicy lists\npolicies on the SHA cluster-wide to wake them. The merge of those lists,\nUpsertChangeTransferPolicy, keyed on name only, so two namespaces promoting\nthe same repository with a same-named PromotionStrategy produced same-named\npolicies that collapsed to one entry, and the other was never woken.\n\nKey the merge on namespace and name. The lookups stay cluster-wide.\n\n\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+        "sha": "b100d5c74619dc20ca1bf7291ad455d61430a8ec",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
