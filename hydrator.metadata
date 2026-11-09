@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "781f2cb5bf3355314f70098220c0b9975dd84af6",
+  "drySha": "1f94aa874b315344adec513854e1bccf2bab6ef0",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-09T09:38:14-07:00",
-  "subject": "chore: bump version to v1.0.2116",
+  "date": "2026-11-09T09:43:51-07:00",
+  "subject": "chore: bump version to v1.0.2117",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-15T21:48:48-06:00",
-        "subject": "chore(deps): bump golang.org/x/net from 0.61.0 to 0.62.0 in the golang-org-x group (#2360)",
-        "body": "chore(deps): bump golang.org/x/net\n\nBumps the golang-org-x group with 1 update: [golang.org/x/net](https://github.com/golang/net).\n\n\nUpdates `golang.org/x/net` from 0.61.0 to 0.62.0\n- [Commits](https://github.com/golang/net/compare/v0.61.0...v0.62.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/net\n  dependency-version: 0.62.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "8a8410d66b5365744884b2de0cd067b1e05c63ea",
+        "date": "2026-10-30T01:39:53-06:00",
+        "subject": "feat(ui): use the Promotion Explorer in the dashboard and extension (#2220)",
+        "body": "Render the explorer directly in the dashboard strategy page and the\nArgo CD app view extension and drop the Overview/History toggle. The\ndashboard keeps the selected cell, the environment selection and the\nview in the commit, env, node and view query parameters, and redirects\nlegacy /history/* routes to the explorer route. The extension does the\nsame with psCommit, psEnv and psNode, and the resource extension also\nrenders the explorer.\n\nRemove the Overview components (Card, ActiveCard, CommitInfo,\nHealthSummary, PrIndicator, ProposedChangesCard, the old Tooltip),\ngetProcessingEnvs, enrichFromEnvironments, ViewStore, HistoryPage,\nBackButton, statusLabel and DeploymentCommit, along with the tests of\nthat removed code. Scope the Escape handler to the explorer so it\nignores inputs, dialogs and focus elsewhere in the host page. Let the\ndashboard type-check and run tsx tests.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
+        "sha": "4197b9e8212beecca0e24b2b9a4a3e48e38514be",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
