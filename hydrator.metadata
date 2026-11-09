@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "34e5bf970865c7a52e1080a473a2883b129c1f06",
+  "drySha": "781f2cb5bf3355314f70098220c0b9975dd84af6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-09T09:31:29-07:00",
-  "subject": "chore: bump version to v1.0.2115",
+  "date": "2026-11-09T09:38:14-07:00",
+  "subject": "chore: bump version to v1.0.2116",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-08T18:48:55-06:00",
-        "subject": "fix(chore): allow to set namespace for apiserver via makefile (#2317)",
-        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "55bdb5fe81f8d69f87d2084a51ffec1eddfb1320",
+        "date": "2026-10-15T21:48:48-06:00",
+        "subject": "chore(deps): bump golang.org/x/net from 0.61.0 to 0.62.0 in the golang-org-x group (#2360)",
+        "body": "chore(deps): bump golang.org/x/net\n\nBumps the golang-org-x group with 1 update: [golang.org/x/net](https://github.com/golang/net).\n\n\nUpdates `golang.org/x/net` from 0.61.0 to 0.62.0\n- [Commits](https://github.com/golang/net/compare/v0.61.0...v0.62.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/net\n  dependency-version: 0.62.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "8a8410d66b5365744884b2de0cd067b1e05c63ea",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
