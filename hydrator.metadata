@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "a18274c9f96f55eb662ce9995721343b9f195f7c",
+  "drySha": "b60479652269d668bb6bfda5a5052a6a5c5d0c5c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-08T22:36:40-07:00",
-  "subject": "chore: bump version to v1.0.2109",
+  "date": "2026-11-08T23:02:26-06:00",
+  "subject": "chore: bump version to v1.0.2107",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-30T22:50:28-06:00",
-        "subject": "chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/internal from 1.12.0 to 1.13.0 (#2304)",
-        "body": "chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/internal\n\nBumps [github.com/Azure/azure-sdk-for-go/sdk/internal](https://github.com/Azure/azure-sdk-for-go) from 1.12.0 to 1.13.0.\n- [Release notes](https://github.com/Azure/azure-sdk-for-go/releases)\n- [Commits](https://github.com/Azure/azure-sdk-for-go/compare/sdk/azcore/v1.12.0...sdk/azcore/v1.13.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/Azure/azure-sdk-for-go/sdk/internal\n  dependency-version: 1.13.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "8cd2e2fc76fad325be899cd69f36fc0a4533143c",
+        "date": "2026-10-28T16:29:41-06:00",
+        "subject": "ci: post the Codecov comment only after every coverage upload has arrived (#2357)",
+        "body": "* ci: post the Codecov comment only after every coverage upload has arrived\n\nA pull request commit receives five coverage uploads: integration and ui from\nci.yaml and one e2e upload per Kubernetes version from ci-e2e.yaml. The e2e\nworkflow usually finishes first, and Codecov posted the PR comment on the\nfirst upload and never refreshed it, so the comment compared e2e-only\ncoverage (about 49%) against a complete base (about 85%); #2348 and #2356\nboth showed that. The status checks use the merged report and were never\naffected. Wait for all uploads before commenting.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* ci: Codecov counts the e2e matrix as one report, so wait for three\n\nWith after_n_builds: 5 no comment was posted on this PR although all\nuploads arrived; the three e2e matrix uploads share one name and flag and\ncount once.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>\nClaude-Session: https://claude.ai/code/session_01BmNNrkL768qXPQxYGu5Tz2\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+        "sha": "8892b48e15c6c5964e10d08d9bb5c4f283fae1a0",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
