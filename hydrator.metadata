@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "9a79cccbe678274e2861f7d1acb16cc6db2007bb",
+  "drySha": "3d01ec196bc43adc59d3b7bd560cad0f0d665f14",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-09T09:06:33-07:00",
-  "subject": "chore: bump version to v1.0.2112",
+  "date": "2026-11-09T09:13:17-07:00",
+  "subject": "chore: bump version to v1.0.2113",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-28T00:01:07-06:00",
-        "subject": "fix(azuredevops): build PR and commit URLs for ClusterScmProviders (#2277)",
-        "body": "generatePullRequestUrl resolved the SCM provider with\nGetScmProviderAndSecretFromRepositoryReference and an empty controller\nnamespace. A ClusterScmProvider's Secret lives in the controller\nnamespace, so the lookup asked for the Secret in \"\" and failed. Every\nPullRequest against Azure DevOps through a ClusterScmProvider then\nfailed right after the PR was created on the SCM (\"failed to get pull\nrequest URL: ... secret from ClusterScmProvider not found\"), and after\nthree fast retries sat in the rate limiter's slow delay.\n\nOnly the provider's spec is needed to build the URL, so resolve it with\nGetScmProviderFromGitRepository and skip the Secret. Do the same in\nCommitStatus.Set, which passed the CommitStatus's namespace as the\ncontroller namespace and so only worked when the two matched.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "1ebd0e1b423ba265e2ab12830c725e57e2b927c4",
+        "date": "2026-10-06T19:17:46-06:00",
+        "subject": "feat(ui): use the Promotion Explorer in the dashboard and extension (#2220)",
+        "body": "Render the explorer directly in the dashboard strategy page and the\nArgo CD app view extension and drop the Overview/History toggle. The\ndashboard keeps the selected cell, the environment selection and the\nview in the commit, env, node and view query parameters, and redirects\nlegacy /history/* routes to the explorer route. The extension does the\nsame with psCommit, psEnv and psNode, and the resource extension also\nrenders the explorer.\n\nRemove the Overview components (Card, ActiveCard, CommitInfo,\nHealthSummary, PrIndicator, ProposedChangesCard, the old Tooltip),\ngetProcessingEnvs, enrichFromEnvironments, ViewStore, HistoryPage,\nBackButton, statusLabel and DeploymentCommit, along with the tests of\nthat removed code. Scope the Escape handler to the explorer so it\nignores inputs, dialogs and focus elsewhere in the host page. Let the\ndashboard type-check and run tsx tests.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
+        "sha": "4197b9e8212beecca0e24b2b9a4a3e48e38514be",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
