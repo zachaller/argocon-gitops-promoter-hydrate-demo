@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "3de966fc0541919794b3fd0b55146bcdc6fdf134",
+  "drySha": "428de4ccf6d79dee55463e25e0e95093032d6168",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-08T22:08:02-06:00",
-  "subject": "chore: bump version to v1.0.2105",
+  "date": "2026-11-08T22:46:05-06:00",
+  "subject": "chore: bump version to v1.0.2106",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-08T23:31:13-06:00",
-        "subject": "test: disable auto-gc on the test SCM server's bare repos (#2293)",
-        "body": "A detached git gc after receive-pack can delete a commit a branch still names, so the next pull request create fails.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "70ef74ea7644634d78f4ec7a22ad5ab987a3bed2",
+        "date": "2026-10-26T11:07:15-06:00",
+        "subject": "chore(deps): update node.js to v26 (#2296)",
+        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>\nCo-authored-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "83a8a88eb2b06a86dd1b731525b7432864279e11",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
