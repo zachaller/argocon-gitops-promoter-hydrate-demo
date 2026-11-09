@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ee4bd2642cbe7527f683893a3ae619a3d7df4a4a",
+  "drySha": "ef351ec81806b7820cbc62f96440ffb12f98f5f6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-08T07:21:56-06:00",
-  "subject": "chore: bump version to v1.0.2103",
+  "date": "2026-11-08T09:48:48-06:00",
+  "subject": "chore: bump version to v1.0.2104",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-31T17:36:26-05:00",
-        "subject": "chore(deps): update k8s.io/utils digest to ca04ba5 (#2244)",
-        "body": "Co-authored-by: gitops-promoter-renovate-bot[bot] <239415342+gitops-promoter-renovate-bot[bot]@users.noreply.github.com>",
-        "sha": "c612f77507d001ecf1e0fbc3dab7fba5c0a8af27",
+        "date": "2026-10-13T15:04:30-05:00",
+        "subject": "test: track the externally closed PR by UID, not name (#2288)",
+        "body": "\"should remove CTP finalizer from PR when PR is externally closed\" waited\nfor the PullRequest name to return NotFound. The CTP still has a pending\npromotion, so once the closed PR is gone it creates a new one with the\nsame name, often within ~10ms. The spec passed only when a poll landed in\nthat gap and timed out otherwise (about 1 run in 5 locally).\n\nRecord the closed PR's UID, delete with a UID precondition, and pass once\nno PullRequest with that UID exists.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+        "sha": "b7adbd8aaf79df3ee147b0385094dda9defed4d3",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
