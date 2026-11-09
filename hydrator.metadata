@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "b8167a553d8baa449a87043d453fcc123c0681c3",
+  "drySha": "a18274c9f96f55eb662ce9995721343b9f195f7c",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-08T23:10:16-06:00",
-  "subject": "chore: bump version to v1.0.2108",
+  "date": "2026-11-08T22:36:40-07:00",
+  "subject": "chore: bump version to v1.0.2109",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-12T17:22:07-06:00",
-        "subject": "test: wait for git, not ChangeTransferPolicy status, before the revert push (#2283)",
-        "body": "The revert detection spec waits for staging to be idle before pushing a\nrevert commit to its active branch, so a promotion can't land on top of it.\nIt judged idle from ChangeTransferPolicy status, which can lag the\nrepository: a newer dry SHA can already be on staging's proposed branch\nwhile the status still shows the old one. Its promotion then merges on top\nof the revert, the gate evaluates that merge commit, and staging stays\nsuccess.\n\nAlso wait until staging's active branch carries the proposed branch's dry\nSHA in the repository itself.\n\n\nClaude-Session: https://claude.ai/code/session_01KMbKRJK45xAEBq9tQoc9DG\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
-        "sha": "8e528e784fb91d7d416d971fcb510cee7ece1f3d",
+        "date": "2026-10-30T22:50:28-06:00",
+        "subject": "chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/internal from 1.12.0 to 1.13.0 (#2304)",
+        "body": "chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/internal\n\nBumps [github.com/Azure/azure-sdk-for-go/sdk/internal](https://github.com/Azure/azure-sdk-for-go) from 1.12.0 to 1.13.0.\n- [Release notes](https://github.com/Azure/azure-sdk-for-go/releases)\n- [Commits](https://github.com/Azure/azure-sdk-for-go/compare/sdk/azcore/v1.12.0...sdk/azcore/v1.13.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/Azure/azure-sdk-for-go/sdk/internal\n  dependency-version: 1.13.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "8cd2e2fc76fad325be899cd69f36fc0a4533143c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
