@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "1f94aa874b315344adec513854e1bccf2bab6ef0",
+  "drySha": "19563e72bf7436459edccf726045a35b15a17b86",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-09T09:43:51-07:00",
-  "subject": "chore: bump version to v1.0.2117",
+  "date": "2026-11-10T16:58:29-07:00",
+  "subject": "chore: bump version to v1.0.2118",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-30T01:39:53-06:00",
-        "subject": "feat(ui): use the Promotion Explorer in the dashboard and extension (#2220)",
-        "body": "Render the explorer directly in the dashboard strategy page and the\nArgo CD app view extension and drop the Overview/History toggle. The\ndashboard keeps the selected cell, the environment selection and the\nview in the commit, env, node and view query parameters, and redirects\nlegacy /history/* routes to the explorer route. The extension does the\nsame with psCommit, psEnv and psNode, and the resource extension also\nrenders the explorer.\n\nRemove the Overview components (Card, ActiveCard, CommitInfo,\nHealthSummary, PrIndicator, ProposedChangesCard, the old Tooltip),\ngetProcessingEnvs, enrichFromEnvironments, ViewStore, HistoryPage,\nBackButton, statusLabel and DeploymentCommit, along with the tests of\nthat removed code. Scope the Escape handler to the explorer so it\nignores inputs, dialogs and focus elsewhere in the host page. Let the\ndashboard type-check and run tsx tests.\n\nSigned-off-by: Jonathan Winters <wintersjonathan0@gmail.com>",
-        "sha": "4197b9e8212beecca0e24b2b9a4a3e48e38514be",
+        "date": "2026-10-21T00:31:05-06:00",
+        "subject": "fix: clear stale CTP pull request status instead of copying an empty successor status (#2253)",
+        "body": "setPullRequestState unconditionally copied the live PullRequest's\nstatus onto ctp.Status.PullRequest, including the window right after\na successor PR is created but before the PullRequest controller has\npopulated its status. That produces an all-empty\nPullRequestCommonStatus, which (every field is omitempty) marshals to\n\"{}\" in the server-side-apply body. Structured-merge turns that into\na JSON null on re-apply (kubernetes/kubernetes#135841), and unlike\nstatus.proposed.dry (+nullable), the CRD schema for status.pullRequest\nrejects a null value, so the full status apply fails and falls back to\na conditions-only apply that leaves the stale pullRequest status in\nplace.\n\nClear ctp.Status.PullRequest to nil in that window instead of copying\nthe empty fields over it. This is safe because\npullRequestUpdateEnqueuesChangeTransferPolicyPredicate already\nre-triggers a CTP reconcile once the new PR's status is populated\n(Status.ID transitions from empty to non-empty), so the real status is\nfilled in on the very next reconcile rather than being lost.\n\nThe existing \"no PR resource found, keep last-known status\" branch\n(len(pr.Items) == 0) is unrelated and unchanged: it is deliberately\nscoped to the PR-object-fully-deleted case (added in #844).\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+        "sha": "a183655fbb81f9a639282337b5a2f8f65f81ca31",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
