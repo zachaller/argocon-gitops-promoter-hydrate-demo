@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "781f2cb5bf3355314f70098220c0b9975dd84af6",
+  "drySha": "19563e72bf7436459edccf726045a35b15a17b86",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-09T09:38:14-07:00",
-  "subject": "chore: bump version to v1.0.2116",
+  "date": "2026-11-10T16:58:29-07:00",
+  "subject": "chore: bump version to v1.0.2118",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-15T21:48:48-06:00",
-        "subject": "chore(deps): bump golang.org/x/net from 0.61.0 to 0.62.0 in the golang-org-x group (#2360)",
-        "body": "chore(deps): bump golang.org/x/net\n\nBumps the golang-org-x group with 1 update: [golang.org/x/net](https://github.com/golang/net).\n\n\nUpdates `golang.org/x/net` from 0.61.0 to 0.62.0\n- [Commits](https://github.com/golang/net/compare/v0.61.0...v0.62.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/net\n  dependency-version: 0.62.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "8a8410d66b5365744884b2de0cd067b1e05c63ea",
+        "date": "2026-10-21T00:31:05-06:00",
+        "subject": "fix: clear stale CTP pull request status instead of copying an empty successor status (#2253)",
+        "body": "setPullRequestState unconditionally copied the live PullRequest's\nstatus onto ctp.Status.PullRequest, including the window right after\na successor PR is created but before the PullRequest controller has\npopulated its status. That produces an all-empty\nPullRequestCommonStatus, which (every field is omitempty) marshals to\n\"{}\" in the server-side-apply body. Structured-merge turns that into\na JSON null on re-apply (kubernetes/kubernetes#135841), and unlike\nstatus.proposed.dry (+nullable), the CRD schema for status.pullRequest\nrejects a null value, so the full status apply fails and falls back to\na conditions-only apply that leaves the stale pullRequest status in\nplace.\n\nClear ctp.Status.PullRequest to nil in that window instead of copying\nthe empty fields over it. This is safe because\npullRequestUpdateEnqueuesChangeTransferPolicyPredicate already\nre-triggers a CTP reconcile once the new PR's status is populated\n(Status.ID transitions from empty to non-empty), so the real status is\nfilled in on the very next reconcile rather than being lost.\n\nThe existing \"no PR resource found, keep last-known status\" branch\n(len(pr.Items) == 0) is unrelated and unchanged: it is deliberately\nscoped to the PR-object-fully-deleted case (added in #844).\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nCo-authored-by: Cursor <cursoragent@cursor.com>",
+        "sha": "a183655fbb81f9a639282337b5a2f8f65f81ca31",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
