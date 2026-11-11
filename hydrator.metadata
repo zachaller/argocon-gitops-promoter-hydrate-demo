@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "34e5bf970865c7a52e1080a473a2883b129c1f06",
+  "drySha": "01e14fd3d428b0723e86b4834bd02c988758fcc6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-09T09:31:29-07:00",
-  "subject": "chore: bump version to v1.0.2115",
+  "date": "2026-11-11T14:25:26-07:00",
+  "subject": "chore: bump version to v1.0.2121",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-08T18:48:55-06:00",
-        "subject": "fix(chore): allow to set namespace for apiserver via makefile (#2317)",
-        "body": "Signed-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "55bdb5fe81f8d69f87d2084a51ffec1eddfb1320",
+        "date": "2026-10-16T12:25:41-06:00",
+        "subject": "fix(rac): delete a RestoreActiveCommit whose tip is already unblocked (#2290)",
+        "body": "* fix(rac): delete a RestoreActiveCommit whose tip is already unblocked\n\nA policy can adopt a restore after the previous object stamped Promoter-restore-unblocked-at and deleted itself. RestoreActiveBranch refuses that tip, so the new object never records status and blocks promotion. Delete it and leave the existing stamp in place.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* test: wait out a transient adopted RestoreActiveCommit after unblock\n\nDocument RestoreAlreadyReleased. The unblock spec no longer fails when a ChangeTransferPolicy adopts an object from a stale notes snapshot; that object deletes itself, and the spec waits until the list stays empty.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "28039beb11f4dced2ef7f2992afab7c979e65425",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
