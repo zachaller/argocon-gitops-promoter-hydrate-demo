@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "781f2cb5bf3355314f70098220c0b9975dd84af6",
+  "drySha": "b45cbb91e3f8a4b2426a810d8c24329ec1dcb5a6",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-09T09:38:14-07:00",
-  "subject": "chore: bump version to v1.0.2116",
+  "date": "2026-11-11T13:07:20-07:00",
+  "subject": "chore: bump version to v1.0.2120",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-15T21:48:48-06:00",
-        "subject": "chore(deps): bump golang.org/x/net from 0.61.0 to 0.62.0 in the golang-org-x group (#2360)",
-        "body": "chore(deps): bump golang.org/x/net\n\nBumps the golang-org-x group with 1 update: [golang.org/x/net](https://github.com/golang/net).\n\n\nUpdates `golang.org/x/net` from 0.61.0 to 0.62.0\n- [Commits](https://github.com/golang/net/compare/v0.61.0...v0.62.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/net\n  dependency-version: 0.62.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "8a8410d66b5365744884b2de0cd067b1e05c63ea",
+        "date": "2026-10-13T16:57:08-06:00",
+        "subject": "ci: bump github.com/gin-contrib/sse from 1.2.0 to 1.2.1 (#2392)",
+        "body": "Bumps [github.com/gin-contrib/sse](https://github.com/gin-contrib/sse) from 1.2.0 to 1.2.1.\n- [Release notes](https://github.com/gin-contrib/sse/releases)\n- [Commits](https://github.com/gin-contrib/sse/compare/v1.2.0...v1.2.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/gin-contrib/sse\n  dependency-version: 1.2.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "987fc498ac58ee653106370ef8949e19f1fb1018",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
