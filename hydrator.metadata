@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "01e14fd3d428b0723e86b4834bd02c988758fcc6",
+  "drySha": "93d6b97ba97e2af0195d1f5e5a31d9d1367e9439",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-11T14:25:26-07:00",
-  "subject": "chore: bump version to v1.0.2121",
+  "date": "2026-11-17T11:23:03-06:00",
+  "subject": "chore: bump version to v1.0.2122",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-16T12:25:41-06:00",
-        "subject": "fix(rac): delete a RestoreActiveCommit whose tip is already unblocked (#2290)",
-        "body": "* fix(rac): delete a RestoreActiveCommit whose tip is already unblocked\n\nA policy can adopt a restore after the previous object stamped Promoter-restore-unblocked-at and deleted itself. RestoreActiveBranch refuses that tip, so the new object never records status and blocks promotion. Delete it and leave the existing stamp in place.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* test: wait out a transient adopted RestoreActiveCommit after unblock\n\nDocument RestoreAlreadyReleased. The unblock spec no longer fails when a ChangeTransferPolicy adopts an object from a stale notes snapshot; that object deletes itself, and the spec waits until the list stays empty.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
-        "sha": "28039beb11f4dced2ef7f2992afab7c979e65425",
+        "date": "2026-10-17T20:07:31-05:00",
+        "subject": "feat: provide namespaced mode (#310) (#2107)",
+        "body": "* feat: provide namespaced mode (#310)\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* lint\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\n\n* do not depend on informer for resource count\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* cleanup\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* fix linting in tests\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* clarify docs from coderabbit review\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* add new fields\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* generate namespaced install manifests\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* update apiserver\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* cleanup settings\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* rework docs\n\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\n\n* require restart\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* codegen\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n* fix linting\n\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\n\n---------\n\nSigned-off-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>\nSigned-off-by: Alexy Mantha <alexy.mantha@goto.com>\nSigned-off-by: Alexy Mantha <alexy@mantha.dev>\nCo-authored-by: Michael Crenshaw <350466+crenshaw-dev@users.noreply.github.com>",
+        "sha": "bdd42c1c5e05a72940c4d2d10a3a9088d9daab85",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
