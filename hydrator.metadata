@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "05fe94ec650f1b3fb894e57834f0782f60c878b7",
+  "drySha": "cf6ba3f75bac27940df8e50ed7ec7d94755dcbcd",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-18T13:43:00-06:00",
-  "subject": "chore: bump version to v1.0.2126",
+  "date": "2026-11-18T13:53:51-06:00",
+  "subject": "chore: bump version to v1.0.2127",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-17T18:24:57-05:00",
-        "subject": "ci: bump cel.dev/expr from 0.25.3 to 0.26.0 (#2398)",
-        "body": "Bumps [cel.dev/expr](https://github.com/cel-expr/cel-spec) from 0.25.3 to 0.26.0.\n- [Release notes](https://github.com/cel-expr/cel-spec/releases)\n- [Commits](https://github.com/cel-expr/cel-spec/compare/v0.25.3...v0.26.0)\n\n---\nupdated-dependencies:\n- dependency-name: cel.dev/expr\n  dependency-version: 0.26.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "639463fc8824bc3bce490fd81d5d3e148719d361",
+        "date": "2026-10-17T16:32:51-05:00",
+        "subject": "chore(deps): bump github.com/prometheus/common from 0.73.0 to 0.73.1 in the prometheus group (#2374)",
+        "body": "chore(deps): bump github.com/prometheus/common\n\nBumps the prometheus group with 1 update: [github.com/prometheus/common](https://github.com/prometheus/common).\n\n\nUpdates `github.com/prometheus/common` from 0.73.0 to 0.73.1\n- [Release notes](https://github.com/prometheus/common/releases)\n- [Changelog](https://github.com/prometheus/common/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/prometheus/common/compare/v0.73.0...v0.73.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/common\n  dependency-version: 0.73.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: prometheus\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "bb444b641905e1020e706bf65efdf51af9d46249",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
