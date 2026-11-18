@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "751976d8976d88ef20d924dd46e5c78021795b7d",
+  "drySha": "05fe94ec650f1b3fb894e57834f0782f60c878b7",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-18T13:30:00-06:00",
-  "subject": "chore: bump version to v1.0.2125",
+  "date": "2026-11-18T13:43:00-06:00",
+  "subject": "chore: bump version to v1.0.2126",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-26T17:04:06-05:00",
-        "subject": "chore(deps): bump github.com/bytedance/sonic from 1.15.4 to 1.15.5 (#2332)",
-        "body": "Bumps [github.com/bytedance/sonic](https://github.com/bytedance/sonic) from 1.15.4 to 1.15.5.\n- [Release notes](https://github.com/bytedance/sonic/releases)\n- [Commits](https://github.com/bytedance/sonic/compare/v1.15.4...v1.15.5)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/bytedance/sonic\n  dependency-version: 1.15.5\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "8bccdd04bb26b0291fcc6e8326074a8545448622",
+        "date": "2026-10-17T18:24:57-05:00",
+        "subject": "ci: bump cel.dev/expr from 0.25.3 to 0.26.0 (#2398)",
+        "body": "Bumps [cel.dev/expr](https://github.com/cel-expr/cel-spec) from 0.25.3 to 0.26.0.\n- [Release notes](https://github.com/cel-expr/cel-spec/releases)\n- [Commits](https://github.com/cel-expr/cel-spec/compare/v0.25.3...v0.26.0)\n\n---\nupdated-dependencies:\n- dependency-name: cel.dev/expr\n  dependency-version: 0.26.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "639463fc8824bc3bce490fd81d5d3e148719d361",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
