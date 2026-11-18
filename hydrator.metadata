@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "ca5bce844102c4e99bc228faead6e1b055098db4",
+  "drySha": "443842ab595ffeb2cb92459603f7c889bb9c5fdd",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-18T14:03:44-06:00",
-  "subject": "chore: bump version to v1.0.2128",
+  "date": "2026-11-18T15:00:26-06:00",
+  "subject": "chore: bump version to v1.0.2129",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-16T00:24:46-05:00",
-        "subject": "chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/internal from 1.12.0 to 1.13.0 (#2304)",
-        "body": "chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/internal\n\nBumps [github.com/Azure/azure-sdk-for-go/sdk/internal](https://github.com/Azure/azure-sdk-for-go) from 1.12.0 to 1.13.0.\n- [Release notes](https://github.com/Azure/azure-sdk-for-go/releases)\n- [Commits](https://github.com/Azure/azure-sdk-for-go/compare/sdk/azcore/v1.12.0...sdk/azcore/v1.13.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/Azure/azure-sdk-for-go/sdk/internal\n  dependency-version: 1.13.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "8cd2e2fc76fad325be899cd69f36fc0a4533143c",
+        "date": "2026-11-11T03:32:03-06:00",
+        "subject": "ci: bump the golang-org-x group across 1 directory with 4 updates (#2419)",
+        "body": "Bumps the golang-org-x group with 4 updates in the / directory: [golang.org/x/crypto](https://github.com/golang/crypto), [golang.org/x/mod](https://github.com/golang/mod), [golang.org/x/term](https://github.com/golang/term) and [golang.org/x/text](https://github.com/golang/text).\n\n\nUpdates `golang.org/x/crypto` from 0.58.0 to 0.59.0\n- [Commits](https://github.com/golang/crypto/compare/v0.58.0...v0.59.0)\n\nUpdates `golang.org/x/mod` from 0.42.0 to 0.43.0\n- [Commits](https://github.com/golang/mod/compare/v0.42.0...v0.43.0)\n\nUpdates `golang.org/x/term` from 0.47.0 to 0.48.0\n- [Commits](https://github.com/golang/term/compare/v0.47.0...v0.48.0)\n\nUpdates `golang.org/x/text` from 0.43.0 to 0.44.0\n- [Release notes](https://github.com/golang/text/releases)\n- [Commits](https://github.com/golang/text/compare/v0.43.0...v0.44.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/crypto\n  dependency-version: 0.59.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n- dependency-name: golang.org/x/mod\n  dependency-version: 0.43.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n- dependency-name: golang.org/x/term\n  dependency-version: 0.48.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n- dependency-name: golang.org/x/text\n  dependency-version: 0.44.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "7786304ae681e385e502cdc6a2faeae1a43cb287",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
