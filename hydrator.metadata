@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "cf6ba3f75bac27940df8e50ed7ec7d94755dcbcd",
+  "drySha": "ca5bce844102c4e99bc228faead6e1b055098db4",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-18T13:53:51-06:00",
-  "subject": "chore: bump version to v1.0.2127",
+  "date": "2026-11-18T14:03:44-06:00",
+  "subject": "chore: bump version to v1.0.2128",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-10-17T16:32:51-05:00",
-        "subject": "chore(deps): bump github.com/prometheus/common from 0.73.0 to 0.73.1 in the prometheus group (#2374)",
-        "body": "chore(deps): bump github.com/prometheus/common\n\nBumps the prometheus group with 1 update: [github.com/prometheus/common](https://github.com/prometheus/common).\n\n\nUpdates `github.com/prometheus/common` from 0.73.0 to 0.73.1\n- [Release notes](https://github.com/prometheus/common/releases)\n- [Changelog](https://github.com/prometheus/common/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/prometheus/common/compare/v0.73.0...v0.73.1)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/prometheus/common\n  dependency-version: 0.73.1\n  dependency-type: indirect\n  update-type: version-update:semver-patch\n  dependency-group: prometheus\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "bb444b641905e1020e706bf65efdf51af9d46249",
+        "date": "2026-10-16T00:24:46-05:00",
+        "subject": "chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/internal from 1.12.0 to 1.13.0 (#2304)",
+        "body": "chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/internal\n\nBumps [github.com/Azure/azure-sdk-for-go/sdk/internal](https://github.com/Azure/azure-sdk-for-go) from 1.12.0 to 1.13.0.\n- [Release notes](https://github.com/Azure/azure-sdk-for-go/releases)\n- [Commits](https://github.com/Azure/azure-sdk-for-go/compare/sdk/azcore/v1.12.0...sdk/azcore/v1.13.0)\n\n---\nupdated-dependencies:\n- dependency-name: github.com/Azure/azure-sdk-for-go/sdk/internal\n  dependency-version: 1.13.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+        "sha": "8cd2e2fc76fad325be899cd69f36fc0a4533143c",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
