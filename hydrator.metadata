@@ -1,18 +1,18 @@
 {
   "repoURL": "https://github.com/zachaller/argocon-gitops-promoter-hydrate-demo",
-  "drySha": "fc2fe27e9b8e20aff601bc57d2eee5c86e60d950",
+  "drySha": "e37f5f3939a55153b90c965b9f82f43a3da6522d",
   "author": "Zach Aller <zach_aller@intuit.com>",
-  "date": "2026-11-18T15:11:54-06:00",
-  "subject": "chore: bump version to v1.0.2130",
+  "date": "2026-11-18T15:27:44-06:00",
+  "subject": "chore: bump version to v1.0.2131",
   "body": "Signed-off-by: Zach Aller <zach_aller@intuit.com>\n",
   "references": [
     {
       "commit": {
         "author": "\"Zach Aller\" <code@example.com>",
-        "date": "2026-11-04T22:58:17-06:00",
-        "subject": "chore(deps): bump golang.org/x/net from 0.61.0 to 0.62.0 in the golang-org-x group (#2360)",
-        "body": "chore(deps): bump golang.org/x/net\n\nBumps the golang-org-x group with 1 update: [golang.org/x/net](https://github.com/golang/net).\n\n\nUpdates `golang.org/x/net` from 0.61.0 to 0.62.0\n- [Commits](https://github.com/golang/net/compare/v0.61.0...v0.62.0)\n\n---\nupdated-dependencies:\n- dependency-name: golang.org/x/net\n  dependency-version: 0.62.0\n  dependency-type: indirect\n  update-type: version-update:semver-minor\n  dependency-group: golang-org-x\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-        "sha": "8a8410d66b5365744884b2de0cd067b1e05c63ea",
+        "date": "2026-11-06T02:27:55-06:00",
+        "subject": "fix(rac): delete a RestoreActiveCommit whose tip is already unblocked (#2290)",
+        "body": "* fix(rac): delete a RestoreActiveCommit whose tip is already unblocked\n\nA policy can adopt a restore after the previous object stamped Promoter-restore-unblocked-at and deleted itself. RestoreActiveBranch refuses that tip, so the new object never records status and blocks promotion. Delete it and leave the existing stamp in place.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* test: wait out a transient adopted RestoreActiveCommit after unblock\n\nDocument RestoreAlreadyReleased. The unblock spec no longer fails when a ChangeTransferPolicy adopts an object from a stale notes snapshot; that object deletes itself, and the spec waits until the list stays empty.\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n* codegen\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>\n\n---------\n\nSigned-off-by: Zach Aller <zachaller@users.noreply.github.com>",
+        "sha": "28039beb11f4dced2ef7f2992afab7c979e65425",
         "repoUrl": "https://github.com/argoproj-labs/gitops-promoter"
       }
     }
